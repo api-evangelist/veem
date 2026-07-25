@@ -1,0 +1,122 @@
+openapi: 3.0.0
+info:
+  description: Veem REST API
+  title: Veem API v1.2 attachment-controller API
+  version: v1.2.1
+servers:
+- url: //sandbox-api.veem.com
+tags:
+- description: Attachment Controller
+  name: attachment-controller
+paths:
+  /veem/v1.2/attachments:
+    get:
+      deprecated: false
+      operationId: downloadAttachmentUsingGET_2
+      parameters:
+      - allowEmptyValue: false
+        description: The file name from the upload response
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+      - allowEmptyValue: false
+        description: The unique reference ID from the upload response
+        in: query
+        name: referenceId
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/octet-stream:
+              schema:
+                format: byte
+                type: string
+          description: OK
+        '400':
+          content:
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Invalid name and referenceId combination
+      summary: Downloads the referenced file
+      tags:
+      - attachment-controller
+    post:
+      deprecated: false
+      operationId: uploadAttachmentUsingPOST_2
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  description: file
+                  format: binary
+                  type: string
+              required:
+              - file
+              type: object
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileAttachment'
+          description: Created
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unsupported file extension; Unable to upload file
+      summary: Uploads the external attachment for an entity Payment or Invoice
+      tags:
+      - attachment-controller
+components:
+  schemas:
+    FileAttachment:
+      properties:
+        name:
+          description: The name of the file (including the extension)
+          type: string
+        referenceId:
+          description: The file reference id received from Veem after file upload is complete
+          type: string
+        type:
+          description: The type of the file
+          enum:
+          - ExternalInvoice
+          - ProofOfPayment
+          type: string
+      required:
+      - name
+      - referenceId
+      - type
+      title: FileAttachment
+      type: object
+    ErrorResponse:
+      properties:
+        code:
+          description: The error code, different than HTTP status codes
+          format: int32
+          type: integer
+        error:
+          description: The short message
+          type: string
+        message:
+          description: The detailed, developer friendly message
+          type: string
+        timestamp:
+          description: The timestamp recorded when the error occurred
+          type: string
+      required:
+      - code
+      - error
+      - message
+      title: ErrorResponse
+      type: object

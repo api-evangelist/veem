@@ -1,0 +1,1377 @@
+openapi: 3.0.0
+info:
+  description: Veem REST API
+  title: Veem API v1.2 attachment-controller crypto-wallet-controller API
+  version: v1.2.1
+servers:
+- url: //sandbox-api.veem.com
+tags:
+- description: For managing crypto wallets, including balances, details, transactions and pay-ins
+  name: crypto-wallet-controller
+paths:
+  /veem/v1.2/crypto-wallet/applications/{applicationId}/add-currency:
+    post:
+      deprecated: false
+      description: Provisions an additional currency or route for an existing crypto wallet application.
+      operationId: addCryptoWalletApplicationCurrency
+      parameters:
+      - description: Unique identifier of the crypto wallet application.
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CryptoWalletAddCurrencyRequest'
+        description: Currency details to add to the application
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CryptoWalletProvisionResponse'
+          description: Currency added to crypto wallet application successfully
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Invalid request body
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Forbidden, the token owner doesn't have permission to operate this API
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Add a currency to a crypto wallet application
+      tags:
+      - crypto-wallet-controller
+  /veem/v1.2/crypto-wallet/applications:
+    post:
+      deprecated: false
+      description: Creates a new crypto wallet application.
+      operationId: createCryptoWalletApplication
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CryptoWalletApplicationRequest'
+        description: Crypto wallet application details
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CryptoWalletApplicationResponse'
+          description: Crypto wallet application created successfully
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Invalid request body
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Forbidden, the token owner doesn't have permission to operate this API
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Create a crypto wallet application
+      tags:
+      - crypto-wallet-controller
+  /veem/v1.2/crypto-wallet/applications/{applicationId}:
+    get:
+      description: Returns a specific crypto wallet application.
+      operationId: getCryptoWalletApplication
+      parameters:
+      - description: Unique identifier of the crypto wallet application.
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - description: Identifier of the account the request is made on behalf of.
+        in: query
+        name: onBehalfAccountId
+        required: false
+        schema:
+          format: int64
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CryptoWalletApplicationResponse'
+          description: Crypto wallet application retrieved successfully
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Invalid request body
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Forbidden, the token owner doesn't have permission to operate this API
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Retrieve a crypto wallet application by ID
+      tags:
+      - crypto-wallet-controller
+    patch:
+      description: Updates an existing crypto wallet application.
+      operationId: patchCryptoWalletApplication
+      parameters:
+      - description: Unique identifier of the crypto wallet application.
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CryptoWalletApplicationRequest'
+        description: Updated crypto wallet application details
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CryptoWalletApplicationResponse'
+          description: Crypto wallet application updated successfully
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Invalid request body
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Forbidden, the token owner doesn't have permission to operate this API
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Update a crypto wallet application
+      tags:
+      - crypto-wallet-controller
+  /veem/v1.2/crypto-wallet/applications/{applicationId}/routes/{routeId}:
+    get:
+      description: Returns a specific route for a crypto wallet application.
+      operationId: getCryptoWalletApplicationRoute
+      parameters:
+      - description: Unique identifier of the crypto wallet application.
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - description: Unique identifier of the crypto wallet application route.
+        in: path
+        name: routeId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - description: Identifier of the account the request is made on behalf of.
+        in: query
+        name: onBehalfAccountId
+        required: false
+        schema:
+          format: int64
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CryptoWalletApplicationRouteResponse'
+          description: Crypto wallet application route retrieved successfully
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Invalid request body
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Forbidden, the token owner doesn't have permission to operate this API
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Retrieve a crypto wallet application route by ID
+      tags:
+      - crypto-wallet-controller
+  /veem/v1.2/crypto-wallet/applications/{applicationId}/routes:
+    get:
+      description: Returns the routes for a specific crypto wallet application.
+      operationId: getCryptoWalletApplicationRoutes
+      parameters:
+      - description: Unique identifier of the crypto wallet application.
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - description: Identifier of the account the request is made on behalf of.
+        in: query
+        name: onBehalfAccountId
+        required: false
+        schema:
+          format: int64
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CryptoWalletApplicationRouteResponse'
+                type: array
+          description: List of crypto wallet application routes retrieved successfully
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Invalid request body
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Forbidden, the token owner doesn't have permission to operate this API
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Retrieve crypto wallet application routes
+      tags:
+      - crypto-wallet-controller
+  /veem/v1.2/crypto-wallet/balance/{fundingMethodId}:
+    get:
+      description: Returns the balance details of a specific crypto wallet.
+      operationId: getCryptoWalletBalanceById
+      parameters:
+      - description: Unique identifier of the crypto wallet funding method.
+        in: path
+        name: fundingMethodId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CryptoWalletBalanceResponse'
+          description: Crypto wallet balance retrieved successfully
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Invalid request body
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Forbidden, the token owner doesn't have permission to operate this API
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Retrieve crypto wallet balance by funding method ID
+      tags:
+      - crypto-wallet-controller
+  /veem/v1.2/crypto-wallet/balance:
+    get:
+      description: Returns a list of balance details for all crypto wallets.
+      operationId: getCryptoWalletBalances
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CryptoWalletBalanceResponse'
+                type: array
+          description: List of crypto wallet balances retrieved successfully
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Invalid request body
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Forbidden, the token owner doesn't have permission to operate this API
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Retrieve all crypto wallet balances
+      tags:
+      - crypto-wallet-controller
+  /veem/v1.2/crypto-wallet/details:
+    get:
+      description: Returns a list of details for all crypto wallets.
+      operationId: getCryptoWalletDetails
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CryptoWalletDetailsResponse'
+                type: array
+          description: List of crypto wallet details retrieved successfully
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Invalid request body
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Forbidden, the token owner doesn't have permission to operate this API
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Retrieve all crypto wallet details
+      tags:
+      - crypto-wallet-controller
+  /veem/v1.2/crypto-wallet/details/{fundingMethodId}:
+    get:
+      description: Returns detailed information for a specific crypto wallet.
+      operationId: getCryptoWalletDetailsById
+      parameters:
+      - description: Unique identifier of the crypto wallet funding method.
+        in: path
+        name: fundingMethodId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CryptoWalletDetailsResponse'
+          description: Crypto wallet details retrieved successfully
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Invalid request body
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Forbidden, the token owner doesn't have permission to operate this API
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Retrieve crypto wallet details by funding method ID
+      tags:
+      - crypto-wallet-controller
+  /veem/v1.2/crypto-wallet:
+    get:
+      deprecated: false
+      description: Gets the Crypto Wallet information for the payer, including status, currency and chain details.
+      operationId: getCryptoWallets
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CryptoWalletPublicAPIResponse'
+          description: Success, all active Crypto Wallets retrieved successfully.
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Forbidden, the token owner doesn't have permission to operate this API
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Get payer's Crypto Wallets
+      tags:
+      - crypto-wallet-controller
+  /veem/v1.2/crypto-wallet/transactions/{fundingMethodId}:
+    get:
+      description: Returns paginated transactions for a crypto wallet within a specified date range.
+      operationId: getCryptoWalletTransactions
+      parameters:
+      - description: Unique identifier of the crypto wallet funding method.
+        in: path
+        name: fundingMethodId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - description: 'The page number for paginated results (initial: 0).'
+        in: query
+        name: pageNumber
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+      - description: 'The number of results per page (max: 25).'
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 25
+          format: int32
+          type: integer
+      - description: The start date and time for transaction filtering.
+        in: query
+        name: startDate
+        required: true
+        schema:
+          format: date-time
+          type: string
+      - description: The end date and time for transaction filtering.
+        in: query
+        name: endDate
+        required: true
+        schema:
+          format: date-time
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageResponseTransactionReportItem'
+          description: Paginated list of transactions retrieved successfully
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Invalid request body
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Forbidden, the token owner doesn't have permission to operate this API
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Retrieve crypto wallet transactions
+      tags:
+      - crypto-wallet-controller
+components:
+  schemas:
+    CryptoWalletHighLevelInformationResponse:
+      description: High level information for a crypto wallet.
+      properties:
+        accountId:
+          format: int64
+          type: integer
+        destinationCurrency:
+          type: string
+        destinationPaymentRail:
+          type: string
+        fundingMethodId:
+          format: int64
+          type: integer
+        provider:
+          type: string
+        sourceChain:
+          type: string
+        sourceCurrency:
+          type: string
+        status:
+          type: string
+        timeCreated:
+          format: date-time
+          type: string
+      title: CryptoWalletHighLevelInformationResponse
+      type: object
+    CryptoWalletApplicationRequest:
+      description: Request payload for creating or updating a crypto wallet application.
+      properties:
+        destinationCurrency:
+          description: The destination currency for settlement.
+          type: string
+        destinationPaymentRail:
+          description: The destination payment rail for settlement.
+          type: string
+        externalRegulatoryBusinessInfo:
+          $ref: '#/components/schemas/VirtualBankAccountBusinessExtraInfo'
+          description: Regulatory information for a business applicant.
+        externalRegulatoryIndividualInfo:
+          $ref: '#/components/schemas/VirtualBankAccountIndividualExtraInfo'
+          description: Regulatory information for an individual applicant.
+        sourceChain:
+          description: The source blockchain for the crypto wallet.
+          type: string
+        sourceCurrency:
+          description: The source currency for the crypto wallet.
+          type: string
+      title: CryptoWalletApplicationRequest
+      type: object
+    VirtualBankAccountIndividualExtraInfo:
+      description: Additional individual-related details for a virtual bank account.
+      properties:
+        annualIncome:
+          description: Annual income of the individual.
+          format: decimal
+          type: number
+        geographyReceivingCountries:
+          description: List of countries to which funds can be received.
+          type: string
+        geographySendingCountries:
+          description: List of countries from which funds can be sent.
+          type: string
+        monthlyExpectedActivity:
+          description: Expected monthly financial activity for the account.
+          format: decimal
+          type: number
+        occupation:
+          description: Occupation of the individual associated with the account.
+          type: string
+        purposeOfAccount:
+          description: Purpose for which the virtual bank account is used.
+          type: string
+        sourceOfFunds:
+          description: Source of funds for the individual account.
+          type: string
+        websiteSocialMediaLink:
+          description: Social media or website link associated with the individual.
+          type: string
+      type: object
+    CryptoWalletLiquidationAddressResponse:
+      description: Liquidation address details for a crypto wallet.
+      properties:
+        address:
+          description: The liquidation wallet address.
+          type: string
+        bridgeWalletId:
+          description: Identifier of the wallet at the Bridge provider.
+          type: string
+        createdAt:
+          description: Timestamp when the liquidation address was created.
+          type: string
+        destinationCurrency:
+          description: The destination currency.
+          type: string
+        destinationPaymentRail:
+          description: The destination payment rail.
+          type: string
+        liquidationAddressId:
+          description: Unique identifier of the liquidation address.
+          type: string
+        sourceChain:
+          description: The source blockchain.
+          type: string
+        sourceCurrency:
+          description: The source currency.
+          type: string
+        state:
+          description: Current state of the liquidation address.
+          type: string
+        updatedAt:
+          description: Timestamp when the liquidation address was last updated.
+          type: string
+      title: CryptoWalletLiquidationAddressResponse
+      type: object
+    CryptoWalletApplicationResponse:
+      description: Details of a crypto wallet application.
+      properties:
+        applicationId:
+          description: Unique identifier of the crypto wallet application.
+          format: int64
+          type: integer
+        applicationStatus:
+          description: Current status of the application.
+          type: string
+        externalRegulatoryBusinessInfo:
+          $ref: '#/components/schemas/VirtualBankAccountBusinessExtraInfo'
+          description: Regulatory information for a business applicant.
+        externalRegulatoryIndividualInfo:
+          $ref: '#/components/schemas/VirtualBankAccountIndividualExtraInfo'
+          description: Regulatory information for an individual applicant.
+        initialRouteId:
+          description: Identifier of the initial route created for the application.
+          format: int64
+          type: integer
+        provider:
+          description: The provider backing the crypto wallet.
+          type: string
+      title: CryptoWalletApplicationResponse
+      type: object
+    VirtualBankAccountBusinessExtraInfo:
+      description: Additional business-related details for a virtual bank account.
+      properties:
+        annualRevenue:
+          description: Annual revenue for the business associated with the account.
+          format: decimal
+          type: number
+        businessIncorporationDate:
+          description: Incorporation date of the business.
+          format: date
+          type: string
+        businessRegistrationAddressLine1:
+          description: Primary address line for business registration.
+          type: string
+        businessRegistrationAddressLine2:
+          description: Secondary address line for business registration.
+          type: string
+        businessRegistrationCity:
+          description: City where business is registered.
+          type: string
+        businessRegistrationCountry:
+          description: Country where the business is registered.
+          type: string
+        businessRegistrationNumber:
+          description: Registration number for the business.
+          type: string
+        businessRegistrationPostalCode:
+          description: Postal code of the business registration.
+          type: string
+        businessRegistrationStateProv:
+          description: State or province where business is registered.
+          type: string
+        businessWebsite:
+          description: Website or online presence for the business.
+          type: string
+        geographyReceivingCountries:
+          description: List of countries to which funds can be received.
+          type: string
+        geographySendingCountries:
+          description: List of countries from which funds can be sent.
+          type: string
+        monthlyExpectedActivity:
+          description: Expected monthly financial activity for the account.
+          format: decimal
+          type: number
+        purposeOfAccount:
+          description: Purpose for which the virtual bank account is used.
+          type: string
+        sourceOfFunds:
+          description: Source of funds for the business account.
+          type: string
+      type: object
+    CryptoWalletBalanceResponse:
+      description: Balance details for a crypto wallet.
+      properties:
+        accountId:
+          format: int64
+          type: integer
+        balanceAmount:
+          $ref: '#/components/schemas/AlignMonetaryAmountCryptoWallet'
+        destinationCurrency:
+          type: string
+        destinationPaymentRail:
+          type: string
+        fundingMethodId:
+          format: int64
+          type: integer
+        sourceChain:
+          type: string
+        sourceCurrency:
+          type: string
+        timeUpdated:
+          format: date-time
+          type: string
+      title: CryptoWalletBalanceResponse
+      type: object
+    CryptoWalletProvisionResponse:
+      description: Provisioning result for a crypto wallet application currency or route.
+      properties:
+        applicationId:
+          description: Unique identifier of the crypto wallet application.
+          format: int64
+          type: integer
+        applicationStatus:
+          description: Current status of the application.
+          type: string
+        bridgeCustomerId:
+          description: Identifier of the customer at the Bridge provider.
+          type: string
+        bridgeCustomerStatus:
+          description: Status of the customer at the Bridge provider.
+          type: string
+        bridgeWalletAddress:
+          description: Wallet address at the Bridge provider.
+          type: string
+        bridgeWalletId:
+          description: Identifier of the wallet at the Bridge provider.
+          type: string
+        destinationCurrency:
+          description: The destination currency.
+          type: string
+        destinationPaymentRail:
+          description: The destination payment rail.
+          type: string
+        fundingMethodId:
+          description: Identifier of the funding method.
+          format: int64
+          type: integer
+        fundingMethodStatus:
+          description: Status of the funding method.
+          type: string
+        fundingMethodType:
+          description: Type of the funding method.
+          type: string
+        liquidationAddress:
+          $ref: '#/components/schemas/CryptoWalletLiquidationAddressResponse'
+          description: Liquidation address details for the provisioned wallet.
+        provider:
+          description: The provider backing the crypto wallet.
+          type: string
+        routeId:
+          description: Unique identifier of the provisioned route.
+          format: int64
+          type: integer
+        routeStatus:
+          description: Status of the provisioned route.
+          type: string
+        sourceChain:
+          description: The source blockchain.
+          type: string
+        sourceCurrency:
+          description: The source currency.
+          type: string
+      title: CryptoWalletProvisionResponse
+      type: object
+    VeemErrorResponse:
+      properties:
+        code:
+          description: The error code, different than HTTP status codes
+          format: int32
+          type: integer
+        fileName:
+          description: The filename where the exception was thrown
+          type: string
+        lineNumber:
+          description: The line number where the exception was thrown
+          format: int32
+          type: integer
+        logTag:
+          description: Request log tag
+          type: string
+        message:
+          description: The detailed, developer friendly message
+          type: string
+        timestamp:
+          description: The timestamp recorded when the error occurred
+          type: string
+      required:
+      - code
+      - logTag
+      - message
+      title: VeemErrorResponse
+      type: object
+    CryptoWalletApplicationRouteResponse:
+      description: Details of a route associated with a crypto wallet application.
+      properties:
+        destinationCurrency:
+          description: The destination currency for the route.
+          type: string
+        destinationPaymentRail:
+          description: The destination payment rail for the route.
+          type: string
+        fundingMethodId:
+          description: Identifier of the funding method associated with the route.
+          format: int64
+          type: integer
+        fundingMethodStatus:
+          description: Status of the funding method associated with the route.
+          enum:
+          - Active
+          - Deleted
+          - Inactive
+          - Inactiving
+          - Closed
+          type: string
+        routeId:
+          description: Unique identifier of the route.
+          format: int64
+          type: integer
+        routeStatus:
+          description: Current status of the route.
+          type: string
+        sourceChain:
+          description: The source blockchain for the route.
+          type: string
+        sourceCurrency:
+          description: The source currency for the route.
+          type: string
+        timeCreated:
+          description: Timestamp when the route was created.
+          format: date-time
+          type: string
+        timeUpdated:
+          description: Timestamp when the route was last updated.
+          format: date-time
+          type: string
+      title: CryptoWalletApplicationRouteResponse
+      type: object
+    AlignMonetaryAmountCryptoWallet:
+      description: Monetary amount including crypto currency codes, used by crypto wallet endpoints.
+      properties:
+        currency:
+          enum:
+          - UNDEFINED
+          - AED
+          - AFN
+          - ALL
+          - AMD
+          - ANG
+          - AOA
+          - ARS
+          - AUD
+          - AWG
+          - AZN
+          - BAM
+          - BBD
+          - BDT
+          - BGN
+          - BHD
+          - BIF
+          - BMD
+          - BND
+          - BOB
+          - BOV
+          - BRL
+          - BSD
+          - BTN
+          - BWP
+          - BYN
+          - BYR
+          - BZD
+          - CAD
+          - CDF
+          - CHE
+          - CHF
+          - CHW
+          - CLF
+          - CLP
+          - CNY
+          - COP
+          - COU
+          - CRC
+          - CUC
+          - CUP
+          - CVE
+          - CZK
+          - DJF
+          - DKK
+          - DOP
+          - DZD
+          - EGP
+          - ERN
+          - ETB
+          - EUR
+          - FJD
+          - FKP
+          - GBP
+          - GEL
+          - GHS
+          - GIP
+          - GMD
+          - GNF
+          - GTQ
+          - GYD
+          - HKD
+          - HNL
+          - HRK
+          - HTG
+          - HUF
+          - IDR
+          - ILS
+          - INR
+          - IQD
+          - IRR
+          - ISK
+          - JMD
+          - JOD
+          - JPY
+          - KES
+          - KGS
+          - KHR
+          - KMF
+          - KPW
+          - KRW
+          - KWD
+          - KYD
+          - KZT
+          - LAK
+          - LBP
+          - LKR
+          - LRD
+          - LSL
+          - LTL
+          - LYD
+          - MAD
+          - MDL
+          - MGA
+          - MKD
+          - MMK
+          - MNT
+          - MOP
+          - MRO
+          - MRU
+          - MUR
+          - MVR
+          - MWK
+          - MXN
+          - MXV
+          - MYR
+          - MZN
+          - NAD
+          - NGN
+          - NIO
+          - NOK
+          - NPR
+          - NZD
+          - OMR
+          - PAB
+          - PEN
+          - PGK
+          - PHP
+          - PKR
+          - PLN
+          - PYG
+          - QAR
+          - RON
+          - RSD
+          - RUB
+          - RUR
+          - RWF
+          - SAR
+          - SBD
+          - SCR
+          - SDG
+          - SEK
+          - SGD
+          - SHP
+          - SLL
+          - SOS
+          - SRD
+          - SSP
+          - STD
+          - STN
+          - SVC
+          - SYP
+          - SZL
+          - THB
+          - TJS
+          - TMT
+          - TND
+          - TOP
+          - TRY
+          - TTD
+          - TWD
+          - TZS
+          - UAH
+          - UGX
+          - USD
+          - USDC
+          - USDB
+          - USDT
+          - USDV
+          - EURC
+          - USN
+          - USS
+          - UYI
+          - UYU
+          - UZS
+          - VEF
+          - VND
+          - VUV
+          - WST
+          - XAF
+          - XAG
+          - XAU
+          - XBA
+          - XBB
+          - XBC
+          - XBD
+          - XCD
+          - XDR
+          - XOF
+          - XPD
+          - XPF
+          - XPT
+          - XSU
+          - XTS
+          - XUA
+          - XXX
+          - YER
+          - ZAR
+          - ZMW
+          - ZWL
+          type: string
+        number:
+          type: number
+      title: AlignMonetaryAmountCryptoWallet
+      type: object
+    PageResponseTransactionReportItem:
+      description: Response model for paginated crypto wallet transaction results.
+      properties:
+        content:
+          description: List of paginated items.
+          items:
+            $ref: '#/components/schemas/TransactionReportItem'
+          type: array
+        first:
+          description: Indicates if this is the first page.
+          type: boolean
+        last:
+          description: Indicates if this is the last page.
+          type: boolean
+        nextPage:
+          description: Indicates if a next page exists.
+          type: boolean
+        number:
+          description: Current page number.
+          format: int32
+          type: integer
+        numberOfElements:
+          description: Number of elements on the current page.
+          format: int32
+          type: integer
+        previousPage:
+          description: Indicates if a previous page exists.
+          type: boolean
+        size:
+          description: Size of the page.
+          format: int32
+          type: integer
+        totalElements:
+          description: Total number of elements available.
+          format: int64
+          type: integer
+        totalPages:
+          description: Total number of pages available.
+          format: int32
+          type: integer
+      title: PageResponseTransactionReportItem
+      type: object
+    CryptoWalletPublicAPIResponse:
+      description: Response containing the payer's crypto wallets.
+      properties:
+        cryptoWallets:
+          items:
+            $ref: '#/components/schemas/CryptoWalletHighLevelInformationResponse'
+          type: array
+      title: CryptoWalletPublicAPIResponse
+      type: object
+    CryptoWalletAddCurrencyRequest:
+      description: Request payload for adding a currency or route to a crypto wallet application.
+      properties:
+        destinationCurrency:
+          description: The destination currency for settlement.
+          type: string
+        destinationPaymentRail:
+          description: The destination payment rail for settlement.
+          type: string
+        sourceChain:
+          description: The source blockchain for the crypto wallet.
+          type: string
+        sourceCurrency:
+          description: The source currency for the crypto wallet.
+          type: string
+      title: CryptoWalletAddCurrencyRequest
+      type: object
+    CryptoWalletDetailsResponse:
+      description: Detailed information for a crypto wallet.
+      properties:
+        destinationCurrency:
+          type: string
+        destinationPaymentRail:
+          type: string
+        externalAccountId:
+          type: string
+        fundingMethodId:
+          format: int64
+          type: integer
+        info:
+          additionalProperties:
+            type: object
+          type: object
+        isoCountryCode:
+          type: string
+        isoCurrencyCode:
+          type: string
+        provider:
+          type: string
+        sourceChain:
+          type: string
+        sourceCurrency:
+          type: string
+        status:
+          type: string
+      title: CryptoWalletDetailsResponse
+      type: object
+    TransactionReportItem:
+      description: A single transaction entry in a crypto wallet transaction report.
+      properties:
+        accountId:
+          format: int64
+          type: integer
+        accountRef:
+          type: string
+        additionalInformation:
+          type: string
+        amount:
+          type: number
+        balanceAmount:
+          type: number
+        balanceId:
+          type: string
+        completedAt:
+          format: date-time
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        currency:
+          type: string
+        date:
+          format: date-time
+          type: string
+        fundingMethodId:
+          format: int64
+          type: integer
+        id:
+          format: int64
+          type: integer
+        notes:
+          type: string
+        originatorName:
+          type: string
+        paymentAdditionalRef:
+          type: string
+        paymentId:
+          format: int64
+          type: integer
+        paymentRef:
+          type: string
+        provider:
+          type: string
+        rail:
+          type: string
+        reason:
+          type: string
+        receivingAccountIban:
+          type: string
+        receivingAccountNumber:
+          type: string
+        receivingAccountRoutingCode:
+          type: string
+        relatedEntityId:
+          type: string
+        relatedEntityShortReference:
+          type: string
+        relatedEntityType:
+          type: string
+        reviewAmount:
+          type: number
+        sanctionsPaymentId:
+          format: int64
+          type: integer
+        sanctionsSenderAccountId:
+          format: int64
+          type: integer
+        sender:
+          type: string
+        senderAccountId:
+          format: int64
+          type: integer
+        senderAccountNumber:
+          type: string
+        senderAddress:
+          type: string
+        senderAmount:
+          type: number
+        senderCountry:
+          type: string
+        senderCreateAat:
+          format: date-time
+          type: string
+        senderCurrency:
+          type: string
+        senderIban:
+          type: string
+        senderName:
+          type: string
+        senderRail:
+          type: string
+        senderUpdatedAt:
+          format: date-time
+          type: string
+        settlesAt:
+          format: date-time
+          type: string
+        status:
+          type: string
+        transactionId:
+          format: int64
+          type: integer
+        type:
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        virtualBankAccountId:
+          type: string
+        virtualBankTransactionId:
+          type: string
+        virtualBankTransactionOtherId:
+          type: string
+      title: TransactionReportItem
+      type: object

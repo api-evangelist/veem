@@ -1,0 +1,305 @@
+openapi: 3.0.0
+info:
+  description: Veem REST API
+  title: Veem API v1.2 attachment-controller open-account-controller API
+  version: v1.2.1
+servers:
+- url: //sandbox-api.veem.com
+tags:
+- description: Open Account Controller
+  name: open-account-controller
+paths:
+  /veem/v1.2/account:
+    post:
+      deprecated: false
+      operationId: createAccountUsingPOST
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OpenAccountRequest'
+        description: request
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetUpAccountResponse'
+          description: Created
+      summary: createAccount
+      tags:
+      - open-account-controller
+  /veem/v1.2/account/{accountId}/setting:
+    post:
+      deprecated: false
+      description: Creates or updates account settings for a specific account
+      operationId: createOrUpdateAccountSettingsUsingPOST
+      parameters:
+      - description: The account ID
+        in: path
+        name: accountId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublicAccountSettingsRequest'
+        description: Account settings request
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicAccountSettingResponse'
+          description: Success, account settings have been created or updated
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad Request, invalid request data
+        '401':
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          description: Forbidden, the token owner doesn't have permission to operate current API
+        '404':
+          description: Not Found, the resource not found
+        '500':
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: createOrUpdateAccountSettings
+      tags:
+      - open-account-controller
+  /veem/v1.2/account/{accountId}:
+    patch:
+      deprecated: false
+      operationId: editAccountUsingPATCH
+      parameters:
+      - description: accountId
+        in: path
+        name: accountId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAccountRequest'
+        description: request
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetUpAccountResponse'
+          description: OK
+      summary: editAccount
+      tags:
+      - open-account-controller
+    get:
+      deprecated: false
+      operationId: getAccountUsingGET
+      parameters:
+      - description: accountId
+        in: path
+        name: accountId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetUpAccountResponse'
+          description: OK
+      summary: getAccount
+      tags:
+      - open-account-controller
+components:
+  schemas:
+    UpdateAccountRequest:
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        businessEntity:
+          type: string
+        businessName:
+          type: string
+        dialCode:
+          type: string
+        displayName:
+          type: string
+        firstName:
+          type: string
+        industry:
+          type: string
+        isoCountryCode:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+        subIndustry:
+          type: string
+        taxIdNumber:
+          type: string
+      title: UpdateAccountRequest
+      type: object
+    ErrorResponse:
+      properties:
+        code:
+          description: The error code, different than HTTP status codes
+          format: int32
+          type: integer
+        error:
+          description: The short message
+          type: string
+        message:
+          description: The detailed, developer friendly message
+          type: string
+        timestamp:
+          description: The timestamp recorded when the error occurred
+          type: string
+      required:
+      - code
+      - error
+      - message
+      title: ErrorResponse
+      type: object
+    PublicAccountSettingResponse:
+      properties:
+        accountId:
+          description: The account ID this setting belongs to
+          format: int64
+          type: integer
+        type:
+          description: The type of account setting
+          type: string
+        value:
+          description: The value for the account setting
+          type: string
+      title: PublicAccountSettingResponse
+      type: object
+    PublicAccountSettingsRequest:
+      properties:
+        type:
+          description: The type of account setting
+          enum:
+          - PAYEE_COVERS_CARD_FEE
+          - CREDIT_CARD_SENDING_FEE_RATE
+          - DEBIT_CARD_SENDING_FEE_RATE
+          type: string
+        value:
+          description: The value for the account setting
+          type: string
+      required:
+      - type
+      title: PublicAccountSettingsRequest
+      type: object
+    Address:
+      properties:
+        city:
+          type: string
+        countryCode:
+          type: string
+        postalCode:
+          type: string
+        province:
+          type: string
+        street:
+          type: string
+        streetSecondary:
+          type: string
+      title: Address
+      type: object
+    JSONObject:
+      title: JSONObject
+      type: object
+    OpenAccountRequest:
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        bankInfo:
+          $ref: '#/components/schemas/JSONObject'
+        businessEntity:
+          type: string
+        businessName:
+          type: string
+        dateOfBirth:
+          format: date
+          pattern: yyyy-MM-dd
+          type: string
+        dialCode:
+          type: string
+        email:
+          type: string
+        extraInfo:
+          $ref: '#/components/schemas/ExtraInfo'
+        extraName:
+          type: string
+        firstName:
+          type: string
+        industry:
+          type: string
+        isoCountryCode:
+          type: string
+        lastName:
+          type: string
+        middleName:
+          type: string
+        phoneNumber:
+          type: string
+        subIndustry:
+          type: string
+        taxIdNumber:
+          type: string
+      required:
+      - email
+      title: OpenAccountRequest
+      type: object
+    ExtraInfo:
+      properties:
+        purposeOfPayment:
+          type: string
+        purposeOfPaymentDescription:
+          type: string
+      title: ExtraInfo
+      type: object
+    SetUpAccountResponse:
+      properties:
+        accountSetUpStatus:
+          type: string
+        clientId:
+          type: string
+        clientSecret:
+          type: string
+        email:
+          type: string
+        expiresIn:
+          format: int32
+          type: integer
+        id:
+          format: int64
+          type: integer
+        missingInformation:
+          items:
+            type: string
+          type: array
+        token:
+          type: string
+        userId:
+          format: int64
+          type: integer
+        verificationStatus:
+          type: string
+      title: SetUpAccountResponse
+      type: object

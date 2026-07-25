@@ -1,0 +1,134 @@
+openapi: 3.0.0
+info:
+  description: Veem REST API
+  title: Veem API v1.2 attachment-controller wallet-controller API
+  version: v1.2.1
+servers:
+- url: //sandbox-api.veem.com
+tags:
+- description: Wallet Controller
+  name: wallet-controller
+paths:
+  /veem/v1.2/wallets:
+    get:
+      deprecated: false
+      description: Return user's wallet balance
+      operationId: getFundingMethodsUsingGET_3
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFundingMethodResponse'
+          description: Success
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '401':
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          description: Forbidden, the token owner doesn't have permission to operate current API
+        '404':
+          description: Not Found, the resource not found
+        '500':
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Get Wallet Balance
+      tags:
+      - wallet-controller
+  /veem/v1.2/wallets/{walletId}:
+    get:
+      deprecated: false
+      description: Return user's wallet by id
+      operationId: getFundingMethodsUsingGET_6
+      parameters:
+      - description: walletId
+        in: path
+        name: walletId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomFundingMethodResponse'
+          description: Success
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '401':
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          description: Forbidden, the token owner doesn't have permission to operate current API
+        '404':
+          description: Not Found, the resource not found
+        '500':
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Get Wallet by id
+      tags:
+      - wallet-controller
+components:
+  schemas:
+    ErrorResponse:
+      properties:
+        code:
+          description: The error code, different than HTTP status codes
+          format: int32
+          type: integer
+        error:
+          description: The short message
+          type: string
+        message:
+          description: The detailed, developer friendly message
+          type: string
+        timestamp:
+          description: The timestamp recorded when the error occurred
+          type: string
+      required:
+      - code
+      - error
+      - message
+      title: ErrorResponse
+      type: object
+    FundingMethod:
+      properties:
+        id:
+          description: The payer's funding method id. This comes from the funding methods service.
+          format: int64
+          type: integer
+        type:
+          description: 'The payer''s funding method type. Can be one of: Bank, Card or Wallet.'
+          enum:
+          - Bank
+          - External
+          - Cheque
+          - Card
+          - Wallet
+          - VirtualCard
+          type: string
+      required:
+      - id
+      - type
+      title: FundingMethod
+      type: object
+    CustomFundingMethodResponse:
+      properties:
+        accountId:
+          format: int64
+          type: integer
+        errorMessage:
+          type: string
+        fundingMethods:
+          items:
+            $ref: '#/components/schemas/FundingMethod'
+          type: array
+      title: CustomFundingMethodResponse
+      type: object

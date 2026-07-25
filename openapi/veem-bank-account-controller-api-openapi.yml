@@ -1,0 +1,712 @@
+openapi: 3.0.0
+info:
+  description: Veem REST API
+  title: Veem API v1.2 attachment-controller bank-account-controller API
+  version: v1.2.1
+servers:
+- url: //sandbox-api.veem.com
+tags:
+- description: Bank Account Controller
+  name: bank-account-controller
+paths:
+  /veem/v1.2/account/bank-account:
+    post:
+      deprecated: false
+      operationId: addBankAccountUsingPOST
+      requestBody:
+        $ref: '#/components/requestBodies/BankAccountRequest'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankAccountResponse'
+          description: Created
+      summary: addBankAccount
+      tags:
+      - bank-account-controller
+  /veem/v1.2/account/bank-account/{bankAccountId}:
+    patch:
+      deprecated: false
+      operationId: editBankAccountUsingPATCH
+      parameters:
+      - description: bankAccountId
+        in: path
+        name: bankAccountId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        $ref: '#/components/requestBodies/BankAccountRequest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankAccountResponse'
+          description: OK
+      summary: editBankAccount
+      tags:
+      - bank-account-controller
+components:
+  schemas:
+    AddressRequest:
+      properties:
+        city:
+          description: City
+          type: string
+        line1:
+          description: Address line 1
+          type: string
+        line2:
+          description: Address line 2
+          type: string
+        postalCode:
+          description: Postal code
+          type: string
+        province:
+          type: string
+        state:
+          type: string
+        stateProvince:
+          description: State or province
+          type: string
+      required:
+      - city
+      - line1
+      - line2
+      - postalCode
+      - stateProvince
+      title: AddressRequest
+      type: object
+    BankAccountRequest:
+      properties:
+        accountType:
+          type: string
+        bankAccountNumber:
+          type: string
+        bankAddress:
+          $ref: '#/components/schemas/AddressRequest'
+        bankCnaps:
+          type: string
+        bankCode:
+          type: string
+        bankIfscBranchCode:
+          type: string
+        bankInstitutionNumber:
+          type: string
+        bankName:
+          type: string
+        beneficiaryName:
+          type: string
+        branchCode:
+          type: string
+        bsbBankCode:
+          type: string
+        clabe:
+          type: string
+        currencyCode:
+          type: string
+        iban:
+          type: string
+        isoCountryCode:
+          type: string
+        routingNumber:
+          type: string
+        sortCode:
+          type: string
+        swiftBic:
+          type: string
+        transitCode:
+          type: string
+      title: BankAccountRequest
+      type: object
+    BankAccountAddressDTO:
+      properties:
+        bankAccountId:
+          format: int64
+          type: integer
+        city:
+          type: string
+        id:
+          format: int64
+          type: integer
+        line1:
+          type: string
+        line2:
+          type: string
+        postalCode:
+          type: string
+        province:
+          type: string
+        state:
+          type: string
+      title: BankAccountAddressDTO
+      type: object
+    BankAccountResponse:
+      properties:
+        accountHash:
+          type: string
+        accountId:
+          format: int64
+          type: integer
+        accountNickname:
+          type: string
+        accountNumber:
+          type: string
+        accountType:
+          enum:
+          - Checking
+          - Savings
+          type: string
+        address:
+          $ref: '#/components/schemas/BankAccountAddressDTO'
+        bankName:
+          type: string
+        beneficiaryName:
+          type: string
+        bic:
+          type: string
+        canRemove:
+          type: boolean
+        description:
+          type: string
+        externalAccountLinked:
+          type: boolean
+        externalAccountStatus:
+          enum:
+          - AccountLocked
+          - AccountMissing
+          - AccountNotSetUp
+          - AccountNotSupported
+          - Connected
+          - Disconnected
+          - ExternalError
+          - InstitutionNotSupported
+          - InvalidCredentials
+          - InvalidPin
+          - InvalidToken
+          - MFANotSupported
+          - MFAReset
+          - ModifiedBankInfo
+          - NotConfigured
+          type: string
+        extraInfo:
+          additionalProperties:
+            type: object
+          type: object
+        iban:
+          type: string
+        id:
+          format: int64
+          type: integer
+        isoCountryCode:
+          enum:
+          - AC
+          - AD
+          - AE
+          - AF
+          - AG
+          - AI
+          - AL
+          - AM
+          - AN
+          - AO
+          - AQ
+          - AR
+          - AS
+          - AT
+          - AU
+          - AW
+          - AX
+          - AZ
+          - BA
+          - BB
+          - BD
+          - BE
+          - BF
+          - BG
+          - BH
+          - BI
+          - BJ
+          - BL
+          - BM
+          - BN
+          - BO
+          - BQ
+          - BR
+          - BS
+          - BT
+          - BU
+          - BV
+          - BW
+          - BY
+          - BZ
+          - CA
+          - CC
+          - CD
+          - CF
+          - CG
+          - CH
+          - CI
+          - CK
+          - CL
+          - CM
+          - CN
+          - CO
+          - CP
+          - CR
+          - CS
+          - CU
+          - CV
+          - CW
+          - CX
+          - CY
+          - CZ
+          - DE
+          - DG
+          - DJ
+          - DK
+          - DM
+          - DO
+          - DZ
+          - EA
+          - EC
+          - EE
+          - EG
+          - EH
+          - ER
+          - ES
+          - ET
+          - EU
+          - EZ
+          - FI
+          - FJ
+          - FK
+          - FM
+          - FO
+          - FR
+          - FX
+          - GA
+          - GB
+          - GD
+          - GE
+          - GF
+          - GG
+          - GH
+          - GI
+          - GL
+          - GM
+          - GN
+          - GP
+          - GQ
+          - GR
+          - GS
+          - GT
+          - GU
+          - GW
+          - GY
+          - HK
+          - HM
+          - HN
+          - HR
+          - HT
+          - HU
+          - IC
+          - ID
+          - IE
+          - IL
+          - IM
+          - IN
+          - IO
+          - IQ
+          - IR
+          - IS
+          - IT
+          - JE
+          - JM
+          - JO
+          - JP
+          - KE
+          - KG
+          - KH
+          - KI
+          - KM
+          - KN
+          - KP
+          - KR
+          - KW
+          - KY
+          - KZ
+          - LA
+          - LB
+          - LC
+          - LI
+          - LK
+          - LR
+          - LS
+          - LT
+          - LU
+          - LV
+          - LY
+          - MA
+          - MC
+          - MD
+          - ME
+          - MF
+          - MG
+          - MH
+          - MK
+          - ML
+          - MM
+          - MN
+          - MO
+          - MP
+          - MQ
+          - MR
+          - MS
+          - MT
+          - MU
+          - MV
+          - MW
+          - MX
+          - MY
+          - MZ
+          - NA
+          - NC
+          - NE
+          - NF
+          - NG
+          - NI
+          - NL
+          - 'NO'
+          - NP
+          - NR
+          - NT
+          - NU
+          - NZ
+          - OM
+          - PA
+          - PE
+          - PF
+          - PG
+          - PH
+          - PK
+          - PL
+          - PM
+          - PN
+          - PR
+          - PS
+          - PT
+          - PW
+          - PY
+          - QA
+          - RE
+          - RO
+          - RS
+          - RU
+          - RW
+          - SA
+          - SB
+          - SC
+          - SD
+          - SE
+          - SF
+          - SG
+          - SH
+          - SI
+          - SJ
+          - SK
+          - SL
+          - SM
+          - SN
+          - SO
+          - SR
+          - SS
+          - ST
+          - SU
+          - SV
+          - SX
+          - SY
+          - SZ
+          - TA
+          - TC
+          - TD
+          - TF
+          - TG
+          - TH
+          - TJ
+          - TK
+          - TL
+          - TM
+          - TN
+          - TO
+          - TP
+          - TR
+          - TT
+          - TV
+          - TW
+          - TZ
+          - UA
+          - UG
+          - UK
+          - UM
+          - US
+          - UY
+          - UZ
+          - VA
+          - VC
+          - VE
+          - VG
+          - VI
+          - VN
+          - VU
+          - WF
+          - WS
+          - XK
+          - YE
+          - YT
+          - YU
+          - ZA
+          - ZM
+          - ZR
+          - ZW
+          type: string
+        isoCurrencyCode:
+          type: string
+        miscBankFee:
+          $ref: '#/components/schemas/AlignMonetaryAmount'
+        routingNumber:
+          type: string
+        shortIdentifierDomestic:
+          type: string
+        shortIdentifierInternational:
+          type: string
+        status:
+          enum:
+          - Active
+          - Deleted
+          - Inactive
+          - Inactiving
+          - Closed
+          type: string
+        validationStatus:
+          additionalProperties:
+            type: object
+          type: object
+        verificationReason:
+          additionalProperties:
+            type: object
+          type: object
+        verificationStatus:
+          enum:
+          - Unverified
+          - VerificationInProgress
+          - Verified
+          - CannotBeVerified
+          - NeedMoreInfo
+          type: string
+      title: BankAccountResponse
+      type: object
+    AlignMonetaryAmount:
+      properties:
+        currency:
+          enum:
+          - AED
+          - AFN
+          - ALL
+          - AMD
+          - ANG
+          - AOA
+          - ARS
+          - AUD
+          - AWG
+          - AZN
+          - BAM
+          - BBD
+          - BDT
+          - BGN
+          - BHD
+          - BIF
+          - BMD
+          - BND
+          - BOB
+          - BOV
+          - BRL
+          - BSD
+          - BTN
+          - BWP
+          - BYN
+          - BYR
+          - BZD
+          - CAD
+          - CDF
+          - CHE
+          - CHF
+          - CHW
+          - CLF
+          - CLP
+          - CNY
+          - COP
+          - COU
+          - CRC
+          - CUC
+          - CUP
+          - CVE
+          - CZK
+          - DJF
+          - DKK
+          - DOP
+          - DZD
+          - EGP
+          - ERN
+          - ETB
+          - EUR
+          - FJD
+          - FKP
+          - GBP
+          - GEL
+          - GHS
+          - GIP
+          - GMD
+          - GNF
+          - GTQ
+          - GYD
+          - HKD
+          - HNL
+          - HRK
+          - HTG
+          - HUF
+          - IDR
+          - ILS
+          - INR
+          - IQD
+          - IRR
+          - ISK
+          - JMD
+          - JOD
+          - JPY
+          - KES
+          - KGS
+          - KHR
+          - KMF
+          - KPW
+          - KRW
+          - KWD
+          - KYD
+          - KZT
+          - LAK
+          - LBP
+          - LKR
+          - LRD
+          - LSL
+          - LTL
+          - LYD
+          - MAD
+          - MDL
+          - MGA
+          - MKD
+          - MMK
+          - MNT
+          - MOP
+          - MRO
+          - MRU
+          - MUR
+          - MVR
+          - MWK
+          - MXN
+          - MXV
+          - MYR
+          - MZN
+          - NAD
+          - NGN
+          - NIO
+          - NOK
+          - NPR
+          - NZD
+          - OMR
+          - PAB
+          - PEN
+          - PGK
+          - PHP
+          - PKR
+          - PLN
+          - PYG
+          - QAR
+          - RON
+          - RSD
+          - RUB
+          - RUR
+          - RWF
+          - SAR
+          - SBD
+          - SCR
+          - SDG
+          - SEK
+          - SGD
+          - SHP
+          - SLL
+          - SOS
+          - SRD
+          - SSP
+          - STD
+          - STN
+          - SVC
+          - SYP
+          - SZL
+          - THB
+          - TJS
+          - TMT
+          - TND
+          - TOP
+          - TRY
+          - TTD
+          - TWD
+          - TZS
+          - UAH
+          - UGX
+          - USD
+          - USN
+          - USS
+          - UYI
+          - UYU
+          - UZS
+          - VEF
+          - VND
+          - VUV
+          - WST
+          - XAF
+          - XAG
+          - XAU
+          - XBA
+          - XBB
+          - XBC
+          - XBD
+          - XCD
+          - XDR
+          - XOF
+          - XPD
+          - XPF
+          - XPT
+          - XSU
+          - XTS
+          - XUA
+          - XXX
+          - YER
+          - ZAR
+          - ZMW
+          - ZWL
+          type: string
+        number:
+          type: number
+      title: AlignMonetaryAmount
+      type: object
+  requestBodies:
+    BankAccountRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BankAccountRequest'
+      description: request
+      required: true

@@ -1,0 +1,841 @@
+openapi: 3.0.0
+info:
+  description: Veem REST API
+  title: Veem API v1.2 attachment-controller contact-controller API
+  version: v1.2.1
+servers:
+- url: //sandbox-api.veem.com
+tags:
+- description: Contact Controller
+  name: contact-controller
+paths:
+  /veem/v1.2/contacts/batch:
+    post:
+      deprecated: false
+      description: Create multiple contacts in a batch
+      operationId: createContactsUsingPOST_2
+      parameters:
+      - description: includeItems
+        in: query
+        name: includeItems
+        required: false
+        schema:
+          default: false
+          type: boolean
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/ContactBatchItemRequest'
+              type: array
+        description: request
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchResponse'
+          description: Request data validated, processing started
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Invalid request data, no requests were processed
+        '401':
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          description: Forbidden, the token owner lacks permission to operate the current API
+        '404':
+          description: Not Found, the resource not found
+        '500':
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: createContacts
+      tags:
+      - contact-controller
+  /veem/v1.2/contacts:
+    post:
+      deprecated: false
+      description: Create a contact in a batch
+      operationId: createContactUsingPOST_2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactRequest'
+        description: request
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactResponse'
+          description: New contact was successfully created and returned
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactResponse'
+          description: Created
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Invalid request data, no requests were processed
+        '401':
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          description: Forbidden, the token owner lacks permission to operate the current API
+        '404':
+          description: Not Found, the resource not found
+        '500':
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: createContact
+      tags:
+      - contact-controller
+    get:
+      deprecated: false
+      description: Get a page of account contacts by email address, first,last name, batchId, and business name
+      operationId: getContactsUsingGET_2
+      parameters:
+      - description: batchId
+        in: query
+        name: batchId
+        required: false
+        schema:
+          format: int64
+          type: integer
+      - description: batchItemIds
+        explode: true
+        in: query
+        name: batchItemIds
+        required: false
+        schema:
+          items:
+            format: int64
+            type: integer
+          type: array
+      - description: businessName
+        in: query
+        name: businessName
+        required: false
+        schema:
+          type: string
+      - description: email
+        in: query
+        name: email
+        required: false
+        schema:
+          type: string
+      - description: firstName
+        in: query
+        name: firstName
+        required: false
+        schema:
+          type: string
+      - description: lastName
+        in: query
+        name: lastName
+        required: false
+        schema:
+          type: string
+      - description: pageNumber
+        in: query
+        name: pageNumber
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+      - description: pageSize
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 20
+          format: int32
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ContactResponse'
+                type: array
+          description: Success, all matching contacts were returned
+        '400':
+          description: Request failed, invalid search parameters
+        '401':
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          description: Forbidden, the token owner lacks permission to operate the current API
+        '404':
+          description: Not Found, the resource not found
+        '500':
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: getContacts
+      tags:
+      - contact-controller
+  /veem/v1.2/contacts/batch/{batchId}:
+    get:
+      deprecated: false
+      description: Get the current state of a contact creation batch
+      operationId: getContactBatchUsingGET_2
+      parameters:
+      - description: batchId
+        in: path
+        name: batchId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - description: includeItems
+        in: query
+        name: includeItems
+        required: false
+        schema:
+          default: true
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchResponse'
+          description: Request data validated, processing started
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Invalid request data, no requests were processed
+        '401':
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          description: Forbidden, the token owner lacks permission to operate the current API
+        '404':
+          description: Not Found, the resource not found
+        '500':
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: getContactBatch
+      tags:
+      - contact-controller
+  /veem/v1.2/contacts/{contactId}:
+    get:
+      deprecated: false
+      description: Get an account contact by ID
+      operationId: getContactUsingGET_2
+      parameters:
+      - description: contactId
+        in: path
+        name: contactId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactResponse'
+          description: Found and returned contact
+        '400':
+          description: Request failed, invalid parameters
+        '401':
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          description: Forbidden, the token owner lacks permission to operate the current API
+        '404':
+          description: Not Found, the resource not found
+        '500':
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Get Contact by ID
+      tags:
+      - contact-controller
+components:
+  schemas:
+    BatchResponse:
+      properties:
+        batchId:
+          format: int64
+          type: integer
+        batchItems:
+          items:
+            $ref: '#/components/schemas/AsyncBatchItemPaymentResponse'
+          type: array
+        hasErrors:
+          type: boolean
+        processedItems:
+          format: int64
+          type: integer
+        status:
+          type: string
+        totalItems:
+          format: int64
+          type: integer
+      title: BatchResponse«AsyncBatchItemPaymentResponse»
+      type: object
+    AddressRequest:
+      properties:
+        city:
+          description: City
+          type: string
+        line1:
+          description: Address line 1
+          type: string
+        line2:
+          description: Address line 2
+          type: string
+        postalCode:
+          description: Postal code
+          type: string
+        province:
+          type: string
+        state:
+          type: string
+        stateProvince:
+          description: State or province
+          type: string
+      required:
+      - city
+      - line1
+      - line2
+      - postalCode
+      - stateProvince
+      title: AddressRequest
+      type: object
+    BankAccountRequest:
+      properties:
+        accountType:
+          type: string
+        bankAccountNumber:
+          type: string
+        bankAddress:
+          $ref: '#/components/schemas/AddressRequest'
+        bankCnaps:
+          type: string
+        bankCode:
+          type: string
+        bankIfscBranchCode:
+          type: string
+        bankInstitutionNumber:
+          type: string
+        bankName:
+          type: string
+        beneficiaryName:
+          type: string
+        branchCode:
+          type: string
+        bsbBankCode:
+          type: string
+        clabe:
+          type: string
+        currencyCode:
+          type: string
+        iban:
+          type: string
+        isoCountryCode:
+          type: string
+        routingNumber:
+          type: string
+        sortCode:
+          type: string
+        swiftBic:
+          type: string
+        transitCode:
+          type: string
+      title: BankAccountRequest
+      type: object
+    ContactBatchItemRequest:
+      properties:
+        bankAccount:
+          $ref: '#/components/schemas/BankAccountRequest'
+        batchItemId:
+          description: A unique identifier for this request within the batch
+          format: int64
+          type: integer
+        businessAddress:
+          $ref: '#/components/schemas/AddressRequest'
+        businessName:
+          description: The name of the contact's business (required when account type is business)
+          type: string
+        email:
+          description: The contact's email address
+          type: string
+        externalBusinessId:
+          description: A custom identifier for this contact
+          format: int64
+          type: integer
+        firstName:
+          description: The contact's first name
+          type: string
+        isoCountryCode:
+          description: The contact's 2-letter ISO country code (ISO Alpha-2)
+          type: string
+        lastName:
+          description: The contact's last name
+          type: string
+        phoneDialCode:
+          description: The contact's phone dial code (e.g. +1)
+          type: string
+        phoneNumber:
+          description: The contact's phone number
+          type: string
+        type:
+          description: The contact type
+          enum:
+          - Incomplete
+          - Business
+          - Personal
+          type: string
+      required:
+      - batchItemId
+      - email
+      - firstName
+      - isoCountryCode
+      - lastName
+      - phoneNumber
+      - type
+      title: ContactBatchItemRequest
+      type: object
+    VeemErrorResponse:
+      properties:
+        code:
+          description: The error code, different than HTTP status codes
+          format: int32
+          type: integer
+        fileName:
+          description: The filename where the exception was thrown
+          type: string
+        lineNumber:
+          description: The line number where the exception was thrown
+          format: int32
+          type: integer
+        logTag:
+          description: Request log tag
+          type: string
+        message:
+          description: The detailed, developer friendly message
+          type: string
+        timestamp:
+          description: The timestamp recorded when the error occurred
+          type: string
+      required:
+      - code
+      - logTag
+      - message
+      title: VeemErrorResponse
+      type: object
+    ContactRequest:
+      properties:
+        bankAccount:
+          $ref: '#/components/schemas/BankAccountRequest'
+        businessAddress:
+          $ref: '#/components/schemas/AddressRequest'
+        businessName:
+          description: The name of the contact's business (required when account type is business)
+          type: string
+        email:
+          description: The contact's email address
+          type: string
+        externalBusinessId:
+          description: A custom identifier for this contact
+          format: int64
+          type: integer
+        firstName:
+          description: The contact's first name
+          type: string
+        isoCountryCode:
+          description: The contact's 2-letter ISO country code (ISO Alpha-2)
+          type: string
+        lastName:
+          description: The contact's last name
+          type: string
+        phoneDialCode:
+          description: The contact's phone dial code (e.g. +1)
+          type: string
+        phoneNumber:
+          description: The contact's phone number
+          type: string
+        type:
+          description: The contact type
+          enum:
+          - Incomplete
+          - Business
+          - Personal
+          type: string
+      required:
+      - email
+      - firstName
+      - isoCountryCode
+      - lastName
+      - phoneNumber
+      - type
+      title: ContactRequest
+      type: object
+    ErrorResponse:
+      properties:
+        code:
+          description: The error code, different than HTTP status codes
+          format: int32
+          type: integer
+        error:
+          description: The short message
+          type: string
+        message:
+          description: The detailed, developer friendly message
+          type: string
+        timestamp:
+          description: The timestamp recorded when the error occurred
+          type: string
+      required:
+      - code
+      - error
+      - message
+      title: ErrorResponse
+      type: object
+    AsyncBatchItemPaymentResponse:
+      properties:
+        batchItemId:
+          format: int64
+          type: integer
+        errorInfo:
+          $ref: '#/components/schemas/ErrorResponse'
+        paymentId:
+          format: int64
+          type: integer
+        status:
+          type: string
+      title: AsyncBatchItemPaymentResponse
+      type: object
+    ContactResponse:
+      properties:
+        bank:
+          additionalProperties:
+            type: object
+          type: object
+        batchItemId:
+          description: The contact's batchItemId, as specified in the contacts creation batch
+          format: int64
+          type: integer
+        businessName:
+          description: The contact's business name
+          type: string
+        contactAccountId:
+          description: The contact's account id
+          format: int64
+          type: integer
+        dialCode:
+          description: The contact's phone dial code
+          type: string
+        email:
+          description: The contact's email
+          type: string
+        extraInfo:
+          additionalProperties:
+            type: object
+          type: object
+        firstName:
+          description: The contact's first name
+          type: string
+        id:
+          description: The contact's id
+          format: int64
+          type: integer
+        isoCountryCode:
+          description: The contact's iso country code
+          enum:
+          - AC
+          - AD
+          - AE
+          - AF
+          - AG
+          - AI
+          - AL
+          - AM
+          - AN
+          - AO
+          - AQ
+          - AR
+          - AS
+          - AT
+          - AU
+          - AW
+          - AX
+          - AZ
+          - BA
+          - BB
+          - BD
+          - BE
+          - BF
+          - BG
+          - BH
+          - BI
+          - BJ
+          - BL
+          - BM
+          - BN
+          - BO
+          - BQ
+          - BR
+          - BS
+          - BT
+          - BU
+          - BV
+          - BW
+          - BY
+          - BZ
+          - CA
+          - CC
+          - CD
+          - CF
+          - CG
+          - CH
+          - CI
+          - CK
+          - CL
+          - CM
+          - CN
+          - CO
+          - CP
+          - CR
+          - CS
+          - CU
+          - CV
+          - CW
+          - CX
+          - CY
+          - CZ
+          - DE
+          - DG
+          - DJ
+          - DK
+          - DM
+          - DO
+          - DZ
+          - EA
+          - EC
+          - EE
+          - EG
+          - EH
+          - ER
+          - ES
+          - ET
+          - EU
+          - EZ
+          - FI
+          - FJ
+          - FK
+          - FM
+          - FO
+          - FR
+          - FX
+          - GA
+          - GB
+          - GD
+          - GE
+          - GF
+          - GG
+          - GH
+          - GI
+          - GL
+          - GM
+          - GN
+          - GP
+          - GQ
+          - GR
+          - GS
+          - GT
+          - GU
+          - GW
+          - GY
+          - HK
+          - HM
+          - HN
+          - HR
+          - HT
+          - HU
+          - IC
+          - ID
+          - IE
+          - IL
+          - IM
+          - IN
+          - IO
+          - IQ
+          - IR
+          - IS
+          - IT
+          - JE
+          - JM
+          - JO
+          - JP
+          - KE
+          - KG
+          - KH
+          - KI
+          - KM
+          - KN
+          - KP
+          - KR
+          - KW
+          - KY
+          - KZ
+          - LA
+          - LB
+          - LC
+          - LI
+          - LK
+          - LR
+          - LS
+          - LT
+          - LU
+          - LV
+          - LY
+          - MA
+          - MC
+          - MD
+          - ME
+          - MF
+          - MG
+          - MH
+          - MK
+          - ML
+          - MM
+          - MN
+          - MO
+          - MP
+          - MQ
+          - MR
+          - MS
+          - MT
+          - MU
+          - MV
+          - MW
+          - MX
+          - MY
+          - MZ
+          - NA
+          - NC
+          - NE
+          - NF
+          - NG
+          - NI
+          - NL
+          - 'NO'
+          - NP
+          - NR
+          - NT
+          - NU
+          - NZ
+          - OM
+          - PA
+          - PE
+          - PF
+          - PG
+          - PH
+          - PK
+          - PL
+          - PM
+          - PN
+          - PR
+          - PS
+          - PT
+          - PW
+          - PY
+          - QA
+          - RE
+          - RO
+          - RS
+          - RU
+          - RW
+          - SA
+          - SB
+          - SC
+          - SD
+          - SE
+          - SF
+          - SG
+          - SH
+          - SI
+          - SJ
+          - SK
+          - SL
+          - SM
+          - SN
+          - SO
+          - SR
+          - SS
+          - ST
+          - SU
+          - SV
+          - SX
+          - SY
+          - SZ
+          - TA
+          - TC
+          - TD
+          - TF
+          - TG
+          - TH
+          - TJ
+          - TK
+          - TL
+          - TM
+          - TN
+          - TO
+          - TP
+          - TR
+          - TT
+          - TV
+          - TW
+          - TZ
+          - UA
+          - UG
+          - UK
+          - UM
+          - US
+          - UY
+          - UZ
+          - VA
+          - VC
+          - VE
+          - VG
+          - VI
+          - VN
+          - VU
+          - WF
+          - WS
+          - XK
+          - YE
+          - YT
+          - YU
+          - ZA
+          - ZM
+          - ZR
+          - ZW
+          type: string
+        lastName:
+          description: The contact's last name
+          type: string
+        phoneNumber:
+          description: The contact's phone number
+          type: string
+      required:
+      - businessName
+      - contactAccountId
+      - dialCode
+      - email
+      - firstName
+      - id
+      - isoCountryCode
+      - lastName
+      - phoneNumber
+      title: ContactResponse
+      type: object

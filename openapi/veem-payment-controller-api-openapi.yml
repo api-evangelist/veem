@@ -1,0 +1,5385 @@
+openapi: 3.0.0
+info:
+  description: Veem REST API
+  title: Veem API v1.2 attachment-controller payment-controller API
+  version: v1.2.1
+servers:
+- url: //sandbox-api.veem.com
+tags:
+- description: Payment Controller
+  name: payment-controller
+paths:
+  /veem/v1.2/payments/{paymentId}/approve:
+    post:
+      deprecated: false
+      description: approve a payment
+      operationId: approvePaymentUsingPOST_2
+      parameters:
+      - description: paymentId
+        in: path
+        name: paymentId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+          description: Success, an approved payment object is returned
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '401':
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          description: Forbidden, the token owner doesn't have permission to operate current API
+        '404':
+          description: Not Found, the resource not found
+        '500':
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: approvePayment
+      tags:
+      - payment-controller
+  /veem/v1.0/payments/cryptowallet/payin:
+    post:
+      deprecated: false
+      description: Creates deposit instructions for moving funds to a crypto wallet externally.
+      operationId: createCryptoWalletPayin
+      parameters:
+      - description: Identifier of the account the pay-in is created on behalf of.
+        in: query
+        name: onBehalfAccountId
+        required: false
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        $ref: '#/components/requestBodies/PayinRequest'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicInvoiceResponseCryptoWallet'
+          description: Success, a crypto wallet pay-in is created in Veem
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '401':
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          description: Forbidden, the token owner doesn't have permission to operate current API
+        '404':
+          description: Not Found, the resource not found
+        '500':
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Create a Crypto Wallet pay-in
+      tags:
+      - payment-controller
+  /veem/v1.0/payments/cryptowallet/payout:
+    post:
+      deprecated: false
+      description: Withdraw Crypto Wallet funds to an external address, creating a payment.
+      operationId: createCryptoWalletPayout
+      parameters:
+      - description: Identifier of the account the payout is created on behalf of.
+        in: query
+        name: onBehalfAccountId
+        required: false
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        $ref: '#/components/requestBodies/PayoutRequest'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicInvoiceResponseCryptoWallet'
+          description: Success, a crypto wallet payout is created in Veem
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '401':
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          description: Forbidden, the token owner doesn't have permission to operate current API
+        '404':
+          description: Not Found, the resource not found
+        '500':
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Create a Crypto Wallet payout
+      tags:
+      - payment-controller
+  /veem/v1.2/payments:
+    post:
+      deprecated: false
+      description: post a payment and sends to receiver
+      operationId: createPaymentUsingPOST_2
+      requestBody:
+        $ref: '#/components/requestBodies/PaymentRequest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+          description: Success, a payment is created in Veem
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+          description: Created
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '401':
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          description: Forbidden, the token owner doesn't have permission to operate current API
+        '404':
+          description: Not Found, the resource not found
+        '500':
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: createPayment
+      tags:
+      - payment-controller
+  /veem/v1.2/payments/{paymentId}:
+    get:
+      deprecated: false
+      description: get payment details
+      operationId: getPaymentUsingGET_2
+      parameters:
+      - description: paymentId
+        in: path
+        name: paymentId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+          description: Success, a payment object is returned
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '401':
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          description: Forbidden, the token owner doesn't have permission to operate current API
+        '404':
+          description: Not Found, the resource not found
+        '500':
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: getPayment
+      tags:
+      - payment-controller
+  /veem/v1.0/payments/wallet/addFunds:
+    post:
+      deprecated: false
+      description: Wallet Add Funds
+      operationId: walletAddFundsUsingPOST
+      requestBody:
+        $ref: '#/components/requestBodies/AddWalletFundsRequest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+          description: Success, a wallet deposit payment is created in Veem
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+          description: Created
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '401':
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          description: Forbidden, the token owner doesn't have permission to operate current API
+        '404':
+          description: Not Found, the resource not found
+        '500':
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: walletAddFunds
+      tags:
+      - payment-controller
+  /veem/v1.0/payments/wallet/withdraw:
+    post:
+      deprecated: false
+      description: Wallet Withdraw
+      operationId: walletWithdrawUsingPOST
+      requestBody:
+        $ref: '#/components/requestBodies/WalletWithdrawRequest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+          description: Success, a wallet withdraw payment is created in Veem
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+          description: Created
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '401':
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          description: Forbidden, the token owner doesn't have permission to operate current API
+        '404':
+          description: Not Found, the resource not found
+        '500':
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: walletWithdraw
+      tags:
+      - payment-controller
+components:
+  schemas:
+    PaymentResponse:
+      properties:
+        amount:
+          $ref: '#/components/schemas/AlignMonetaryAmount'
+        attachments:
+          description: The list of external invoices to be attached with payment. The files can be uploaded usingfile upload apis
+          items:
+            $ref: '#/components/schemas/FileAttachment'
+          type: array
+        batchItemId:
+          description: The payment's batchItemId, as specified in the payment creation batch
+          format: int64
+          type: integer
+        bruid:
+          description: FX rates BRUID
+          type: string
+        ccEmails:
+          description: The list of emails who will be notified about the payment
+          items:
+            type: string
+          type: array
+        claimLink:
+          description: The link that allows the recipient to claim the payment
+          type: string
+        clientId:
+          type: string
+        debitCreditTxn:
+          $ref: '#/components/schemas/LatestCreditDebitResponse'
+          description: Latest Debit and credit txn information
+        dueDate:
+          description: The due date of the payment or invoice request
+          format: date-time
+          type: string
+        exchangeRate:
+          $ref: '#/components/schemas/ExchangeRateResponse'
+        exchangeRateQuoteId:
+          description: The quote id that was received earlier for the payment
+          type: string
+        externalInvoiceRefId:
+          description: The external invoice if for which payment is made, viewable by receiver
+          type: string
+        feeInformation:
+          $ref: '#/components/schemas/FeeInformationResponse'
+        fundingMethod:
+          $ref: '#/components/schemas/FundingMethod'
+        goodFundsPayment:
+          type: boolean
+        id:
+          description: The payment id
+          format: int64
+          type: integer
+        invoiceId:
+          description: The invoice id this payment originated from
+          format: int64
+          type: integer
+        notes:
+          description: The memo/note associated with payment, viewable by receiver
+          type: string
+        payee:
+          $ref: '#/components/schemas/SimpleAccount'
+        payeeAmount:
+          $ref: '#/components/schemas/AlignMonetaryAmount'
+        payeeFundingMethod:
+          $ref: '#/components/schemas/FundingMethod'
+        paymentAction:
+          enum:
+          - SubmitForApproval
+          - Approve
+          type: string
+        paymentApproval:
+          $ref: '#/components/schemas/PaymentApprovalResponse'
+        paymentApprovalRequest:
+          $ref: '#/components/schemas/PaymentApprovalRequest'
+        paymentAttributes:
+          $ref: '#/components/schemas/PaymentAttributesRequest'
+        paymentMethod:
+          description: 'The payer''s funding method type. Can be one of: Bank, Card or Wallet. Deprecated please use amount instead'
+          enum:
+          - Bank
+          - External
+          - Cheque
+          - Card
+          - Wallet
+          - VirtualCard
+          type: string
+        purposeOfPayment:
+          description: The purpose of payment required by banks for certain countries, applicable for following countries.SG,AE,KR,BR,CN,HK,HR,IS,ID,IN,IL,KE,PK,SA,ZA,TW,UA,VN
+          type: string
+        purposeOfPaymentDescription:
+          description: The purpose of payment description
+          type: string
+        pushPaymentInfo:
+          $ref: '#/components/schemas/PushPaymentInfoResponse'
+        status:
+          description: The status of the payment
+          enum:
+          - Drafted
+          - Sent
+          - Claimed
+          - PendingAuth
+          - PendingApproval
+          - Authorized
+          - InProgress
+          - Complete
+          - Cancelled
+          - Closed
+          - Reversed
+          - Scheduled
+          - SchedulingInProgress
+          type: string
+        timeCreated:
+          description: The creation time of the payment. The format is ISO-8601.
+          type: string
+        timeUpdated:
+          description: The most recent update time of the payment. The format is ISO-8601.
+          type: string
+        validationErrorMessage:
+          description: Error message to be returned when the request is not valid
+          type: string
+      required:
+      - amount
+      - batchItemId
+      - exchangeRate
+      - exchangeRateQuoteId
+      - id
+      - invoiceId
+      - payee
+      - status
+      title: PaymentResponse
+      type: object
+    WalletWithdrawRequest:
+      properties:
+        amount:
+          $ref: '#/components/schemas/AlignMonetaryAmount'
+        requestId:
+          type: string
+      title: WalletWithdrawRequest
+      type: object
+    PaymentRequest:
+      properties:
+        amount:
+          $ref: '#/components/schemas/AlignMonetaryAmount'
+          description: The amount and currency of the payment
+        fundingMethod:
+          $ref: '#/components/schemas/FundingMethod'
+          description: The payer's funding method. Type + Id, only used from 1.2 and newer versions
+        notes:
+          description: The memo/note associated with payment, viewable by receiver
+          type: string
+        payee:
+          $ref: '#/components/schemas/SimpleAccount'
+          description: The receiver of the payment
+        purposeOfPayment:
+          description: The purpose of payment - use the country to look at the meta-controller country-currency-map endpoint and look at the purposeOfPaymentInfo list and pick the correct purposeCode
+          type: string
+        purposeOfPaymentDescription:
+          description: The purpose of payment description
+          type: string
+      required:
+      - amount
+      - fundingMethod
+      - payee
+      - purposeOfPayment
+      - purposeOfPaymentDescription
+      title: PaymentRequest
+      type: object
+    FundingMethod:
+      properties:
+        id:
+          description: The payer's funding method id. This comes from the funding methods service.
+          format: int64
+          type: integer
+        type:
+          description: 'The payer''s funding method type. Can be one of: Bank, Card or Wallet.'
+          enum:
+          - Bank
+          - External
+          - Cheque
+          - Card
+          - Wallet
+          - VirtualCard
+          type: string
+      required:
+      - id
+      - type
+      title: FundingMethod
+      type: object
+    DefaultMethod:
+      properties:
+        defaultBillingMethod:
+          description: Indicates if the funding method is Billing Default
+          type: boolean
+        defaultCreditMethod:
+          description: Indicates if the funding method is Credit Default
+          type: boolean
+        defaultDebitMethod:
+          description: Indicates if the funding method is Debit Default
+          type: boolean
+      title: DefaultMethod
+      type: object
+    SimpleAccountCryptoWallet:
+      description: Account information for a party involved in a crypto wallet payment.
+      properties:
+        accountId:
+          description: The Account ID
+          format: int64
+          type: integer
+        bank:
+          $ref: '#/components/schemas/PublicBankAccountRequest'
+          description: Bank account information, used only for claimless payments
+        business:
+          $ref: '#/components/schemas/ContactBusinessRequestCryptoWallet'
+          description: Basic business information, used only for claimless payments
+        businessName:
+          description: The name of the receiver's business, required when account type is business
+          type: string
+        countryCode:
+          description: The 2 letter ISO country codes,ISO Alpha-2
+          enum:
+          - UNDEFINED
+          - AC
+          - AD
+          - AE
+          - AF
+          - AG
+          - AI
+          - AL
+          - AM
+          - AN
+          - AO
+          - AQ
+          - AR
+          - AS
+          - AT
+          - AU
+          - AW
+          - AX
+          - AZ
+          - BA
+          - BB
+          - BD
+          - BE
+          - BF
+          - BG
+          - BH
+          - BI
+          - BJ
+          - BL
+          - BM
+          - BN
+          - BO
+          - BQ
+          - BR
+          - BS
+          - BT
+          - BU
+          - BV
+          - BW
+          - BY
+          - BZ
+          - CA
+          - CC
+          - CD
+          - CF
+          - CG
+          - CH
+          - CI
+          - CK
+          - CL
+          - CM
+          - CN
+          - CO
+          - CP
+          - CR
+          - CS
+          - CU
+          - CV
+          - CW
+          - CX
+          - CY
+          - CZ
+          - DE
+          - DG
+          - DJ
+          - DK
+          - DM
+          - DO
+          - DZ
+          - EA
+          - EC
+          - EE
+          - EG
+          - EH
+          - ER
+          - ES
+          - ET
+          - EU
+          - EZ
+          - FI
+          - FJ
+          - FK
+          - FM
+          - FO
+          - FR
+          - FX
+          - GA
+          - GB
+          - GD
+          - GE
+          - GF
+          - GG
+          - GH
+          - GI
+          - GL
+          - GM
+          - GN
+          - GP
+          - GQ
+          - GR
+          - GS
+          - GT
+          - GU
+          - GW
+          - GY
+          - HK
+          - HM
+          - HN
+          - HR
+          - HT
+          - HU
+          - IC
+          - ID
+          - IE
+          - IL
+          - IM
+          - IN
+          - IO
+          - IQ
+          - IR
+          - IS
+          - IT
+          - JE
+          - JM
+          - JO
+          - JP
+          - KE
+          - KG
+          - KH
+          - KI
+          - KM
+          - KN
+          - KP
+          - KR
+          - KW
+          - KY
+          - KZ
+          - LA
+          - LB
+          - LC
+          - LI
+          - LK
+          - LR
+          - LS
+          - LT
+          - LU
+          - LV
+          - LY
+          - MA
+          - MC
+          - MD
+          - ME
+          - MF
+          - MG
+          - MH
+          - MK
+          - ML
+          - MM
+          - MN
+          - MO
+          - MP
+          - MQ
+          - MR
+          - MS
+          - MT
+          - MU
+          - MV
+          - MW
+          - MX
+          - MY
+          - MZ
+          - NA
+          - NC
+          - NE
+          - NF
+          - NG
+          - NI
+          - NL
+          - 'NO'
+          - NP
+          - NR
+          - NT
+          - NU
+          - NZ
+          - OM
+          - PA
+          - PE
+          - PF
+          - PG
+          - PH
+          - PK
+          - PL
+          - PM
+          - PN
+          - PR
+          - PS
+          - PT
+          - PW
+          - PY
+          - QA
+          - RE
+          - RO
+          - RS
+          - RU
+          - RW
+          - SA
+          - SB
+          - SC
+          - SD
+          - SE
+          - SF
+          - SG
+          - SH
+          - SI
+          - SJ
+          - SK
+          - SL
+          - SM
+          - SN
+          - SO
+          - SR
+          - SS
+          - ST
+          - SU
+          - SV
+          - SX
+          - SY
+          - SZ
+          - TA
+          - TC
+          - TD
+          - TF
+          - TG
+          - TH
+          - TJ
+          - TK
+          - TL
+          - TM
+          - TN
+          - TO
+          - TP
+          - TR
+          - TT
+          - TV
+          - TW
+          - TZ
+          - UA
+          - UG
+          - UK
+          - UM
+          - US
+          - UY
+          - UZ
+          - VA
+          - VC
+          - VE
+          - VG
+          - VI
+          - VN
+          - VU
+          - WF
+          - WS
+          - XK
+          - YE
+          - YT
+          - YU
+          - ZA
+          - ZM
+          - ZR
+          - ZW
+          type: string
+        email:
+          description: The email of the receiver
+          type: string
+        extraInfo:
+          $ref: '#/components/schemas/JSONObject'
+          description: Optional additional information, used only for claimless payments
+        firstName:
+          description: The first name of the receiver
+          type: string
+        fundingMethodId:
+          description: Funding method id for this party when returned for authorized report callers
+          format: int64
+          type: integer
+        fundingMethodType:
+          description: Funding method type for this party when returned for authorized report callers
+          enum:
+          - Bank
+          - External
+          - Cheque
+          - Card
+          - Wallet
+          - VirtualCard
+          - VirtualBank
+          - CryptoWallet
+          type: string
+        industry:
+          description: The industry, used only for claimless payments
+          type: string
+        lastName:
+          description: The last name of the receiver
+          type: string
+        managingPartnerInfo:
+          $ref: '#/components/schemas/ManagingPartnerInfo'
+        middleName:
+          description: The middle name of the receiver
+          type: string
+        payeeAccountId:
+          description: The Payee Account ID
+          format: int64
+          type: integer
+        payeeAmount:
+          $ref: '#/components/schemas/AlignMonetaryAmountCryptoWallet'
+          description: The amount and currency of the payment
+        payerAccountId:
+          description: The Payer Account ID
+          format: int64
+          type: integer
+        payerAmount:
+          $ref: '#/components/schemas/AlignMonetaryAmountCryptoWallet'
+          description: The amount and currency of the payment
+        phoneCountryCodeIfPhoneOrElseSpace:
+          type: string
+        subIndustry:
+          description: The sub industry, used only for claimless payments
+          type: string
+        type:
+          description: The type of the receiver
+          enum:
+          - Incomplete
+          - Business
+          - Personal
+          type: string
+      required:
+      - accountId
+      - countryCode
+      - email
+      - firstName
+      - lastName
+      - payeeAmount
+      - payerAccountId
+      - payerAmount
+      - type
+      title: SimpleAccountCryptoWallet
+      type: object
+    PaymentApprovalRequest:
+      properties:
+        accountId:
+          format: int64
+          type: integer
+        userId:
+          format: int64
+          type: integer
+      title: PaymentApprovalRequest
+      type: object
+    JSONObject:
+      title: JSONObject
+      type: object
+    ManagingPartnerInfo:
+      description: Managing partner information for an account.
+      properties:
+        partnerFullName:
+          type: string
+        taxId:
+          type: string
+      title: ManagingPartnerInfo
+      type: object
+    ErrorResponse:
+      properties:
+        code:
+          description: The error code, different than HTTP status codes
+          format: int32
+          type: integer
+        error:
+          description: The short message
+          type: string
+        message:
+          description: The detailed, developer friendly message
+          type: string
+        timestamp:
+          description: The timestamp recorded when the error occurred
+          type: string
+      required:
+      - code
+      - error
+      - message
+      title: ErrorResponse
+      type: object
+    ExchangeRateResponseCryptoWallet:
+      description: Exchange rate details for a crypto wallet payment.
+      properties:
+        expiry:
+          description: The expiry time of the current rate quote
+          format: date-time
+          type: string
+        fromAmount:
+          description: The source amount, either from or to amount is allowed, the other one is calculated
+          type: number
+        fromCurrency:
+          description: The source currency
+          enum:
+          - UNDEFINED
+          - AED
+          - AFN
+          - ALL
+          - AMD
+          - ANG
+          - AOA
+          - ARS
+          - AUD
+          - AWG
+          - AZN
+          - BAM
+          - BBD
+          - BDT
+          - BGN
+          - BHD
+          - BIF
+          - BMD
+          - BND
+          - BOB
+          - BOV
+          - BRL
+          - BSD
+          - BTN
+          - BWP
+          - BYN
+          - BYR
+          - BZD
+          - CAD
+          - CDF
+          - CHE
+          - CHF
+          - CHW
+          - CLF
+          - CLP
+          - CNY
+          - COP
+          - COU
+          - CRC
+          - CUC
+          - CUP
+          - CVE
+          - CZK
+          - DJF
+          - DKK
+          - DOP
+          - DZD
+          - EGP
+          - ERN
+          - ETB
+          - EUR
+          - FJD
+          - FKP
+          - GBP
+          - GEL
+          - GHS
+          - GIP
+          - GMD
+          - GNF
+          - GTQ
+          - GYD
+          - HKD
+          - HNL
+          - HRK
+          - HTG
+          - HUF
+          - IDR
+          - ILS
+          - INR
+          - IQD
+          - IRR
+          - ISK
+          - JMD
+          - JOD
+          - JPY
+          - KES
+          - KGS
+          - KHR
+          - KMF
+          - KPW
+          - KRW
+          - KWD
+          - KYD
+          - KZT
+          - LAK
+          - LBP
+          - LKR
+          - LRD
+          - LSL
+          - LTL
+          - LYD
+          - MAD
+          - MDL
+          - MGA
+          - MKD
+          - MMK
+          - MNT
+          - MOP
+          - MRO
+          - MRU
+          - MUR
+          - MVR
+          - MWK
+          - MXN
+          - MXV
+          - MYR
+          - MZN
+          - NAD
+          - NGN
+          - NIO
+          - NOK
+          - NPR
+          - NZD
+          - OMR
+          - PAB
+          - PEN
+          - PGK
+          - PHP
+          - PKR
+          - PLN
+          - PYG
+          - QAR
+          - RON
+          - RSD
+          - RUB
+          - RUR
+          - RWF
+          - SAR
+          - SBD
+          - SCR
+          - SDG
+          - SEK
+          - SGD
+          - SHP
+          - SLL
+          - SOS
+          - SRD
+          - SSP
+          - STD
+          - STN
+          - SVC
+          - SYP
+          - SZL
+          - THB
+          - TJS
+          - TMT
+          - TND
+          - TOP
+          - TRY
+          - TTD
+          - TWD
+          - TZS
+          - UAH
+          - UGX
+          - USD
+          - USDC
+          - USDB
+          - USDT
+          - USDV
+          - EURC
+          - USN
+          - USS
+          - UYI
+          - UYU
+          - UZS
+          - VEF
+          - VND
+          - VUV
+          - WST
+          - XAF
+          - XAG
+          - XAU
+          - XBA
+          - XBB
+          - XBC
+          - XBD
+          - XCD
+          - XDR
+          - XOF
+          - XPD
+          - XPF
+          - XPT
+          - XSU
+          - XTS
+          - XUA
+          - XXX
+          - YER
+          - ZAR
+          - ZMW
+          - ZWL
+          type: string
+        id:
+          description: The quote id
+          type: string
+        rate:
+          description: The Veem exchange rate for current transfer
+          type: number
+        timeCreated:
+          description: The quote generation time
+          format: date-time
+          type: string
+        toAmount:
+          description: The target amount, either from or to amount is allowed, the other one is calculated
+          type: number
+        toCurrency:
+          description: The target currency
+          enum:
+          - UNDEFINED
+          - AED
+          - AFN
+          - ALL
+          - AMD
+          - ANG
+          - AOA
+          - ARS
+          - AUD
+          - AWG
+          - AZN
+          - BAM
+          - BBD
+          - BDT
+          - BGN
+          - BHD
+          - BIF
+          - BMD
+          - BND
+          - BOB
+          - BOV
+          - BRL
+          - BSD
+          - BTN
+          - BWP
+          - BYN
+          - BYR
+          - BZD
+          - CAD
+          - CDF
+          - CHE
+          - CHF
+          - CHW
+          - CLF
+          - CLP
+          - CNY
+          - COP
+          - COU
+          - CRC
+          - CUC
+          - CUP
+          - CVE
+          - CZK
+          - DJF
+          - DKK
+          - DOP
+          - DZD
+          - EGP
+          - ERN
+          - ETB
+          - EUR
+          - FJD
+          - FKP
+          - GBP
+          - GEL
+          - GHS
+          - GIP
+          - GMD
+          - GNF
+          - GTQ
+          - GYD
+          - HKD
+          - HNL
+          - HRK
+          - HTG
+          - HUF
+          - IDR
+          - ILS
+          - INR
+          - IQD
+          - IRR
+          - ISK
+          - JMD
+          - JOD
+          - JPY
+          - KES
+          - KGS
+          - KHR
+          - KMF
+          - KPW
+          - KRW
+          - KWD
+          - KYD
+          - KZT
+          - LAK
+          - LBP
+          - LKR
+          - LRD
+          - LSL
+          - LTL
+          - LYD
+          - MAD
+          - MDL
+          - MGA
+          - MKD
+          - MMK
+          - MNT
+          - MOP
+          - MRO
+          - MRU
+          - MUR
+          - MVR
+          - MWK
+          - MXN
+          - MXV
+          - MYR
+          - MZN
+          - NAD
+          - NGN
+          - NIO
+          - NOK
+          - NPR
+          - NZD
+          - OMR
+          - PAB
+          - PEN
+          - PGK
+          - PHP
+          - PKR
+          - PLN
+          - PYG
+          - QAR
+          - RON
+          - RSD
+          - RUB
+          - RUR
+          - RWF
+          - SAR
+          - SBD
+          - SCR
+          - SDG
+          - SEK
+          - SGD
+          - SHP
+          - SLL
+          - SOS
+          - SRD
+          - SSP
+          - STD
+          - STN
+          - SVC
+          - SYP
+          - SZL
+          - THB
+          - TJS
+          - TMT
+          - TND
+          - TOP
+          - TRY
+          - TTD
+          - TWD
+          - TZS
+          - UAH
+          - UGX
+          - USD
+          - USDC
+          - USDB
+          - USDT
+          - USDV
+          - EURC
+          - USN
+          - USS
+          - UYI
+          - UYU
+          - UZS
+          - VEF
+          - VND
+          - VUV
+          - WST
+          - XAF
+          - XAG
+          - XAU
+          - XBA
+          - XBB
+          - XBC
+          - XBD
+          - XCD
+          - XDR
+          - XOF
+          - XPD
+          - XPF
+          - XPT
+          - XSU
+          - XTS
+          - XUA
+          - XXX
+          - YER
+          - ZAR
+          - ZMW
+          - ZWL
+          type: string
+      required:
+      - expiry
+      - fromCurrency
+      - id
+      - rate
+      - timeCreated
+      - toAmount
+      - toCurrency
+      title: ExchangeRateResponseCryptoWallet
+      type: object
+    LatestCreditDebitResponse:
+      properties:
+        creditTxn:
+          $ref: '#/components/schemas/LatestCreditFinancialTxnResponse'
+        debitTxn:
+          $ref: '#/components/schemas/LatestDebitFinancialTxnResponse'
+        refundTxn:
+          $ref: '#/components/schemas/LatestFinancialTxnResponse'
+      type: object
+    UserApprovalInfoResponse:
+      properties:
+        approvalStatus:
+          enum:
+          - Approved
+          - Pending
+          - Ignored
+          type: string
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        middleName:
+          type: string
+      title: UserApprovalInfoResponse
+      type: object
+    BusinessAddressRequestCryptoWallet:
+      description: Business or individual address details used by crypto wallet endpoints.
+      properties:
+        city:
+          description: City
+          type: string
+        countryCode:
+          description: Country Code
+          enum:
+          - UNDEFINED
+          - AC
+          - AD
+          - AE
+          - AF
+          - AG
+          - AI
+          - AL
+          - AM
+          - AN
+          - AO
+          - AQ
+          - AR
+          - AS
+          - AT
+          - AU
+          - AW
+          - AX
+          - AZ
+          - BA
+          - BB
+          - BD
+          - BE
+          - BF
+          - BG
+          - BH
+          - BI
+          - BJ
+          - BL
+          - BM
+          - BN
+          - BO
+          - BQ
+          - BR
+          - BS
+          - BT
+          - BU
+          - BV
+          - BW
+          - BY
+          - BZ
+          - CA
+          - CC
+          - CD
+          - CF
+          - CG
+          - CH
+          - CI
+          - CK
+          - CL
+          - CM
+          - CN
+          - CO
+          - CP
+          - CR
+          - CS
+          - CU
+          - CV
+          - CW
+          - CX
+          - CY
+          - CZ
+          - DE
+          - DG
+          - DJ
+          - DK
+          - DM
+          - DO
+          - DZ
+          - EA
+          - EC
+          - EE
+          - EG
+          - EH
+          - ER
+          - ES
+          - ET
+          - EU
+          - EZ
+          - FI
+          - FJ
+          - FK
+          - FM
+          - FO
+          - FR
+          - FX
+          - GA
+          - GB
+          - GD
+          - GE
+          - GF
+          - GG
+          - GH
+          - GI
+          - GL
+          - GM
+          - GN
+          - GP
+          - GQ
+          - GR
+          - GS
+          - GT
+          - GU
+          - GW
+          - GY
+          - HK
+          - HM
+          - HN
+          - HR
+          - HT
+          - HU
+          - IC
+          - ID
+          - IE
+          - IL
+          - IM
+          - IN
+          - IO
+          - IQ
+          - IR
+          - IS
+          - IT
+          - JE
+          - JM
+          - JO
+          - JP
+          - KE
+          - KG
+          - KH
+          - KI
+          - KM
+          - KN
+          - KP
+          - KR
+          - KW
+          - KY
+          - KZ
+          - LA
+          - LB
+          - LC
+          - LI
+          - LK
+          - LR
+          - LS
+          - LT
+          - LU
+          - LV
+          - LY
+          - MA
+          - MC
+          - MD
+          - ME
+          - MF
+          - MG
+          - MH
+          - MK
+          - ML
+          - MM
+          - MN
+          - MO
+          - MP
+          - MQ
+          - MR
+          - MS
+          - MT
+          - MU
+          - MV
+          - MW
+          - MX
+          - MY
+          - MZ
+          - NA
+          - NC
+          - NE
+          - NF
+          - NG
+          - NI
+          - NL
+          - 'NO'
+          - NP
+          - NR
+          - NT
+          - NU
+          - NZ
+          - OM
+          - PA
+          - PE
+          - PF
+          - PG
+          - PH
+          - PK
+          - PL
+          - PM
+          - PN
+          - PR
+          - PS
+          - PT
+          - PW
+          - PY
+          - QA
+          - RE
+          - RO
+          - RS
+          - RU
+          - RW
+          - SA
+          - SB
+          - SC
+          - SD
+          - SE
+          - SF
+          - SG
+          - SH
+          - SI
+          - SJ
+          - SK
+          - SL
+          - SM
+          - SN
+          - SO
+          - SR
+          - SS
+          - ST
+          - SU
+          - SV
+          - SX
+          - SY
+          - SZ
+          - TA
+          - TC
+          - TD
+          - TF
+          - TG
+          - TH
+          - TJ
+          - TK
+          - TL
+          - TM
+          - TN
+          - TO
+          - TP
+          - TR
+          - TT
+          - TV
+          - TW
+          - TZ
+          - UA
+          - UG
+          - UK
+          - UM
+          - US
+          - UY
+          - UZ
+          - VA
+          - VC
+          - VE
+          - VG
+          - VI
+          - VN
+          - VU
+          - WF
+          - WS
+          - XK
+          - YE
+          - YT
+          - YU
+          - ZA
+          - ZM
+          - ZR
+          - ZW
+          type: string
+        postalCode:
+          description: Postal Code
+          type: string
+        province:
+          description: Province
+          type: string
+        state:
+          description: State
+          type: string
+        street:
+          description: Type of entity
+          type: string
+        streetSecondary:
+          description: Address additional information
+          type: string
+      required:
+      - city
+      - countryCode
+      - postalCode
+      - street
+      title: BusinessAddressRequestCryptoWallet
+      type: object
+    LatestCreditDebitErrorResponse:
+      properties:
+        errorCode:
+          description: The error code
+          type: string
+        errorMessage:
+          description: The error message
+          type: string
+      type: object
+    PaymentAttributesRequest:
+      properties:
+        type:
+          items:
+            type: string
+          type: array
+      title: PaymentAttributesRequest
+      type: object
+    ContactBusinessRequest:
+      properties:
+        address:
+          $ref: '#/components/schemas/BusinessAddressRequest'
+        entity:
+          description: Type of entity
+          type: string
+        taxIdNumber:
+          description: TaxId of the individual or business
+          type: string
+      required:
+      - address
+      - entity
+      - taxIdNumber
+      title: ContactBusinessRequest
+      type: object
+    PublicBankAccountRequest:
+      description: Bank account details for a payment party.
+      properties:
+        accountId:
+          format: int64
+          type: integer
+        accountNumber:
+          type: string
+        accountType:
+          type: string
+        bankAccountNumber:
+          type: string
+        bankAddress:
+          $ref: '#/components/schemas/AddressDTO'
+        bankCnaps:
+          type: string
+        bankCode:
+          type: string
+        bankIfscBranchCode:
+          type: string
+        bankInstitutionNumber:
+          type: string
+        bankName:
+          type: string
+        beneficiaryName:
+          type: string
+        bic:
+          type: string
+        bikCode:
+          type: string
+        branchCode:
+          type: string
+        bsbBankCode:
+          type: string
+        clabe:
+          type: string
+        correspondentBankAccountNumber:
+          type: string
+        currencyCode:
+          type: string
+        iban:
+          type: string
+        isoCountryCode:
+          type: string
+        ispbcode:
+          type: string
+        name:
+          type: string
+        onBehalfAccountId:
+          format: int64
+          type: integer
+        pepe:
+          type: string
+        pix:
+          type: string
+        routingNumber:
+          type: string
+        sortCode:
+          type: string
+        swiftBic:
+          type: string
+        swiftCode:
+          type: string
+        transitCode:
+          type: string
+      title: PublicBankAccountRequest
+      type: object
+    PaymentApprovalResponse:
+      properties:
+        approvalStatus:
+          enum:
+          - Approved
+          - Pending
+          - Ignored
+          type: string
+        approverNumber:
+          format: int32
+          type: integer
+        approverNumberRequired:
+          format: int32
+          type: integer
+        userApprovalList:
+          items:
+            $ref: '#/components/schemas/UserApprovalInfoResponse'
+          type: array
+      title: PaymentApprovalResponse
+      type: object
+    PublicInvoiceResponseCryptoWallet:
+      description: Payment details returned when creating a crypto wallet payout or pay-in.
+      properties:
+        actorInfo:
+          type: string
+        amount:
+          $ref: '#/components/schemas/AlignMonetaryAmountCryptoWallet'
+        attachments:
+          items:
+            $ref: '#/components/schemas/FileAttachment'
+          type: array
+        ccEmails:
+          items:
+            type: string
+          type: array
+        claimLink:
+          type: string
+        clientId:
+          type: string
+        customerPlatformNamePrefix:
+          type: string
+        dueDate:
+          format: date-time
+          type: string
+        exchangeRate:
+          $ref: '#/components/schemas/ExchangeRateResponseCryptoWallet'
+        exchangeRateQuoteId:
+          type: string
+        externalInvoiceRefId:
+          type: string
+        extraInfo:
+          $ref: '#/components/schemas/FinancialExtraInfoDTO'
+        fundingMethod:
+          $ref: '#/components/schemas/FundingMethodCryptoWallet'
+        goodFundsPayment:
+          type: boolean
+        id:
+          format: int64
+          type: integer
+        invoiceExtraInfo:
+          $ref: '#/components/schemas/FinancialExtraInfo'
+        notes:
+          type: string
+        partnerAccountId:
+          format: int64
+          type: integer
+        payee:
+          $ref: '#/components/schemas/SimpleAccountCryptoWallet'
+        payeeAccountId:
+          format: int64
+          type: integer
+        payer:
+          $ref: '#/components/schemas/SimpleAccountCryptoWallet'
+        payerAccountId:
+          format: int64
+          type: integer
+        processingMethod:
+          enum:
+          - Push
+          - Pull
+          type: string
+        purposeOfPayment:
+          type: string
+        purposeOfPaymentDescription:
+          type: string
+        requestId:
+          type: string
+        status:
+          enum:
+          - Drafted
+          - Sent
+          - Cancelled
+          - Closed
+          - Claimed
+          - MarkAsPaid
+          - Rejected
+          - Scheduled
+          type: string
+        sweepToVBAId:
+          format: int64
+          type: integer
+        sweepToWalletId:
+          format: int64
+          type: integer
+        timeCreated:
+          format: date-time
+          type: string
+      title: PublicInvoiceResponseCryptoWallet
+      type: object
+    FeeInformationResponse:
+      properties:
+        payeeInfo:
+          $ref: '#/components/schemas/PayeeInfoResponse'
+        payerInfo:
+          $ref: '#/components/schemas/PayerInfoResponse'
+      title: FeeInformationResponse
+      type: object
+    FileAttachment:
+      properties:
+        name:
+          description: The name of the file (including the extension)
+          type: string
+        referenceId:
+          description: The file reference id received from Veem after file upload is complete
+          type: string
+        type:
+          description: The type of the file
+          enum:
+          - ExternalInvoice
+          - ProofOfPayment
+          type: string
+      required:
+      - name
+      - referenceId
+      - type
+      title: FileAttachment
+      type: object
+    InternalExtraInfoDTO:
+      description: Internal extra information associated with a payment.
+      properties:
+        allowPushPayment:
+          type: boolean
+        approvalDepartment:
+          type: string
+        autoTriggered:
+          type: boolean
+        bankWithdrawal:
+          type: boolean
+        bruid:
+          type: string
+        cancelTransactionMessage:
+          type: string
+        cancelTransactionReason:
+          type: string
+        ccEmails:
+          items:
+            type: string
+          type: array
+        claimCode:
+          type: string
+        claimFlowType:
+          type: string
+        clientId:
+          type: string
+        closedAccount:
+          type: string
+        contractFiles:
+          items:
+            type: string
+          type: array
+        customEmailMessage:
+          type: string
+        customInfo:
+          additionalProperties:
+            type: object
+          type: object
+        declineNotes:
+          additionalProperties:
+            type: object
+          type: object
+        disableNetTerms:
+          type: boolean
+        discount:
+          items:
+            $ref: '#/components/schemas/JSONObject'
+          type: array
+        emailStatus:
+          type: string
+        enterprisePaymentOrder:
+          type: string
+        errorCategory:
+          type: string
+        expeditedPaymentType:
+          enum:
+          - ExpeditedPayer
+          - FirstTimeCustomer
+          - InstantDeposit
+          - VirtualCard
+          - CreditCard
+          - ChequePayment
+          - ExpeditedPayerSetting
+          - ExpeditedPayeeSetting
+          - ExpeditedFxPartner
+          - SVBFxPayment
+          - FromWallet
+          - VirtualBank
+          - CryptoWallet
+          - RTP
+          type: string
+        externalFiles:
+          items:
+            type: string
+          type: array
+        externalInvoiceRefDate:
+          format: date-time
+          type: string
+        externalInvoiceRefDateText:
+          type: string
+        externalInvoiceRefId:
+          type: string
+        externalRefId:
+          type: string
+        extraInfo:
+          $ref: '#/components/schemas/InternalExtraInfoDTO'
+        firstTimeClaimed:
+          format: int64
+          type: integer
+        firstTimePendingAuth:
+          format: int64
+          type: integer
+        freightDocumentFiles:
+          items:
+            type: string
+          type: array
+        generatedFiles:
+          additionalProperties:
+            type: string
+          type: object
+        goodsQuantity:
+          type: string
+        id:
+          format: int64
+          type: integer
+        investigationDelayDays:
+          format: int32
+          type: integer
+        isAcceptingInvoiceFactoring:
+          type: boolean
+        isApiPushAorPayment:
+          type: boolean
+        isApplyingInvoiceFactoring:
+          type: boolean
+        isApprovingInvoiceFactoring:
+          type: boolean
+        isCashBackDone:
+          type: boolean
+        isClaimedViaClaimCode:
+          type: boolean
+        isCryptoWalletSelfFunding:
+          type: boolean
+        isExpeditedPayment:
+          type: boolean
+        isFasterAch:
+          type: boolean
+        isGoodFundsPayment:
+          type: boolean
+        isGuestPay:
+          type: boolean
+        isInstantCardAuth:
+          type: boolean
+        isInvoiceMeLinkPayment:
+          type: boolean
+        isLockedForSanctionsOnly:
+          type: boolean
+        isPayMeLinkPayment:
+          type: boolean
+        isPayeeCoveringCardFee:
+          type: boolean
+        isPayerCoveringACHFee:
+          type: boolean
+        isPayerCoveringInternationalUSDFee:
+          type: boolean
+        isPaymentAuthorizedAllowed:
+          type: boolean
+        isPaymentWalletClosure:
+          type: boolean
+        isPushPayment:
+          type: boolean
+        isReroutedForUnresposiveCP:
+          type: boolean
+        isRtp:
+          type: boolean
+        isRtpForPayeeAfterAuthorization:
+          type: boolean
+        isVbaSelfFunding:
+          type: boolean
+        isVeemMonthlyFee:
+          type: boolean
+        isVeemVendorPayment:
+          type: boolean
+        isVirtualCardTermination:
+          type: boolean
+        isVirtualCardWithdrawal:
+          type: boolean
+        isWalletSelfFunding:
+          type: boolean
+        lastTimeClaimed:
+          format: int64
+          type: integer
+        lastTimePendingAuth:
+          format: int64
+          type: integer
+        mtl:
+          type: string
+        mtlReceiptLinkCode:
+          type: string
+        notes:
+          type: string
+        notifyCounterParty:
+          type: boolean
+        notifyInvoiceDueReminder:
+          type: boolean
+        notifyInvoicePastDueReminder:
+          type: boolean
+        numberOfGoods:
+          format: int32
+          type: integer
+        origin:
+          type: string
+        partnerAccountId:
+          format: int64
+          type: integer
+        payeeFundingMethodId:
+          format: int64
+          type: integer
+        payeeFundingMethodType:
+          type: string
+        payeePrimaryEmail:
+          type: string
+        payerPrimaryEmail:
+          type: string
+        payerProvidedPayeeInfo:
+          type: boolean
+        paymentForwardingInfo:
+          additionalProperties:
+            type: object
+          type: object
+        pendingAuthChangedTime:
+          format: int64
+          type: integer
+        preset:
+          additionalProperties:
+            type: object
+          type: object
+        promoCode:
+          type: string
+        proofOfBalance:
+          format: int64
+          type: integer
+        proofOfPaymentFiles:
+          items:
+            type: string
+          type: array
+        purposeOfPayment:
+          type: string
+        purposeOfPaymentDescription:
+          type: string
+        purposeOfPaymentOverride:
+          type: string
+        purposeOfPaymentSubtype:
+          type: string
+        railMethod:
+          type: string
+        railPartner:
+          type: string
+        rawError:
+          type: string
+        s3ReferenceId:
+          type: string
+        sendPaymentClosedEmail:
+          type: boolean
+        sendPaymentCompleteEmail:
+          type: boolean
+        settlementAmount:
+          type: number
+        settlementDate:
+          format: date-time
+          type: string
+        settlementReason:
+          type: string
+        shipping:
+          items:
+            $ref: '#/components/schemas/JSONObject'
+          type: array
+        subtotalAmount:
+          $ref: '#/components/schemas/AlignMonetaryAmountCryptoWallet'
+        sweepToCryptoWalletId:
+          format: int64
+          type: integer
+        sweepToVBAId:
+          format: int64
+          type: integer
+        sweepToWalletId:
+          format: int64
+          type: integer
+        tax:
+          items:
+            $ref: '#/components/schemas/JSONObject'
+          type: array
+        terms:
+          type: string
+        termsAndConditions:
+          type: string
+        timeCreated:
+          format: date-time
+          type: string
+        timeUpdated:
+          format: date-time
+          type: string
+        transactionCreatorEmail:
+          type: string
+        vatIncluded:
+          type: boolean
+        walletWithdrawal:
+          type: boolean
+        walletWithdrawalRequestId:
+          type: string
+      title: InternalExtraInfoDTO
+      type: object
+    PushPaymentInfoResponse:
+      properties:
+        accountBsb:
+          type: string
+        accountNumber:
+          type: string
+        amount:
+          $ref: '#/components/schemas/AlignMonetaryAmount'
+        bankAccountNumber:
+          type: string
+        bankAddress:
+          type: string
+        bankName:
+          type: string
+        bankRoutingNumber:
+          type: string
+        beneficiaryAccountName:
+          type: string
+        beneficiaryCountry:
+          type: string
+        iban:
+          type: string
+        reference:
+          type: string
+        sortCode:
+          type: string
+        swiftOrBicCode:
+          type: string
+      title: PushPaymentInfoResponse
+      type: object
+    LatestDebitFinancialTxnResponse:
+      properties:
+        completedAt:
+          description: 'The time transaction was completed. Format: yyyy-MM-dd''T''HH:mm:ss.SSSXXX'
+          format: date-time
+          type: string
+        error:
+          $ref: '#/components/schemas/LatestCreditDebitErrorResponse'
+        id:
+          description: The transaction id
+          format: int64
+          type: integer
+        lastInitiatedAt:
+          description: 'The last time transaction was initiated. Format: yyyy-MM-dd''T''HH:mm:ss.SSSXXX'
+          format: date-time
+          type: string
+        status:
+          description: The transaction status
+          enum:
+          - Pending
+          - Ready
+          - OnHold
+          - Initiated
+          - Rejected
+          - Completed
+          - Closed
+          - Reversed
+          type: string
+        type:
+          description: The transaction type (Debit)
+          enum:
+          - Credit
+          - Debit
+          - Refund
+          type: string
+      type: object
+    FinancialExtraInfo:
+      description: Additional financial information associated with an invoice.
+      properties:
+        customInfo:
+          additionalProperties:
+            type: object
+          type: object
+        isPayeeCoveringCardFee:
+          type: boolean
+      title: FinancialExtraInfo
+      type: object
+    PayoutRequest:
+      description: Request payload for creating a crypto wallet payout.
+      properties:
+        amount:
+          $ref: '#/components/schemas/AlignMonetaryAmountCryptoWallet'
+        fromCryptoWalletId:
+          format: int64
+          type: integer
+        toAddress:
+          type: string
+        toChain:
+          type: string
+      title: PayoutRequest
+      type: object
+    AddressDTO:
+      description: Address details for a payment party or bank.
+      properties:
+        city:
+          type: string
+        countryCode:
+          type: string
+        isoCountryCode:
+          type: string
+        legacyTimeCreated:
+          format: date-time
+          type: string
+        line1:
+          type: string
+        line2:
+          type: string
+        physicalAddress:
+          $ref: '#/components/schemas/AddressDTO'
+        postalCode:
+          type: string
+        province:
+          type: string
+        state:
+          type: string
+        type:
+          type: string
+      title: AddressDTO
+      type: object
+    SimpleAccount:
+      properties:
+        bank:
+          $ref: '#/components/schemas/JSONObject'
+          description: Get required bank fields by looking up the country from the meta-controller endpoint country-currency-map with bankFields=true
+        business:
+          $ref: '#/components/schemas/ContactBusinessRequest'
+        businessName:
+          description: The name of the receiver's business, required when account type is business
+          type: string
+        countryCode:
+          description: The 2 letter ISO country codes,ISO Alpha-2
+          enum:
+          - AC
+          - AD
+          - AE
+          - AF
+          - AG
+          - AI
+          - AL
+          - AM
+          - AN
+          - AO
+          - AQ
+          - AR
+          - AS
+          - AT
+          - AU
+          - AW
+          - AX
+          - AZ
+          - BA
+          - BB
+          - BD
+          - BE
+          - BF
+          - BG
+          - BH
+          - BI
+          - BJ
+          - BL
+          - BM
+          - BN
+          - BO
+          - BQ
+          - BR
+          - BS
+          - BT
+          - BU
+          - BV
+          - BW
+          - BY
+          - BZ
+          - CA
+          - CC
+          - CD
+          - CF
+          - CG
+          - CH
+          - CI
+          - CK
+          - CL
+          - CM
+          - CN
+          - CO
+          - CP
+          - CR
+          - CS
+          - CU
+          - CV
+          - CW
+          - CX
+          - CY
+          - CZ
+          - DE
+          - DG
+          - DJ
+          - DK
+          - DM
+          - DO
+          - DZ
+          - EA
+          - EC
+          - EE
+          - EG
+          - EH
+          - ER
+          - ES
+          - ET
+          - EU
+          - EZ
+          - FI
+          - FJ
+          - FK
+          - FM
+          - FO
+          - FR
+          - FX
+          - GA
+          - GB
+          - GD
+          - GE
+          - GF
+          - GG
+          - GH
+          - GI
+          - GL
+          - GM
+          - GN
+          - GP
+          - GQ
+          - GR
+          - GS
+          - GT
+          - GU
+          - GW
+          - GY
+          - HK
+          - HM
+          - HN
+          - HR
+          - HT
+          - HU
+          - IC
+          - ID
+          - IE
+          - IL
+          - IM
+          - IN
+          - IO
+          - IQ
+          - IR
+          - IS
+          - IT
+          - JE
+          - JM
+          - JO
+          - JP
+          - KE
+          - KG
+          - KH
+          - KI
+          - KM
+          - KN
+          - KP
+          - KR
+          - KW
+          - KY
+          - KZ
+          - LA
+          - LB
+          - LC
+          - LI
+          - LK
+          - LR
+          - LS
+          - LT
+          - LU
+          - LV
+          - LY
+          - MA
+          - MC
+          - MD
+          - ME
+          - MF
+          - MG
+          - MH
+          - MK
+          - ML
+          - MM
+          - MN
+          - MO
+          - MP
+          - MQ
+          - MR
+          - MS
+          - MT
+          - MU
+          - MV
+          - MW
+          - MX
+          - MY
+          - MZ
+          - NA
+          - NC
+          - NE
+          - NF
+          - NG
+          - NI
+          - NL
+          - 'NO'
+          - NP
+          - NR
+          - NT
+          - NU
+          - NZ
+          - OM
+          - PA
+          - PE
+          - PF
+          - PG
+          - PH
+          - PK
+          - PL
+          - PM
+          - PN
+          - PR
+          - PS
+          - PT
+          - PW
+          - PY
+          - QA
+          - RE
+          - RO
+          - RS
+          - RU
+          - RW
+          - SA
+          - SB
+          - SC
+          - SD
+          - SE
+          - SF
+          - SG
+          - SH
+          - SI
+          - SJ
+          - SK
+          - SL
+          - SM
+          - SN
+          - SO
+          - SR
+          - SS
+          - ST
+          - SU
+          - SV
+          - SX
+          - SY
+          - SZ
+          - TA
+          - TC
+          - TD
+          - TF
+          - TG
+          - TH
+          - TJ
+          - TK
+          - TL
+          - TM
+          - TN
+          - TO
+          - TP
+          - TR
+          - TT
+          - TV
+          - TW
+          - TZ
+          - UA
+          - UG
+          - UK
+          - UM
+          - US
+          - UY
+          - UZ
+          - VA
+          - VC
+          - VE
+          - VG
+          - VI
+          - VN
+          - VU
+          - WF
+          - WS
+          - XK
+          - YE
+          - YT
+          - YU
+          - ZA
+          - ZM
+          - ZR
+          - ZW
+          type: string
+        email:
+          description: The email of the receiver
+          type: string
+        firstName:
+          description: The first name of the receiver
+          type: string
+        lastName:
+          description: The last name of the receiver
+          type: string
+        type:
+          description: The type of the receiver
+          enum:
+          - Incomplete
+          - Business
+          - Personal
+          type: string
+      required:
+      - bank
+      - business
+      - businessName
+      - countryCode
+      - email
+      - firstName
+      - lastName
+      - type
+      title: SimpleAccount
+      type: object
+    CardDetailsCryptoWallet:
+      description: Card details associated with a crypto wallet payment.
+      properties:
+        cardCompany:
+          description: Card company
+          type: string
+        cardType:
+          description: Card type, can be CREDIT or DEBIT
+          type: string
+        last4Digits:
+          description: Last 4 digits
+          type: string
+      title: CardDetailsCryptoWallet
+      type: object
+    ExchangeRateResponse:
+      properties:
+        expiry:
+          description: The expiry time of the current rate quote
+          format: date-time
+          type: string
+        fromAmount:
+          description: The source amount, either from or to amount is allowed, the other one is calculated
+          type: number
+        fromCurrency:
+          description: The source currency
+          enum:
+          - AED
+          - AFN
+          - ALL
+          - AMD
+          - ANG
+          - AOA
+          - ARS
+          - AUD
+          - AWG
+          - AZN
+          - BAM
+          - BBD
+          - BDT
+          - BGN
+          - BHD
+          - BIF
+          - BMD
+          - BND
+          - BOB
+          - BOV
+          - BRL
+          - BSD
+          - BTN
+          - BWP
+          - BYN
+          - BYR
+          - BZD
+          - CAD
+          - CDF
+          - CHE
+          - CHF
+          - CHW
+          - CLF
+          - CLP
+          - CNY
+          - COP
+          - COU
+          - CRC
+          - CUC
+          - CUP
+          - CVE
+          - CZK
+          - DJF
+          - DKK
+          - DOP
+          - DZD
+          - EGP
+          - ERN
+          - ETB
+          - EUR
+          - FJD
+          - FKP
+          - GBP
+          - GEL
+          - GHS
+          - GIP
+          - GMD
+          - GNF
+          - GTQ
+          - GYD
+          - HKD
+          - HNL
+          - HRK
+          - HTG
+          - HUF
+          - IDR
+          - ILS
+          - INR
+          - IQD
+          - IRR
+          - ISK
+          - JMD
+          - JOD
+          - JPY
+          - KES
+          - KGS
+          - KHR
+          - KMF
+          - KPW
+          - KRW
+          - KWD
+          - KYD
+          - KZT
+          - LAK
+          - LBP
+          - LKR
+          - LRD
+          - LSL
+          - LTL
+          - LYD
+          - MAD
+          - MDL
+          - MGA
+          - MKD
+          - MMK
+          - MNT
+          - MOP
+          - MRO
+          - MRU
+          - MUR
+          - MVR
+          - MWK
+          - MXN
+          - MXV
+          - MYR
+          - MZN
+          - NAD
+          - NGN
+          - NIO
+          - NOK
+          - NPR
+          - NZD
+          - OMR
+          - PAB
+          - PEN
+          - PGK
+          - PHP
+          - PKR
+          - PLN
+          - PYG
+          - QAR
+          - RON
+          - RSD
+          - RUB
+          - RUR
+          - RWF
+          - SAR
+          - SBD
+          - SCR
+          - SDG
+          - SEK
+          - SGD
+          - SHP
+          - SLL
+          - SOS
+          - SRD
+          - SSP
+          - STD
+          - STN
+          - SVC
+          - SYP
+          - SZL
+          - THB
+          - TJS
+          - TMT
+          - TND
+          - TOP
+          - TRY
+          - TTD
+          - TWD
+          - TZS
+          - UAH
+          - UGX
+          - USD
+          - USN
+          - USS
+          - UYI
+          - UYU
+          - UZS
+          - VEF
+          - VND
+          - VUV
+          - WST
+          - XAF
+          - XAG
+          - XAU
+          - XBA
+          - XBB
+          - XBC
+          - XBD
+          - XCD
+          - XDR
+          - XOF
+          - XPD
+          - XPF
+          - XPT
+          - XSU
+          - XTS
+          - XUA
+          - XXX
+          - YER
+          - ZAR
+          - ZMW
+          - ZWL
+          type: string
+        id:
+          description: The quote id
+          type: string
+        rate:
+          description: The Veem exchange rate for current transfer
+          type: number
+        timeCreated:
+          description: The quote generation time
+          format: date-time
+          type: string
+        toAmount:
+          description: The target amount, either from or to amount is allowed, the other one is calculated
+          type: number
+        toCurrency:
+          description: The target currency
+          enum:
+          - AED
+          - AFN
+          - ALL
+          - AMD
+          - ANG
+          - AOA
+          - ARS
+          - AUD
+          - AWG
+          - AZN
+          - BAM
+          - BBD
+          - BDT
+          - BGN
+          - BHD
+          - BIF
+          - BMD
+          - BND
+          - BOB
+          - BOV
+          - BRL
+          - BSD
+          - BTN
+          - BWP
+          - BYN
+          - BYR
+          - BZD
+          - CAD
+          - CDF
+          - CHE
+          - CHF
+          - CHW
+          - CLF
+          - CLP
+          - CNY
+          - COP
+          - COU
+          - CRC
+          - CUC
+          - CUP
+          - CVE
+          - CZK
+          - DJF
+          - DKK
+          - DOP
+          - DZD
+          - EGP
+          - ERN
+          - ETB
+          - EUR
+          - FJD
+          - FKP
+          - GBP
+          - GEL
+          - GHS
+          - GIP
+          - GMD
+          - GNF
+          - GTQ
+          - GYD
+          - HKD
+          - HNL
+          - HRK
+          - HTG
+          - HUF
+          - IDR
+          - ILS
+          - INR
+          - IQD
+          - IRR
+          - ISK
+          - JMD
+          - JOD
+          - JPY
+          - KES
+          - KGS
+          - KHR
+          - KMF
+          - KPW
+          - KRW
+          - KWD
+          - KYD
+          - KZT
+          - LAK
+          - LBP
+          - LKR
+          - LRD
+          - LSL
+          - LTL
+          - LYD
+          - MAD
+          - MDL
+          - MGA
+          - MKD
+          - MMK
+          - MNT
+          - MOP
+          - MRO
+          - MRU
+          - MUR
+          - MVR
+          - MWK
+          - MXN
+          - MXV
+          - MYR
+          - MZN
+          - NAD
+          - NGN
+          - NIO
+          - NOK
+          - NPR
+          - NZD
+          - OMR
+          - PAB
+          - PEN
+          - PGK
+          - PHP
+          - PKR
+          - PLN
+          - PYG
+          - QAR
+          - RON
+          - RSD
+          - RUB
+          - RUR
+          - RWF
+          - SAR
+          - SBD
+          - SCR
+          - SDG
+          - SEK
+          - SGD
+          - SHP
+          - SLL
+          - SOS
+          - SRD
+          - SSP
+          - STD
+          - STN
+          - SVC
+          - SYP
+          - SZL
+          - THB
+          - TJS
+          - TMT
+          - TND
+          - TOP
+          - TRY
+          - TTD
+          - TWD
+          - TZS
+          - UAH
+          - UGX
+          - USD
+          - USN
+          - USS
+          - UYI
+          - UYU
+          - UZS
+          - VEF
+          - VND
+          - VUV
+          - WST
+          - XAF
+          - XAG
+          - XAU
+          - XBA
+          - XBB
+          - XBC
+          - XBD
+          - XCD
+          - XDR
+          - XOF
+          - XPD
+          - XPF
+          - XPT
+          - XSU
+          - XTS
+          - XUA
+          - XXX
+          - YER
+          - ZAR
+          - ZMW
+          - ZWL
+          type: string
+      required:
+      - expiry
+      - fromCurrency
+      - id
+      - rate
+      - timeCreated
+      - toAmount
+      - toCurrency
+      title: ExchangeRateResponse
+      type: object
+    PayerInfoResponse:
+      properties:
+        currency:
+          description: Currency
+          enum:
+          - AED
+          - AFN
+          - ALL
+          - AMD
+          - ANG
+          - AOA
+          - ARS
+          - AUD
+          - AWG
+          - AZN
+          - BAM
+          - BBD
+          - BDT
+          - BGN
+          - BHD
+          - BIF
+          - BMD
+          - BND
+          - BOB
+          - BOV
+          - BRL
+          - BSD
+          - BTN
+          - BWP
+          - BYN
+          - BYR
+          - BZD
+          - CAD
+          - CDF
+          - CHE
+          - CHF
+          - CHW
+          - CLF
+          - CLP
+          - CNY
+          - COP
+          - COU
+          - CRC
+          - CUC
+          - CUP
+          - CVE
+          - CZK
+          - DJF
+          - DKK
+          - DOP
+          - DZD
+          - EGP
+          - ERN
+          - ETB
+          - EUR
+          - FJD
+          - FKP
+          - GBP
+          - GEL
+          - GHS
+          - GIP
+          - GMD
+          - GNF
+          - GTQ
+          - GYD
+          - HKD
+          - HNL
+          - HRK
+          - HTG
+          - HUF
+          - IDR
+          - ILS
+          - INR
+          - IQD
+          - IRR
+          - ISK
+          - JMD
+          - JOD
+          - JPY
+          - KES
+          - KGS
+          - KHR
+          - KMF
+          - KPW
+          - KRW
+          - KWD
+          - KYD
+          - KZT
+          - LAK
+          - LBP
+          - LKR
+          - LRD
+          - LSL
+          - LTL
+          - LYD
+          - MAD
+          - MDL
+          - MGA
+          - MKD
+          - MMK
+          - MNT
+          - MOP
+          - MRO
+          - MRU
+          - MUR
+          - MVR
+          - MWK
+          - MXN
+          - MXV
+          - MYR
+          - MZN
+          - NAD
+          - NGN
+          - NIO
+          - NOK
+          - NPR
+          - NZD
+          - OMR
+          - PAB
+          - PEN
+          - PGK
+          - PHP
+          - PKR
+          - PLN
+          - PYG
+          - QAR
+          - RON
+          - RSD
+          - RUB
+          - RUR
+          - RWF
+          - SAR
+          - SBD
+          - SCR
+          - SDG
+          - SEK
+          - SGD
+          - SHP
+          - SLL
+          - SOS
+          - SRD
+          - SSP
+          - STD
+          - STN
+          - SVC
+          - SYP
+          - SZL
+          - THB
+          - TJS
+          - TMT
+          - TND
+          - TOP
+          - TRY
+          - TTD
+          - TWD
+          - TZS
+          - UAH
+          - UGX
+          - USD
+          - USN
+          - USS
+          - UYI
+          - UYU
+          - UZS
+          - VEF
+          - VND
+          - VUV
+          - WST
+          - XAF
+          - XAG
+          - XAU
+          - XBA
+          - XBB
+          - XBC
+          - XBD
+          - XCD
+          - XDR
+          - XOF
+          - XPD
+          - XPF
+          - XPT
+          - XSU
+          - XTS
+          - XUA
+          - XXX
+          - YER
+          - ZAR
+          - ZMW
+          - ZWL
+          type: string
+        feeAmount:
+          description: Fee amount
+          type: number
+        originalAmount:
+          description: Original sent amount
+          type: number
+        totalAmount:
+          description: Total amount with fee included
+          type: number
+      title: PayerInfoResponse
+      type: object
+    FinancialExtraInfoDTO:
+      description: Internal additional financial information for a payment.
+      properties:
+        allowPushPayment:
+          type: boolean
+        approvalDepartment:
+          type: string
+        autoTriggered:
+          type: boolean
+        bankWithdrawal:
+          type: boolean
+        bruid:
+          type: string
+        cancelTransactionMessage:
+          type: string
+        cancelTransactionReason:
+          type: string
+        ccEmails:
+          items:
+            type: string
+          type: array
+        claimCode:
+          type: string
+        claimFlowType:
+          type: string
+        clientId:
+          type: string
+        closedAccount:
+          type: string
+        contractFiles:
+          items:
+            type: string
+          type: array
+        customEmailMessage:
+          type: string
+        customInfo:
+          additionalProperties:
+            type: object
+          type: object
+        declineNotes:
+          additionalProperties:
+            type: object
+          type: object
+        disableNetTerms:
+          type: boolean
+        discount:
+          items:
+            $ref: '#/components/schemas/JSONObject'
+          type: array
+        emailStatus:
+          type: string
+        enterprisePaymentOrder:
+          type: string
+        errorCategory:
+          type: string
+        expeditedPaymentType:
+          enum:
+          - ExpeditedPayer
+          - FirstTimeCustomer
+          - InstantDeposit
+          - VirtualCard
+          - CreditCard
+          - ChequePayment
+          - ExpeditedPayerSetting
+          - ExpeditedPayeeSetting
+          - ExpeditedFxPartner
+          - SVBFxPayment
+          - FromWallet
+          - VirtualBank
+          - CryptoWallet
+          - RTP
+          type: string
+        externalFiles:
+          items:
+            type: string
+          type: array
+        externalInvoiceRefDate:
+          format: date-time
+          type: string
+        externalInvoiceRefDateText:
+          type: string
+        externalInvoiceRefId:
+          type: string
+        externalRefId:
+          type: string
+        extraInfo:
+          $ref: '#/components/schemas/InternalExtraInfoDTO'
+        firstTimeClaimed:
+          format: int64
+          type: integer
+        firstTimePendingAuth:
+          format: int64
+          type: integer
+        freightDocumentFiles:
+          items:
+            type: string
+          type: array
+        generatedFiles:
+          additionalProperties:
+            type: string
+          type: object
+        goodsQuantity:
+          type: string
+        id:
+          format: int64
+          type: integer
+        investigationDelayDays:
+          format: int32
+          type: integer
+        isAcceptingInvoiceFactoring:
+          type: boolean
+        isApiPushAorPayment:
+          type: boolean
+        isApplyingInvoiceFactoring:
+          type: boolean
+        isApprovingInvoiceFactoring:
+          type: boolean
+        isCashBackDone:
+          type: boolean
+        isClaimedViaClaimCode:
+          type: boolean
+        isCryptoWalletSelfFunding:
+          type: boolean
+        isExpeditedPayment:
+          type: boolean
+        isFasterAch:
+          type: boolean
+        isGoodFundsPayment:
+          type: boolean
+        isGuestPay:
+          type: boolean
+        isInstantCardAuth:
+          type: boolean
+        isInvoiceMeLinkPayment:
+          type: boolean
+        isLockedForSanctionsOnly:
+          type: boolean
+        isPayMeLinkPayment:
+          type: boolean
+        isPayeeCoveringCardFee:
+          type: boolean
+        isPayerCoveringACHFee:
+          type: boolean
+        isPayerCoveringInternationalUSDFee:
+          type: boolean
+        isPaymentAuthorizedAllowed:
+          type: boolean
+        isPaymentWalletClosure:
+          type: boolean
+        isPushPayment:
+          type: boolean
+        isReroutedForUnresposiveCP:
+          type: boolean
+        isRtp:
+          type: boolean
+        isRtpForPayeeAfterAuthorization:
+          type: boolean
+        isVbaSelfFunding:
+          type: boolean
+        isVeemMonthlyFee:
+          type: boolean
+        isVeemVendorPayment:
+          type: boolean
+        isVirtualCardTermination:
+          type: boolean
+        isVirtualCardWithdrawal:
+          type: boolean
+        isWalletSelfFunding:
+          type: boolean
+        lastTimeClaimed:
+          format: int64
+          type: integer
+        lastTimePendingAuth:
+          format: int64
+          type: integer
+        mtl:
+          type: string
+        mtlReceiptLinkCode:
+          type: string
+        notes:
+          type: string
+        notifyCounterParty:
+          type: boolean
+        notifyInvoiceDueReminder:
+          type: boolean
+        notifyInvoicePastDueReminder:
+          type: boolean
+        numberOfGoods:
+          format: int32
+          type: integer
+        origin:
+          type: string
+        partnerAccountId:
+          format: int64
+          type: integer
+        payeeFundingMethodId:
+          format: int64
+          type: integer
+        payeeFundingMethodType:
+          type: string
+        payeePrimaryEmail:
+          type: string
+        payerPrimaryEmail:
+          type: string
+        payerProvidedPayeeInfo:
+          type: boolean
+        paymentForwardingInfo:
+          additionalProperties:
+            type: object
+          type: object
+        pendingAuthChangedTime:
+          format: int64
+          type: integer
+        preset:
+          additionalProperties:
+            type: object
+          type: object
+        promoCode:
+          type: string
+        proofOfBalance:
+          format: int64
+          type: integer
+        proofOfPaymentFiles:
+          items:
+            type: string
+          type: array
+        purposeOfPayment:
+          type: string
+        purposeOfPaymentDescription:
+          type: string
+        purposeOfPaymentOverride:
+          type: string
+        purposeOfPaymentSubtype:
+          type: string
+        railMethod:
+          type: string
+        railPartner:
+          type: string
+        rawError:
+          type: string
+        s3ReferenceId:
+          type: string
+        sendPaymentClosedEmail:
+          type: boolean
+        sendPaymentCompleteEmail:
+          type: boolean
+        settlementAmount:
+          type: number
+        settlementDate:
+          format: date-time
+          type: string
+        settlementReason:
+          type: string
+        shipping:
+          items:
+            $ref: '#/components/schemas/JSONObject'
+          type: array
+        subtotalAmount:
+          $ref: '#/components/schemas/AlignMonetaryAmountCryptoWallet'
+        sweepToCryptoWalletId:
+          format: int64
+          type: integer
+        sweepToVBAId:
+          format: int64
+          type: integer
+        sweepToWalletId:
+          format: int64
+          type: integer
+        tax:
+          items:
+            $ref: '#/components/schemas/JSONObject'
+          type: array
+        terms:
+          type: string
+        termsAndConditions:
+          type: string
+        timeCreated:
+          format: date-time
+          type: string
+        timeUpdated:
+          format: date-time
+          type: string
+        transactionCreatorEmail:
+          type: string
+        vatIncluded:
+          type: boolean
+        walletWithdrawal:
+          type: boolean
+        walletWithdrawalRequestId:
+          type: string
+      title: FinancialExtraInfoDTO
+      type: object
+    PayinRequest:
+      description: Request payload for creating a crypto wallet pay-in.
+      properties:
+        amount:
+          $ref: '#/components/schemas/AlignMonetaryAmountCryptoWallet'
+        chain:
+          type: string
+        extraInfo:
+          $ref: '#/components/schemas/FinancialExtraInfoRequest'
+        fromAddress:
+          type: string
+        notes:
+          type: string
+        payer:
+          $ref: '#/components/schemas/SimpleAccountRequest'
+        purposeOfPayment:
+          type: string
+        purposeOfPaymentDescription:
+          type: string
+        toCryptoWalletId:
+          format: int64
+          type: integer
+      title: PayinRequest
+      type: object
+    FinancialExtraInfoRequest:
+      description: Additional custom information associated with a request.
+      properties:
+        customInfo:
+          additionalProperties:
+            type: object
+          type: object
+      title: FinancialExtraInfoRequest
+      type: object
+    AddWalletFundsRequest:
+      properties:
+        amount:
+          $ref: '#/components/schemas/AlignMonetaryAmount'
+        fundingMethod:
+          $ref: '#/components/schemas/FundingMethod'
+        requestId:
+          type: string
+      title: AddWalletFundsRequest
+      type: object
+    LatestCreditFinancialTxnResponse:
+      properties:
+        completedAt:
+          description: 'The time transaction was completed. Format: yyyy-MM-dd''T''HH:mm:ss.SSSXXX'
+          format: date-time
+          type: string
+        error:
+          $ref: '#/components/schemas/LatestCreditDebitErrorResponse'
+        id:
+          description: The transaction id
+          format: int64
+          type: integer
+        initiatedAt:
+          description: 'The first time transaction was initiated. Format: yyyy-MM-dd''T''HH:mm:ss.SSSXXX'
+          format: date-time
+          type: string
+        lastInitiatedAt:
+          description: 'The last time transaction was initiated. Format: yyyy-MM-dd''T''HH:mm:ss.SSSXXX'
+          format: date-time
+          type: string
+        status:
+          description: The transaction status
+          enum:
+          - Pending
+          - Ready
+          - OnHold
+          - Initiated
+          - Rejected
+          - Completed
+          - Closed
+          - Reversed
+          type: string
+        type:
+          description: The transaction type (Debit)
+          enum:
+          - Credit
+          - Debit
+          - Refund
+          type: string
+      type: object
+    BusinessAddressRequest:
+      properties:
+        city:
+          description: City
+          type: string
+        countryCode:
+          description: Country Code
+          enum:
+          - AC
+          - AD
+          - AE
+          - AF
+          - AG
+          - AI
+          - AL
+          - AM
+          - AN
+          - AO
+          - AQ
+          - AR
+          - AS
+          - AT
+          - AU
+          - AW
+          - AX
+          - AZ
+          - BA
+          - BB
+          - BD
+          - BE
+          - BF
+          - BG
+          - BH
+          - BI
+          - BJ
+          - BL
+          - BM
+          - BN
+          - BO
+          - BQ
+          - BR
+          - BS
+          - BT
+          - BU
+          - BV
+          - BW
+          - BY
+          - BZ
+          - CA
+          - CC
+          - CD
+          - CF
+          - CG
+          - CH
+          - CI
+          - CK
+          - CL
+          - CM
+          - CN
+          - CO
+          - CP
+          - CR
+          - CS
+          - CU
+          - CV
+          - CW
+          - CX
+          - CY
+          - CZ
+          - DE
+          - DG
+          - DJ
+          - DK
+          - DM
+          - DO
+          - DZ
+          - EA
+          - EC
+          - EE
+          - EG
+          - EH
+          - ER
+          - ES
+          - ET
+          - EU
+          - EZ
+          - FI
+          - FJ
+          - FK
+          - FM
+          - FO
+          - FR
+          - FX
+          - GA
+          - GB
+          - GD
+          - GE
+          - GF
+          - GG
+          - GH
+          - GI
+          - GL
+          - GM
+          - GN
+          - GP
+          - GQ
+          - GR
+          - GS
+          - GT
+          - GU
+          - GW
+          - GY
+          - HK
+          - HM
+          - HN
+          - HR
+          - HT
+          - HU
+          - IC
+          - ID
+          - IE
+          - IL
+          - IM
+          - IN
+          - IO
+          - IQ
+          - IR
+          - IS
+          - IT
+          - JE
+          - JM
+          - JO
+          - JP
+          - KE
+          - KG
+          - KH
+          - KI
+          - KM
+          - KN
+          - KP
+          - KR
+          - KW
+          - KY
+          - KZ
+          - LA
+          - LB
+          - LC
+          - LI
+          - LK
+          - LR
+          - LS
+          - LT
+          - LU
+          - LV
+          - LY
+          - MA
+          - MC
+          - MD
+          - ME
+          - MF
+          - MG
+          - MH
+          - MK
+          - ML
+          - MM
+          - MN
+          - MO
+          - MP
+          - MQ
+          - MR
+          - MS
+          - MT
+          - MU
+          - MV
+          - MW
+          - MX
+          - MY
+          - MZ
+          - NA
+          - NC
+          - NE
+          - NF
+          - NG
+          - NI
+          - NL
+          - 'NO'
+          - NP
+          - NR
+          - NT
+          - NU
+          - NZ
+          - OM
+          - PA
+          - PE
+          - PF
+          - PG
+          - PH
+          - PK
+          - PL
+          - PM
+          - PN
+          - PR
+          - PS
+          - PT
+          - PW
+          - PY
+          - QA
+          - RE
+          - RO
+          - RS
+          - RU
+          - RW
+          - SA
+          - SB
+          - SC
+          - SD
+          - SE
+          - SF
+          - SG
+          - SH
+          - SI
+          - SJ
+          - SK
+          - SL
+          - SM
+          - SN
+          - SO
+          - SR
+          - SS
+          - ST
+          - SU
+          - SV
+          - SX
+          - SY
+          - SZ
+          - TA
+          - TC
+          - TD
+          - TF
+          - TG
+          - TH
+          - TJ
+          - TK
+          - TL
+          - TM
+          - TN
+          - TO
+          - TP
+          - TR
+          - TT
+          - TV
+          - TW
+          - TZ
+          - UA
+          - UG
+          - UK
+          - UM
+          - US
+          - UY
+          - UZ
+          - VA
+          - VC
+          - VE
+          - VG
+          - VI
+          - VN
+          - VU
+          - WF
+          - WS
+          - XK
+          - YE
+          - YT
+          - YU
+          - ZA
+          - ZM
+          - ZR
+          - ZW
+          type: string
+        postalCode:
+          description: Postal Code
+          type: string
+        province:
+          description: Province
+          type: string
+        street:
+          description: Type of entity
+          type: string
+        streetSecondary:
+          description: Address additional information
+          type: string
+      required:
+      - city
+      - countryCode
+      - postalCode
+      - province
+      - street
+      title: BusinessAddressRequest
+      type: object
+    LatestFinancialTxnResponse:
+      properties:
+        error:
+          $ref: '#/components/schemas/LatestCreditDebitErrorResponse'
+        id:
+          description: The transaction id
+          format: int64
+          type: integer
+        status:
+          description: The transaction status
+          enum:
+          - Pending
+          - Ready
+          - OnHold
+          - Initiated
+          - Rejected
+          - Completed
+          - Closed
+          - Reversed
+          type: string
+        type:
+          description: The transaction type (Debit)
+          enum:
+          - Credit
+          - Debit
+          - Refund
+          type: string
+      type: object
+    FundingMethodCryptoWallet:
+      description: Funding method details for a crypto wallet payment.
+      properties:
+        cardDetails:
+          $ref: '#/components/schemas/CardDetailsCryptoWallet'
+          description: Card details if type is Card
+        country:
+          description: Country
+          enum:
+          - UNDEFINED
+          - AC
+          - AD
+          - AE
+          - AF
+          - AG
+          - AI
+          - AL
+          - AM
+          - AN
+          - AO
+          - AQ
+          - AR
+          - AS
+          - AT
+          - AU
+          - AW
+          - AX
+          - AZ
+          - BA
+          - BB
+          - BD
+          - BE
+          - BF
+          - BG
+          - BH
+          - BI
+          - BJ
+          - BL
+          - BM
+          - BN
+          - BO
+          - BQ
+          - BR
+          - BS
+          - BT
+          - BU
+          - BV
+          - BW
+          - BY
+          - BZ
+          - CA
+          - CC
+          - CD
+          - CF
+          - CG
+          - CH
+          - CI
+          - CK
+          - CL
+          - CM
+          - CN
+          - CO
+          - CP
+          - CR
+          - CS
+          - CU
+          - CV
+          - CW
+          - CX
+          - CY
+          - CZ
+          - DE
+          - DG
+          - DJ
+          - DK
+          - DM
+          - DO
+          - DZ
+          - EA
+          - EC
+          - EE
+          - EG
+          - EH
+          - ER
+          - ES
+          - ET
+          - EU
+          - EZ
+          - FI
+          - FJ
+          - FK
+          - FM
+          - FO
+          - FR
+          - FX
+          - GA
+          - GB
+          - GD
+          - GE
+          - GF
+          - GG
+          - GH
+          - GI
+          - GL
+          - GM
+          - GN
+          - GP
+          - GQ
+          - GR
+          - GS
+          - GT
+          - GU
+          - GW
+          - GY
+          - HK
+          - HM
+          - HN
+          - HR
+          - HT
+          - HU
+          - IC
+          - ID
+          - IE
+          - IL
+          - IM
+          - IN
+          - IO
+          - IQ
+          - IR
+          - IS
+          - IT
+          - JE
+          - JM
+          - JO
+          - JP
+          - KE
+          - KG
+          - KH
+          - KI
+          - KM
+          - KN
+          - KP
+          - KR
+          - KW
+          - KY
+          - KZ
+          - LA
+          - LB
+          - LC
+          - LI
+          - LK
+          - LR
+          - LS
+          - LT
+          - LU
+          - LV
+          - LY
+          - MA
+          - MC
+          - MD
+          - ME
+          - MF
+          - MG
+          - MH
+          - MK
+          - ML
+          - MM
+          - MN
+          - MO
+          - MP
+          - MQ
+          - MR
+          - MS
+          - MT
+          - MU
+          - MV
+          - MW
+          - MX
+          - MY
+          - MZ
+          - NA
+          - NC
+          - NE
+          - NF
+          - NG
+          - NI
+          - NL
+          - 'NO'
+          - NP
+          - NR
+          - NT
+          - NU
+          - NZ
+          - OM
+          - PA
+          - PE
+          - PF
+          - PG
+          - PH
+          - PK
+          - PL
+          - PM
+          - PN
+          - PR
+          - PS
+          - PT
+          - PW
+          - PY
+          - QA
+          - RE
+          - RO
+          - RS
+          - RU
+          - RW
+          - SA
+          - SB
+          - SC
+          - SD
+          - SE
+          - SF
+          - SG
+          - SH
+          - SI
+          - SJ
+          - SK
+          - SL
+          - SM
+          - SN
+          - SO
+          - SR
+          - SS
+          - ST
+          - SU
+          - SV
+          - SX
+          - SY
+          - SZ
+          - TA
+          - TC
+          - TD
+          - TF
+          - TG
+          - TH
+          - TJ
+          - TK
+          - TL
+          - TM
+          - TN
+          - TO
+          - TP
+          - TR
+          - TT
+          - TV
+          - TW
+          - TZ
+          - UA
+          - UG
+          - UK
+          - UM
+          - US
+          - UY
+          - UZ
+          - VA
+          - VC
+          - VE
+          - VG
+          - VI
+          - VN
+          - VU
+          - WF
+          - WS
+          - XK
+          - YE
+          - YT
+          - YU
+          - ZA
+          - ZM
+          - ZR
+          - ZW
+          type: string
+        currency:
+          description: Currency
+          enum:
+          - UNDEFINED
+          - AED
+          - AFN
+          - ALL
+          - AMD
+          - ANG
+          - AOA
+          - ARS
+          - AUD
+          - AWG
+          - AZN
+          - BAM
+          - BBD
+          - BDT
+          - BGN
+          - BHD
+          - BIF
+          - BMD
+          - BND
+          - BOB
+          - BOV
+          - BRL
+          - BSD
+          - BTN
+          - BWP
+          - BYN
+          - BYR
+          - BZD
+          - CAD
+          - CDF
+          - CHE
+          - CHF
+          - CHW
+          - CLF
+          - CLP
+          - CNY
+          - COP
+          - COU
+          - CRC
+          - CUC
+          - CUP
+          - CVE
+          - CZK
+          - DJF
+          - DKK
+          - DOP
+          - DZD
+          - EGP
+          - ERN
+          - ETB
+          - EUR
+          - FJD
+          - FKP
+          - GBP
+          - GEL
+          - GHS
+          - GIP
+          - GMD
+          - GNF
+          - GTQ
+          - GYD
+          - HKD
+          - HNL
+          - HRK
+          - HTG
+          - HUF
+          - IDR
+          - ILS
+          - INR
+          - IQD
+          - IRR
+          - ISK
+          - JMD
+          - JOD
+          - JPY
+          - KES
+          - KGS
+          - KHR
+          - KMF
+          - KPW
+          - KRW
+          - KWD
+          - KYD
+          - KZT
+          - LAK
+          - LBP
+          - LKR
+          - LRD
+          - LSL
+          - LTL
+          - LYD
+          - MAD
+          - MDL
+          - MGA
+          - MKD
+          - MMK
+          - MNT
+          - MOP
+          - MRO
+          - MRU
+          - MUR
+          - MVR
+          - MWK
+          - MXN
+          - MXV
+          - MYR
+          - MZN
+          - NAD
+          - NGN
+          - NIO
+          - NOK
+          - NPR
+          - NZD
+          - OMR
+          - PAB
+          - PEN
+          - PGK
+          - PHP
+          - PKR
+          - PLN
+          - PYG
+          - QAR
+          - RON
+          - RSD
+          - RUB
+          - RUR
+          - RWF
+          - SAR
+          - SBD
+          - SCR
+          - SDG
+          - SEK
+          - SGD
+          - SHP
+          - SLL
+          - SOS
+          - SRD
+          - SSP
+          - STD
+          - STN
+          - SVC
+          - SYP
+          - SZL
+          - THB
+          - TJS
+          - TMT
+          - TND
+          - TOP
+          - TRY
+          - TTD
+          - TWD
+          - TZS
+          - UAH
+          - UGX
+          - USD
+          - USDC
+          - USDB
+          - USDT
+          - USDV
+          - EURC
+          - USN
+          - USS
+          - UYI
+          - UYU
+          - UZS
+          - VEF
+          - VND
+          - VUV
+          - WST
+          - XAF
+          - XAG
+          - XAU
+          - XBA
+          - XBB
+          - XBC
+          - XBD
+          - XCD
+          - XDR
+          - XOF
+          - XPD
+          - XPF
+          - XPT
+          - XSU
+          - XTS
+          - XUA
+          - XXX
+          - YER
+          - ZAR
+          - ZMW
+          - ZWL
+          type: string
+        defaultMethod:
+          $ref: '#/components/schemas/DefaultMethod'
+          description: Indicates if the funding method is one of default methods
+        id:
+          description: The payer's funding method id. This comes from the funding methods service.
+          format: int64
+          type: integer
+        status:
+          description: Indicates if the funding method is active or not
+          type: string
+        type:
+          description: 'The payer''s funding method type. Can be one of: Bank, Card, Wallet, VirtualCard or VirtualBank.'
+          enum:
+          - Bank
+          - External
+          - Cheque
+          - Card
+          - Wallet
+          - VirtualCard
+          - VirtualBank
+          - CryptoWallet
+          type: string
+      title: FundingMethodCryptoWallet
+      type: object
+    AlignMonetaryAmountCryptoWallet:
+      description: Monetary amount including crypto currency codes, used by crypto wallet endpoints.
+      properties:
+        currency:
+          enum:
+          - UNDEFINED
+          - AED
+          - AFN
+          - ALL
+          - AMD
+          - ANG
+          - AOA
+          - ARS
+          - AUD
+          - AWG
+          - AZN
+          - BAM
+          - BBD
+          - BDT
+          - BGN
+          - BHD
+          - BIF
+          - BMD
+          - BND
+          - BOB
+          - BOV
+          - BRL
+          - BSD
+          - BTN
+          - BWP
+          - BYN
+          - BYR
+          - BZD
+          - CAD
+          - CDF
+          - CHE
+          - CHF
+          - CHW
+          - CLF
+          - CLP
+          - CNY
+          - COP
+          - COU
+          - CRC
+          - CUC
+          - CUP
+          - CVE
+          - CZK
+          - DJF
+          - DKK
+          - DOP
+          - DZD
+          - EGP
+          - ERN
+          - ETB
+          - EUR
+          - FJD
+          - FKP
+          - GBP
+          - GEL
+          - GHS
+          - GIP
+          - GMD
+          - GNF
+          - GTQ
+          - GYD
+          - HKD
+          - HNL
+          - HRK
+          - HTG
+          - HUF
+          - IDR
+          - ILS
+          - INR
+          - IQD
+          - IRR
+          - ISK
+          - JMD
+          - JOD
+          - JPY
+          - KES
+          - KGS
+          - KHR
+          - KMF
+          - KPW
+          - KRW
+          - KWD
+          - KYD
+          - KZT
+          - LAK
+          - LBP
+          - LKR
+          - LRD
+          - LSL
+          - LTL
+          - LYD
+          - MAD
+          - MDL
+          - MGA
+          - MKD
+          - MMK
+          - MNT
+          - MOP
+          - MRO
+          - MRU
+          - MUR
+          - MVR
+          - MWK
+          - MXN
+          - MXV
+          - MYR
+          - MZN
+          - NAD
+          - NGN
+          - NIO
+          - NOK
+          - NPR
+          - NZD
+          - OMR
+          - PAB
+          - PEN
+          - PGK
+          - PHP
+          - PKR
+          - PLN
+          - PYG
+          - QAR
+          - RON
+          - RSD
+          - RUB
+          - RUR
+          - RWF
+          - SAR
+          - SBD
+          - SCR
+          - SDG
+          - SEK
+          - SGD
+          - SHP
+          - SLL
+          - SOS
+          - SRD
+          - SSP
+          - STD
+          - STN
+          - SVC
+          - SYP
+          - SZL
+          - THB
+          - TJS
+          - TMT
+          - TND
+          - TOP
+          - TRY
+          - TTD
+          - TWD
+          - TZS
+          - UAH
+          - UGX
+          - USD
+          - USDC
+          - USDB
+          - USDT
+          - USDV
+          - EURC
+          - USN
+          - USS
+          - UYI
+          - UYU
+          - UZS
+          - VEF
+          - VND
+          - VUV
+          - WST
+          - XAF
+          - XAG
+          - XAU
+          - XBA
+          - XBB
+          - XBC
+          - XBD
+          - XCD
+          - XDR
+          - XOF
+          - XPD
+          - XPF
+          - XPT
+          - XSU
+          - XTS
+          - XUA
+          - XXX
+          - YER
+          - ZAR
+          - ZMW
+          - ZWL
+          type: string
+        number:
+          type: number
+      title: AlignMonetaryAmountCryptoWallet
+      type: object
+    ContactBusinessRequestCryptoWallet:
+      description: Business or individual contact details used by crypto wallet endpoints.
+      properties:
+        address:
+          $ref: '#/components/schemas/BusinessAddressRequestCryptoWallet'
+          description: Address of the individual or business
+        businessRegistrationNumber:
+          description: Business registration number
+          type: string
+        dateOfBirth:
+          description: Date of birth for individual
+          type: string
+        entity:
+          description: Type of entity
+          type: string
+        industry:
+          type: string
+        subIndustry:
+          type: string
+        taxIdNumber:
+          description: TaxId of the individual or business
+          type: string
+        websiteUrl:
+          type: string
+      required:
+      - address
+      - dateOfBirth
+      - entity
+      - taxIdNumber
+      title: ContactBusinessRequestCryptoWallet
+      type: object
+    PayeeInfoResponse:
+      properties:
+        currency:
+          description: Currency
+          enum:
+          - AED
+          - AFN
+          - ALL
+          - AMD
+          - ANG
+          - AOA
+          - ARS
+          - AUD
+          - AWG
+          - AZN
+          - BAM
+          - BBD
+          - BDT
+          - BGN
+          - BHD
+          - BIF
+          - BMD
+          - BND
+          - BOB
+          - BOV
+          - BRL
+          - BSD
+          - BTN
+          - BWP
+          - BYN
+          - BYR
+          - BZD
+          - CAD
+          - CDF
+          - CHE
+          - CHF
+          - CHW
+          - CLF
+          - CLP
+          - CNY
+          - COP
+          - COU
+          - CRC
+          - CUC
+          - CUP
+          - CVE
+          - CZK
+          - DJF
+          - DKK
+          - DOP
+          - DZD
+          - EGP
+          - ERN
+          - ETB
+          - EUR
+          - FJD
+          - FKP
+          - GBP
+          - GEL
+          - GHS
+          - GIP
+          - GMD
+          - GNF
+          - GTQ
+          - GYD
+          - HKD
+          - HNL
+          - HRK
+          - HTG
+          - HUF
+          - IDR
+          - ILS
+          - INR
+          - IQD
+          - IRR
+          - ISK
+          - JMD
+          - JOD
+          - JPY
+          - KES
+          - KGS
+          - KHR
+          - KMF
+          - KPW
+          - KRW
+          - KWD
+          - KYD
+          - KZT
+          - LAK
+          - LBP
+          - LKR
+          - LRD
+          - LSL
+          - LTL
+          - LYD
+          - MAD
+          - MDL
+          - MGA
+          - MKD
+          - MMK
+          - MNT
+          - MOP
+          - MRO
+          - MRU
+          - MUR
+          - MVR
+          - MWK
+          - MXN
+          - MXV
+          - MYR
+          - MZN
+          - NAD
+          - NGN
+          - NIO
+          - NOK
+          - NPR
+          - NZD
+          - OMR
+          - PAB
+          - PEN
+          - PGK
+          - PHP
+          - PKR
+          - PLN
+          - PYG
+          - QAR
+          - RON
+          - RSD
+          - RUB
+          - RUR
+          - RWF
+          - SAR
+          - SBD
+          - SCR
+          - SDG
+          - SEK
+          - SGD
+          - SHP
+          - SLL
+          - SOS
+          - SRD
+          - SSP
+          - STD
+          - STN
+          - SVC
+          - SYP
+          - SZL
+          - THB
+          - TJS
+          - TMT
+          - TND
+          - TOP
+          - TRY
+          - TTD
+          - TWD
+          - TZS
+          - UAH
+          - UGX
+          - USD
+          - USN
+          - USS
+          - UYI
+          - UYU
+          - UZS
+          - VEF
+          - VND
+          - VUV
+          - WST
+          - XAF
+          - XAG
+          - XAU
+          - XBA
+          - XBB
+          - XBC
+          - XBD
+          - XCD
+          - XDR
+          - XOF
+          - XPD
+          - XPF
+          - XPT
+          - XSU
+          - XTS
+          - XUA
+          - XXX
+          - YER
+          - ZAR
+          - ZMW
+          - ZWL
+          type: string
+        feeAmount:
+          description: Fee amount
+          type: number
+        originalAmount:
+          description: Original sent amount
+          type: number
+        totalAmount:
+          description: Total amount with fee included
+          type: number
+      title: PayeeInfoResponse
+      type: object
+    AlignMonetaryAmount:
+      properties:
+        currency:
+          enum:
+          - AED
+          - AFN
+          - ALL
+          - AMD
+          - ANG
+          - AOA
+          - ARS
+          - AUD
+          - AWG
+          - AZN
+          - BAM
+          - BBD
+          - BDT
+          - BGN
+          - BHD
+          - BIF
+          - BMD
+          - BND
+          - BOB
+          - BOV
+          - BRL
+          - BSD
+          - BTN
+          - BWP
+          - BYN
+          - BYR
+          - BZD
+          - CAD
+          - CDF
+          - CHE
+          - CHF
+          - CHW
+          - CLF
+          - CLP
+          - CNY
+          - COP
+          - COU
+          - CRC
+          - CUC
+          - CUP
+          - CVE
+          - CZK
+          - DJF
+          - DKK
+          - DOP
+          - DZD
+          - EGP
+          - ERN
+          - ETB
+          - EUR
+          - FJD
+          - FKP
+          - GBP
+          - GEL
+          - GHS
+          - GIP
+          - GMD
+          - GNF
+          - GTQ
+          - GYD
+          - HKD
+          - HNL
+          - HRK
+          - HTG
+          - HUF
+          - IDR
+          - ILS
+          - INR
+          - IQD
+          - IRR
+          - ISK
+          - JMD
+          - JOD
+          - JPY
+          - KES
+          - KGS
+          - KHR
+          - KMF
+          - KPW
+          - KRW
+          - KWD
+          - KYD
+          - KZT
+          - LAK
+          - LBP
+          - LKR
+          - LRD
+          - LSL
+          - LTL
+          - LYD
+          - MAD
+          - MDL
+          - MGA
+          - MKD
+          - MMK
+          - MNT
+          - MOP
+          - MRO
+          - MRU
+          - MUR
+          - MVR
+          - MWK
+          - MXN
+          - MXV
+          - MYR
+          - MZN
+          - NAD
+          - NGN
+          - NIO
+          - NOK
+          - NPR
+          - NZD
+          - OMR
+          - PAB
+          - PEN
+          - PGK
+          - PHP
+          - PKR
+          - PLN
+          - PYG
+          - QAR
+          - RON
+          - RSD
+          - RUB
+          - RUR
+          - RWF
+          - SAR
+          - SBD
+          - SCR
+          - SDG
+          - SEK
+          - SGD
+          - SHP
+          - SLL
+          - SOS
+          - SRD
+          - SSP
+          - STD
+          - STN
+          - SVC
+          - SYP
+          - SZL
+          - THB
+          - TJS
+          - TMT
+          - TND
+          - TOP
+          - TRY
+          - TTD
+          - TWD
+          - TZS
+          - UAH
+          - UGX
+          - USD
+          - USN
+          - USS
+          - UYI
+          - UYU
+          - UZS
+          - VEF
+          - VND
+          - VUV
+          - WST
+          - XAF
+          - XAG
+          - XAU
+          - XBA
+          - XBB
+          - XBC
+          - XBD
+          - XCD
+          - XDR
+          - XOF
+          - XPD
+          - XPF
+          - XPT
+          - XSU
+          - XTS
+          - XUA
+          - XXX
+          - YER
+          - ZAR
+          - ZMW
+          - ZWL
+          type: string
+        number:
+          type: number
+      title: AlignMonetaryAmount
+      type: object
+    SimpleAccountRequest:
+      description: Account information for the party associated with a pay-in.
+      properties:
+        accountId:
+          format: int64
+          type: integer
+        business:
+          $ref: '#/components/schemas/ContactBusinessRequestCryptoWallet'
+        businessName:
+          type: string
+        countryCode:
+          enum:
+          - UNDEFINED
+          - AC
+          - AD
+          - AE
+          - AF
+          - AG
+          - AI
+          - AL
+          - AM
+          - AN
+          - AO
+          - AQ
+          - AR
+          - AS
+          - AT
+          - AU
+          - AW
+          - AX
+          - AZ
+          - BA
+          - BB
+          - BD
+          - BE
+          - BF
+          - BG
+          - BH
+          - BI
+          - BJ
+          - BL
+          - BM
+          - BN
+          - BO
+          - BQ
+          - BR
+          - BS
+          - BT
+          - BU
+          - BV
+          - BW
+          - BY
+          - BZ
+          - CA
+          - CC
+          - CD
+          - CF
+          - CG
+          - CH
+          - CI
+          - CK
+          - CL
+          - CM
+          - CN
+          - CO
+          - CP
+          - CR
+          - CS
+          - CU
+          - CV
+          - CW
+          - CX
+          - CY
+          - CZ
+          - DE
+          - DG
+          - DJ
+          - DK
+          - DM
+          - DO
+          - DZ
+          - EA
+          - EC
+          - EE
+          - EG
+          - EH
+          - ER
+          - ES
+          - ET
+          - EU
+          - EZ
+          - FI
+          - FJ
+          - FK
+          - FM
+          - FO
+          - FR
+          - FX
+          - GA
+          - GB
+          - GD
+          - GE
+          - GF
+          - GG
+          - GH
+          - GI
+          - GL
+          - GM
+          - GN
+          - GP
+          - GQ
+          - GR
+          - GS
+          - GT
+          - GU
+          - GW
+          - GY
+          - HK
+          - HM
+          - HN
+          - HR
+          - HT
+          - HU
+          - IC
+          - ID
+          - IE
+          - IL
+          - IM
+          - IN
+          - IO
+          - IQ
+          - IR
+          - IS
+          - IT
+          - JE
+          - JM
+          - JO
+          - JP
+          - KE
+          - KG
+          - KH
+          - KI
+          - KM
+          - KN
+          - KP
+          - KR
+          - KW
+          - KY
+          - KZ
+          - LA
+          - LB
+          - LC
+          - LI
+          - LK
+          - LR
+          - LS
+          - LT
+          - LU
+          - LV
+          - LY
+          - MA
+          - MC
+          - MD
+          - ME
+          - MF
+          - MG
+          - MH
+          - MK
+          - ML
+          - MM
+          - MN
+          - MO
+          - MP
+          - MQ
+          - MR
+          - MS
+          - MT
+          - MU
+          - MV
+          - MW
+          - MX
+          - MY
+          - MZ
+          - NA
+          - NC
+          - NE
+          - NF
+          - NG
+          - NI
+          - NL
+          - 'NO'
+          - NP
+          - NR
+          - NT
+          - NU
+          - NZ
+          - OM
+          - PA
+          - PE
+          - PF
+          - PG
+          - PH
+          - PK
+          - PL
+          - PM
+          - PN
+          - PR
+          - PS
+          - PT
+          - PW
+          - PY
+          - QA
+          - RE
+          - RO
+          - RS
+          - RU
+          - RW
+          - SA
+          - SB
+          - SC
+          - SD
+          - SE
+          - SF
+          - SG
+          - SH
+          - SI
+          - SJ
+          - SK
+          - SL
+          - SM
+          - SN
+          - SO
+          - SR
+          - SS
+          - ST
+          - SU
+          - SV
+          - SX
+          - SY
+          - SZ
+          - TA
+          - TC
+          - TD
+          - TF
+          - TG
+          - TH
+          - TJ
+          - TK
+          - TL
+          - TM
+          - TN
+          - TO
+          - TP
+          - TR
+          - TT
+          - TV
+          - TW
+          - TZ
+          - UA
+          - UG
+          - UK
+          - UM
+          - US
+          - UY
+          - UZ
+          - VA
+          - VC
+          - VE
+          - VG
+          - VI
+          - VN
+          - VU
+          - WF
+          - WS
+          - XK
+          - YE
+          - YT
+          - YU
+          - ZA
+          - ZM
+          - ZR
+          - ZW
+          type: string
+        email:
+          type: string
+        extraInfo:
+          additionalProperties:
+            type: object
+          type: object
+        firstName:
+          type: string
+        industry:
+          type: string
+        lastName:
+          type: string
+        middleName:
+          type: string
+        phone:
+          type: string
+        phoneCountryCode:
+          type: string
+        subIndustry:
+          type: string
+        type:
+          enum:
+          - Incomplete
+          - Business
+          - Personal
+          type: string
+      title: SimpleAccountRequest
+      type: object
+  requestBodies:
+    PayoutRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PayoutRequest'
+      description: request
+      required: true
+    WalletWithdrawRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/WalletWithdrawRequest'
+      description: request
+      required: true
+    PaymentRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaymentRequest'
+      description: request
+      required: true
+    PayinRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PayinRequest'
+      description: request
+      required: true
+    AddWalletFundsRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AddWalletFundsRequest'
+      description: request
+      required: true

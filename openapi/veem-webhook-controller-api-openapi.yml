@@ -1,0 +1,310 @@
+openapi: 3.0.0
+info:
+  description: Veem REST API
+  title: Veem API v1.2 attachment-controller webhook-controller API
+  version: v1.2.1
+servers:
+- url: //sandbox-api.veem.com
+tags:
+- description: Webhook Controller
+  name: webhook-controller
+paths:
+  /veem/v1.2/webhooks:
+    post:
+      deprecated: false
+      description: Creates a webhook configuration for the account and platform associated with the provided authorization token
+      operationId: createWebhookUsingPOST_2
+      requestBody:
+        $ref: '#/components/requestBodies/WebhookRequest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookResponse'
+          description: Success, the webhook configuration was created and returned.
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookResponse'
+          description: Created
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Invalid request body
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Forbidden, the token owner doesn't have permission to operate this API
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Create webhook
+      tags:
+      - webhook-controller
+    get:
+      deprecated: false
+      description: Gets all active webhook configurations for the account and platform associated with the provided authorization token.
+      operationId: getWebhooksUsingGET_2
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/WebhookResponse'
+                type: array
+          description: Success, all active webhook configurations were returned.
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Forbidden, the token owner doesn't have permission to operate this API
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Get webhooks
+      tags:
+      - webhook-controller
+  /veem/v1.2/webhooks/{webhookId}:
+    delete:
+      deprecated: false
+      description: Deletes the webhook configuration with the specified ID if it is owned by the account and platform associated with the provided authorization token
+      operationId: deleteWebhookUsingDELETE_2
+      parameters:
+      - description: webhookId
+        in: path
+        name: webhookId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookResponse'
+          description: Success, the webhook configuration was deleted and returned.
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Forbidden, the token owner doesn't have permission to operate this API
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: A webhook configuration with the specified ID was not found
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Delete webhook
+      tags:
+      - webhook-controller
+    get:
+      deprecated: false
+      description: Gets the webhook configuration with the specified ID if it is owned by the account and platform associated with the provided authorization token.
+      operationId: getWebhookUsingGET_2
+      parameters:
+      - description: webhookId
+        in: path
+        name: webhookId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookResponse'
+          description: Success, the webhook configuration was returned.
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Forbidden, the token owner doesn't have permission to operate this API
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: A webhook configuration with the specified ID was not found
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Get webhook
+      tags:
+      - webhook-controller
+    patch:
+      deprecated: false
+      description: Updates the webhook configuration with the specified ID if it is owned by the account and platform associated with the provided authorization token
+      operationId: updateWebhookUsingPATCH_2
+      parameters:
+      - description: webhookId
+        in: path
+        name: webhookId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        $ref: '#/components/requestBodies/WebhookRequest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookResponse'
+          description: Success, the webhook configuration was updated and returned.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Invalid request body
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Forbidden, the token owner doesn't have permission to operate this API
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: A webhook configuration with the specified ID was not found
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VeemErrorResponse'
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Update webhook
+      tags:
+      - webhook-controller
+components:
+  schemas:
+    WebhookResponse:
+      properties:
+        callbackUrl:
+          type: string
+        event:
+          enum:
+          - INBOUND_PAYMENT_STATUS_UPDATED
+          - OUTBOUND_PAYMENT_STATUS_UPDATED
+          type: string
+        id:
+          format: int64
+          type: integer
+        status:
+          enum:
+          - Active
+          - Deleted
+          - Inactive
+          - Inactiving
+          - Closed
+          type: string
+      title: WebhookResponse
+      type: object
+    WebhookRequest:
+      properties:
+        callbackURL:
+          type: string
+        event:
+          enum:
+          - INBOUND_PAYMENT_STATUS_UPDATED
+          - OUTBOUND_PAYMENT_STATUS_UPDATED
+          type: string
+      title: WebhookRequest
+      type: object
+    VeemErrorResponse:
+      properties:
+        code:
+          description: The error code, different than HTTP status codes
+          format: int32
+          type: integer
+        fileName:
+          description: The filename where the exception was thrown
+          type: string
+        lineNumber:
+          description: The line number where the exception was thrown
+          format: int32
+          type: integer
+        logTag:
+          description: Request log tag
+          type: string
+        message:
+          description: The detailed, developer friendly message
+          type: string
+        timestamp:
+          description: The timestamp recorded when the error occurred
+          type: string
+      required:
+      - code
+      - logTag
+      - message
+      title: VeemErrorResponse
+      type: object
+  requestBodies:
+    WebhookRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/WebhookRequest'
+      description: request
+      required: true

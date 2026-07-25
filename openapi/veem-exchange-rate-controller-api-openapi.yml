@@ -1,0 +1,192 @@
+openapi: 3.0.0
+info:
+  description: Veem REST API
+  title: Veem API v1.2 attachment-controller exchange-rate-controller API
+  version: v1.2.1
+servers:
+- url: //sandbox-api.veem.com
+tags:
+- description: Exchange Rate Controller
+  name: exchange-rate-controller
+paths:
+  /veem/v1.2/exchangerates/quote/enhanced-1:
+    post:
+      deprecated: false
+      description: Submits a request to generate an enhanced (fixedFee is included) quote
+      operationId: getQuoteEnhancedUsingPOST-1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuoteRequest'
+        description: request
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuoteResponse'
+          description: Success, a quote has been created in Veem
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '401':
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          description: Forbidden, the token owner doesn't have permission to operate current API
+        '404':
+          description: Not Found, the resource not found
+        '500':
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: Copy of getQuoteEnhanced
+      tags:
+      - exchange-rate-controller
+  /veem/v1.2/exchangerates/quote/enhanced:
+    post:
+      deprecated: false
+      description: Submits a request to generate an enhanced (fixedFee is included) quote
+      operationId: getQuoteEnhancedUsingPOST
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuoteRequest'
+        description: request
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuoteResponse'
+          description: Success, a quote has been created in Veem
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Unauthorized, the token is invalid or expired
+        '401':
+          description: Unauthorized, the token is invalid or expired
+        '403':
+          description: Forbidden, the token owner doesn't have permission to operate current API
+        '404':
+          description: Not Found, the resource not found
+        '500':
+          description: Internal Server Error, see the error code and API doc for reference
+      summary: getQuoteEnhanced
+      tags:
+      - exchange-rate-controller
+components:
+  schemas:
+    QuotePartyResponse:
+      properties:
+        amount:
+          description: The amount for this party
+          type: number
+        currency:
+          description: The currency code
+          type: string
+        fixedFee:
+          $ref: '#/components/schemas/FixedFeeResponse'
+          description: The fixed fee details for this party
+        fxRate:
+          description: The FX rate for this party
+          type: number
+      title: QuotePartyResponse
+      type: object
+    QuoteRequest:
+      properties:
+        bruid:
+          description: The BRUID - FX rate locking UID
+          type: string
+        from:
+          $ref: '#/components/schemas/QuotePartyRequest'
+          description: The payer (from) party details
+        to:
+          $ref: '#/components/schemas/QuotePartyRequest'
+          description: The payee (to) party details
+      required:
+      - from
+      - to
+      title: QuoteRequest
+      type: object
+    FixedFeeResponse:
+      properties:
+        amount:
+          description: The fixed fee amount
+          type: number
+        currency:
+          description: The currency of the fixed fee
+          type: string
+      title: FixedFeeResponse
+      type: object
+    QuotePartyRequest:
+      properties:
+        accountId:
+          description: The account ID of this party
+          format: int64
+          type: integer
+        amount:
+          description: The amount for this party (either from or to amount should be provided, not both)
+          type: number
+        currency:
+          description: The currency code (e.g., USD, EUR, GBP)
+          type: string
+        fundingMethodId:
+          description: The funding method ID for this party
+          format: int64
+          type: integer
+        fundingMethodType:
+          description: The funding method type (BANK, CARD, WALLET, VIRTUALCARD, VIRTUALBANK)
+          enum:
+          - BANK
+          - CARD
+          - WALLET
+          - VIRTUALCARD
+          - VIRTUALBANK
+          type: string
+      required:
+      - accountId
+      - fundingMethodId
+      - fundingMethodType
+      title: QuotePartyRequest
+      type: object
+    ErrorResponse:
+      properties:
+        code:
+          description: The error code, different than HTTP status codes
+          format: int32
+          type: integer
+        error:
+          description: The short message
+          type: string
+        message:
+          description: The detailed, developer friendly message
+          type: string
+        timestamp:
+          description: The timestamp recorded when the error occurred
+          type: string
+      required:
+      - code
+      - error
+      - message
+      title: ErrorResponse
+      type: object
+    QuoteResponse:
+      properties:
+        bruid:
+          description: The BRUID - FX rate locking UID
+          type: string
+        from:
+          $ref: '#/components/schemas/QuotePartyResponse'
+          description: The payer (from) party response details
+        to:
+          $ref: '#/components/schemas/QuotePartyResponse'
+          description: The payee (to) party response details
+      title: QuoteResponse
+      type: object

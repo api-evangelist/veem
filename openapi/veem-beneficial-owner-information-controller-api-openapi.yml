@@ -1,0 +1,141 @@
+openapi: 3.0.0
+info:
+  description: Veem REST API
+  title: Veem API v1.2 attachment-controller beneficial-owner-information-controller API
+  version: v1.2.1
+servers:
+- url: //sandbox-api.veem.com
+tags:
+- description: Beneficial Owner Information Controller
+  name: beneficial-owner-information-controller
+paths:
+  /veem/v1.2/beneficial-ownership:
+    post:
+      deprecated: false
+      operationId: createBoiUsingPOST
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BOIRequest'
+        description: boiRequest
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BeneficialOwnerResponse'
+          description: Created
+      summary: createBoi
+      tags:
+      - beneficial-owner-information-controller
+    get:
+      deprecated: false
+      operationId: getBoiUsingGET
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BeneficialOwnerResponse'
+          description: OK
+      summary: getBoi
+      tags:
+      - beneficial-owner-information-controller
+components:
+  schemas:
+    IndividualOwnerShip:
+      properties:
+        addressCity:
+          type: string
+        addressIsoCountryCode:
+          type: string
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        addressPostalCode:
+          type: string
+        addressState:
+          type: string
+        citizenshipIsoCountryCode:
+          type: string
+        dateOfBirth:
+          type: string
+        dialCode:
+          type: string
+        firstName:
+          type: string
+        id:
+          format: int64
+          type: integer
+        isControlPerson:
+          type: boolean
+        lastName:
+          type: string
+        ownershipPercentage:
+          format: double
+          type: number
+        phoneNumber:
+          type: string
+        phoneNumberType:
+          type: string
+        taxId:
+          type: string
+        title:
+          type: string
+      title: IndividualOwnerShip
+      type: object
+    BusinessOwnerShip:
+      properties:
+        addressCity:
+          type: string
+        addressIsoCountryCode:
+          type: string
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        addressPostalCode:
+          type: string
+        addressState:
+          type: string
+        businessName:
+          type: string
+        id:
+          format: int64
+          type: integer
+        ownershipPercentage:
+          format: double
+          type: number
+        taxId:
+          type: string
+      title: BusinessOwnerShip
+      type: object
+    BOIRequest:
+      properties:
+        beneficialOwnerShip:
+          $ref: '#/components/schemas/BeneficialOwnerShipInformation'
+      title: BOIRequest
+      type: object
+    BeneficialOwnerShipInformation:
+      properties:
+        businessOwnerShip:
+          items:
+            $ref: '#/components/schemas/BusinessOwnerShip'
+          type: array
+        hasAttestation:
+          type: boolean
+        individualOwnerShip:
+          items:
+            $ref: '#/components/schemas/IndividualOwnerShip'
+          type: array
+      title: BeneficialOwnerShipInformation
+      type: object
+    BeneficialOwnerResponse:
+      properties:
+        beneficialOwnerShip:
+          $ref: '#/components/schemas/BeneficialOwnerShipInformation'
+      title: BeneficialOwnerResponse
+      type: object
