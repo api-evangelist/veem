@@ -1,0 +1,24 @@
+generated: '2026-07-21'
+method: searched
+source: developer.veem.com (versioning doc, portal versions) + status.veem.com probe
+description: >-
+  Lifecycle posture of the Veem Public API. Versioning is URI-path based
+  (https://api.veem.com/veem/v1.2/...), with v1.1, v1.2, and v2.0 selectable on
+  the developer portal and some payment/wallet endpoints still served at v1.0.
+  Veem operates a public Atlassian Statuspage at status.veem.com. No published
+  deprecation policy, Sunset/Deprecation header support, SLA document, or
+  dated changelog page was found on the developer portal, and the harvested
+  OpenAPI marks no operations deprecated.
+versioning:
+  scheme: uri-path
+  current: v1.2
+  available: [v1.0, v1.1, v1.2, v2.0]
+  docs: https://developer.veem.com/docs/versioning
+status_page: https://status.veem.com
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No published deprecation policy found; webhook docs commit to backwards-compatible status values ("statuses received via webhooks will not change to ensure backwards compatibility").
+sla: null
+changelog: null
+deprecated_operations: []

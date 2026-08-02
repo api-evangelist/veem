@@ -1,0 +1,62 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/veem-api-openapi.yml + asyncapi/veem-webhooks.yml
+description: >-
+  Entity-relationship graph of the Veem Public API, derived from the harvested
+  OpenAPI resource surface (paths, request/response schemas) and the id
+  references documented in the webhook payloads (payerAccountId,
+  payeeAccountId, invoiceId, paymentId, fundingMethodId). Ids are opaque
+  numeric identifiers; there are no published id prefixes.
+entities:
+  - name: Account
+    description: A Veem business/customer account (KYC-verified); the anchor entity for funding methods, contacts, payments, and webhooks.
+    operations: [createAccountUsingPOST, getAccountUsingGET, editAccountUsingPATCH, createOrUpdateAccountSettingsUsingPOST]
+  - name: BankAccount
+    description: A bank account linked to a Veem account as a funding/receiving method.
+    operations: [addBankAccountUsingPOST, editBankAccountUsingPATCH]
+  - name: BeneficialOwnership
+    description: Beneficial-ownership information (BOI) filed for an account for compliance.
+    operations: [createBoiUsingPOST, getBoiUsingGET]
+  - name: Contact
+    description: An account's payee/payer contact; creatable individually or in batches.
+    operations: [createContactUsingPOST_2, createContactsUsingPOST_2, getContactsUsingGET_2, getContactUsingGET_2, getContactBatchUsingGET_2, searchCustomersUsingGET_2]
+  - name: Payment
+    description: A money movement from payer account to payee; claimless payments skip the receiver claim step.
+    operations: [createPaymentUsingPOST_2, createClaimLessPaymentUsingPOST, getPaymentUsingGET_2, approvePaymentUsingPOST_2]
+  - name: Invoice
+    description: A request for money sent to a payer; when paid it links to the settling payment.
+    operations: [createInvoiceUsingPOST_2, getInvoiceUsingGET_2, approveInvoiceUsingPOST_2, cancelInvoiceUsingPOST_2]
+  - name: Quote
+    description: An enhanced exchange-rate quote (fixed fee included) for a prospective payment.
+    operations: [getQuoteEnhancedUsingPOST]
+  - name: Wallet
+    description: Multi-currency store-of-value wallet; a funding method that can add funds and withdraw.
+    operations: [getFundingMethodsUsingGET_3, getFundingMethodsUsingGET_6, walletAddFundsUsingPOST, walletWithdrawUsingPOST]
+  - name: CryptoWallet
+    description: Crypto wallet funding method with balances, details, transactions, pay-ins and payouts.
+    operations: [getCryptoWallets, getCryptoWalletBalances, getCryptoWalletBalanceById, getCryptoWalletDetails, getCryptoWalletDetailsById, getCryptoWalletTransactions, createCryptoWalletPayin, createCryptoWalletPayout]
+  - name: CryptoWalletApplication
+    description: Application to provision a crypto wallet, with per-currency routes.
+    operations: [createCryptoWalletApplication, getCryptoWalletApplication, patchCryptoWalletApplication, addCryptoWalletApplicationCurrency, getCryptoWalletApplicationRoutes, getCryptoWalletApplicationRoute]
+  - name: Webhook
+    description: Callback configuration subscribing the account to payment/invoice/account events.
+    operations: [createWebhookUsingPOST_2, getWebhooksUsingGET_2, getWebhookUsingGET_2, updateWebhookUsingPATCH_2, deleteWebhookUsingDELETE_2]
+  - name: Attachment
+    description: File attached to a payment or invoice.
+    operations: [uploadAttachmentUsingPOST_2, downloadAttachmentUsingGET_2]
+relationships:
+  - {from: Account, to: BankAccount, type: has_many, via: bankAccountId}
+  - {from: Account, to: BeneficialOwnership, type: has_one, via: accountId}
+  - {from: Account, to: Contact, type: has_many, via: contactId}
+  - {from: Account, to: Wallet, type: has_many, via: walletId}
+  - {from: Account, to: CryptoWallet, type: has_many, via: fundingMethodId}
+  - {from: Account, to: Webhook, type: has_many, via: webhookId}
+  - {from: Payment, to: Account, type: belongs_to, via: payerAccountId}
+  - {from: Payment, to: Account, type: belongs_to, via: payeeAccountId}
+  - {from: Payment, to: Invoice, type: belongs_to, via: invoiceId}
+  - {from: Payment, to: Attachment, type: has_many, via: referenceId}
+  - {from: Invoice, to: Payment, type: has_one, via: paymentId}
+  - {from: Invoice, to: Account, type: belongs_to, via: payerAccountId}
+  - {from: CryptoWalletApplication, to: CryptoWallet, type: has_one, via: fundingMethodId}
+  - {from: CryptoWalletApplication, to: CryptoWalletApplicationRoute, type: has_many, via: routeId}
+  - {from: Wallet, to: Payment, type: has_many, via: fundingMethodId}

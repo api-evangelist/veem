@@ -1,0 +1,25 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.veem.com/docs/oauth
+docs: https://developer.veem.com/docs/oauth
+description: >-
+  OAuth scope surface for the Veem Public API. Veem documents a single
+  coarse-grained scope, "all", used across both the two-legged
+  (client_credentials) and three-legged (authorization_code) flows — there is
+  no published per-resource scope or permission catalog. The published OpenAPI
+  slices declare no oauth2 securitySchemes, so the mechanical derive pass found
+  no in-spec scopes; this file is sourced from the OAuth guide.
+schemes:
+  - name: OAuth2
+    source: https://developer.veem.com/docs/oauth
+    flows:
+      - flow: clientCredentials
+        tokenUrl: https://api.veem.com/oauth/token
+      - flow: authorizationCode
+        authorizationUrl: https://api.veem.com/oauth/authorize
+        tokenUrl: https://api.veem.com/oauth/token
+scopes:
+  - scope: all
+    description: Full access to the Veem Public API on behalf of the authorized account; the only scope Veem documents.
+    flows: [clientCredentials, authorizationCode]
+    sources: [https://developer.veem.com/docs/oauth]

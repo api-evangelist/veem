@@ -1,0 +1,130 @@
+# Veem Global Payments API Documentation
+
+> meta description
+
+## Guides
+- [Introduction To Veem API ](https://developer.veem.com/docs/intro-to-veem-api.md)
+- [Account Creation](https://developer.veem.com/docs/account-creation.md): With Veem's Account Creation API, you can create a Veem account for your business
+- [Account Document](https://developer.veem.com/docs/account-document.md): Adds a document to the account.
+- [Account Regulatory Data](https://developer.veem.com/docs/account-regulatory-data.md): Create or update regulatory data for a Canadian account.
+- [Bank Account](https://developer.veem.com/docs/bank-account.md): Add/modify a bank account linked to an existing Veem account
+- [Bank Account Verification](https://developer.veem.com/docs/bank-account-verification.md): Verify llinked bank account using micro-deposit and micro-debit
+- [Beneficial Ownership Information ](https://developer.veem.com/docs/beneficial-ownership-information.md): Using Veem's Beneficial Ownership endpoint you are able to add beneficial ownership info for an account you just created
+- [Add or Update Default Funding Method](https://developer.veem.com/docs/default-funding-methods.md)
+- [List Funding Methods](https://developer.veem.com/docs/list-funding-methods.md)
+- [Send Money](https://developer.veem.com/docs/send-money.md)
+- [Send Money - Claimless](https://developer.veem.com/docs/create-claimless-payment.md): Send money to new or existing Payees using the Claimless Payment API
+- [Get Payment Status](https://developer.veem.com/docs/get-payment.md): Use this endpoint to get the latest payment status.
+- [Payment Quote](https://developer.veem.com/docs/generate-payment-quote.md): Use these endpoints to get a payment quote.
+- [Request Money (Invoice)](https://developer.veem.com/docs/request-money-invoice.md)
+- [Claim invoice](https://developer.veem.com/docs/claim-invoice.md)
+- [Cancel Invoice](https://developer.veem.com/docs/cancel-invoice.md)
+- [Withdraw Money](https://developer.veem.com/docs/withdraw-money.md): Withdraw funds from a wallet or VBA (Virtual Bank Account)
+- [Payment Report](https://developer.veem.com/docs/payment-report.md): Generate reports with filtered payment data for clear insights
+- [Webhook Notification](https://developer.veem.com/docs/webhook-notification.md): Use webhooks to be notified about payment events for a payment transaction
+- [Error handling](https://developer.veem.com/docs/veem-errors.md): Effectively handle declines, validation issues, and other challenges
+- [Veem Multi-Currency Wallet](https://developer.veem.com/docs/veem-wallet.md): Hold, send, and receive funds in multiple currencies.
+- [Wallet Transactions](https://developer.veem.com/docs/wallet-transactions.md): Get wallet journal transactions for deposits into and payments out of a wallet.
+- [Virtual Bank Account](https://developer.veem.com/docs/virtual-bank-account.md): Create and manage your Virtual Bank Account.
+- [Virtual Bank Account Quick Start Guide](https://developer.veem.com/docs/virtual-bank-account-quick-start-guide.md): Learn how to apply for and activate a Virtual Bank Account.
+- [Getting Started (Common setup)](https://developer.veem.com/docs/getting-started-1.md)
+- [Card Plugin](https://developer.veem.com/docs/card-plugin.md): Veem Card Plugin allows to seamlessly collect card details from your customers, ensuring secure and compliant payment onboarding within your app or platform.
+- [Bank Plugin](https://developer.veem.com/docs/bank-plugin.md): Veem Bank Plugin allows to seamlessly collect bank details from your customers, ensuring secure and compliant payment onboarding within your app or platform.
+- [Payee Plugin](https://developer.veem.com/docs/payee-plugin.md): Veem Payee Plugin ensures secure and compliant Payee onboarding within your app or platform.
+- [Plaid Plugin (Beta)](https://developer.veem.com/docs/plaid-plugin.md): Veem Plaid Plugin allows to seamlessly collect bank details from your customers via the Plaid integration, ensuring secure and compliant payment onboarding within your app or platform.
+- [Beneficial Ownership Information Plugin](https://developer.veem.com/docs/beneficial-ownership-information-plugin.md): Veem Beneficial Ownership Information(BOI) Plugin allows collection of BOI from your customers, ensuring secure and compliant payment onboarding within your app or platform.
+- [Identity Check Plugin](https://developer.veem.com/docs/identity-check-plugin.md): Veem Identity Check Plugin allows verification of from your customers, ensuring secure and compliant payment onboarding within your app or platform.
+- [OAuth](https://developer.veem.com/docs/oauth.md): Learn about authentication methods for Veem Public API.
+- [Webhooks Notification](https://developer.veem.com/docs/webhook-notifications.md): Use webhooks to be notified about payment, account and invoice events.
+- [Sandbox Environment Quick Start](https://developer.veem.com/docs/sandbox-environment.md): Quick start guide for partners using the Veem Sandbox environment.
+
+## API Reference
+- [createClaimlessPayment](https://developer.veem.com/reference/createclaimlesspaymentusingpost.md): Creates a pay direct payment to the payee's (receiver's) bank account
+- [createClaimlessPayment](https://developer.veem.com/reference/createclaimlesspaymentusingpost-1.md): Creates a pay direct payment to the payee's (receiver's) bank account
+- [Downloads the referenced file](https://developer.veem.com/reference/downloadattachmentusingget_2.md)
+- [Uploads the external attachment for an entity Payment or Invoice](https://developer.veem.com/reference/uploadattachmentusingpost_2.md)
+- [addBankAccount](https://developer.veem.com/reference/addbankaccountusingpost.md)
+- [editBankAccount](https://developer.veem.com/reference/editbankaccountusingpatch.md)
+- [addBankAccount](https://developer.veem.com/reference/addbankaccountusingpost-1.md)
+- [editBankAccount](https://developer.veem.com/reference/editbankaccountusingpatch-1.md)
+- [getBoi](https://developer.veem.com/reference/getboiusingget.md)
+- [createBoi](https://developer.veem.com/reference/createboiusingpost.md)
+- [getBoi](https://developer.veem.com/reference/getboiusingget-1.md)
+- [createBoi](https://developer.veem.com/reference/createboiusingpost-1.md)
+- [getContacts](https://developer.veem.com/reference/getcontactsusingget_2.md): Get a page of account contacts by email address, first,last name, batchId, and business name
+- [createContact](https://developer.veem.com/reference/createcontactusingpost_2.md): Create a contact in a batch
+- [createContacts](https://developer.veem.com/reference/createcontactsusingpost_2.md): Create multiple contacts in a batch
+- [getContactBatch](https://developer.veem.com/reference/getcontactbatchusingget_2.md): Get the current state of a contact creation batch
+- [Get Contact by ID](https://developer.veem.com/reference/getcontactusingget_2.md): Get an account contact by ID
+- [searchCustomers](https://developer.veem.com/reference/searchcustomersusingget_2.md): Search Veem Contacts
+- [createInvoice](https://developer.veem.com/reference/createinvoiceusingpost_2.md): posts an invoice and sends to receiver
+- [getInvoice](https://developer.veem.com/reference/getinvoiceusingget_2.md): get invoice details
+- [approveInvoice](https://developer.veem.com/reference/approveinvoiceusingpost_2.md): approve an invoice
+- [cancelInvoice](https://developer.veem.com/reference/cancelinvoiceusingpost_2.md): cancel an invoice
+- [createInvoice](https://developer.veem.com/reference/createinvoiceusingpost_2-1.md): posts an invoice and sends to receiver
+- [getInvoice](https://developer.veem.com/reference/getinvoiceusingget_2-1.md): get invoice details
+- [approveInvoice](https://developer.veem.com/reference/approveinvoiceusingpost_2-1.md): approve an invoice
+- [cancelInvoice](https://developer.veem.com/reference/cancelinvoiceusingpost_2-1.md): cancel an invoice
+- [Country Currency Map](https://developer.veem.com/reference/getcountrycurrencymapusingget_2.md): Returns a list of countries supported and currencies for each
+- [createAccount](https://developer.veem.com/reference/createaccountusingpost.md)
+- [getAccount](https://developer.veem.com/reference/getaccountusingget.md)
+- [editAccount](https://developer.veem.com/reference/editaccountusingpatch.md)
+- [createOrUpdateAccountSettings](https://developer.veem.com/reference/createorupdateaccountsettingsusingpost.md): Creates or updates account settings for a specific account
+- [createAccount](https://developer.veem.com/reference/createaccountusingpost-1.md)
+- [getAccount](https://developer.veem.com/reference/getaccountusingget-1.md)
+- [editAccount](https://developer.veem.com/reference/editaccountusingpatch-1.md)
+- [createOrUpdateAccountSettings](https://developer.veem.com/reference/createorupdateaccountsettingsusingpost-1.md): Creates or updates account settings for a specific account
+- [createPayment](https://developer.veem.com/reference/createpaymentusingpost_2.md): post a payment and sends to receiver
+- [getPayment](https://developer.veem.com/reference/getpaymentusingget_2.md): get payment details
+- [approvePayment](https://developer.veem.com/reference/approvepaymentusingpost_2.md): approve a payment
+- [walletAddFunds](https://developer.veem.com/reference/walletaddfundsusingpost.md): Wallet Add Funds
+- [walletWithdraw](https://developer.veem.com/reference/walletwithdrawusingpost.md): Wallet Withdraw
+- [Get Wallet Balance](https://developer.veem.com/reference/getfundingmethodsusingget_3.md): Return user's wallet balance
+- [Get Wallet by id](https://developer.veem.com/reference/getfundingmethodsusingget_6.md): Return user's wallet by id
+- [Get Wallet Balance](https://developer.veem.com/reference/getfundingmethodsusingget_3-1.md): Return user's wallet balance
+- [Get Wallet by id](https://developer.veem.com/reference/getfundingmethodsusingget_6-1.md): Return user's wallet by id
+- [Get webhooks](https://developer.veem.com/reference/getwebhooksusingget_2.md): Gets all active webhook configurations for the account and platform associated with the provided authorization token.
+- [Create webhook](https://developer.veem.com/reference/createwebhookusingpost_2.md): Creates a webhook configuration for the account and platform associated with the provided authorization token
+- [Get webhook](https://developer.veem.com/reference/getwebhookusingget_2.md): Gets the webhook configuration with the specified ID if it is owned by the account and platform associated with the provided authorization token.
+- [Delete webhook](https://developer.veem.com/reference/deletewebhookusingdelete_2.md): Deletes the webhook configuration with the specified ID if it is owned by the account and platform associated with the provided authorization token
+- [Update webhook](https://developer.veem.com/reference/updatewebhookusingpatch_2.md): Updates the webhook configuration with the specified ID if it is owned by the account and platform associated with the provided authorization token
+- [Get webhooks](https://developer.veem.com/reference/getwebhooksusingget_2-1.md): Gets all active webhook configurations for the account and platform associated with the provided authorization token.
+- [Create webhook](https://developer.veem.com/reference/createwebhookusingpost_2-1.md): Creates a webhook configuration for the account and platform associated with the provided authorization token
+- [Delete webhook](https://developer.veem.com/reference/deletewebhookusingdelete_2-1.md): Deletes the webhook configuration with the specified ID if it is owned by the account and platform associated with the provided authorization token
+- [Get webhook](https://developer.veem.com/reference/getwebhookusingget_2-1.md): Gets the webhook configuration with the specified ID if it is owned by the account and platform associated with the provided authorization token.
+- [Update webhook](https://developer.veem.com/reference/updatewebhookusingpatch_2-1.md): Updates the webhook configuration with the specified ID if it is owned by the account and platform associated with the provided authorization token
+- [getQuoteEnhanced](https://developer.veem.com/reference/getquoteenhancedusingpost.md): Submits a request to generate an enhanced (fixedFee is included) quote
+- [getQuoteEnhanced](https://developer.veem.com/reference/getquoteenhancedusingpost-1.md): Submits a request to generate an enhanced (fixedFee is included) quote
+- [Copy of getQuoteEnhanced](https://developer.veem.com/reference/getquoteenhancedusingpost-1-1.md): Submits a request to generate an enhanced (fixedFee is included) quote
+- [Copy of getQuoteEnhanced](https://developer.veem.com/reference/getquoteenhancedusingpost-1-2.md): Submits a request to generate an enhanced (fixedFee is included) quote
+- [Downloads the referenced file](https://developer.veem.com/reference/downloadattachmentusingget_2-1.md)
+- [Uploads the external attachment for an entity Payment or Invoice](https://developer.veem.com/reference/uploadattachmentusingpost_2-1.md)
+- [getContacts](https://developer.veem.com/reference/getcontactsusingget_2-1.md): Get a page of account contacts by email address, first,last name, batchId, and business name
+- [createContact](https://developer.veem.com/reference/createcontactusingpost_2-1.md): Create a contact in a batch
+- [Get Contact by ID](https://developer.veem.com/reference/getcontactusingget_2-1.md): Get an account contact by ID
+- [createContacts](https://developer.veem.com/reference/createcontactsusingpost_2-1.md): Create multiple contacts in a batch
+- [getContactBatch](https://developer.veem.com/reference/getcontactbatchusingget_2-1.md): Get the current state of a contact creation batch
+- [searchCustomers](https://developer.veem.com/reference/searchcustomersusingget_2-1.md): Search Veem Contacts
+- [Country Currency Map](https://developer.veem.com/reference/getcountrycurrencymapusingget_2-1.md): Returns a list of countries supported and currencies for each
+- [Create a Crypto Wallet pay-in](https://developer.veem.com/reference/createcryptowalletpayin.md): Creates deposit instructions for moving funds to a crypto wallet externally.
+- [Create a Crypto Wallet payout](https://developer.veem.com/reference/createcryptowalletpayout.md): Withdraw Crypto Wallet funds to an external address, creating a payment.
+- [walletAddFunds](https://developer.veem.com/reference/walletaddfundsusingpost-1.md): Wallet Add Funds
+- [walletWithdraw](https://developer.veem.com/reference/walletwithdrawusingpost-1.md): Wallet Withdraw
+- [createPayment](https://developer.veem.com/reference/createpaymentusingpost_2-1.md): post a payment and sends to receiver
+- [getPayment](https://developer.veem.com/reference/getpaymentusingget_2-1.md): get payment details
+- [approvePayment](https://developer.veem.com/reference/approvepaymentusingpost_2-1.md): approve a payment
+- [Get payer's Crypto Wallets](https://developer.veem.com/reference/getcryptowallets.md): Gets the Crypto Wallet information for the payer, including status, currency and chain details.
+- [Create a crypto wallet application](https://developer.veem.com/reference/createcryptowalletapplication.md): Creates a new crypto wallet application.
+- [Retrieve a crypto wallet application by ID](https://developer.veem.com/reference/getcryptowalletapplication.md): Returns a specific crypto wallet application.
+- [Update a crypto wallet application](https://developer.veem.com/reference/patchcryptowalletapplication.md): Updates an existing crypto wallet application.
+- [Add a currency to a crypto wallet application](https://developer.veem.com/reference/addcryptowalletapplicationcurrency.md): Provisions an additional currency or route for an existing crypto wallet application.
+- [Retrieve crypto wallet application routes](https://developer.veem.com/reference/getcryptowalletapplicationroutes.md): Returns the routes for a specific crypto wallet application.
+- [Retrieve a crypto wallet application route by ID](https://developer.veem.com/reference/getcryptowalletapplicationroute.md): Returns a specific route for a crypto wallet application.
+- [Retrieve all crypto wallet balances](https://developer.veem.com/reference/getcryptowalletbalances.md): Returns a list of balance details for all crypto wallets.
+- [Retrieve crypto wallet balance by funding method ID](https://developer.veem.com/reference/getcryptowalletbalancebyid.md): Returns the balance details of a specific crypto wallet.
+- [Retrieve all crypto wallet details](https://developer.veem.com/reference/getcryptowalletdetails.md): Returns a list of details for all crypto wallets.
+- [Retrieve crypto wallet details by funding method ID](https://developer.veem.com/reference/getcryptowalletdetailsbyid.md): Returns detailed information for a specific crypto wallet.
+- [Retrieve crypto wallet transactions](https://developer.veem.com/reference/getcryptowallettransactions.md): Returns paginated transactions for a crypto wallet within a specified date range.
+
+## Pages
+- [Dev Dashboard Sandbox](https://developer.veem.com/dev-dashboard-sandbox.md)

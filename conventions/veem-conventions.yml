@@ -1,0 +1,63 @@
+generated: '2026-07-21'
+method: searched
+source: developer.veem.com docs (oauth, webhook-notifications, versioning) + openapi/veem-api-openapi.yml
+docs:
+  - https://developer.veem.com/docs/oauth
+  - https://developer.veem.com/docs/webhook-notifications
+  - https://developer.veem.com/docs/veem-errors
+description: >-
+  Cross-cutting request/response semantics of the Veem Public API, captured
+  from the developer portal and derived from the harvested OpenAPI. Veem is a
+  B2B global-payments API: OAuth2 bearer auth, URI-path versioning
+  (/veem/v1.2/...), a mandatory per-request X-Request-Id UUID that doubles as
+  duplicate-request protection, page-number pagination on list endpoints, and
+  a flat code/message error envelope with numeric Veem error codes.
+authentication:
+  style: OAuth 2.0 bearer token (two-legged client_credentials or three-legged authorization_code)
+  header: 'Authorization: Bearer <access_token>'
+  artifact: authentication/veem-authentication.yml
+idempotency:
+  supported: true
+  mechanism: request-id header
+  header: X-Request-Id
+  format: UUID
+  required: true
+  semantics: >-
+    Every write request must carry a unique X-Request-Id (UUID). Reusing an
+    X-Request-Id value returns 409 Conflict, preventing duplicate processing of
+    the same request (duplicate-submission protection rather than a
+    stored-response replay a la Stripe's Idempotency-Key). Payment webhook
+    payloads echo the originating request as originalRequestId.
+  docs: https://developer.veem.com/docs/webhook-notifications
+versioning:
+  scheme: uri-path
+  current: v1.2
+  pattern: /veem/{version}/... (some payment/wallet endpoints remain on v1.0)
+  portal_versions: [v1.1, v1.2, v2.0]
+  docs: https://developer.veem.com/docs/versioning
+  artifact: lifecycle/veem-lifecycle.yml
+pagination:
+  style: page-number
+  request_params: [pageNumber, pageSize]
+  operations: [getContactsUsingGET_2, getCryptoWalletTransactions]
+  source: openapi/veem-api-openapi.yml
+request_tracing:
+  header: X-Request-Id
+  direction: request
+  notes: Same header that provides duplicate protection; UUID format, unique per API request.
+error_envelope:
+  shape: '{code, error, message, timestamp} (ErrorResponse) / {code, message, logTag, timestamp, ...} (VeemErrorResponse)'
+  code_style: numeric Veem error codes (e.g. 50001202 INVALID_EMAIL_ADDRESS)
+  artifact: errors/veem-error-codes.yml
+  derived_status_codes: [200, 201, 400, 401, 403, 404, 409, 500]
+content_type: 'application/json (requests require Content-Type: application/json)'
+rate_limits:
+  documented: false
+  notes: No public rate-limit reference or rate-limit response headers documented on the developer portal.
+webhooks:
+  artifact: asyncapi/veem-webhooks.yml
+  signature_header: ACCESS-SIGNATURE (HMAC-SHA256 keyed with your clientId over the payload)
+field_expansion:
+  documented: false
+metadata:
+  documented: false

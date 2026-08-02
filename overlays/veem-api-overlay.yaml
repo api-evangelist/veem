@@ -1,0 +1,46 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Veem Public API
+  version: 1.0.0
+x-generated: '2026-07-21'
+x-method: generated
+x-source: openapi/veem-api-openapi.yml
+extends: openapi/veem-api-openapi.yml
+actions:
+  - target: $.info
+    description: Provenance and portal links the published slices omit.
+    update:
+      contact:
+        name: Veem Developer Support
+        email: devsupport@veem.com
+        url: https://developer.veem.com
+      x-apievangelist:
+        harvested: '2026-07-21'
+        source: https://developer.veem.com/llms.txt reference pages (per-operation OpenAPI slices, merged)
+        provider: veem
+  - target: $.servers
+    description: The published slices carry only the protocol-relative sandbox server; add explicit production + sandbox servers per the versioning and sandbox docs.
+    update:
+      - url: https://api.veem.com
+        description: Production
+      - url: https://sandbox-api.veem.com
+        description: Sandbox (IP-whitelisted; see sandbox/veem-sandbox.yml)
+  - target: $
+    description: Security is documented on the portal (OAuth guide) but absent from the published slices; declare the OAuth2 scheme captured in authentication/veem-authentication.yml.
+    update:
+      components:
+        securitySchemes:
+          OAuth2:
+            type: oauth2
+            flows:
+              clientCredentials:
+                tokenUrl: https://api.veem.com/oauth/token
+                scopes:
+                  all: Full access to the Veem Public API
+              authorizationCode:
+                authorizationUrl: https://api.veem.com/oauth/authorize
+                tokenUrl: https://api.veem.com/oauth/token
+                scopes:
+                  all: Full access to the Veem Public API
+      security:
+        - OAuth2: [all]

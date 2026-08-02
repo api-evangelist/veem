@@ -1,0 +1,40 @@
+{
+  "provider": "veem",
+  "sources": [
+    "veem-attachment-controller-api-openapi.yml",
+    "veem-bank-account-controller-api-openapi.yml",
+    "veem-beneficial-owner-information-controller-api-openapi.yml",
+    "veem-claimless-payment-controller-api-openapi.yml",
+    "veem-contact-controller-api-openapi.yml",
+    "veem-crypto-wallet-controller-api-openapi.yml",
+    "veem-customer-controller-api-openapi.yml",
+    "veem-exchange-rate-controller-api-openapi.yml",
+    "veem-invoice-controller-api-openapi.yml",
+    "veem-meta-controller-api-openapi.yml",
+    "veem-open-account-controller-api-openapi.yml",
+    "veem-payment-controller-api-openapi.yml",
+    "veem-wallet-controller-api-openapi.yml",
+    "veem-webhook-controller-api-openapi.yml"
+  ],
+  "outputs": [
+    "veem-attachment-controller-api-openapi.yml",
+    "veem-bank-account-controller-api-openapi.yml",
+    "veem-beneficial-owner-information-controller-api-openapi.yml",
+    "veem-claimless-payment-controller-api-openapi.yml",
+    "veem-contact-controller-api-openapi.yml",
+    "veem-crypto-wallet-controller-api-openapi.yml",
+    "veem-customer-controller-api-openapi.yml",
+    "veem-exchange-rate-controller-api-openapi.yml",
+    "veem-invoice-controller-api-openapi.yml",
+    "veem-meta-controller-api-openapi.yml",
+    "veem-open-account-controller-api-openapi.yml",
+    "veem-payment-controller-api-openapi.yml",
+    "veem-wallet-controller-api-openapi.yml",
+    "veem-webhook-controller-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

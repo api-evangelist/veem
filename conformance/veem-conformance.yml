@@ -1,0 +1,41 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/veem-api-openapi.yml + developer.veem.com docs + live probes
+description: >-
+  Cross-cutting standards conformance for the Veem Public API, derived from the
+  harvested OpenAPI and the developer-portal docs, with live probes of the
+  OIDC/well-known surface. Veem is OAuth2-based but publishes no compliance /
+  certification program page that we could verify (www.veem.com is
+  Cloudflare-challenged to automated fetches), so no Compliance pointer is
+  emitted.
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: Documented two-legged (client_credentials) and three-legged (authorization_code) OAuth 2.0 flows with refresh_token at /oauth/token and /oauth/authorize (https://developer.veem.com/docs/oauth).
+  - id: oidc
+    conforms: false
+    evidence: No /.well-known/openid-configuration published (probed 403/404 on all hosts); OAuth only, no ID tokens documented.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use a proprietary flat JSON envelope (ErrorResponse code/error/message/timestamp), not application/problem+json.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: /.well-known/security.txt not published on any probed host (see well-known/veem-well-known.yml).
+  - id: pagination
+    conforms: true
+    evidence: Page-number pagination (pageNumber/pageSize) on list operations (getContactsUsingGET_2, getCryptoWalletTransactions) in openapi/veem-api-openapi.yml.
+  - id: idempotency
+    conforms: true
+    evidence: Mandatory unique X-Request-Id (UUID) per request; reuse returns 409 Conflict (https://developer.veem.com/docs/webhook-notifications) — duplicate-request protection rather than Stripe-style response replay.
+  - id: webhook-signing
+    conforms: true
+    evidence: ACCESS-SIGNATURE header, HMAC-SHA256 keyed with clientId over the webhook payload (https://developer.veem.com/docs/webhook-notifications).
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: No Sunset/Deprecation header support documented.
+  - id: json-api
+    conforms: false
+    evidence: Plain JSON resources; no JSON:API media type.
+  - id: fapi
+    conforms: false
+    evidence: No FAPI profile claims found on the developer portal.

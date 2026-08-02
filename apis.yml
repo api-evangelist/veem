@@ -1,28 +1,306 @@
 aid: veem
 name: Veem
-description: 'Veem is a company surfaced as a portfolio company of gv, pantera-capital and added to the
-  API Evangelist network as a stub for enrichment. Sector: enterprise. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: >-
+  Veem is a global payments network that lets businesses send, receive, and
+  request payments domestically and across borders. Its Public API covers
+  account creation and KYC (including beneficial ownership), bank accounts and
+  funding methods, claimless payments, invoices, multi-currency wallets,
+  virtual bank accounts, crypto wallets, exchange-rate quotes, and webhooks,
+  with embeddable Web SDK plugins for collecting card, bank, and identity
+  data inside partner apps.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://logo.clearbit.com/veem.com
 url: https://raw.githubusercontent.com/api-evangelist/veem/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - gv
 - pantera-capital
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profile
+x-tier-reason: enriched-provider
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
-- Company
-- Enterprise
-apis: []
+- Payments
+- B2B Payments
+- Cross-Border Payments
+- Invoicing
+- Wallets
+- Fintech
+- Global Payments
+apis:
+- aid: veem:veem-attachment-controller-api
+  name: Veem attachment-controller API
+  description: Attachment Controller
+  humanURL: https://developer.veem.com
+  baseURL: https://api.veem.com
+  tags:
+  - attachment-controller
+  properties:
+  - type: OpenAPI
+    url: openapi/veem-attachment-controller-api-openapi.yml
+  - type: Documentation
+    url: https://developer.veem.com/docs
+  - type: APIReference
+    url: https://developer.veem.com/reference
+- aid: veem:veem-bank-account-controller-api
+  name: Veem bank-account-controller API
+  description: Bank Account Controller
+  humanURL: https://developer.veem.com
+  baseURL: https://api.veem.com
+  tags:
+  - bank-account-controller
+  properties:
+  - type: OpenAPI
+    url: openapi/veem-bank-account-controller-api-openapi.yml
+  - type: Documentation
+    url: https://developer.veem.com/docs
+  - type: APIReference
+    url: https://developer.veem.com/reference
+- aid: veem:veem-beneficial-owner-information-controller-api
+  name: Veem beneficial-owner-information-controller API
+  description: Beneficial Owner Information Controller
+  humanURL: https://developer.veem.com
+  baseURL: https://api.veem.com
+  tags:
+  - beneficial-owner-information-controller
+  properties:
+  - type: OpenAPI
+    url: openapi/veem-beneficial-owner-information-controller-api-openapi.yml
+  - type: Documentation
+    url: https://developer.veem.com/docs
+  - type: APIReference
+    url: https://developer.veem.com/reference
+- aid: veem:veem-claimless-payment-controller-api
+  name: Veem claimless-payment-controller API
+  description: Claimless Payment Controller
+  humanURL: https://developer.veem.com
+  baseURL: https://api.veem.com
+  tags:
+  - claimless-payment-controller
+  properties:
+  - type: OpenAPI
+    url: openapi/veem-claimless-payment-controller-api-openapi.yml
+  - type: Documentation
+    url: https://developer.veem.com/docs
+  - type: APIReference
+    url: https://developer.veem.com/reference
+- aid: veem:veem-contact-controller-api
+  name: Veem contact-controller API
+  description: Contact Controller
+  humanURL: https://developer.veem.com
+  baseURL: https://api.veem.com
+  tags:
+  - contact-controller
+  properties:
+  - type: OpenAPI
+    url: openapi/veem-contact-controller-api-openapi.yml
+  - type: Documentation
+    url: https://developer.veem.com/docs
+  - type: APIReference
+    url: https://developer.veem.com/reference
+- aid: veem:veem-crypto-wallet-controller-api
+  name: Veem crypto-wallet-controller API
+  description: For managing crypto wallets, including balances, details, transactions and pay-ins
+  humanURL: https://developer.veem.com
+  baseURL: https://api.veem.com
+  tags:
+  - crypto-wallet-controller
+  properties:
+  - type: OpenAPI
+    url: openapi/veem-crypto-wallet-controller-api-openapi.yml
+  - type: Documentation
+    url: https://developer.veem.com/docs
+  - type: APIReference
+    url: https://developer.veem.com/reference
+- aid: veem:veem-customer-controller-api
+  name: Veem customer-controller API
+  description: Customer Controller
+  humanURL: https://developer.veem.com
+  baseURL: https://api.veem.com
+  tags:
+  - customer-controller
+  properties:
+  - type: OpenAPI
+    url: openapi/veem-customer-controller-api-openapi.yml
+  - type: Documentation
+    url: https://developer.veem.com/docs
+  - type: APIReference
+    url: https://developer.veem.com/reference
+- aid: veem:veem-exchange-rate-controller-api
+  name: Veem exchange-rate-controller API
+  description: Exchange Rate Controller
+  humanURL: https://developer.veem.com
+  baseURL: https://api.veem.com
+  tags:
+  - exchange-rate-controller
+  properties:
+  - type: OpenAPI
+    url: openapi/veem-exchange-rate-controller-api-openapi.yml
+  - type: Documentation
+    url: https://developer.veem.com/docs
+  - type: APIReference
+    url: https://developer.veem.com/reference
+- aid: veem:veem-invoice-controller-api
+  name: Veem invoice-controller API
+  description: Invoice Controller
+  humanURL: https://developer.veem.com
+  baseURL: https://api.veem.com
+  tags:
+  - invoice-controller
+  properties:
+  - type: OpenAPI
+    url: openapi/veem-invoice-controller-api-openapi.yml
+  - type: Documentation
+    url: https://developer.veem.com/docs
+  - type: APIReference
+    url: https://developer.veem.com/reference
+- aid: veem:veem-meta-controller-api
+  name: Veem meta-controller API
+  description: Meta Controller
+  humanURL: https://developer.veem.com
+  baseURL: https://api.veem.com
+  tags:
+  - meta-controller
+  properties:
+  - type: OpenAPI
+    url: openapi/veem-meta-controller-api-openapi.yml
+  - type: Documentation
+    url: https://developer.veem.com/docs
+  - type: APIReference
+    url: https://developer.veem.com/reference
+- aid: veem:veem-open-account-controller-api
+  name: Veem open-account-controller API
+  description: Open Account Controller
+  humanURL: https://developer.veem.com
+  baseURL: https://api.veem.com
+  tags:
+  - open-account-controller
+  properties:
+  - type: OpenAPI
+    url: openapi/veem-open-account-controller-api-openapi.yml
+  - type: Documentation
+    url: https://developer.veem.com/docs
+  - type: APIReference
+    url: https://developer.veem.com/reference
+- aid: veem:veem-payment-controller-api
+  name: Veem payment-controller API
+  description: Payment Controller
+  humanURL: https://developer.veem.com
+  baseURL: https://api.veem.com
+  tags:
+  - payment-controller
+  properties:
+  - type: OpenAPI
+    url: openapi/veem-payment-controller-api-openapi.yml
+  - type: Documentation
+    url: https://developer.veem.com/docs
+  - type: APIReference
+    url: https://developer.veem.com/reference
+- aid: veem:veem-wallet-controller-api
+  name: Veem wallet-controller API
+  description: Wallet Controller
+  humanURL: https://developer.veem.com
+  baseURL: https://api.veem.com
+  tags:
+  - wallet-controller
+  properties:
+  - type: OpenAPI
+    url: openapi/veem-wallet-controller-api-openapi.yml
+  - type: Documentation
+    url: https://developer.veem.com/docs
+  - type: APIReference
+    url: https://developer.veem.com/reference
+- aid: veem:veem-webhook-controller-api
+  name: Veem webhook-controller API
+  description: Webhook Controller
+  humanURL: https://developer.veem.com
+  baseURL: https://api.veem.com
+  tags:
+  - webhook-controller
+  properties:
+  - type: OpenAPI
+    url: openapi/veem-webhook-controller-api-openapi.yml
+  - type: Documentation
+    url: https://developer.veem.com/docs
+  - type: APIReference
+    url: https://developer.veem.com/reference
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/veem-agentic-access.yml
 - type: Website
-  url: http://veem.com
+  url: https://www.veem.com
+- type: DeveloperPortal
+  url: https://developer.veem.com
+- type: Documentation
+  url: https://developer.veem.com/docs
+- type: APIReference
+  url: https://developer.veem.com/reference
+- type: GettingStarted
+  url: https://developer.veem.com/docs/intro-to-veem-api
+- type: GitHubOrganization
+  url: https://github.com/veeminc
+- type: Postman
+  url: https://www.postman.com/veem/veem-public-workspace/collection/4dtpa4r/veem-public-api
+- type: StatusPage
+  url: https://status.veem.com
+- type: Login
+  url: https://apps.veem.com/CustomerApp/o/signin
+- type: LLMsTxt
+  url: llms/veem-llms.txt
+- type: Packages
+  url: packages/veem-packages.yml
+- type: SDKs
+  url: packages/veem-packages.yml
+- type: WellKnown
+  url: well-known/veem-well-known.yml
+- type: MCPServer
+  url: mcp/veem-mcp.yml
+- type: Conformance
+  url: conformance/veem-conformance.yml
+- type: ErrorCatalog
+  url: errors/veem-error-codes.yml
+- type: Lifecycle
+  url: lifecycle/veem-lifecycle.yml
+- type: OAuthScopes
+  url: scopes/veem-scopes.yml
+- type: Authentication
+  url: authentication/veem-authentication.yml
+- type: DomainSecurity
+  url: security/veem-domain-security.yml
+- type: Sandbox
+  url: sandbox/veem-sandbox.yml
+- type: Conventions
+  url: conventions/veem-conventions.yml
+- type: Idempotency
+  url: conventions/veem-conventions.yml
+- type: Webhooks
+  url: asyncapi/veem-webhooks.yml
+- type: Components
+  url: components/veem-components.yml
+- type: DataModel
+  url: data-model/veem-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 24
+  pass: local-v1

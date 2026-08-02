@@ -1,0 +1,43 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.veem.com/docs/oauth
+docs: https://developer.veem.com/docs/oauth
+description: >-
+  Veem Public API authentication profile, captured from the developer-portal
+  OAuth guide (the published OpenAPI operation slices declare no
+  securitySchemes, so this profile is documentation-sourced). Veem uses OAuth
+  2.0 in two-legged (client_credentials, server-to-server on your own behalf)
+  and three-legged (authorization_code, on behalf of another Veem user) forms,
+  plus refresh_token. Client credentials are sent as an HTTP Basic header
+  (base64 of client_id:client_secret) on the token call; API calls carry the
+  access token as a Bearer Authorization header. Client ID/Secret are generated
+  in the dashboard under Settings > Integrations > Connect Veem API (production
+  credentials are visible only to the primary account owner).
+summary:
+  types: [oauth2]
+  oauth2_flows: [clientCredentials, authorizationCode, refreshToken]
+  token_style: bearer
+schemes:
+  - name: OAuth2
+    type: oauth2
+    flows:
+      - flow: clientCredentials
+        tokenUrl: https://api.veem.com/oauth/token
+        sandboxTokenUrl: https://sandbox-api.veem.com/oauth/token
+        scopes: [all]
+        notes: 'Body x-www-form-urlencoded: grant_type=client_credentials, scope=all; Authorization: Basic <base64 client_id:client_secret>. Token response includes access_token, refresh_token, expires_in (~31535999s), account_id, user_id.'
+      - flow: authorizationCode
+        authorizationUrl: https://api.veem.com/oauth/authorize
+        tokenUrl: https://api.veem.com/oauth/token
+        sandboxAuthorizationUrl: https://sandbox-api.veem.com/oauth/authorize
+        sandboxTokenUrl: https://sandbox-api.veem.com/oauth/token
+        scopes: [all]
+        notes: '"Connect with Veem" flow; redirect_uri must match one registered with your development keys; response_type=code, then exchange the code at the token endpoint.'
+      - flow: refreshToken
+        tokenUrl: https://api.veem.com/oauth/token
+        notes: grant_type=refresh_token with the refresh token; expired tokens return 401 Unauthorized.
+usage:
+  header: 'Authorization: Bearer <access_token>'
+  additional_required_headers:
+    - name: X-Request-Id
+      description: Unique UUID per request; reusing a value returns 409 Conflict (duplicate-request protection). See conventions/veem-conventions.yml.

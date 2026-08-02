@@ -1,0 +1,52 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.veem.com/docs/sandbox-environment
+docs:
+  - https://developer.veem.com/docs/sandbox-environment
+  - https://developer.veem.com/docs/oauth
+  - https://developer.veem.com/docs/testing
+description: >-
+  Veem's sandbox / test surface, captured verbatim from the Sandbox Environment
+  Quick Start. Veem runs a fully separate sandbox environment (own signup, own
+  API host, own OAuth credentials) rather than key-prefix test modes. Sandbox
+  access is IP-whitelisted; sandbox accounts are pre-KYC-verified and get bank
+  details auto-added, and an in-dashboard "Test Mode" lets you drive a payment
+  through its status transitions to exercise webhooks. All test values below
+  are published by Veem in their public docs.
+environments:
+  - name: sandbox
+    api_base_url: https://sandbox-api.veem.com
+    app_url: https://sandbox.veem.com
+    signup: https://developer.veem.com/page/dev-dashboard-sandbox?portalLocation=%2FSignUpC
+    notes: >-
+      Access requires IP whitelisting: if sandbox.veem.com returns a 403
+      Permission Error, email the Client IP and Ray ID to
+      clientservices@veem.com. Sandbox and developer accounts are separate and
+      cannot share an email. Sandbox accounts are pre-verified (completed KYC)
+      and banking details are added automatically during onboarding.
+  - name: production
+    api_base_url: https://api.veem.com
+    app_url: https://apps.veem.com/CustomerApp/o/signin
+    notes: Production Client ID/Secret generated under Settings > Integrations > Connect Veem API; visible only to the primary account owner.
+credentials:
+  how_to_get: Sandbox dashboard > Settings > Integrations > Connect Veem API > Generate (Client ID + Client Secret), then OAuth client_credentials against https://sandbox-api.veem.com/oauth/token.
+simulation:
+  test_mode: >-
+    Enable "Test Mode" on the Transactions page of the sandbox app, then use
+    the ellipsis menu on a payment to move it through statuses (e.g. Sent →
+    PendingAuth → Authorized → InProgress → Complete) — used to test payment
+    status webhook notifications.
+shared_test_accounts:
+  description: Shared sandbox accounts published by Veem for sending payments/invoices to existing accounts in different countries; shared across the developer community — do not change their settings.
+  payer_senders:
+    - initiator_us@mailinator.com
+    - initiator_cn@mailinator.com
+  payee_receivers:
+    - receiver_us@mailinator.com
+    - receiver_cn@mailinator.com
+    - receiver_de@mailinator.com
+  common_password: Developer1!
+webhooks_setup: >-
+  Webhooks with a specific redirection URL require emailing
+  clientservices@veem.com with developer name/email, application display name,
+  and comma-separated redirection/callback URLs.

@@ -1,0 +1,47 @@
+generated: '2026-07-21'
+method: searched
+source: npm, PyPI, Packagist registries + github.com/veeminc
+description: >-
+  First-party client libraries for the Veem Global Payments API, published by
+  Veem (GitHub org veeminc; the veem-web-sdk browser plugin loader is published
+  from Veem's aligncommerce engineering org). The Java SDK is distributed from
+  GitHub only — no Maven Central artifact was found; nothing was found on
+  NuGet, RubyGems, crates.io, or pkg.go.dev.
+packages:
+  - language: javascript
+    registry: npm
+    name: veem-node-sdk
+    version: 1.1.1
+    url: https://www.npmjs.com/package/veem-node-sdk
+    install: npm install veem-node-sdk
+    source: https://github.com/veeminc/veem-node-sdk
+    official: true
+  - language: javascript
+    registry: npm
+    name: veem-web-sdk
+    version: 0.0.44
+    url: https://www.npmjs.com/package/veem-web-sdk
+    install: npm install veem-web-sdk
+    notes: Browser plugin loader for the embeddable Veem Web SDK plugins (Card/Bank/Payee/Plaid/BOI/Identity Check); also served via unpkg.com/veem-web-sdk@^0/umd/index.min.js. See components/veem-components.yml.
+    official: true
+  - language: python
+    registry: pypi
+    name: veem
+    version: 3.0.0
+    url: https://pypi.org/project/veem/
+    install: pip install veem
+    source: https://github.com/veeminc/veem-python-sdk
+    official: true
+  - language: php
+    registry: packagist
+    name: veem/sdk
+    url: https://packagist.org/packages/veem/sdk
+    install: composer require veem/sdk
+    source: https://github.com/veeminc/veem-php-sdk
+    official: true
+  - language: java
+    registry: github
+    name: veem-java-sdk
+    url: https://github.com/veeminc/veem-java-sdk
+    install: git clone https://github.com/veeminc/veem-java-sdk (no Maven Central artifact published)
+    official: true

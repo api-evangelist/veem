@@ -1,0 +1,59 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.veem.com/docs/webhook-notifications
+type: Webhooks
+description: >-
+  Veem's webhook event surface, captured from the developer portal. Veem
+  publishes no AsyncAPI document; this is the documented webhook catalog.
+  Webhook configurations are managed via the Public API
+  (POST/GET/PATCH/DELETE /veem/v1.2/webhooks — operationIds
+  createWebhookUsingPOST_2, getWebhooksUsingGET_2, updateWebhookUsingPATCH_2,
+  deleteWebhookUsingDELETE_2 in openapi/veem-api-openapi.yml). Deliveries are
+  HTTPS POSTs whose `data` field is a stringified JSON payload; each request is
+  signed with an ACCESS-SIGNATURE header (HMAC-SHA256 keyed with your clientId
+  over the payload). Delivery retries up to 3 times at 5-second intervals.
+management:
+  create: POST /veem/v1.2/webhooks
+  list: GET /veem/v1.2/webhooks
+  get: GET /veem/v1.2/webhooks/{webhookId}
+  update: PATCH /veem/v1.2/webhooks/{webhookId}
+  delete: DELETE /veem/v1.2/webhooks/{webhookId}
+  statuses: [Active, Inactive]
+security:
+  signature_header: ACCESS-SIGNATURE
+  algorithm: HMAC-SHA256
+  key: clientId
+retry_policy:
+  attempts: 3
+  interval_seconds: 5
+events:
+  - name: ACCOUNT_STATUS_UPDATED
+    description: Triggered whenever there is a change in the status of your account that impacts payments. Payload fields include id, paymentReady, verified.
+  - name: OUTBOUND_PAYMENT_STATUS_UPDATED
+    description: Status changes on payments sent by you (you are the payer). Payload includes id, invoiceId, status, mtlReceiptLinkUrl, debitTxn, creditTxn.
+  - name: INBOUND_PAYMENT_STATUS_UPDATED
+    description: Status changes on payments sent to you (you are the payee).
+  - name: OUTBOUND_INVOICE_STATUS_UPDATED
+    description: Status changes on invoices sent by you (you will be the payee when the invoice is paid). Payload includes id, status, amount, payerAccountId, payeeAccountId, dueDate, paymentId.
+  - name: INBOUND_INVOICE_STATUS_UPDATED
+    description: Status changes on invoices sent to you (you will be the payer when you pay the invoice).
+  - name: VBA_ACCOUNT_STATUS_UPDATED
+    description: Virtual Bank Account application status changes.
+  - name: VBA_TRANSACTION
+    description: Transaction in or out of your Virtual Bank Account.
+  - name: VIRTUAL_CARD_APPLICATION_STATUS_UPDATED
+    description: Virtual Card application status changes.
+  - name: VIRTUAL_CARD_BALANCE_UPDATED
+    description: Virtual Card spendable balance refreshed.
+  - name: VIRTUAL_CARD_TRANSACTION
+    description: Virtual Card network activity.
+payment_statuses:
+  - {webhook: Drafted, ui: Drafted, description: Payment is in drafted state and requires further updates.}
+  - {webhook: Sent, ui: Sent, description: The payment has been sent to the receiver/payee.}
+  - {webhook: PendingAuth, ui: Claimed, description: The payment is pending authorization by Veem.}
+  - {webhook: Authorized, ui: Claimed, description: The payment has been authorized and is ready for processing.}
+  - {webhook: InProgress, ui: In Progress, description: The payment has been initiated; receiver will shortly receive the money.}
+  - {webhook: Complete, ui: Deposited, description: The payment is complete and the receiver should have received the money.}
+  - {webhook: Cancelled, ui: Closed, description: The payment has been cancelled by the sender/payer.}
+  - {webhook: Closed, ui: Closed, description: The payment has been closed by Veem.}
+invoice_statuses: [Sent, Claimed, MarkAsPaid, Cancelled, Updated, Closed]

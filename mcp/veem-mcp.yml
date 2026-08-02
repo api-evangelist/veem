@@ -1,0 +1,112 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/veem-api-openapi.yml
+description: >-
+  No official Veem-hosted MCP server was found — the developer portal and
+  llms.txt make no mention of MCP, and no veeminc MCP package exists on npm.
+  This is a candidate tool surface derived one-tool-per-operation from the
+  harvested Veem Public API OpenAPI (v1.2), grouped around the marquee flows:
+  send money (claimless payments), invoices, accounts/bank accounts, wallets,
+  virtual/crypto wallets, contacts, quotes, and webhook management.
+server:
+  name: veem
+  transport: http
+  url: null
+tools:
+  - name: create_claimless_payment
+    description: Send money directly to a payee's bank account (no claim step)
+    source_operation: openapi/veem-api-openapi.yml#createClaimLessPaymentUsingPOST
+  - name: create_payment
+    description: Post a payment and send it to the receiver
+    source_operation: openapi/veem-api-openapi.yml#createPaymentUsingPOST_2
+  - name: get_payment
+    description: Get payment details and status
+    source_operation: openapi/veem-api-openapi.yml#getPaymentUsingGET_2
+  - name: approve_payment
+    description: Approve a payment
+    source_operation: openapi/veem-api-openapi.yml#approvePaymentUsingPOST_2
+  - name: get_quote_enhanced
+    description: Generate an enhanced payment quote including fixed fees
+    source_operation: openapi/veem-api-openapi.yml#getQuoteEnhancedUsingPOST
+  - name: create_invoice
+    description: Post an invoice and send it to the receiver
+    source_operation: openapi/veem-api-openapi.yml#createInvoiceUsingPOST_2
+  - name: get_invoice
+    description: Get invoice details
+    source_operation: openapi/veem-api-openapi.yml#getInvoiceUsingGET_2
+  - name: approve_invoice
+    description: Approve (claim) an invoice
+    source_operation: openapi/veem-api-openapi.yml#approveInvoiceUsingPOST_2
+  - name: cancel_invoice
+    description: Cancel an invoice
+    source_operation: openapi/veem-api-openapi.yml#cancelInvoiceUsingPOST_2
+  - name: create_account
+    description: Create a Veem customer account
+    source_operation: openapi/veem-api-openapi.yml#createAccountUsingPOST
+  - name: get_account
+    description: Get a Veem account by id
+    source_operation: openapi/veem-api-openapi.yml#getAccountUsingGET
+  - name: edit_account
+    description: Update a Veem account
+    source_operation: openapi/veem-api-openapi.yml#editAccountUsingPATCH
+  - name: add_bank_account
+    description: Add a bank account to a Veem account
+    source_operation: openapi/veem-api-openapi.yml#addBankAccountUsingPOST
+  - name: edit_bank_account
+    description: Update a linked bank account
+    source_operation: openapi/veem-api-openapi.yml#editBankAccountUsingPATCH
+  - name: create_boi
+    description: Add beneficial ownership information to an account
+    source_operation: openapi/veem-api-openapi.yml#createBoiUsingPOST
+  - name: get_boi
+    description: Get beneficial ownership information
+    source_operation: openapi/veem-api-openapi.yml#getBoiUsingGET
+  - name: search_customers
+    description: Search Veem contacts/customers by email
+    source_operation: openapi/veem-api-openapi.yml#searchCustomersUsingGET_2
+  - name: get_contacts
+    description: Page through account contacts
+    source_operation: openapi/veem-api-openapi.yml#getContactsUsingGET_2
+  - name: create_contact
+    description: Create an account contact
+    source_operation: openapi/veem-api-openapi.yml#createContactUsingPOST_2
+  - name: create_contacts_batch
+    description: Create multiple contacts in a batch
+    source_operation: openapi/veem-api-openapi.yml#createContactsUsingPOST_2
+  - name: get_contact_batch
+    description: Get the state of a contact creation batch
+    source_operation: openapi/veem-api-openapi.yml#getContactBatchUsingGET_2
+  - name: get_wallet_balance
+    description: Return the user's wallet balances
+    source_operation: openapi/veem-api-openapi.yml#getFundingMethodsUsingGET_3
+  - name: wallet_add_funds
+    description: Add funds to a Veem wallet
+    source_operation: openapi/veem-api-openapi.yml#walletAddFundsUsingPOST
+  - name: wallet_withdraw
+    description: Withdraw funds from a Veem wallet
+    source_operation: openapi/veem-api-openapi.yml#walletWithdrawUsingPOST
+  - name: get_country_currency_map
+    description: List supported countries and their currencies
+    source_operation: openapi/veem-api-openapi.yml#getCountryCurrencyMapUsingGET_2
+  - name: create_webhook
+    description: Create a webhook callback configuration
+    source_operation: openapi/veem-api-openapi.yml#createWebhookUsingPOST_2
+  - name: get_webhooks
+    description: List active webhook configurations
+    source_operation: openapi/veem-api-openapi.yml#getWebhooksUsingGET_2
+  - name: delete_webhook
+    description: Delete a webhook configuration
+    source_operation: openapi/veem-api-openapi.yml#deleteWebhookUsingDELETE_2
+  - name: get_crypto_wallets
+    description: Get the payer's crypto wallets
+    source_operation: openapi/veem-api-openapi.yml#getCryptoWallets
+  - name: create_crypto_wallet_payin
+    description: Create deposit instructions for moving funds into a crypto wallet
+    source_operation: openapi/veem-api-openapi.yml#createCryptoWalletPayin
+  - name: create_crypto_wallet_payout
+    description: Withdraw crypto wallet funds to an external address
+    source_operation: openapi/veem-api-openapi.yml#createCryptoWalletPayout
+  - name: upload_attachment
+    description: Upload an external attachment for a payment or invoice
+    source_operation: openapi/veem-api-openapi.yml#uploadAttachmentUsingPOST_2

@@ -1,0 +1,51 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.veem.com/docs/getting-started-1
+docs:
+  - https://developer.veem.com/docs/getting-started-1
+  - https://developer.veem.com/docs/card-plugin
+  - https://developer.veem.com/docs/bank-plugin
+  - https://developer.veem.com/docs/payee-plugin
+  - https://developer.veem.com/docs/plaid-plugin
+  - https://developer.veem.com/docs/beneficial-ownership-information-plugin
+  - https://developer.veem.com/docs/identity-check-plugin
+description: >-
+  Veem's embeddable client-side Web SDK plugins — drop-in browser components
+  for collecting payment credentials and compliance data inside a partner's
+  app, distinct from the server-side SDKs in packages/veem-packages.yml. All
+  plugins are loaded by the veem-web-sdk library (npm / unpkg UMD bundle) and
+  initialized with an accountId plus a sessionSecret retrieved via the
+  searchCustomers API (operationId searchCustomersUsingGET_2). Card collection
+  is PCI-compliant: card details are stored by Veem and never touch the
+  partner's servers.
+libraries:
+  - name: veem-web-sdk
+    registry: npm
+    url: https://www.npmjs.com/package/veem-web-sdk
+    loader: <script src="https://unpkg.com/veem-web-sdk@^0/umd/index.min.js" type="application/javascript"></script>
+    purpose: Loads and mounts all Veem Web SDK plugins; catalogued in packages/veem-packages.yml.
+families:
+  onboarding_plugins:
+    description: Embeddable plugins that collect funding, payee, and compliance information from customers within the partner's app or platform.
+    components:
+      - name: Card Plugin
+        docs: https://developer.veem.com/docs/card-plugin
+        description: Securely collects debit/credit card details (PCI-compliant); the stored card becomes a funding method for future payments.
+      - name: Bank Plugin
+        docs: https://developer.veem.com/docs/bank-plugin
+        description: Collects bank account details for compliant payment onboarding.
+      - name: Payee Plugin
+        docs: https://developer.veem.com/docs/payee-plugin
+        description: Secure, compliant payee onboarding within the partner app.
+      - name: Plaid Plugin (Beta)
+        docs: https://developer.veem.com/docs/plaid-plugin
+        description: Collects bank details via the Plaid integration.
+      - name: Beneficial Ownership Information Plugin
+        docs: https://developer.veem.com/docs/beneficial-ownership-information-plugin
+        description: Collects beneficial-ownership information (BOI) for compliance.
+      - name: Identity Check Plugin
+        docs: https://developer.veem.com/docs/identity-check-plugin
+        description: Verifies customer identity during onboarding.
+integration:
+  prerequisites: Customer account must exist in Veem (or be created via the Account Creation API) under your main partner account.
+  session: Call searchCustomers (GET /veem/v1.2/customers) with the partner token to retrieve the accountId and sessionSecret used to initialize a plugin.

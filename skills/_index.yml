@@ -1,0 +1,24 @@
+generated: '2026-07-21'
+method: generated
+source: >-
+  Packaged Agent Skills generated from the harvested Veem Public API OpenAPI
+  (openapi/veem-api-openapi.yml). Every step is grounded in an operationId
+  verified verbatim in the spec; cross-cutting rules cite conventions/,
+  errors/, authentication/, sandbox/, and asyncapi/.
+skills:
+  - file: veem-send-money-claimless.md
+    name: Send money with a claimless payment
+    api: openapi/veem-api-openapi.yml
+    operations: [getQuoteEnhancedUsingPOST, createClaimLessPaymentUsingPOST, getPaymentUsingGET_2, approvePaymentUsingPOST_2]
+  - file: veem-request-money-invoice.md
+    name: Request money with an invoice
+    api: openapi/veem-api-openapi.yml
+    operations: [createInvoiceUsingPOST_2, getInvoiceUsingGET_2, approveInvoiceUsingPOST_2, cancelInvoiceUsingPOST_2]
+  - file: veem-onboard-customer-account.md
+    name: Onboard a customer account
+    api: openapi/veem-api-openapi.yml
+    operations: [createAccountUsingPOST, getAccountUsingGET, addBankAccountUsingPOST, editBankAccountUsingPATCH, createBoiUsingPOST]
+  - file: veem-configure-webhooks.md
+    name: Configure and verify webhooks
+    api: openapi/veem-api-openapi.yml
+    operations: [createWebhookUsingPOST_2, getWebhooksUsingGET_2, updateWebhookUsingPATCH_2, deleteWebhookUsingDELETE_2]

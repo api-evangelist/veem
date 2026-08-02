@@ -1,0 +1,85 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/veem-api-openapi.yml
+format: veem-error-envelope
+description: 'API-level error statuses derived from the 4xx/5xx responses of the harvested Veem OpenAPI. Veem does not use RFC 9457 application/problem+json; errors are returned in a flat JSON envelope (ErrorResponse: code, error, message, timestamp) with numeric Veem error codes catalogued in errors/veem-error-codes.yml.'
+envelope:
+  schema: ErrorResponse
+  fields:
+  - code
+  - error
+  - message
+  - timestamp
+problems:
+- status: 400
+  title: Bad Request
+  descriptions:
+  - Bad Request, invalid request data
+  - Invalid email address in request parameter
+  - Invalid name and referenceId combination
+  - Invalid request body
+  - Invalid request data, no requests were processed
+  - Request failed, invalid parameters
+  - Request failed, invalid search parameters
+  - Unauthorized, the token is invalid or expired
+  - Unsupported file extension; Unable to upload file
+  operations: 39
+  sample_operations:
+  - openapi/veem-api-openapi.yml#addCryptoWalletApplicationCurrency
+  - openapi/veem-api-openapi.yml#approveInvoiceUsingPOST_2
+  - openapi/veem-api-openapi.yml#approvePaymentUsingPOST_2
+  - openapi/veem-api-openapi.yml#cancelInvoiceUsingPOST_2
+  - openapi/veem-api-openapi.yml#createClaimLessPaymentUsingPOST
+- status: 401
+  title: Unauthorized
+  descriptions:
+  - Unauthorized, the token is invalid or expired
+  operations: 41
+  sample_operations:
+  - openapi/veem-api-openapi.yml#addCryptoWalletApplicationCurrency
+  - openapi/veem-api-openapi.yml#approveInvoiceUsingPOST_2
+  - openapi/veem-api-openapi.yml#approvePaymentUsingPOST_2
+  - openapi/veem-api-openapi.yml#cancelInvoiceUsingPOST_2
+  - openapi/veem-api-openapi.yml#createClaimLessPaymentUsingPOST
+- status: 403
+  title: Forbidden
+  descriptions:
+  - Forbidden, the token owner doesn't have permission to operate current API
+  - Forbidden, the token owner doesn't have permission to operate this API
+  - Forbidden, the token owner lacks permission to operate the current API
+  operations: 41
+  sample_operations:
+  - openapi/veem-api-openapi.yml#addCryptoWalletApplicationCurrency
+  - openapi/veem-api-openapi.yml#approveInvoiceUsingPOST_2
+  - openapi/veem-api-openapi.yml#approvePaymentUsingPOST_2
+  - openapi/veem-api-openapi.yml#cancelInvoiceUsingPOST_2
+  - openapi/veem-api-openapi.yml#createClaimLessPaymentUsingPOST
+- status: 404
+  title: Not Found
+  descriptions:
+  - A webhook configuration with the specified ID was not found
+  - Not Found, the resource not found
+  operations: 26
+  sample_operations:
+  - openapi/veem-api-openapi.yml#approveInvoiceUsingPOST_2
+  - openapi/veem-api-openapi.yml#approvePaymentUsingPOST_2
+  - openapi/veem-api-openapi.yml#cancelInvoiceUsingPOST_2
+  - openapi/veem-api-openapi.yml#createClaimLessPaymentUsingPOST
+  - openapi/veem-api-openapi.yml#createContactUsingPOST_2
+- status: 500
+  title: Internal Server Error
+  descriptions:
+  - Internal Server Error, see the error code and API doc for reference
+  operations: 41
+  sample_operations:
+  - openapi/veem-api-openapi.yml#addCryptoWalletApplicationCurrency
+  - openapi/veem-api-openapi.yml#approveInvoiceUsingPOST_2
+  - openapi/veem-api-openapi.yml#approvePaymentUsingPOST_2
+  - openapi/veem-api-openapi.yml#cancelInvoiceUsingPOST_2
+  - openapi/veem-api-openapi.yml#createClaimLessPaymentUsingPOST
+- status: 409
+  title: Conflict
+  descriptions:
+  - Reusing an X-Request-Id header value returns 409 Conflict (duplicate-request protection) — documented, not present in the harvested spec slices.
+  operations: 0
+  sample_operations: []

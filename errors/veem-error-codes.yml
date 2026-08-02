@@ -1,0 +1,125 @@
+generated: '2026-07-21'
+method: searched
+source: https://developer.veem.com/docs/veem-errors
+description: >-
+  Veem's published error-code registry, captured from the developer-portal
+  error-handling reference. Codes are symbolic (e.g. INVALID_EMAIL_ADDRESS)
+  with numeric Veem error codes where published, grouped by the endpoint
+  families the docs use (account, bank-account verification, payment);
+  recommended remediation actions are included where Veem publishes them.
+  Errors are returned in the ErrorResponse envelope (code, error, message,
+  timestamp) — see errors/veem-problem-types.yml.
+envelope_field: code
+groups:
+  account:
+    description: Errors related to the account endpoints, such as POST /veem/v1.2/account.
+    error_codes:
+      - {code: INVALID_COUNTRY_CODE, numeric_code: 50001201, description: 'The specified ISO country code is invalid: X'}
+      - {code: INVALID_EMAIL_ADDRESS, numeric_code: 50001202, description: The email address X is invalid}
+      - {code: PARTIAL_EMAIL_TOO_SHORT, numeric_code: 50001203, description: Email search requires at least X characters. X is too short}
+      - {code: MISSING_BANK_ACCOUNT, numeric_code: 50001204, description: No bank account set up for account X}
+      - {code: EMPTY_ACCOUNT_REQUEST, numeric_code: 50001205, description: Account request is empty}
+      - {code: MISSING_COUNTRY_CODE, numeric_code: 50001206, description: ISO country code is missing}
+      - {code: MISSING_ACCOUNT_TYPE, numeric_code: 50001207, description: Account type is missing}
+      - {code: FIRST_NAME_IS_BLANK, numeric_code: 50001208, description: First name is empty}
+      - {code: LAST_NAME_IS_BLANK, numeric_code: 50001209, description: Last name is empty}
+      - {code: BUSINESS_NAME_IS_BLANK, numeric_code: 50001210, description: Business name is empty}
+      - {code: PHONE_NUMBER_IS_BLANK, numeric_code: 50001211, description: Phone number is empty}
+      - {code: INVALID_NUMBER_FOR_REGION, numeric_code: 50001212, description: 'Invalid number for region: X'}
+      - {code: INVALID_CURRENCY_CODE, numeric_code: 50001213, description: 'The currency is not acceptable: X'}
+      - {code: PAYER_CANNOT_SEND_PAYMENT, numeric_code: 50001214, description: The payer country X cannot send any payment}
+      - {code: PAYEE_CANNOT_RECEIVE_PAYMENT, numeric_code: 50001215, description: The payee country X cannot receive any payment}
+      - {code: MISSING_CURRENCY_CODE, numeric_code: 50001216, description: Currency code is missing}
+      - {code: CONTRACTOR_CANNOT_SEND_PAYMENT, numeric_code: 50001217, description: Payer cannot be a contractor}
+      - {code: FUNDING_METHOD_NOT_FOUND, numeric_code: 50001218, description: Funding method of type X not found}
+      - {code: BANK_ACCOUNT_NOT_UPDATABLE, numeric_code: 50001219, description: 'Bank account cannot be updated, reason: X'}
+  bank_account_verification:
+    description: Errors related to bank account information and verification.
+    error_codes:
+      - code: VERIFICATION_BANK_PROVIDE_RETURNED_INVALID_INFO
+        description: Bank Data Provider returned invalid owner information error. This can be due to incorrect First Name or Last Name for personal bank accounts or incorrect Business Name for business bank accounts.
+        recommended_action: The bank information provided is incorrect; update bank details via the edit-bank-account endpoint.
+      - code: VERIFICATION_BANK_ACCOUNT_NO_INFO_WAS_FOUND
+        description: No information was found for the given bank account.
+        recommended_action: The bank information provided is incorrect; update bank details via the edit-bank-account endpoint.
+      - code: VERIFICATION_BANK_ACCOUNT_DOB_DOES_NOT_MATCH
+        description: The bank account owner's DOB doesn't match with the bank data provider.
+        recommended_action: Provide documents via the account-document endpoint or by contacting Veem - a bank statement from the last 90 days (full account number, routing number, name, address) and an ID proof (full name, address, DOB); funds are held 3-4 business days before release.
+      - code: VERIFICATION_BANK_ACCOUNT_HIGH_RETURN_PROBABILITY
+        description: The bank account is either ineligible for a debit activity or deemed to have a high probability of return.
+      - code: VERIFICATION_BANK_ACCOUNT_HISTORY_BALANCE_LESS_ZERO
+        description: The bank account has a history of available balance being less than zero.
+      - code: VERIFICATION_BANK_ACCOUNT_NOT_ACCEPT_DEBIT_ACTIVITY
+        description: The bank account will not accept any debit activity.
+        recommended_action: The bank information provided is incorrect; update bank details via the edit-bank-account endpoint.
+      - code: VERIFICATION_BANK_ACCOUNT_OWNER_INFO_DOES_NOT_MATCH_PROVIDER
+        description: Bank account owner information does not match with the information provided.
+        recommended_action: Submit additional documents via the account-document endpoint or by contacting Veem - a 90-day bank statement and an ID proof; funds are held 3-4 business days before release.
+      - code: VERIFICATION_BANK_ACCOUNT_OWNER_INFO_DOES_NOT_MATCH
+        description: Bank account owner information does not match with the information provided.
+        recommended_action: Submit additional documents via the account-document endpoint or by contacting Veem - a 90-day bank statement and an ID proof; funds are held 3-4 business days before release.
+      - code: VERIFICATION_BANK_ACCOUNT_SSN_TAX_DOES_NOT_MATCH
+        description: The bank account owner's SSN or tax ID doesn't match with the bank data provider.
+        recommended_action: Submit additional documents via the account-document endpoint or by contacting Veem - a 90-day bank statement, an ID proof, and the most recent tax return; funds are held 3-4 business days before release.
+      - code: VERIFICATION_BANK_CLOSED
+        description: The bank account is closed.
+        recommended_action: The bank information provided is incorrect; update bank details via the edit-bank-account endpoint.
+      - code: ACCOUNT_UNDER_REVIEW
+        description: Payments may be submitted but Veem will not process the payment until risk reviews are completed.
+        recommended_action: Wait for Veem's response; check the account status via the get-account endpoint.
+      - code: VERIFICATION_SANCTION_MATCH_BLOCK
+        description: The individual's identity does not match any entries in the sanctions database.
+        recommended_action: Provide a copy of an ID proof (full name, address, DOB) via the account-document endpoint or contact Veem.
+  payment:
+    description: Errors related to the payment endpoints, such as POST /veem/v1.2/claimless-payments and POST /veem/v1.1/payments.
+    error_codes:
+      - {code: INVALID_AMOUNT, numeric_code: 50001401, description: Amount X cannot be 0.0 or negative}
+      - {code: NO_DRAFT_ACCESS, numeric_code: 50008002, description: User doesn't have access to draft payment}
+      - {code: SPECIFIED_BOTH_FROM_AND_TO_AMOUNT, numeric_code: 50001402, description: Only one of fromAmount and toAmount should be specified}
+      - {code: FROM_OR_TO_AMOUNT_REQUIRED, numeric_code: 50001403, description: One of fromAmount or toAmount must be specified}
+      - {code: MISSING_PURPOSE_OF_PAYMENT, numeric_code: 50001404, description: Purpose of payment is missing}
+      - {code: MISSING_AMOUNT, numeric_code: 50001405, description: Amount must be set}
+      - {code: INVALID_PURPOSE_OF_PAYMENT, numeric_code: 50001406, description: Purpose of payment X is invalid for payee country X}
+      - {code: INVALID_AMOUNT_NUMBER, numeric_code: 50001407, description: Amount number X is not acceptable}
+      - {code: ACCOUNT_NOT_FOUND, numeric_code: 50000004, description: No account found with account id X}
+      - {code: UNSUPPORTED_CURRENCY_FOR_PAYMENT, numeric_code: 50001011, description: Currency code X is not supported for payer's country X or payee's country X}
+      - {code: ATTACHMENT_IS_EMPTY, numeric_code: 50001902, description: Attachment is empty}
+      - {code: FILE_NAME_IS_EMPTY, numeric_code: 50001903, description: Attachment file name is empty}
+      - {code: REFERENCE_ID_IS_EMPTY, numeric_code: 50001904, description: Attachment reference id is empty}
+      - {code: INVALID_CP_ACCOUNT_STATUS_TO_CREATE_PAYMENT, numeric_code: 10001012, description: 'CP (counterparty, usually receiver) account identifier X status is not valid for create payment'}
+      - {code: UNAUTHORIZED_ACCESS, description: Not allowed to send payment}
+      - {code: INVALID_PARAMETER_UNEXPECTED_VALUE, description: 'Payments cannot be sent from/to the given payer or payee country, currency, or funding method; also raised when payee and payer account id are the same'}
+      - {code: PAYEE_NOT_ALLOW_PAYMENT_FROM_FUNDING_METHOD, numeric_code: 10010028, description: 'This initiator or CP (counterparty, usually receiver) does not allow payment by X (funding method)'}
+      - {code: OVER_CNY_PERSONAL_RECEIVING_AMOUNT_LIMIT, numeric_code: 10010001, description: 'Due to payment regulations, you may not send amounts of $X or greater'}
+      - {code: VER_PERSONAL_ACCOUNT_PAYMENT_MAX_AMOUNT, numeric_code: 10009016, description: 'Due to transaction limits, Veem is unable to process a payment larger than X from X at this time'}
+      - {code: NOT_ALLOWED_SENDING_STATES, numeric_code: 10009020, description: Account X cannot send personal payment from X}
+      - {code: DOUBLE_CONVERSION_NOT_SUPPORTED, numeric_code: 10008899, description: Double conversion not supported}
+      - {code: CARD_PAYMENT_MAX_AMOUNT, numeric_code: 10010003, description: Card payments support transactions up to X. Reduce the amount and try again}
+      - {code: VIRTUAL_CARD_INSUFFICIENT_FUND, numeric_code: 10009050, description: Virtual card has insufficient funds for this request}
+      - {code: INVALID_PURPOSE_OF_PAYMENT, numeric_code: 10002017, description: X is not a valid purpose of payment for country X}
+      - {code: INVALID_ACCOUNT_TYPE_FOR_RECEIVING_PAYMENT_CN, numeric_code: 10002009, description: Account type X is not allowed to receive payment in CN (China)}
+      - {code: CHEQUE_PAYMENTS_SEND_DISABLED, numeric_code: 10002007, description: Cheque payments sending is disabled}
+      - {code: MISSING_PURPOSE_OF_PAYMENT_OR_DESC, numeric_code: 10002006, description: Missing purpose of payment or purpose of payment description}
+      - {code: PAYER_FUNDING_METHOD_FOR_CHEQUE_IS_NOT_BANK, numeric_code: 10002011, description: The payer's funding method for a cheque payment must be a US bank}
+      - {code: PAYER_LOCATION_NOT_VALID_FOR_CHEQUE, numeric_code: 10002012, description: The payer's location is not valid to send cheques}
+      - {code: NO_BANK_ACCOUNT_FOUND, numeric_code: 10000132, description: Bank account is not found for account id X}
+      - {code: PAYER_ACCOUNT_BANK_LOCATION_DOES_NOT_SUPPORT_CHEQUE, numeric_code: 10002010, description: The payer's bank account location does not allow sending cheques}
+      - {code: NO_PAYMENT_APPROVE_TIER_FOUND, numeric_code: 10010040, description: No payment approve tier found for payment with amount X}
+      - {code: MISSING_PAYER_ACCOUNT_ID, numeric_code: 10000128, description: Missing payer account id}
+      - {code: INVALID_PARAMETER_NULL, description: Required parameter is null or missing - payee account id / amount / payer account id / payer country / processing method; also bill currency-locked currency mismatches and non-positive bill amounts}
+
+      - {code: PAYMENT_NOT_APPROVED, description: Not all users approved to send payment}
+      - {code: INVALID_CP_ACCOUNT_STATUS_TO_SENT_PAYMENT, numeric_code: 10001013, description: CP account identifier X status is not valid for send payment}
+      - {code: NO_ACCOUNT_FOUND, numeric_code: 10000107, description: Could not find account for identifier X}
+      - {code: NOT_EXTERNAL_PAYMENT, numeric_code: 10001005, description: Payment X with payer funding method type X is not external payment}
+      - {code: MISSING_FUNDING_METHOD_ID, numeric_code: 10001002, description: Missing funding method id for payment request}
+      - {code: NO_FUNDING_METHOD_FOUND, numeric_code: 10001004, description: 'Could not find funding method: X for payer account id: X and funding method id: X'}
+      - {code: FAILED_ON_SENDING_EXTERNAL_PAYMENT, numeric_code: 10009003, description: 'Failed on sending external payment to provider X, paymentId X'}
+      - {code: SOMETHING_WRONG_WITH_APPROVAL, numeric_code: 50009009, description: 'There was something wrong, please check your approvals settings'}
+      - {code: OVER_PERSONAL_ACCOUNT_PAYMENT_MAX_AMOUNT, numeric_code: 10009016, description: 'Due to transaction limits, Veem is unable to process a payment larger than X from X at this time'}
+      - {code: NOT_ALLOWED_COUNTRY_PERSONAL_ACCOUNT_PAYMENT, numeric_code: 10009018, description: Cannot send personal account payment from X}
+      - {code: PERSONAL_ACCOUNT_PAYMENT_INBOUND_IS_NOT_SUPPORTED, numeric_code: 10009014, description: 'Personal account payment inbound is not supported: payer bank country is X, payer amount currency is X'}
+      - {code: INVALID_PAYMENT_AMOUNT, numeric_code: 10008807, description: 'Invalid X amount X, require at least X'}
+      - {code: PAYEE_LOCATION_NOT_VALID_FOR_CHEQUE, numeric_code: 10002013, description: The payee's location is not valid to receive cheques}
+      - {code: INVALID_USER_ZERO_TIER_PAYMENT_USER_TO_SEND_PAYMENT, numeric_code: 10001316, description: User X is not in zero-tier approvers list for payment X}
+      - {code: PAYER_PAYMENT_PREF_IS_NOT_VALID, numeric_code: 10002014, description: The payer's payment preference is empty}
