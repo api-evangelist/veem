@@ -243,6 +243,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/veem-api-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/veem-agentic-access.yml
 - type: Website
