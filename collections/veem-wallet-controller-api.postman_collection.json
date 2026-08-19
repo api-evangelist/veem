@@ -1,0 +1,565 @@
+{
+  "item": [
+    {
+      "id": "8a8b246b-3f7d-42c5-a744-ae5ccbdad451",
+      "name": "wallet-controller",
+      "description": {
+        "content": "Wallet Controller",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8a91ff9e-7e0d-48f8-834c-6361fc1497d9",
+          "name": "Get Wallet Balance",
+          "request": {
+            "name": "Get Wallet Balance",
+            "description": {
+              "content": "Return user's wallet balance",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "wallets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7572c52c-a1ee-4c6b-a6c3-4691a086e05d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "wallets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountId\": 5351,\n  \"errorMessage\": \"string\",\n  \"fundingMethods\": [\n    {\n      \"id\": 860,\n      \"type\": \"External\"\n    },\n    {\n      \"id\": 8160,\n      \"type\": \"Wallet\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b305d7e0-489f-41bf-a018-e44598da8647",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "wallets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7663,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "327c2dd7-45d3-4fd6-9514-2441f14dc06d",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "wallets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1c78a752-645f-4eb5-8269-5f5f6059239d",
+              "name": "Forbidden, the token owner doesn't have permission to operate current API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "wallets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "90a338fb-219c-4bc9-ac2e-a9f73db62944",
+              "name": "Not Found, the resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "wallets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "94445bd7-4495-471d-9f17-bbccb7ac426d",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "wallets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c1c36e24-501f-4314-8f26-efe7dd626357",
+          "name": "Get Wallet by id",
+          "request": {
+            "name": "Get Wallet by id",
+            "description": {
+              "content": "Return user's wallet by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "wallets",
+                ":walletId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "walletId",
+                  "description": "(Required) walletId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d5f252c0-b5aa-4c99-810a-9a80f1e44308",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "wallets",
+                    ":walletId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "walletId",
+                      "description": "(Required) walletId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountId\": 322,\n  \"errorMessage\": \"string\",\n  \"fundingMethods\": [\n    {\n      \"id\": 2244,\n      \"type\": \"Card\"\n    },\n    {\n      \"id\": 7103,\n      \"type\": \"Bank\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b098f939-f622-4bb3-8492-6d3708e4437d",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "wallets",
+                    ":walletId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "walletId",
+                      "description": "(Required) walletId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7663,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39fd4d5a-b183-4596-93cd-88ef5dfddb2b",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "wallets",
+                    ":walletId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "walletId",
+                      "description": "(Required) walletId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bbd347dd-7463-4e06-874a-4e4300e44ef2",
+              "name": "Forbidden, the token owner doesn't have permission to operate current API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "wallets",
+                    ":walletId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "walletId",
+                      "description": "(Required) walletId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6186d066-6d50-431a-92dc-9894631c01cd",
+              "name": "Not Found, the resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "wallets",
+                    ":walletId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "walletId",
+                      "description": "(Required) walletId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d54b66f6-b3e7-4ae4-aeb5-0e034dbb05e0",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "wallets",
+                    ":walletId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "walletId",
+                      "description": "(Required) walletId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "//sandbox-api.veem.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bdcd82bf-4e6e-4ddd-97b7-5cd65f2ab36f",
+    "name": "Veem API v1.2 attachment-controller wallet-controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Veem REST API",
+      "type": "text/plain"
+    }
+  }
+}

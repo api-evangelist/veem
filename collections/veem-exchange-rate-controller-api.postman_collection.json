@@ -1,0 +1,652 @@
+{
+  "item": [
+    {
+      "id": "da88c60d-e951-4924-bd82-9e2d10c5c77f",
+      "name": "exchange-rate-controller",
+      "description": {
+        "content": "Exchange Rate Controller",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b4392866-bfe5-4aff-93b3-6cb3a93f4b32",
+          "name": "Copy of getQuoteEnhanced",
+          "request": {
+            "name": "Copy of getQuoteEnhanced",
+            "description": {
+              "content": "Submits a request to generate an enhanced (fixedFee is included) quote",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "exchangerates",
+                "quote",
+                "enhanced-1"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"to\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"bruid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cf67eae4-b880-4a61-8427-4f9bd0d62169",
+              "name": "Success, a quote has been created in Veem",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "exchangerates",
+                    "quote",
+                    "enhanced-1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"to\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"bruid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bruid\": \"string\",\n  \"from\": {\n    \"amount\": 4387.916461817407,\n    \"currency\": \"string\",\n    \"fixedFee\": {\n      \"amount\": 8003.244583339532,\n      \"currency\": \"string\"\n    },\n    \"fxRate\": 9468.352070655817\n  },\n  \"to\": {\n    \"amount\": 3575.557781893175,\n    \"currency\": \"string\",\n    \"fixedFee\": {\n      \"amount\": 3536.907999960931,\n      \"currency\": \"string\"\n    },\n    \"fxRate\": 5832.363920763899\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf1b2dbb-f0a4-4b57-99b5-2d02773112b9",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "exchangerates",
+                    "quote",
+                    "enhanced-1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"to\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"bruid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2709,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63c3b087-1ca8-41c8-8c80-d4d23fe0601d",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "exchangerates",
+                    "quote",
+                    "enhanced-1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"to\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"bruid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b11a0300-8e86-40f3-8423-09005e6649c1",
+              "name": "Forbidden, the token owner doesn't have permission to operate current API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "exchangerates",
+                    "quote",
+                    "enhanced-1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"to\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"bruid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "03467037-bb26-4632-bff4-d2f1b1eb478a",
+              "name": "Not Found, the resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "exchangerates",
+                    "quote",
+                    "enhanced-1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"to\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"bruid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1b7ff30a-efbe-4ed6-94ee-48898ad08c1e",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "exchangerates",
+                    "quote",
+                    "enhanced-1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"to\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"bruid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0969a27c-a0de-42b2-8bf5-35e775acd9e3",
+          "name": "getQuoteEnhanced",
+          "request": {
+            "name": "getQuoteEnhanced",
+            "description": {
+              "content": "Submits a request to generate an enhanced (fixedFee is included) quote",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "exchangerates",
+                "quote",
+                "enhanced"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"to\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"bruid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "58719ac6-158f-4550-aa22-c64c5b3e9f1a",
+              "name": "Success, a quote has been created in Veem",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "exchangerates",
+                    "quote",
+                    "enhanced"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"to\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"bruid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bruid\": \"string\",\n  \"from\": {\n    \"amount\": 4387.916461817407,\n    \"currency\": \"string\",\n    \"fixedFee\": {\n      \"amount\": 8003.244583339532,\n      \"currency\": \"string\"\n    },\n    \"fxRate\": 9468.352070655817\n  },\n  \"to\": {\n    \"amount\": 3575.557781893175,\n    \"currency\": \"string\",\n    \"fixedFee\": {\n      \"amount\": 3536.907999960931,\n      \"currency\": \"string\"\n    },\n    \"fxRate\": 5832.363920763899\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64606ac6-138a-4798-9e29-97a25ff913b5",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "exchangerates",
+                    "quote",
+                    "enhanced"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"to\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"bruid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2709,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "154add44-c23f-42fd-b44a-1498343ff370",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "exchangerates",
+                    "quote",
+                    "enhanced"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"to\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"bruid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8eab8cbe-b23a-494d-9b4d-86da76d38734",
+              "name": "Forbidden, the token owner doesn't have permission to operate current API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "exchangerates",
+                    "quote",
+                    "enhanced"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"to\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"bruid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5bd3ffa2-d297-4c96-bb8a-1a1b2a85677d",
+              "name": "Not Found, the resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "exchangerates",
+                    "quote",
+                    "enhanced"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"to\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"bruid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d55be149-e623-49be-84c7-aa8b91363cd0",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "exchangerates",
+                    "quote",
+                    "enhanced"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"to\": {\n    \"accountId\": \"<long>\",\n    \"fundingMethodId\": \"<long>\",\n    \"fundingMethodType\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"bruid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "//sandbox-api.veem.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3c0df800-34d8-4ef4-bb75-bc55a66d73e9",
+    "name": "Veem API v1.2 attachment-controller exchange-rate-controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Veem REST API",
+      "type": "text/plain"
+    }
+  }
+}

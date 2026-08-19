@@ -1,0 +1,1376 @@
+{
+  "item": [
+    {
+      "id": "c378275d-3992-48ae-8d9c-773be801e99a",
+      "name": "webhook-controller",
+      "description": {
+        "content": "Webhook Controller",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "685883ce-b715-4044-844b-5103f49ea509",
+          "name": "Create webhook",
+          "request": {
+            "name": "Create webhook",
+            "description": {
+              "content": "Creates a webhook configuration for the account and platform associated with the provided authorization token",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "webhooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"callbackURL\": \"<string>\",\n  \"event\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "359fc500-7d68-4b08-9751-8409f685a329",
+              "name": "Success, the webhook configuration was created and returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"callbackUrl\": \"string\",\n  \"event\": \"OUTBOUND_PAYMENT_STATUS_UPDATED\",\n  \"id\": 7644,\n  \"status\": \"Deleted\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c7e1042-a5c7-4646-866c-0dacd4285ccc",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"callbackUrl\": \"string\",\n  \"event\": \"OUTBOUND_PAYMENT_STATUS_UPDATED\",\n  \"id\": 7644,\n  \"status\": \"Deleted\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b07e859-e8b8-4b2f-ba73-5c77b88d1004",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 617,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 1006,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39f0d852-bc62-4ba0-805f-d3217f2549a1",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 617,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 1006,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6c2e0c4-27f9-4d34-9ae9-1b67dc6fe6be",
+              "name": "Forbidden, the token owner doesn't have permission to operate this API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 617,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 1006,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a52ba21d-58d8-438f-b560-19f63f500a1e",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 617,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 1006,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5279ec3e-99ae-46f9-b0d9-88b46ef67a79",
+          "name": "Get webhooks",
+          "request": {
+            "name": "Get webhooks",
+            "description": {
+              "content": "Gets all active webhook configurations for the account and platform associated with the provided authorization token.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "webhooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d1da3e5a-3509-4599-b7e7-adb992889916",
+              "name": "Success, all active webhook configurations were returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"callbackUrl\": \"string\",\n    \"event\": \"INBOUND_PAYMENT_STATUS_UPDATED\",\n    \"id\": 1163,\n    \"status\": \"Inactive\"\n  },\n  {\n    \"callbackUrl\": \"string\",\n    \"event\": \"INBOUND_PAYMENT_STATUS_UPDATED\",\n    \"id\": 4047,\n    \"status\": \"Inactive\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40ea7220-72c1-4bf7-b8fc-7d7d11ecb703",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 617,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 1006,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce29d876-e474-49cf-8487-2f02a9a5c0c7",
+              "name": "Forbidden, the token owner doesn't have permission to operate this API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 617,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 1006,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91ebc520-0750-4afb-8744-f366712e992e",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 617,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 1006,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23c4f7bc-f742-41d7-a3fd-80bc8be9e5f4",
+          "name": "Delete webhook",
+          "request": {
+            "name": "Delete webhook",
+            "description": {
+              "content": "Deletes the webhook configuration with the specified ID if it is owned by the account and platform associated with the provided authorization token",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "webhooks",
+                ":webhookId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "webhookId",
+                  "description": "(Required) webhookId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fb301cc4-5e0a-4217-aaa4-d8806655b148",
+              "name": "Success, the webhook configuration was deleted and returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "webhookId",
+                      "description": "(Required) webhookId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"callbackUrl\": \"string\",\n  \"event\": \"OUTBOUND_PAYMENT_STATUS_UPDATED\",\n  \"id\": 7644,\n  \"status\": \"Deleted\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82c681b0-0501-4c24-b9f0-9330d452f043",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "webhookId",
+                      "description": "(Required) webhookId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 617,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 1006,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "202fda8a-08f8-4bf5-be8d-d1818de8e5a2",
+              "name": "Forbidden, the token owner doesn't have permission to operate this API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "webhookId",
+                      "description": "(Required) webhookId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 617,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 1006,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a34bdbe-83da-495a-8d34-90214594578f",
+              "name": "A webhook configuration with the specified ID was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "webhookId",
+                      "description": "(Required) webhookId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 617,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 1006,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e123858-09a8-41ae-bbad-58664885fb91",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "webhookId",
+                      "description": "(Required) webhookId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 617,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 1006,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b2c2746f-30d1-4d3c-8fac-591d48b094d4",
+          "name": "Get webhook",
+          "request": {
+            "name": "Get webhook",
+            "description": {
+              "content": "Gets the webhook configuration with the specified ID if it is owned by the account and platform associated with the provided authorization token.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "webhooks",
+                ":webhookId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "webhookId",
+                  "description": "(Required) webhookId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d9ef101-984a-4064-b497-8bde04584148",
+              "name": "Success, the webhook configuration was returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "webhookId",
+                      "description": "(Required) webhookId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"callbackUrl\": \"string\",\n  \"event\": \"OUTBOUND_PAYMENT_STATUS_UPDATED\",\n  \"id\": 7644,\n  \"status\": \"Deleted\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86c9f752-2d78-4cae-8bbf-e4016f091a55",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "webhookId",
+                      "description": "(Required) webhookId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 617,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 1006,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9573522-222f-421e-a7bf-d49c26eaaa40",
+              "name": "Forbidden, the token owner doesn't have permission to operate this API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "webhookId",
+                      "description": "(Required) webhookId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 617,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 1006,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "740ad552-fd58-49cb-8652-2d925d22ee02",
+              "name": "A webhook configuration with the specified ID was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "webhookId",
+                      "description": "(Required) webhookId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 617,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 1006,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2407c19-5450-4084-afce-61344827468d",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "webhookId",
+                      "description": "(Required) webhookId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 617,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 1006,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d526e45-5123-4614-9352-28073e51ab2e",
+          "name": "Update webhook",
+          "request": {
+            "name": "Update webhook",
+            "description": {
+              "content": "Updates the webhook configuration with the specified ID if it is owned by the account and platform associated with the provided authorization token",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "webhooks",
+                ":webhookId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "webhookId",
+                  "description": "(Required) webhookId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"callbackURL\": \"<string>\",\n  \"event\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bed00486-76ba-487a-b105-c92dc2d2c300",
+              "name": "Success, the webhook configuration was updated and returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "webhookId",
+                      "description": "(Required) webhookId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"callbackUrl\": \"string\",\n  \"event\": \"OUTBOUND_PAYMENT_STATUS_UPDATED\",\n  \"id\": 7644,\n  \"status\": \"Deleted\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b0473860-1ab2-49a9-9b4a-81cedbd2194f",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "webhookId",
+                      "description": "(Required) webhookId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 617,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 1006,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84abeee0-a844-442f-9f06-0a98c8e26805",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "webhookId",
+                      "description": "(Required) webhookId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 617,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 1006,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0724a699-f9e8-4389-8d51-d01615cc210a",
+              "name": "Forbidden, the token owner doesn't have permission to operate this API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "webhookId",
+                      "description": "(Required) webhookId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 617,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 1006,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3eac299-ee05-484d-8f8f-0f1083eb954d",
+              "name": "A webhook configuration with the specified ID was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "webhookId",
+                      "description": "(Required) webhookId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 617,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 1006,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "187a2390-8a51-4976-b571-fe2a184cd97b",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "webhookId",
+                      "description": "(Required) webhookId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 617,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 1006,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "//sandbox-api.veem.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "aecdf740-7755-40ea-bd30-15caed68b878",
+    "name": "Veem API v1.2 attachment-controller webhook-controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Veem REST API",
+      "type": "text/plain"
+    }
+  }
+}

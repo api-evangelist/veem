@@ -1,0 +1,1281 @@
+{
+  "item": [
+    {
+      "id": "7c8e295d-fc17-40f7-b71c-dc32acea525b",
+      "name": "invoice-controller",
+      "description": {
+        "content": "Invoice Controller",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "71265f64-724c-42a0-a53e-cd3fcca63d84",
+          "name": "approveInvoice",
+          "request": {
+            "name": "approveInvoice",
+            "description": {
+              "content": "approve an invoice",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "invoices",
+                ":invoiceId",
+                "approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "invoiceId",
+                  "description": "(Required) invoiceId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "67428952-9e83-4314-ac35-0238299264c0",
+              "name": "Success, an approved invoice object is returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices",
+                    ":invoiceId",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "invoiceId",
+                      "description": "(Required) invoiceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"amount\": {\n    \"currency\": \"COP\",\n    \"number\": 7714.201377687434\n  },\n  \"exchangeRate\": {\n    \"expiry\": \"2025-10-13T17:28:04.142Z\",\n    \"fromCurrency\": \"PAB\",\n    \"id\": \"string\",\n    \"rate\": 6367.906508770734,\n    \"timeCreated\": \"1961-12-07T13:55:23.068Z\",\n    \"toAmount\": 4418.094176961106,\n    \"toCurrency\": \"AED\",\n    \"fromAmount\": 4314.53596045132\n  },\n  \"exchangeRateQuoteId\": \"string\",\n  \"id\": 2224,\n  \"payer\": {\n    \"bank\": {},\n    \"business\": {\n      \"address\": {\n        \"city\": \"string\",\n        \"countryCode\": \"KP\",\n        \"postalCode\": \"string\",\n        \"province\": \"string\",\n        \"street\": \"string\",\n        \"streetSecondary\": \"string\"\n      },\n      \"entity\": \"string\",\n      \"taxIdNumber\": \"string\"\n    },\n    \"businessName\": \"string\",\n    \"countryCode\": \"LS\",\n    \"email\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"type\": \"Business\"\n  },\n  \"status\": \"Rejected\",\n  \"timeCreated\": \"2004-11-22T03:10:35.985Z\",\n  \"attachments\": [\n    {\n      \"name\": \"string\",\n      \"referenceId\": \"string\",\n      \"type\": \"ProofOfPayment\"\n    },\n    {\n      \"name\": \"string\",\n      \"referenceId\": \"string\",\n      \"type\": \"ProofOfPayment\"\n    }\n  ],\n  \"ccEmails\": [\n    \"string\",\n    \"string\"\n  ],\n  \"claimLink\": \"string\",\n  \"clientId\": \"string\",\n  \"dueDate\": \"1948-03-26T13:00:37.023Z\",\n  \"externalInvoiceRefId\": \"string\",\n  \"notes\": \"string\",\n  \"purposeOfPayment\": \"string\",\n  \"purposeOfPaymentDescription\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8185f747-44cf-4c9f-b704-af195eb20fb6",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices",
+                    ":invoiceId",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "invoiceId",
+                      "description": "(Required) invoiceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4602,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f171f924-0508-48ee-9c64-56c42bc89d9d",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices",
+                    ":invoiceId",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "invoiceId",
+                      "description": "(Required) invoiceId"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ca9ba4a0-c31e-46e5-bbe8-5d17d551c127",
+              "name": "Forbidden, the token owner doesn't have permission to operate current API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices",
+                    ":invoiceId",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "invoiceId",
+                      "description": "(Required) invoiceId"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "73a96346-b1ff-44dc-93c4-0c7773589ea3",
+              "name": "Not Found, the resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices",
+                    ":invoiceId",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "invoiceId",
+                      "description": "(Required) invoiceId"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3320577e-00d4-4da8-82ae-9a6e2a55e110",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices",
+                    ":invoiceId",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "invoiceId",
+                      "description": "(Required) invoiceId"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "30183e1d-6a32-4e6d-931d-50f24cd6604d",
+          "name": "cancelInvoice",
+          "request": {
+            "name": "cancelInvoice",
+            "description": {
+              "content": "cancel an invoice",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "invoices",
+                ":invoiceId",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "invoiceId",
+                  "description": "(Required) invoiceId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "636722e0-1e68-4b2d-9fdd-0d01ee38521e",
+              "name": "Success, a cancelled invoice object is returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices",
+                    ":invoiceId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "invoiceId",
+                      "description": "(Required) invoiceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"amount\": {\n    \"currency\": \"TZS\",\n    \"number\": 6827.112782130679\n  },\n  \"exchangeRate\": {\n    \"expiry\": \"1953-05-30T01:31:10.797Z\",\n    \"fromCurrency\": \"NAD\",\n    \"id\": \"string\",\n    \"rate\": 9518.99978799326,\n    \"timeCreated\": \"2022-07-06T17:08:27.291Z\",\n    \"toAmount\": 7361.408732278493,\n    \"toCurrency\": \"SOS\",\n    \"fromAmount\": 8544.825610235117\n  },\n  \"exchangeRateQuoteId\": \"string\",\n  \"id\": 4176,\n  \"payer\": {\n    \"bank\": {},\n    \"business\": {\n      \"address\": {\n        \"city\": \"string\",\n        \"countryCode\": \"UA\",\n        \"postalCode\": \"string\",\n        \"province\": \"string\",\n        \"street\": \"string\",\n        \"streetSecondary\": \"string\"\n      },\n      \"entity\": \"string\",\n      \"taxIdNumber\": \"string\"\n    },\n    \"businessName\": \"string\",\n    \"countryCode\": \"BE\",\n    \"email\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"type\": \"Personal\"\n  },\n  \"status\": \"Sent\",\n  \"timeCreated\": \"1989-08-27T04:00:09.187Z\",\n  \"attachments\": [\n    {\n      \"name\": \"string\",\n      \"referenceId\": \"string\",\n      \"type\": \"ExternalInvoice\"\n    },\n    {\n      \"name\": \"string\",\n      \"referenceId\": \"string\",\n      \"type\": \"ProofOfPayment\"\n    }\n  ],\n  \"ccEmails\": [\n    \"string\",\n    \"string\"\n  ],\n  \"claimLink\": \"string\",\n  \"clientId\": \"string\",\n  \"dueDate\": \"1954-08-20T02:23:43.894Z\",\n  \"externalInvoiceRefId\": \"string\",\n  \"notes\": \"string\",\n  \"purposeOfPayment\": \"string\",\n  \"purposeOfPaymentDescription\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76f54c2d-f891-4128-ac3a-480bfd4486d7",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices",
+                    ":invoiceId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "invoiceId",
+                      "description": "(Required) invoiceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4602,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3bbf62b9-c41b-4029-8134-51ec5267ce6a",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices",
+                    ":invoiceId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "invoiceId",
+                      "description": "(Required) invoiceId"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6c944897-ca3b-41b8-ab48-5fe50ab8d721",
+              "name": "Forbidden, the token owner doesn't have permission to operate current API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices",
+                    ":invoiceId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "invoiceId",
+                      "description": "(Required) invoiceId"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b829b6e6-74cb-4a5c-bef6-025bd40346a1",
+              "name": "Not Found, the resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices",
+                    ":invoiceId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "invoiceId",
+                      "description": "(Required) invoiceId"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2c06eb6c-b003-4c85-a223-f284fc510a08",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices",
+                    ":invoiceId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "invoiceId",
+                      "description": "(Required) invoiceId"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93db53c5-be8d-4997-b4ff-5ab86399a738",
+          "name": "createInvoice",
+          "request": {
+            "name": "createInvoice",
+            "description": {
+              "content": "posts an invoice and sends to receiver",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": {\n    \"currency\": \"<string>\",\n    \"number\": \"<number>\"\n  },\n  \"exchangeRateQuoteId\": \"<string>\",\n  \"payer\": {\n    \"bank\": \"<object>\",\n    \"business\": {\n      \"address\": {\n        \"city\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"province\": \"<string>\",\n        \"street\": \"<string>\",\n        \"streetSecondary\": \"<string>\"\n      },\n      \"entity\": \"<string>\",\n      \"taxIdNumber\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"attachments\": [\n    {\n      \"name\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"ccEmails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"clientId\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"exchangeRate\": {\n    \"expiry\": \"<dateTime>\",\n    \"fromCurrency\": \"<string>\",\n    \"id\": \"<string>\",\n    \"rate\": \"<number>\",\n    \"timeCreated\": \"<dateTime>\",\n    \"toAmount\": \"<number>\",\n    \"toCurrency\": \"<string>\",\n    \"fromAmount\": \"<number>\"\n  },\n  \"externalInvoiceRefId\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"purposeOfPayment\": \"<string>\",\n  \"purposeOfPaymentDescription\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "97dcace5-4ca0-46d2-86f5-5cba1f45cf86",
+              "name": "Success, an invoice is created in Veem",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": {\n    \"currency\": \"<string>\",\n    \"number\": \"<number>\"\n  },\n  \"exchangeRateQuoteId\": \"<string>\",\n  \"payer\": {\n    \"bank\": \"<object>\",\n    \"business\": {\n      \"address\": {\n        \"city\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"province\": \"<string>\",\n        \"street\": \"<string>\",\n        \"streetSecondary\": \"<string>\"\n      },\n      \"entity\": \"<string>\",\n      \"taxIdNumber\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"attachments\": [\n    {\n      \"name\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"ccEmails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"clientId\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"exchangeRate\": {\n    \"expiry\": \"<dateTime>\",\n    \"fromCurrency\": \"<string>\",\n    \"id\": \"<string>\",\n    \"rate\": \"<number>\",\n    \"timeCreated\": \"<dateTime>\",\n    \"toAmount\": \"<number>\",\n    \"toCurrency\": \"<string>\",\n    \"fromAmount\": \"<number>\"\n  },\n  \"externalInvoiceRefId\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"purposeOfPayment\": \"<string>\",\n  \"purposeOfPaymentDescription\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"amount\": {\n    \"currency\": \"<string>\",\n    \"number\": \"<number>\"\n  },\n  \"exchangeRate\": {\n    \"expiry\": \"<dateTime>\",\n    \"fromCurrency\": \"<string>\",\n    \"id\": \"<string>\",\n    \"rate\": \"<number>\",\n    \"timeCreated\": \"<dateTime>\",\n    \"toAmount\": \"<number>\",\n    \"toCurrency\": \"<string>\",\n    \"fromAmount\": \"<number>\"\n  },\n  \"exchangeRateQuoteId\": \"string\",\n  \"id\": 6453,\n  \"payer\": {\n    \"bank\": \"<object>\",\n    \"business\": {\n      \"address\": {\n        \"city\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"province\": \"<string>\",\n        \"street\": \"<string>\",\n        \"streetSecondary\": \"<string>\"\n      },\n      \"entity\": \"<string>\",\n      \"taxIdNumber\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"status\": \"Closed\",\n  \"timeCreated\": \"1985-08-10T19:47:17.114Z\",\n  \"attachments\": [\n    {\n      \"name\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"ccEmails\": [\n    \"string\",\n    \"string\"\n  ],\n  \"claimLink\": \"string\",\n  \"clientId\": \"string\",\n  \"dueDate\": \"1999-02-03T01:11:34.125Z\",\n  \"externalInvoiceRefId\": \"string\",\n  \"notes\": \"string\",\n  \"purposeOfPayment\": \"string\",\n  \"purposeOfPaymentDescription\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4355fa4f-b1de-417c-a39a-1e589bd3cbde",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": {\n    \"currency\": \"<string>\",\n    \"number\": \"<number>\"\n  },\n  \"exchangeRateQuoteId\": \"<string>\",\n  \"payer\": {\n    \"bank\": \"<object>\",\n    \"business\": {\n      \"address\": {\n        \"city\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"province\": \"<string>\",\n        \"street\": \"<string>\",\n        \"streetSecondary\": \"<string>\"\n      },\n      \"entity\": \"<string>\",\n      \"taxIdNumber\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"attachments\": [\n    {\n      \"name\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"ccEmails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"clientId\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"exchangeRate\": {\n    \"expiry\": \"<dateTime>\",\n    \"fromCurrency\": \"<string>\",\n    \"id\": \"<string>\",\n    \"rate\": \"<number>\",\n    \"timeCreated\": \"<dateTime>\",\n    \"toAmount\": \"<number>\",\n    \"toCurrency\": \"<string>\",\n    \"fromAmount\": \"<number>\"\n  },\n  \"externalInvoiceRefId\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"purposeOfPayment\": \"<string>\",\n  \"purposeOfPaymentDescription\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"amount\": {\n    \"currency\": \"<string>\",\n    \"number\": \"<number>\"\n  },\n  \"exchangeRate\": {\n    \"expiry\": \"<dateTime>\",\n    \"fromCurrency\": \"<string>\",\n    \"id\": \"<string>\",\n    \"rate\": \"<number>\",\n    \"timeCreated\": \"<dateTime>\",\n    \"toAmount\": \"<number>\",\n    \"toCurrency\": \"<string>\",\n    \"fromAmount\": \"<number>\"\n  },\n  \"exchangeRateQuoteId\": \"string\",\n  \"id\": 6453,\n  \"payer\": {\n    \"bank\": \"<object>\",\n    \"business\": {\n      \"address\": {\n        \"city\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"province\": \"<string>\",\n        \"street\": \"<string>\",\n        \"streetSecondary\": \"<string>\"\n      },\n      \"entity\": \"<string>\",\n      \"taxIdNumber\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"status\": \"Closed\",\n  \"timeCreated\": \"1985-08-10T19:47:17.114Z\",\n  \"attachments\": [\n    {\n      \"name\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"ccEmails\": [\n    \"string\",\n    \"string\"\n  ],\n  \"claimLink\": \"string\",\n  \"clientId\": \"string\",\n  \"dueDate\": \"1999-02-03T01:11:34.125Z\",\n  \"externalInvoiceRefId\": \"string\",\n  \"notes\": \"string\",\n  \"purposeOfPayment\": \"string\",\n  \"purposeOfPaymentDescription\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f7a317f-2246-4aab-9978-fbeb4ae98aa5",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": {\n    \"currency\": \"<string>\",\n    \"number\": \"<number>\"\n  },\n  \"exchangeRateQuoteId\": \"<string>\",\n  \"payer\": {\n    \"bank\": \"<object>\",\n    \"business\": {\n      \"address\": {\n        \"city\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"province\": \"<string>\",\n        \"street\": \"<string>\",\n        \"streetSecondary\": \"<string>\"\n      },\n      \"entity\": \"<string>\",\n      \"taxIdNumber\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"attachments\": [\n    {\n      \"name\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"ccEmails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"clientId\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"exchangeRate\": {\n    \"expiry\": \"<dateTime>\",\n    \"fromCurrency\": \"<string>\",\n    \"id\": \"<string>\",\n    \"rate\": \"<number>\",\n    \"timeCreated\": \"<dateTime>\",\n    \"toAmount\": \"<number>\",\n    \"toCurrency\": \"<string>\",\n    \"fromAmount\": \"<number>\"\n  },\n  \"externalInvoiceRefId\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"purposeOfPayment\": \"<string>\",\n  \"purposeOfPaymentDescription\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4602,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64d3482e-60d6-4b0b-a252-21168bda8e45",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": {\n    \"currency\": \"<string>\",\n    \"number\": \"<number>\"\n  },\n  \"exchangeRateQuoteId\": \"<string>\",\n  \"payer\": {\n    \"bank\": \"<object>\",\n    \"business\": {\n      \"address\": {\n        \"city\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"province\": \"<string>\",\n        \"street\": \"<string>\",\n        \"streetSecondary\": \"<string>\"\n      },\n      \"entity\": \"<string>\",\n      \"taxIdNumber\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"attachments\": [\n    {\n      \"name\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"ccEmails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"clientId\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"exchangeRate\": {\n    \"expiry\": \"<dateTime>\",\n    \"fromCurrency\": \"<string>\",\n    \"id\": \"<string>\",\n    \"rate\": \"<number>\",\n    \"timeCreated\": \"<dateTime>\",\n    \"toAmount\": \"<number>\",\n    \"toCurrency\": \"<string>\",\n    \"fromAmount\": \"<number>\"\n  },\n  \"externalInvoiceRefId\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"purposeOfPayment\": \"<string>\",\n  \"purposeOfPaymentDescription\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ae6179a4-e8e6-41bf-b6a9-22ad66355b73",
+              "name": "Forbidden, the token owner doesn't have permission to operate current API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": {\n    \"currency\": \"<string>\",\n    \"number\": \"<number>\"\n  },\n  \"exchangeRateQuoteId\": \"<string>\",\n  \"payer\": {\n    \"bank\": \"<object>\",\n    \"business\": {\n      \"address\": {\n        \"city\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"province\": \"<string>\",\n        \"street\": \"<string>\",\n        \"streetSecondary\": \"<string>\"\n      },\n      \"entity\": \"<string>\",\n      \"taxIdNumber\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"attachments\": [\n    {\n      \"name\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"ccEmails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"clientId\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"exchangeRate\": {\n    \"expiry\": \"<dateTime>\",\n    \"fromCurrency\": \"<string>\",\n    \"id\": \"<string>\",\n    \"rate\": \"<number>\",\n    \"timeCreated\": \"<dateTime>\",\n    \"toAmount\": \"<number>\",\n    \"toCurrency\": \"<string>\",\n    \"fromAmount\": \"<number>\"\n  },\n  \"externalInvoiceRefId\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"purposeOfPayment\": \"<string>\",\n  \"purposeOfPaymentDescription\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4641656a-8884-4dda-b2c9-6df9305e4ca9",
+              "name": "Not Found, the resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": {\n    \"currency\": \"<string>\",\n    \"number\": \"<number>\"\n  },\n  \"exchangeRateQuoteId\": \"<string>\",\n  \"payer\": {\n    \"bank\": \"<object>\",\n    \"business\": {\n      \"address\": {\n        \"city\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"province\": \"<string>\",\n        \"street\": \"<string>\",\n        \"streetSecondary\": \"<string>\"\n      },\n      \"entity\": \"<string>\",\n      \"taxIdNumber\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"attachments\": [\n    {\n      \"name\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"ccEmails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"clientId\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"exchangeRate\": {\n    \"expiry\": \"<dateTime>\",\n    \"fromCurrency\": \"<string>\",\n    \"id\": \"<string>\",\n    \"rate\": \"<number>\",\n    \"timeCreated\": \"<dateTime>\",\n    \"toAmount\": \"<number>\",\n    \"toCurrency\": \"<string>\",\n    \"fromAmount\": \"<number>\"\n  },\n  \"externalInvoiceRefId\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"purposeOfPayment\": \"<string>\",\n  \"purposeOfPaymentDescription\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "80f1fbfb-6559-446c-8bac-b8de383d5289",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": {\n    \"currency\": \"<string>\",\n    \"number\": \"<number>\"\n  },\n  \"exchangeRateQuoteId\": \"<string>\",\n  \"payer\": {\n    \"bank\": \"<object>\",\n    \"business\": {\n      \"address\": {\n        \"city\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"province\": \"<string>\",\n        \"street\": \"<string>\",\n        \"streetSecondary\": \"<string>\"\n      },\n      \"entity\": \"<string>\",\n      \"taxIdNumber\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"attachments\": [\n    {\n      \"name\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"ccEmails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"clientId\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"exchangeRate\": {\n    \"expiry\": \"<dateTime>\",\n    \"fromCurrency\": \"<string>\",\n    \"id\": \"<string>\",\n    \"rate\": \"<number>\",\n    \"timeCreated\": \"<dateTime>\",\n    \"toAmount\": \"<number>\",\n    \"toCurrency\": \"<string>\",\n    \"fromAmount\": \"<number>\"\n  },\n  \"externalInvoiceRefId\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"purposeOfPayment\": \"<string>\",\n  \"purposeOfPaymentDescription\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b12c4047-5e8d-4a96-91ae-e7696354f074",
+          "name": "getInvoice",
+          "request": {
+            "name": "getInvoice",
+            "description": {
+              "content": "get invoice details",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "invoices",
+                ":invoiceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "invoiceId",
+                  "description": "(Required) invoiceId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1150bc8f-4f57-4239-bd3a-be32edac9012",
+              "name": "Success, an invoice object is returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "invoiceId",
+                      "description": "(Required) invoiceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"amount\": {\n    \"currency\": \"<string>\",\n    \"number\": \"<number>\"\n  },\n  \"exchangeRate\": {\n    \"expiry\": \"<dateTime>\",\n    \"fromCurrency\": \"<string>\",\n    \"id\": \"<string>\",\n    \"rate\": \"<number>\",\n    \"timeCreated\": \"<dateTime>\",\n    \"toAmount\": \"<number>\",\n    \"toCurrency\": \"<string>\",\n    \"fromAmount\": \"<number>\"\n  },\n  \"exchangeRateQuoteId\": \"string\",\n  \"id\": 6453,\n  \"payer\": {\n    \"bank\": \"<object>\",\n    \"business\": {\n      \"address\": {\n        \"city\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"province\": \"<string>\",\n        \"street\": \"<string>\",\n        \"streetSecondary\": \"<string>\"\n      },\n      \"entity\": \"<string>\",\n      \"taxIdNumber\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"status\": \"Closed\",\n  \"timeCreated\": \"1985-08-10T19:47:17.114Z\",\n  \"attachments\": [\n    {\n      \"name\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"referenceId\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"ccEmails\": [\n    \"string\",\n    \"string\"\n  ],\n  \"claimLink\": \"string\",\n  \"clientId\": \"string\",\n  \"dueDate\": \"1999-02-03T01:11:34.125Z\",\n  \"externalInvoiceRefId\": \"string\",\n  \"notes\": \"string\",\n  \"purposeOfPayment\": \"string\",\n  \"purposeOfPaymentDescription\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "018aaa88-7c80-4c4b-abed-64e6a1bd4c31",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "invoiceId",
+                      "description": "(Required) invoiceId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4602,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02a7a82a-f5a0-468d-9cac-fe47eb4e4be5",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "invoiceId",
+                      "description": "(Required) invoiceId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bf5c2fb9-4848-4156-9d3f-5bb024040c2c",
+              "name": "Forbidden, the token owner doesn't have permission to operate current API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "invoiceId",
+                      "description": "(Required) invoiceId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c2812db6-660b-4fc0-bd4b-cc63e0f9d501",
+              "name": "Not Found, the resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "invoiceId",
+                      "description": "(Required) invoiceId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "86361064-23a0-4599-bf90-6734edc6de5f",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "invoices",
+                    ":invoiceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "invoiceId",
+                      "description": "(Required) invoiceId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "//sandbox-api.veem.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "15e43bed-f7da-42e8-9e00-39dd5b29aec8",
+    "name": "Veem API v1.2 attachment-controller invoice-controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Veem REST API",
+      "type": "text/plain"
+    }
+  }
+}

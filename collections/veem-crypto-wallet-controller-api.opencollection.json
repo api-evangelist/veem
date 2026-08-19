@@ -1,0 +1,274 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Veem API v1.2 attachment-controller crypto-wallet-controller API",
+    "version": "v1.2.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "crypto-wallet-controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add a currency to a crypto wallet application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//sandbox-api.veem.com/veem/v1.2/crypto-wallet/applications/:applicationId/add-currency",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the crypto wallet application."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Provisions an additional currency or route for an existing crypto wallet application."
+        },
+        {
+          "info": {
+            "name": "Create a crypto wallet application",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//sandbox-api.veem.com/veem/v1.2/crypto-wallet/applications",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new crypto wallet application."
+        },
+        {
+          "info": {
+            "name": "Retrieve a crypto wallet application by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//sandbox-api.veem.com/veem/v1.2/crypto-wallet/applications/:applicationId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the crypto wallet application."
+              },
+              {
+                "name": "onBehalfAccountId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the account the request is made on behalf of."
+              }
+            ]
+          },
+          "docs": "Returns a specific crypto wallet application."
+        },
+        {
+          "info": {
+            "name": "Update a crypto wallet application",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "//sandbox-api.veem.com/veem/v1.2/crypto-wallet/applications/:applicationId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the crypto wallet application."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing crypto wallet application."
+        },
+        {
+          "info": {
+            "name": "Retrieve a crypto wallet application route by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//sandbox-api.veem.com/veem/v1.2/crypto-wallet/applications/:applicationId/routes/:routeId",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the crypto wallet application."
+              },
+              {
+                "name": "routeId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the crypto wallet application route."
+              },
+              {
+                "name": "onBehalfAccountId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the account the request is made on behalf of."
+              }
+            ]
+          },
+          "docs": "Returns a specific route for a crypto wallet application."
+        },
+        {
+          "info": {
+            "name": "Retrieve crypto wallet application routes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//sandbox-api.veem.com/veem/v1.2/crypto-wallet/applications/:applicationId/routes",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the crypto wallet application."
+              },
+              {
+                "name": "onBehalfAccountId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the account the request is made on behalf of."
+              }
+            ]
+          },
+          "docs": "Returns the routes for a specific crypto wallet application."
+        },
+        {
+          "info": {
+            "name": "Retrieve crypto wallet balance by funding method ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//sandbox-api.veem.com/veem/v1.2/crypto-wallet/balance/:fundingMethodId",
+            "params": [
+              {
+                "name": "fundingMethodId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the crypto wallet funding method."
+              }
+            ]
+          },
+          "docs": "Returns the balance details of a specific crypto wallet."
+        },
+        {
+          "info": {
+            "name": "Retrieve all crypto wallet balances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//sandbox-api.veem.com/veem/v1.2/crypto-wallet/balance"
+          },
+          "docs": "Returns a list of balance details for all crypto wallets."
+        },
+        {
+          "info": {
+            "name": "Retrieve all crypto wallet details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//sandbox-api.veem.com/veem/v1.2/crypto-wallet/details"
+          },
+          "docs": "Returns a list of details for all crypto wallets."
+        },
+        {
+          "info": {
+            "name": "Retrieve crypto wallet details by funding method ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//sandbox-api.veem.com/veem/v1.2/crypto-wallet/details/:fundingMethodId",
+            "params": [
+              {
+                "name": "fundingMethodId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the crypto wallet funding method."
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a specific crypto wallet."
+        },
+        {
+          "info": {
+            "name": "Get payer's Crypto Wallets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//sandbox-api.veem.com/veem/v1.2/crypto-wallet"
+          },
+          "docs": "Gets the Crypto Wallet information for the payer, including status, currency and chain details."
+        },
+        {
+          "info": {
+            "name": "Retrieve crypto wallet transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//sandbox-api.veem.com/veem/v1.2/crypto-wallet/transactions/:fundingMethodId",
+            "params": [
+              {
+                "name": "fundingMethodId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the crypto wallet funding method."
+              },
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query",
+                "description": "The page number for paginated results (initial: 0)."
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "The number of results per page (max: 25)."
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "The start date and time for transaction filtering."
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "The end date and time for transaction filtering."
+              }
+            ]
+          },
+          "docs": "Returns paginated transactions for a crypto wallet within a specified date range."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,689 @@
+{
+  "item": [
+    {
+      "id": "598f4ad3-1a2b-4ce6-8a45-9b739a125b31",
+      "name": "open-account-controller",
+      "description": {
+        "content": "Open Account Controller",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "074582b7-e60f-4c8e-821e-ce0c1c233ec3",
+          "name": "createAccount",
+          "request": {
+            "name": "createAccount",
+            "description": {},
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<string>\",\n  \"address\": {\n    \"city\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"province\": \"<string>\",\n    \"street\": \"<string>\",\n    \"streetSecondary\": \"<string>\"\n  },\n  \"bankInfo\": \"<object>\",\n  \"businessEntity\": \"<string>\",\n  \"businessName\": \"<string>\",\n  \"dateOfBirth\": \"<date>\",\n  \"dialCode\": \"<string>\",\n  \"extraInfo\": {\n    \"purposeOfPayment\": \"<string>\",\n    \"purposeOfPaymentDescription\": \"<string>\"\n  },\n  \"extraName\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"isoCountryCode\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"subIndustry\": \"<string>\",\n  \"taxIdNumber\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "661ee01f-bbd1-4755-8258-3301d6578941",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"address\": {\n    \"city\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"province\": \"<string>\",\n    \"street\": \"<string>\",\n    \"streetSecondary\": \"<string>\"\n  },\n  \"bankInfo\": \"<object>\",\n  \"businessEntity\": \"<string>\",\n  \"businessName\": \"<string>\",\n  \"dateOfBirth\": \"<date>\",\n  \"dialCode\": \"<string>\",\n  \"extraInfo\": {\n    \"purposeOfPayment\": \"<string>\",\n    \"purposeOfPaymentDescription\": \"<string>\"\n  },\n  \"extraName\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"isoCountryCode\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"middleName\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"subIndustry\": \"<string>\",\n  \"taxIdNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountSetUpStatus\": \"string\",\n  \"clientId\": \"string\",\n  \"clientSecret\": \"string\",\n  \"email\": \"string\",\n  \"expiresIn\": 4533,\n  \"id\": 9239,\n  \"missingInformation\": [\n    \"string\",\n    \"string\"\n  ],\n  \"token\": \"string\",\n  \"userId\": 6673,\n  \"verificationStatus\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e62358e3-8fba-4294-9106-89cce5820a02",
+          "name": "createOrUpdateAccountSettings",
+          "request": {
+            "name": "createOrUpdateAccountSettings",
+            "description": {
+              "content": "Creates or updates account settings for a specific account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "account",
+                ":accountId",
+                "setting"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "accountId",
+                  "description": "(Required) The account ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "90ea2dc5-432f-489c-839c-034918e2564d",
+              "name": "Success, account settings have been created or updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "account",
+                    ":accountId",
+                    "setting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "accountId",
+                      "description": "(Required) The account ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountId\": 5528,\n  \"type\": \"string\",\n  \"value\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef0c6953-35e4-487f-b614-e610be40fe7f",
+              "name": "Bad Request, invalid request data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "account",
+                    ":accountId",
+                    "setting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "accountId",
+                      "description": "(Required) The account ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 634,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f08b53f-75d1-43e1-82ed-c25e425d2d86",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "account",
+                    ":accountId",
+                    "setting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "accountId",
+                      "description": "(Required) The account ID"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3371ca8c-9810-4cab-ad0e-9ef841912081",
+              "name": "Forbidden, the token owner doesn't have permission to operate current API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "account",
+                    ":accountId",
+                    "setting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "accountId",
+                      "description": "(Required) The account ID"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3a094580-89f8-4b36-981e-3eb4999a4c84",
+              "name": "Not Found, the resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "account",
+                    ":accountId",
+                    "setting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "accountId",
+                      "description": "(Required) The account ID"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cc7a0a9f-63d4-47e1-b044-0952aa1dee5d",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "account",
+                    ":accountId",
+                    "setting"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "accountId",
+                      "description": "(Required) The account ID"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1929d895-eb1f-4b41-b91a-d8630400f7d4",
+          "name": "editAccount",
+          "request": {
+            "name": "editAccount",
+            "description": {},
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "account",
+                ":accountId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "accountId",
+                  "description": "(Required) accountId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": {\n    \"city\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"province\": \"<string>\",\n    \"street\": \"<string>\",\n    \"streetSecondary\": \"<string>\"\n  },\n  \"businessEntity\": \"<string>\",\n  \"businessName\": \"<string>\",\n  \"dialCode\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"isoCountryCode\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"subIndustry\": \"<string>\",\n  \"taxIdNumber\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "24b684ec-0fd4-4466-90e0-ca6d9045f6c3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "account",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "accountId",
+                      "description": "(Required) accountId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": {\n    \"city\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"province\": \"<string>\",\n    \"street\": \"<string>\",\n    \"streetSecondary\": \"<string>\"\n  },\n  \"businessEntity\": \"<string>\",\n  \"businessName\": \"<string>\",\n  \"dialCode\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"industry\": \"<string>\",\n  \"isoCountryCode\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"subIndustry\": \"<string>\",\n  \"taxIdNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountSetUpStatus\": \"string\",\n  \"clientId\": \"string\",\n  \"clientSecret\": \"string\",\n  \"email\": \"string\",\n  \"expiresIn\": 9696,\n  \"id\": 6112,\n  \"missingInformation\": [\n    \"string\",\n    \"string\"\n  ],\n  \"token\": \"string\",\n  \"userId\": 8987,\n  \"verificationStatus\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb9ad838-fae7-49e1-9cea-c22db6555fc2",
+          "name": "getAccount",
+          "request": {
+            "name": "getAccount",
+            "description": {},
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "account",
+                ":accountId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "accountId",
+                  "description": "(Required) accountId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "558b3306-c3b5-4514-882b-d4ced3d5d4ea",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "account",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "accountId",
+                      "description": "(Required) accountId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountSetUpStatus\": \"string\",\n  \"clientId\": \"string\",\n  \"clientSecret\": \"string\",\n  \"email\": \"string\",\n  \"expiresIn\": 9696,\n  \"id\": 6112,\n  \"missingInformation\": [\n    \"string\",\n    \"string\"\n  ],\n  \"token\": \"string\",\n  \"userId\": 8987,\n  \"verificationStatus\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "//sandbox-api.veem.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3af32096-90bd-44ed-9e6e-147619388983",
+    "name": "Veem API v1.2 attachment-controller open-account-controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Veem REST API",
+      "type": "text/plain"
+    }
+  }
+}

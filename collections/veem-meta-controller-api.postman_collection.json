@@ -1,0 +1,274 @@
+{
+  "item": [
+    {
+      "id": "821cd107-8bb9-4615-baa1-f1bfeff61f00",
+      "name": "meta-controller",
+      "description": {
+        "content": "Meta Controller",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "473fe0d6-adcb-470c-9e2d-5ef236500a15",
+          "name": "Country Currency Map",
+          "request": {
+            "name": "Country Currency Map",
+            "description": {
+              "content": "Returns a list of countries supported and currencies for each",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "public",
+                "v1.2",
+                "country-currency-map"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "bankFields",
+                  "value": "false",
+                  "description": "bankFields"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dde0248a-c720-4db2-a9de-af661f2eaabe",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "public",
+                    "v1.2",
+                    "country-currency-map"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bankFields",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"bankFields\": {},\n    \"country\": \"AD\",\n    \"countryName\": \"string\",\n    \"invoiceAttachmentRequired\": false,\n    \"purposeOfPaymentDescriptionRequired\": true,\n    \"purposeOfPaymentInfo\": [\n      {\n        \"countryCode\": \"SU\",\n        \"description\": \"string\",\n        \"industry\": \"string\",\n        \"purposeCode\": \"string\",\n        \"subindustry\": \"string\"\n      },\n      {\n        \"countryCode\": \"GF\",\n        \"description\": \"string\",\n        \"industry\": \"string\",\n        \"purposeCode\": \"string\",\n        \"subindustry\": \"string\"\n      }\n    ],\n    \"purposeOfPaymentRequired\": true,\n    \"receivingCurrencies\": [\n      \"BWP\",\n      \"CVE\"\n    ],\n    \"sendingCurrencies\": [\n      \"SGD\",\n      \"ZWL\"\n    ]\n  },\n  {\n    \"bankFields\": {},\n    \"country\": \"KW\",\n    \"countryName\": \"string\",\n    \"invoiceAttachmentRequired\": false,\n    \"purposeOfPaymentDescriptionRequired\": true,\n    \"purposeOfPaymentInfo\": [\n      {\n        \"countryCode\": \"EC\",\n        \"description\": \"string\",\n        \"industry\": \"string\",\n        \"purposeCode\": \"string\",\n        \"subindustry\": \"string\"\n      },\n      {\n        \"countryCode\": \"MO\",\n        \"description\": \"string\",\n        \"industry\": \"string\",\n        \"purposeCode\": \"string\",\n        \"subindustry\": \"string\"\n      }\n    ],\n    \"purposeOfPaymentRequired\": false,\n    \"receivingCurrencies\": [\n      \"WST\",\n      \"BOB\"\n    ],\n    \"sendingCurrencies\": [\n      \"LBP\",\n      \"BBD\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c162efd-2447-49bb-a91f-c57ea09a83fc",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "public",
+                    "v1.2",
+                    "country-currency-map"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bankFields",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 503,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f75ca89-3b65-41c6-b12e-0cfc8d7f04f2",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "public",
+                    "v1.2",
+                    "country-currency-map"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bankFields",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "980c4bb1-c196-474b-802c-e105d323afbd",
+              "name": "Forbidden, the token owner doesn't have permission to operate current API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "public",
+                    "v1.2",
+                    "country-currency-map"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bankFields",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7cbfc7d7-e2f8-478a-b854-9f0f53d33015",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "public",
+                    "v1.2",
+                    "country-currency-map"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bankFields",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "//sandbox-api.veem.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "430acd2d-ee0c-4010-86cc-b75bce688b7e",
+    "name": "Veem API v1.2 attachment-controller meta-controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Veem REST API",
+      "type": "text/plain"
+    }
+  }
+}

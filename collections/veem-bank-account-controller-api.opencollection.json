@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Veem API v1.2 attachment-controller bank-account-controller API",
+    "version": "v1.2.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "bank-account-controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "addBankAccount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//sandbox-api.veem.com/veem/v1.2/account/bank-account",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "addBankAccount"
+        },
+        {
+          "info": {
+            "name": "editBankAccount",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "//sandbox-api.veem.com/veem/v1.2/account/bank-account/:bankAccountId",
+            "params": [
+              {
+                "name": "bankAccountId",
+                "value": "",
+                "type": "path",
+                "description": "bankAccountId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "editBankAccount"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

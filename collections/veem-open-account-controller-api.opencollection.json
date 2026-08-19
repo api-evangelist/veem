@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Veem API v1.2 attachment-controller open-account-controller API",
+    "version": "v1.2.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "open-account-controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "createAccount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//sandbox-api.veem.com/veem/v1.2/account",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "createAccount"
+        },
+        {
+          "info": {
+            "name": "createOrUpdateAccountSettings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//sandbox-api.veem.com/veem/v1.2/account/:accountId/setting",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "The account ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates account settings for a specific account"
+        },
+        {
+          "info": {
+            "name": "getAccount",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//sandbox-api.veem.com/veem/v1.2/account/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "accountId"
+              }
+            ]
+          },
+          "docs": "getAccount"
+        },
+        {
+          "info": {
+            "name": "editAccount",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "//sandbox-api.veem.com/veem/v1.2/account/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "accountId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "editAccount"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

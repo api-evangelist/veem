@@ -1,0 +1,1853 @@
+{
+  "item": [
+    {
+      "id": "0571ee80-5ca8-40b1-82a3-88085a20ad05",
+      "name": "contact-controller",
+      "description": {
+        "content": "Contact Controller",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bd7c3690-1711-4eac-b3f2-92e8ec8bb0d7",
+          "name": "createContacts",
+          "request": {
+            "name": "createContacts",
+            "description": {
+              "content": "Create multiple contacts in a batch",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "contacts",
+                "batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeItems",
+                  "value": "false",
+                  "description": "includeItems"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"batchItemId\": \"<long>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"isoCountryCode\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"type\": \"<string>\",\n    \"bankAccount\": {\n      \"accountType\": \"<string>\",\n      \"bankAccountNumber\": \"<string>\",\n      \"bankAddress\": {\n        \"city\": \"<string>\",\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"stateProvince\": \"<string>\",\n        \"province\": \"<string>\",\n        \"state\": \"<string>\"\n      },\n      \"bankCnaps\": \"<string>\",\n      \"bankCode\": \"<string>\",\n      \"bankIfscBranchCode\": \"<string>\",\n      \"bankInstitutionNumber\": \"<string>\",\n      \"bankName\": \"<string>\",\n      \"beneficiaryName\": \"<string>\",\n      \"branchCode\": \"<string>\",\n      \"bsbBankCode\": \"<string>\",\n      \"clabe\": \"<string>\",\n      \"currencyCode\": \"<string>\",\n      \"iban\": \"<string>\",\n      \"isoCountryCode\": \"<string>\",\n      \"routingNumber\": \"<string>\",\n      \"sortCode\": \"<string>\",\n      \"swiftBic\": \"<string>\",\n      \"transitCode\": \"<string>\"\n    },\n    \"businessAddress\": {\n      \"city\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvince\": \"<string>\",\n      \"province\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"externalBusinessId\": \"<long>\",\n    \"phoneDialCode\": \"<string>\"\n  },\n  {\n    \"batchItemId\": \"<long>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"isoCountryCode\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"type\": \"<string>\",\n    \"bankAccount\": {\n      \"accountType\": \"<string>\",\n      \"bankAccountNumber\": \"<string>\",\n      \"bankAddress\": {\n        \"city\": \"<string>\",\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"stateProvince\": \"<string>\",\n        \"province\": \"<string>\",\n        \"state\": \"<string>\"\n      },\n      \"bankCnaps\": \"<string>\",\n      \"bankCode\": \"<string>\",\n      \"bankIfscBranchCode\": \"<string>\",\n      \"bankInstitutionNumber\": \"<string>\",\n      \"bankName\": \"<string>\",\n      \"beneficiaryName\": \"<string>\",\n      \"branchCode\": \"<string>\",\n      \"bsbBankCode\": \"<string>\",\n      \"clabe\": \"<string>\",\n      \"currencyCode\": \"<string>\",\n      \"iban\": \"<string>\",\n      \"isoCountryCode\": \"<string>\",\n      \"routingNumber\": \"<string>\",\n      \"sortCode\": \"<string>\",\n      \"swiftBic\": \"<string>\",\n      \"transitCode\": \"<string>\"\n    },\n    \"businessAddress\": {\n      \"city\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvince\": \"<string>\",\n      \"province\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"externalBusinessId\": \"<long>\",\n    \"phoneDialCode\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4e83c90f-018f-482f-a214-d49fa67bb7f9",
+              "name": "Request data validated, processing started",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeItems",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"batchItemId\": \"<long>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"isoCountryCode\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"type\": \"<string>\",\n    \"bankAccount\": {\n      \"accountType\": \"<string>\",\n      \"bankAccountNumber\": \"<string>\",\n      \"bankAddress\": {\n        \"city\": \"<string>\",\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"stateProvince\": \"<string>\",\n        \"province\": \"<string>\",\n        \"state\": \"<string>\"\n      },\n      \"bankCnaps\": \"<string>\",\n      \"bankCode\": \"<string>\",\n      \"bankIfscBranchCode\": \"<string>\",\n      \"bankInstitutionNumber\": \"<string>\",\n      \"bankName\": \"<string>\",\n      \"beneficiaryName\": \"<string>\",\n      \"branchCode\": \"<string>\",\n      \"bsbBankCode\": \"<string>\",\n      \"clabe\": \"<string>\",\n      \"currencyCode\": \"<string>\",\n      \"iban\": \"<string>\",\n      \"isoCountryCode\": \"<string>\",\n      \"routingNumber\": \"<string>\",\n      \"sortCode\": \"<string>\",\n      \"swiftBic\": \"<string>\",\n      \"transitCode\": \"<string>\"\n    },\n    \"businessAddress\": {\n      \"city\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvince\": \"<string>\",\n      \"province\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"externalBusinessId\": \"<long>\",\n    \"phoneDialCode\": \"<string>\"\n  },\n  {\n    \"batchItemId\": \"<long>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"isoCountryCode\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"type\": \"<string>\",\n    \"bankAccount\": {\n      \"accountType\": \"<string>\",\n      \"bankAccountNumber\": \"<string>\",\n      \"bankAddress\": {\n        \"city\": \"<string>\",\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"stateProvince\": \"<string>\",\n        \"province\": \"<string>\",\n        \"state\": \"<string>\"\n      },\n      \"bankCnaps\": \"<string>\",\n      \"bankCode\": \"<string>\",\n      \"bankIfscBranchCode\": \"<string>\",\n      \"bankInstitutionNumber\": \"<string>\",\n      \"bankName\": \"<string>\",\n      \"beneficiaryName\": \"<string>\",\n      \"branchCode\": \"<string>\",\n      \"bsbBankCode\": \"<string>\",\n      \"clabe\": \"<string>\",\n      \"currencyCode\": \"<string>\",\n      \"iban\": \"<string>\",\n      \"isoCountryCode\": \"<string>\",\n      \"routingNumber\": \"<string>\",\n      \"sortCode\": \"<string>\",\n      \"swiftBic\": \"<string>\",\n      \"transitCode\": \"<string>\"\n    },\n    \"businessAddress\": {\n      \"city\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvince\": \"<string>\",\n      \"province\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"externalBusinessId\": \"<long>\",\n    \"phoneDialCode\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"batchId\": 3045,\n  \"batchItems\": [\n    {\n      \"batchItemId\": 2047,\n      \"errorInfo\": {\n        \"code\": 6273,\n        \"error\": \"string\",\n        \"message\": \"string\",\n        \"timestamp\": \"string\"\n      },\n      \"paymentId\": 4182,\n      \"status\": \"string\"\n    },\n    {\n      \"batchItemId\": 6726,\n      \"errorInfo\": {\n        \"code\": 852,\n        \"error\": \"string\",\n        \"message\": \"string\",\n        \"timestamp\": \"string\"\n      },\n      \"paymentId\": 4101,\n      \"status\": \"string\"\n    }\n  ],\n  \"hasErrors\": true,\n  \"processedItems\": 4495,\n  \"status\": \"string\",\n  \"totalItems\": 4836\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e70856c-5463-4895-953a-e6684b6e3853",
+              "name": "Invalid request data, no requests were processed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeItems",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"batchItemId\": \"<long>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"isoCountryCode\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"type\": \"<string>\",\n    \"bankAccount\": {\n      \"accountType\": \"<string>\",\n      \"bankAccountNumber\": \"<string>\",\n      \"bankAddress\": {\n        \"city\": \"<string>\",\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"stateProvince\": \"<string>\",\n        \"province\": \"<string>\",\n        \"state\": \"<string>\"\n      },\n      \"bankCnaps\": \"<string>\",\n      \"bankCode\": \"<string>\",\n      \"bankIfscBranchCode\": \"<string>\",\n      \"bankInstitutionNumber\": \"<string>\",\n      \"bankName\": \"<string>\",\n      \"beneficiaryName\": \"<string>\",\n      \"branchCode\": \"<string>\",\n      \"bsbBankCode\": \"<string>\",\n      \"clabe\": \"<string>\",\n      \"currencyCode\": \"<string>\",\n      \"iban\": \"<string>\",\n      \"isoCountryCode\": \"<string>\",\n      \"routingNumber\": \"<string>\",\n      \"sortCode\": \"<string>\",\n      \"swiftBic\": \"<string>\",\n      \"transitCode\": \"<string>\"\n    },\n    \"businessAddress\": {\n      \"city\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvince\": \"<string>\",\n      \"province\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"externalBusinessId\": \"<long>\",\n    \"phoneDialCode\": \"<string>\"\n  },\n  {\n    \"batchItemId\": \"<long>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"isoCountryCode\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"type\": \"<string>\",\n    \"bankAccount\": {\n      \"accountType\": \"<string>\",\n      \"bankAccountNumber\": \"<string>\",\n      \"bankAddress\": {\n        \"city\": \"<string>\",\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"stateProvince\": \"<string>\",\n        \"province\": \"<string>\",\n        \"state\": \"<string>\"\n      },\n      \"bankCnaps\": \"<string>\",\n      \"bankCode\": \"<string>\",\n      \"bankIfscBranchCode\": \"<string>\",\n      \"bankInstitutionNumber\": \"<string>\",\n      \"bankName\": \"<string>\",\n      \"beneficiaryName\": \"<string>\",\n      \"branchCode\": \"<string>\",\n      \"bsbBankCode\": \"<string>\",\n      \"clabe\": \"<string>\",\n      \"currencyCode\": \"<string>\",\n      \"iban\": \"<string>\",\n      \"isoCountryCode\": \"<string>\",\n      \"routingNumber\": \"<string>\",\n      \"sortCode\": \"<string>\",\n      \"swiftBic\": \"<string>\",\n      \"transitCode\": \"<string>\"\n    },\n    \"businessAddress\": {\n      \"city\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvince\": \"<string>\",\n      \"province\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"externalBusinessId\": \"<long>\",\n    \"phoneDialCode\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3596,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94676ef6-7ed0-4b8d-adc9-182523125dcb",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeItems",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"batchItemId\": \"<long>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"isoCountryCode\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"type\": \"<string>\",\n    \"bankAccount\": {\n      \"accountType\": \"<string>\",\n      \"bankAccountNumber\": \"<string>\",\n      \"bankAddress\": {\n        \"city\": \"<string>\",\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"stateProvince\": \"<string>\",\n        \"province\": \"<string>\",\n        \"state\": \"<string>\"\n      },\n      \"bankCnaps\": \"<string>\",\n      \"bankCode\": \"<string>\",\n      \"bankIfscBranchCode\": \"<string>\",\n      \"bankInstitutionNumber\": \"<string>\",\n      \"bankName\": \"<string>\",\n      \"beneficiaryName\": \"<string>\",\n      \"branchCode\": \"<string>\",\n      \"bsbBankCode\": \"<string>\",\n      \"clabe\": \"<string>\",\n      \"currencyCode\": \"<string>\",\n      \"iban\": \"<string>\",\n      \"isoCountryCode\": \"<string>\",\n      \"routingNumber\": \"<string>\",\n      \"sortCode\": \"<string>\",\n      \"swiftBic\": \"<string>\",\n      \"transitCode\": \"<string>\"\n    },\n    \"businessAddress\": {\n      \"city\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvince\": \"<string>\",\n      \"province\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"externalBusinessId\": \"<long>\",\n    \"phoneDialCode\": \"<string>\"\n  },\n  {\n    \"batchItemId\": \"<long>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"isoCountryCode\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"type\": \"<string>\",\n    \"bankAccount\": {\n      \"accountType\": \"<string>\",\n      \"bankAccountNumber\": \"<string>\",\n      \"bankAddress\": {\n        \"city\": \"<string>\",\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"stateProvince\": \"<string>\",\n        \"province\": \"<string>\",\n        \"state\": \"<string>\"\n      },\n      \"bankCnaps\": \"<string>\",\n      \"bankCode\": \"<string>\",\n      \"bankIfscBranchCode\": \"<string>\",\n      \"bankInstitutionNumber\": \"<string>\",\n      \"bankName\": \"<string>\",\n      \"beneficiaryName\": \"<string>\",\n      \"branchCode\": \"<string>\",\n      \"bsbBankCode\": \"<string>\",\n      \"clabe\": \"<string>\",\n      \"currencyCode\": \"<string>\",\n      \"iban\": \"<string>\",\n      \"isoCountryCode\": \"<string>\",\n      \"routingNumber\": \"<string>\",\n      \"sortCode\": \"<string>\",\n      \"swiftBic\": \"<string>\",\n      \"transitCode\": \"<string>\"\n    },\n    \"businessAddress\": {\n      \"city\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvince\": \"<string>\",\n      \"province\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"externalBusinessId\": \"<long>\",\n    \"phoneDialCode\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5fdfc267-601d-4224-b044-7a58407e7d17",
+              "name": "Forbidden, the token owner lacks permission to operate the current API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeItems",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"batchItemId\": \"<long>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"isoCountryCode\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"type\": \"<string>\",\n    \"bankAccount\": {\n      \"accountType\": \"<string>\",\n      \"bankAccountNumber\": \"<string>\",\n      \"bankAddress\": {\n        \"city\": \"<string>\",\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"stateProvince\": \"<string>\",\n        \"province\": \"<string>\",\n        \"state\": \"<string>\"\n      },\n      \"bankCnaps\": \"<string>\",\n      \"bankCode\": \"<string>\",\n      \"bankIfscBranchCode\": \"<string>\",\n      \"bankInstitutionNumber\": \"<string>\",\n      \"bankName\": \"<string>\",\n      \"beneficiaryName\": \"<string>\",\n      \"branchCode\": \"<string>\",\n      \"bsbBankCode\": \"<string>\",\n      \"clabe\": \"<string>\",\n      \"currencyCode\": \"<string>\",\n      \"iban\": \"<string>\",\n      \"isoCountryCode\": \"<string>\",\n      \"routingNumber\": \"<string>\",\n      \"sortCode\": \"<string>\",\n      \"swiftBic\": \"<string>\",\n      \"transitCode\": \"<string>\"\n    },\n    \"businessAddress\": {\n      \"city\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvince\": \"<string>\",\n      \"province\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"externalBusinessId\": \"<long>\",\n    \"phoneDialCode\": \"<string>\"\n  },\n  {\n    \"batchItemId\": \"<long>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"isoCountryCode\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"type\": \"<string>\",\n    \"bankAccount\": {\n      \"accountType\": \"<string>\",\n      \"bankAccountNumber\": \"<string>\",\n      \"bankAddress\": {\n        \"city\": \"<string>\",\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"stateProvince\": \"<string>\",\n        \"province\": \"<string>\",\n        \"state\": \"<string>\"\n      },\n      \"bankCnaps\": \"<string>\",\n      \"bankCode\": \"<string>\",\n      \"bankIfscBranchCode\": \"<string>\",\n      \"bankInstitutionNumber\": \"<string>\",\n      \"bankName\": \"<string>\",\n      \"beneficiaryName\": \"<string>\",\n      \"branchCode\": \"<string>\",\n      \"bsbBankCode\": \"<string>\",\n      \"clabe\": \"<string>\",\n      \"currencyCode\": \"<string>\",\n      \"iban\": \"<string>\",\n      \"isoCountryCode\": \"<string>\",\n      \"routingNumber\": \"<string>\",\n      \"sortCode\": \"<string>\",\n      \"swiftBic\": \"<string>\",\n      \"transitCode\": \"<string>\"\n    },\n    \"businessAddress\": {\n      \"city\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvince\": \"<string>\",\n      \"province\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"externalBusinessId\": \"<long>\",\n    \"phoneDialCode\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9183dec9-6a84-47d4-a2e1-4943fa4fe121",
+              "name": "Not Found, the resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeItems",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"batchItemId\": \"<long>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"isoCountryCode\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"type\": \"<string>\",\n    \"bankAccount\": {\n      \"accountType\": \"<string>\",\n      \"bankAccountNumber\": \"<string>\",\n      \"bankAddress\": {\n        \"city\": \"<string>\",\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"stateProvince\": \"<string>\",\n        \"province\": \"<string>\",\n        \"state\": \"<string>\"\n      },\n      \"bankCnaps\": \"<string>\",\n      \"bankCode\": \"<string>\",\n      \"bankIfscBranchCode\": \"<string>\",\n      \"bankInstitutionNumber\": \"<string>\",\n      \"bankName\": \"<string>\",\n      \"beneficiaryName\": \"<string>\",\n      \"branchCode\": \"<string>\",\n      \"bsbBankCode\": \"<string>\",\n      \"clabe\": \"<string>\",\n      \"currencyCode\": \"<string>\",\n      \"iban\": \"<string>\",\n      \"isoCountryCode\": \"<string>\",\n      \"routingNumber\": \"<string>\",\n      \"sortCode\": \"<string>\",\n      \"swiftBic\": \"<string>\",\n      \"transitCode\": \"<string>\"\n    },\n    \"businessAddress\": {\n      \"city\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvince\": \"<string>\",\n      \"province\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"externalBusinessId\": \"<long>\",\n    \"phoneDialCode\": \"<string>\"\n  },\n  {\n    \"batchItemId\": \"<long>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"isoCountryCode\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"type\": \"<string>\",\n    \"bankAccount\": {\n      \"accountType\": \"<string>\",\n      \"bankAccountNumber\": \"<string>\",\n      \"bankAddress\": {\n        \"city\": \"<string>\",\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"stateProvince\": \"<string>\",\n        \"province\": \"<string>\",\n        \"state\": \"<string>\"\n      },\n      \"bankCnaps\": \"<string>\",\n      \"bankCode\": \"<string>\",\n      \"bankIfscBranchCode\": \"<string>\",\n      \"bankInstitutionNumber\": \"<string>\",\n      \"bankName\": \"<string>\",\n      \"beneficiaryName\": \"<string>\",\n      \"branchCode\": \"<string>\",\n      \"bsbBankCode\": \"<string>\",\n      \"clabe\": \"<string>\",\n      \"currencyCode\": \"<string>\",\n      \"iban\": \"<string>\",\n      \"isoCountryCode\": \"<string>\",\n      \"routingNumber\": \"<string>\",\n      \"sortCode\": \"<string>\",\n      \"swiftBic\": \"<string>\",\n      \"transitCode\": \"<string>\"\n    },\n    \"businessAddress\": {\n      \"city\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvince\": \"<string>\",\n      \"province\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"externalBusinessId\": \"<long>\",\n    \"phoneDialCode\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9cbe953f-2636-4ce1-a9dc-e5d2a5efa14b",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeItems",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"batchItemId\": \"<long>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"isoCountryCode\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"type\": \"<string>\",\n    \"bankAccount\": {\n      \"accountType\": \"<string>\",\n      \"bankAccountNumber\": \"<string>\",\n      \"bankAddress\": {\n        \"city\": \"<string>\",\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"stateProvince\": \"<string>\",\n        \"province\": \"<string>\",\n        \"state\": \"<string>\"\n      },\n      \"bankCnaps\": \"<string>\",\n      \"bankCode\": \"<string>\",\n      \"bankIfscBranchCode\": \"<string>\",\n      \"bankInstitutionNumber\": \"<string>\",\n      \"bankName\": \"<string>\",\n      \"beneficiaryName\": \"<string>\",\n      \"branchCode\": \"<string>\",\n      \"bsbBankCode\": \"<string>\",\n      \"clabe\": \"<string>\",\n      \"currencyCode\": \"<string>\",\n      \"iban\": \"<string>\",\n      \"isoCountryCode\": \"<string>\",\n      \"routingNumber\": \"<string>\",\n      \"sortCode\": \"<string>\",\n      \"swiftBic\": \"<string>\",\n      \"transitCode\": \"<string>\"\n    },\n    \"businessAddress\": {\n      \"city\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvince\": \"<string>\",\n      \"province\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"externalBusinessId\": \"<long>\",\n    \"phoneDialCode\": \"<string>\"\n  },\n  {\n    \"batchItemId\": \"<long>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"isoCountryCode\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"type\": \"<string>\",\n    \"bankAccount\": {\n      \"accountType\": \"<string>\",\n      \"bankAccountNumber\": \"<string>\",\n      \"bankAddress\": {\n        \"city\": \"<string>\",\n        \"line1\": \"<string>\",\n        \"line2\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"stateProvince\": \"<string>\",\n        \"province\": \"<string>\",\n        \"state\": \"<string>\"\n      },\n      \"bankCnaps\": \"<string>\",\n      \"bankCode\": \"<string>\",\n      \"bankIfscBranchCode\": \"<string>\",\n      \"bankInstitutionNumber\": \"<string>\",\n      \"bankName\": \"<string>\",\n      \"beneficiaryName\": \"<string>\",\n      \"branchCode\": \"<string>\",\n      \"bsbBankCode\": \"<string>\",\n      \"clabe\": \"<string>\",\n      \"currencyCode\": \"<string>\",\n      \"iban\": \"<string>\",\n      \"isoCountryCode\": \"<string>\",\n      \"routingNumber\": \"<string>\",\n      \"sortCode\": \"<string>\",\n      \"swiftBic\": \"<string>\",\n      \"transitCode\": \"<string>\"\n    },\n    \"businessAddress\": {\n      \"city\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvince\": \"<string>\",\n      \"province\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"externalBusinessId\": \"<long>\",\n    \"phoneDialCode\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2167783a-010b-4852-a21f-dac016e921b2",
+          "name": "createContact",
+          "request": {
+            "name": "createContact",
+            "description": {
+              "content": "Create a contact in a batch",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "contacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"isoCountryCode\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"type\": \"<string>\",\n  \"bankAccount\": {\n    \"accountType\": \"<string>\",\n    \"bankAccountNumber\": \"<string>\",\n    \"bankAddress\": {\n      \"city\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvince\": \"<string>\",\n      \"province\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"bankCnaps\": \"<string>\",\n    \"bankCode\": \"<string>\",\n    \"bankIfscBranchCode\": \"<string>\",\n    \"bankInstitutionNumber\": \"<string>\",\n    \"bankName\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"branchCode\": \"<string>\",\n    \"bsbBankCode\": \"<string>\",\n    \"clabe\": \"<string>\",\n    \"currencyCode\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"isoCountryCode\": \"<string>\",\n    \"routingNumber\": \"<string>\",\n    \"sortCode\": \"<string>\",\n    \"swiftBic\": \"<string>\",\n    \"transitCode\": \"<string>\"\n  },\n  \"businessAddress\": {\n    \"city\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"stateProvince\": \"<string>\",\n    \"province\": \"<string>\",\n    \"state\": \"<string>\"\n  },\n  \"businessName\": \"<string>\",\n  \"externalBusinessId\": \"<long>\",\n  \"phoneDialCode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f4e92b6d-bb15-4f57-a375-b61be6966768",
+              "name": "New contact was successfully created and returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"isoCountryCode\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"type\": \"<string>\",\n  \"bankAccount\": {\n    \"accountType\": \"<string>\",\n    \"bankAccountNumber\": \"<string>\",\n    \"bankAddress\": {\n      \"city\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvince\": \"<string>\",\n      \"province\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"bankCnaps\": \"<string>\",\n    \"bankCode\": \"<string>\",\n    \"bankIfscBranchCode\": \"<string>\",\n    \"bankInstitutionNumber\": \"<string>\",\n    \"bankName\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"branchCode\": \"<string>\",\n    \"bsbBankCode\": \"<string>\",\n    \"clabe\": \"<string>\",\n    \"currencyCode\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"isoCountryCode\": \"<string>\",\n    \"routingNumber\": \"<string>\",\n    \"sortCode\": \"<string>\",\n    \"swiftBic\": \"<string>\",\n    \"transitCode\": \"<string>\"\n  },\n  \"businessAddress\": {\n    \"city\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"stateProvince\": \"<string>\",\n    \"province\": \"<string>\",\n    \"state\": \"<string>\"\n  },\n  \"businessName\": \"<string>\",\n  \"externalBusinessId\": \"<long>\",\n  \"phoneDialCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"businessName\": \"string\",\n  \"contactAccountId\": 8747,\n  \"dialCode\": \"string\",\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"id\": 2548,\n  \"isoCountryCode\": \"LI\",\n  \"lastName\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"bank\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"batchItemId\": 8089,\n  \"extraInfo\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26108416-2768-4702-a380-540c5985dcfd",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"isoCountryCode\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"type\": \"<string>\",\n  \"bankAccount\": {\n    \"accountType\": \"<string>\",\n    \"bankAccountNumber\": \"<string>\",\n    \"bankAddress\": {\n      \"city\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvince\": \"<string>\",\n      \"province\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"bankCnaps\": \"<string>\",\n    \"bankCode\": \"<string>\",\n    \"bankIfscBranchCode\": \"<string>\",\n    \"bankInstitutionNumber\": \"<string>\",\n    \"bankName\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"branchCode\": \"<string>\",\n    \"bsbBankCode\": \"<string>\",\n    \"clabe\": \"<string>\",\n    \"currencyCode\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"isoCountryCode\": \"<string>\",\n    \"routingNumber\": \"<string>\",\n    \"sortCode\": \"<string>\",\n    \"swiftBic\": \"<string>\",\n    \"transitCode\": \"<string>\"\n  },\n  \"businessAddress\": {\n    \"city\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"stateProvince\": \"<string>\",\n    \"province\": \"<string>\",\n    \"state\": \"<string>\"\n  },\n  \"businessName\": \"<string>\",\n  \"externalBusinessId\": \"<long>\",\n  \"phoneDialCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"businessName\": \"string\",\n  \"contactAccountId\": 8747,\n  \"dialCode\": \"string\",\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"id\": 2548,\n  \"isoCountryCode\": \"LI\",\n  \"lastName\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"bank\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"batchItemId\": 8089,\n  \"extraInfo\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "debefe02-319c-496d-b928-d0ed639feda8",
+              "name": "Invalid request data, no requests were processed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"isoCountryCode\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"type\": \"<string>\",\n  \"bankAccount\": {\n    \"accountType\": \"<string>\",\n    \"bankAccountNumber\": \"<string>\",\n    \"bankAddress\": {\n      \"city\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvince\": \"<string>\",\n      \"province\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"bankCnaps\": \"<string>\",\n    \"bankCode\": \"<string>\",\n    \"bankIfscBranchCode\": \"<string>\",\n    \"bankInstitutionNumber\": \"<string>\",\n    \"bankName\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"branchCode\": \"<string>\",\n    \"bsbBankCode\": \"<string>\",\n    \"clabe\": \"<string>\",\n    \"currencyCode\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"isoCountryCode\": \"<string>\",\n    \"routingNumber\": \"<string>\",\n    \"sortCode\": \"<string>\",\n    \"swiftBic\": \"<string>\",\n    \"transitCode\": \"<string>\"\n  },\n  \"businessAddress\": {\n    \"city\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"stateProvince\": \"<string>\",\n    \"province\": \"<string>\",\n    \"state\": \"<string>\"\n  },\n  \"businessName\": \"<string>\",\n  \"externalBusinessId\": \"<long>\",\n  \"phoneDialCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1969,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 8369,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ddeb0992-5604-4481-b645-30ac9904aac4",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"isoCountryCode\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"type\": \"<string>\",\n  \"bankAccount\": {\n    \"accountType\": \"<string>\",\n    \"bankAccountNumber\": \"<string>\",\n    \"bankAddress\": {\n      \"city\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvince\": \"<string>\",\n      \"province\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"bankCnaps\": \"<string>\",\n    \"bankCode\": \"<string>\",\n    \"bankIfscBranchCode\": \"<string>\",\n    \"bankInstitutionNumber\": \"<string>\",\n    \"bankName\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"branchCode\": \"<string>\",\n    \"bsbBankCode\": \"<string>\",\n    \"clabe\": \"<string>\",\n    \"currencyCode\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"isoCountryCode\": \"<string>\",\n    \"routingNumber\": \"<string>\",\n    \"sortCode\": \"<string>\",\n    \"swiftBic\": \"<string>\",\n    \"transitCode\": \"<string>\"\n  },\n  \"businessAddress\": {\n    \"city\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"stateProvince\": \"<string>\",\n    \"province\": \"<string>\",\n    \"state\": \"<string>\"\n  },\n  \"businessName\": \"<string>\",\n  \"externalBusinessId\": \"<long>\",\n  \"phoneDialCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fd89dc42-34a3-4c9b-9ee7-d7b9c7ce0701",
+              "name": "Forbidden, the token owner lacks permission to operate the current API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"isoCountryCode\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"type\": \"<string>\",\n  \"bankAccount\": {\n    \"accountType\": \"<string>\",\n    \"bankAccountNumber\": \"<string>\",\n    \"bankAddress\": {\n      \"city\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvince\": \"<string>\",\n      \"province\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"bankCnaps\": \"<string>\",\n    \"bankCode\": \"<string>\",\n    \"bankIfscBranchCode\": \"<string>\",\n    \"bankInstitutionNumber\": \"<string>\",\n    \"bankName\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"branchCode\": \"<string>\",\n    \"bsbBankCode\": \"<string>\",\n    \"clabe\": \"<string>\",\n    \"currencyCode\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"isoCountryCode\": \"<string>\",\n    \"routingNumber\": \"<string>\",\n    \"sortCode\": \"<string>\",\n    \"swiftBic\": \"<string>\",\n    \"transitCode\": \"<string>\"\n  },\n  \"businessAddress\": {\n    \"city\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"stateProvince\": \"<string>\",\n    \"province\": \"<string>\",\n    \"state\": \"<string>\"\n  },\n  \"businessName\": \"<string>\",\n  \"externalBusinessId\": \"<long>\",\n  \"phoneDialCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a18ac7a8-4467-4a97-bcd3-dcf21ca1e051",
+              "name": "Not Found, the resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"isoCountryCode\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"type\": \"<string>\",\n  \"bankAccount\": {\n    \"accountType\": \"<string>\",\n    \"bankAccountNumber\": \"<string>\",\n    \"bankAddress\": {\n      \"city\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvince\": \"<string>\",\n      \"province\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"bankCnaps\": \"<string>\",\n    \"bankCode\": \"<string>\",\n    \"bankIfscBranchCode\": \"<string>\",\n    \"bankInstitutionNumber\": \"<string>\",\n    \"bankName\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"branchCode\": \"<string>\",\n    \"bsbBankCode\": \"<string>\",\n    \"clabe\": \"<string>\",\n    \"currencyCode\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"isoCountryCode\": \"<string>\",\n    \"routingNumber\": \"<string>\",\n    \"sortCode\": \"<string>\",\n    \"swiftBic\": \"<string>\",\n    \"transitCode\": \"<string>\"\n  },\n  \"businessAddress\": {\n    \"city\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"stateProvince\": \"<string>\",\n    \"province\": \"<string>\",\n    \"state\": \"<string>\"\n  },\n  \"businessName\": \"<string>\",\n  \"externalBusinessId\": \"<long>\",\n  \"phoneDialCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1f111c8c-0ce3-4401-9e8d-2d8c536303d4",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"isoCountryCode\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"type\": \"<string>\",\n  \"bankAccount\": {\n    \"accountType\": \"<string>\",\n    \"bankAccountNumber\": \"<string>\",\n    \"bankAddress\": {\n      \"city\": \"<string>\",\n      \"line1\": \"<string>\",\n      \"line2\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"stateProvince\": \"<string>\",\n      \"province\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"bankCnaps\": \"<string>\",\n    \"bankCode\": \"<string>\",\n    \"bankIfscBranchCode\": \"<string>\",\n    \"bankInstitutionNumber\": \"<string>\",\n    \"bankName\": \"<string>\",\n    \"beneficiaryName\": \"<string>\",\n    \"branchCode\": \"<string>\",\n    \"bsbBankCode\": \"<string>\",\n    \"clabe\": \"<string>\",\n    \"currencyCode\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"isoCountryCode\": \"<string>\",\n    \"routingNumber\": \"<string>\",\n    \"sortCode\": \"<string>\",\n    \"swiftBic\": \"<string>\",\n    \"transitCode\": \"<string>\"\n  },\n  \"businessAddress\": {\n    \"city\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"stateProvince\": \"<string>\",\n    \"province\": \"<string>\",\n    \"state\": \"<string>\"\n  },\n  \"businessName\": \"<string>\",\n  \"externalBusinessId\": \"<long>\",\n  \"phoneDialCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba83c9f7-7b7e-423e-ada5-5f85e0a1c44d",
+          "name": "getContacts",
+          "request": {
+            "name": "getContacts",
+            "description": {
+              "content": "Get a page of account contacts by email address, first,last name, batchId, and business name",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "contacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "batchId",
+                  "value": "<long>",
+                  "description": "batchId"
+                },
+                {
+                  "disabled": false,
+                  "key": "batchItemIds",
+                  "value": "<long>",
+                  "description": "batchItemIds"
+                },
+                {
+                  "disabled": false,
+                  "key": "batchItemIds",
+                  "value": "<long>",
+                  "description": "batchItemIds"
+                },
+                {
+                  "disabled": false,
+                  "key": "businessName",
+                  "value": "<string>",
+                  "description": "businessName"
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>",
+                  "description": "email"
+                },
+                {
+                  "disabled": false,
+                  "key": "firstName",
+                  "value": "<string>",
+                  "description": "firstName"
+                },
+                {
+                  "disabled": false,
+                  "key": "lastName",
+                  "value": "<string>",
+                  "description": "lastName"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageNumber",
+                  "value": "0",
+                  "description": "pageNumber"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "pageSize"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8700cc94-1e88-4d71-9332-98981205b6f1",
+              "name": "Success, all matching contacts were returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "batchId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "batchItemIds",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "batchItemIds",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "businessName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"businessName\": \"string\",\n    \"contactAccountId\": 4102,\n    \"dialCode\": \"string\",\n    \"email\": \"string\",\n    \"firstName\": \"string\",\n    \"id\": 4515,\n    \"isoCountryCode\": \"VE\",\n    \"lastName\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"bank\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    \"batchItemId\": 4810,\n    \"extraInfo\": {\n      \"key_0\": {}\n    }\n  },\n  {\n    \"businessName\": \"string\",\n    \"contactAccountId\": 5785,\n    \"dialCode\": \"string\",\n    \"email\": \"string\",\n    \"firstName\": \"string\",\n    \"id\": 2125,\n    \"isoCountryCode\": \"GY\",\n    \"lastName\": \"string\",\n    \"phoneNumber\": \"string\",\n    \"bank\": {\n      \"key_0\": {}\n    },\n    \"batchItemId\": 6644,\n    \"extraInfo\": {\n      \"key_0\": {}\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2fa2745f-b893-4e4f-b802-a61f5973d4d5",
+              "name": "Request failed, invalid search parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "batchId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "batchItemIds",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "batchItemIds",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "businessName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "067fdc41-16ad-4195-9ed8-53cec24d97f6",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "batchId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "batchItemIds",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "batchItemIds",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "businessName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "29fc71b0-a489-4b10-89b0-d9f48e0148fa",
+              "name": "Forbidden, the token owner lacks permission to operate the current API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "batchId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "batchItemIds",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "batchItemIds",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "businessName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "10bd9396-23ad-4872-8454-771f13d61914",
+              "name": "Not Found, the resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "batchId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "batchItemIds",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "batchItemIds",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "businessName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4b6aafcd-9ef3-4468-a56b-9e5802690201",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "batchId",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "batchItemIds",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "batchItemIds",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "businessName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c1d0fec4-c050-47eb-838a-d685ba2018a7",
+          "name": "getContactBatch",
+          "request": {
+            "name": "getContactBatch",
+            "description": {
+              "content": "Get the current state of a contact creation batch",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "contacts",
+                "batch",
+                ":batchId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeItems",
+                  "value": "true",
+                  "description": "includeItems"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "batchId",
+                  "description": "(Required) batchId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ed7bec50-0bc2-46dd-9ee1-623e175f6373",
+              "name": "Request data validated, processing started",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts",
+                    "batch",
+                    ":batchId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeItems",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "batchId",
+                      "description": "(Required) batchId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"batchId\": 4834,\n  \"batchItems\": [\n    {\n      \"batchItemId\": 5023,\n      \"errorInfo\": {\n        \"code\": 620,\n        \"error\": \"string\",\n        \"message\": \"string\",\n        \"timestamp\": \"string\"\n      },\n      \"paymentId\": 2054,\n      \"status\": \"string\"\n    },\n    {\n      \"batchItemId\": 502,\n      \"errorInfo\": {\n        \"code\": 9681,\n        \"error\": \"string\",\n        \"message\": \"string\",\n        \"timestamp\": \"string\"\n      },\n      \"paymentId\": 7998,\n      \"status\": \"string\"\n    }\n  ],\n  \"hasErrors\": false,\n  \"processedItems\": 7157,\n  \"status\": \"string\",\n  \"totalItems\": 2802\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13f68d79-e6ee-40b0-8623-caed0f01a0e2",
+              "name": "Invalid request data, no requests were processed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts",
+                    "batch",
+                    ":batchId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeItems",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "batchId",
+                      "description": "(Required) batchId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 3596,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe7a963c-bc7e-4fe3-a61b-3bdbee1d1f65",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts",
+                    "batch",
+                    ":batchId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeItems",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "batchId",
+                      "description": "(Required) batchId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3e839152-0379-4976-a47e-73635fb9e5c8",
+              "name": "Forbidden, the token owner lacks permission to operate the current API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts",
+                    "batch",
+                    ":batchId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeItems",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "batchId",
+                      "description": "(Required) batchId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fd8c0cc4-2a45-4a2d-aaa9-60571d153d76",
+              "name": "Not Found, the resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts",
+                    "batch",
+                    ":batchId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeItems",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "batchId",
+                      "description": "(Required) batchId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "62fd8520-b617-404c-ba32-4063a4b7428c",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts",
+                    "batch",
+                    ":batchId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeItems",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "batchId",
+                      "description": "(Required) batchId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "117e5c98-a107-40c1-9cc9-2cabea63e750",
+          "name": "Get Contact by ID",
+          "request": {
+            "name": "Get Contact by ID",
+            "description": {
+              "content": "Get an account contact by ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "contacts",
+                ":contactId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "contactId",
+                  "description": "(Required) contactId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "64fd3a15-c32b-472c-8213-f2d3dbfee99e",
+              "name": "Found and returned contact",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "contactId",
+                      "description": "(Required) contactId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"businessName\": \"string\",\n  \"contactAccountId\": 8747,\n  \"dialCode\": \"string\",\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"id\": 2548,\n  \"isoCountryCode\": \"LI\",\n  \"lastName\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"bank\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"batchItemId\": 8089,\n  \"extraInfo\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "acd92c4e-214f-47f3-9923-3464003204b0",
+              "name": "Request failed, invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "contactId",
+                      "description": "(Required) contactId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1f064ad2-90c8-4d3a-b275-5cacee4409ee",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "contactId",
+                      "description": "(Required) contactId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b9f802a6-630e-4a37-af1f-301341998e1b",
+              "name": "Forbidden, the token owner lacks permission to operate the current API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "contactId",
+                      "description": "(Required) contactId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b1228fef-3778-4e2f-8265-ec1d9df63f7d",
+              "name": "Not Found, the resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "contactId",
+                      "description": "(Required) contactId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ea1ca80d-ed7e-495d-b852-2b0c582df29c",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "contacts",
+                    ":contactId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "contactId",
+                      "description": "(Required) contactId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "//sandbox-api.veem.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "09a12fb6-a47e-4702-ba47-d45840608160",
+    "name": "Veem API v1.2 attachment-controller contact-controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Veem REST API",
+      "type": "text/plain"
+    }
+  }
+}

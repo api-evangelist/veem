@@ -1,0 +1,222 @@
+{
+  "item": [
+    {
+      "id": "eadf26e8-e3aa-4bcc-8afe-064a57542860",
+      "name": "bank-account-controller",
+      "description": {
+        "content": "Bank Account Controller",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1e49427e-2c18-4418-a873-3cfdfa231e67",
+          "name": "addBankAccount",
+          "request": {
+            "name": "addBankAccount",
+            "description": {},
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "account",
+                "bank-account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountType\": \"<string>\",\n  \"bankAccountNumber\": \"<string>\",\n  \"bankAddress\": {\n    \"city\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"stateProvince\": \"<string>\",\n    \"province\": \"<string>\",\n    \"state\": \"<string>\"\n  },\n  \"bankCnaps\": \"<string>\",\n  \"bankCode\": \"<string>\",\n  \"bankIfscBranchCode\": \"<string>\",\n  \"bankInstitutionNumber\": \"<string>\",\n  \"bankName\": \"<string>\",\n  \"beneficiaryName\": \"<string>\",\n  \"branchCode\": \"<string>\",\n  \"bsbBankCode\": \"<string>\",\n  \"clabe\": \"<string>\",\n  \"currencyCode\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"isoCountryCode\": \"<string>\",\n  \"routingNumber\": \"<string>\",\n  \"sortCode\": \"<string>\",\n  \"swiftBic\": \"<string>\",\n  \"transitCode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2282da9d-e474-4ba3-ba1c-c9ce9257d636",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "account",
+                    "bank-account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountHash\": \"string\",\n  \"accountId\": 4332,\n  \"accountNickname\": \"string\",\n  \"accountNumber\": \"string\",\n  \"accountType\": \"Savings\",\n  \"address\": {\n    \"bankAccountId\": 5539,\n    \"city\": \"string\",\n    \"id\": 9568,\n    \"line1\": \"string\",\n    \"line2\": \"string\",\n    \"postalCode\": \"string\",\n    \"province\": \"string\",\n    \"state\": \"string\"\n  },\n  \"bankName\": \"string\",\n  \"beneficiaryName\": \"string\",\n  \"bic\": \"string\",\n  \"canRemove\": false,\n  \"description\": \"string\",\n  \"externalAccountLinked\": false,\n  \"externalAccountStatus\": \"ModifiedBankInfo\",\n  \"extraInfo\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"iban\": \"string\",\n  \"id\": 3402,\n  \"isoCountryCode\": \"BB\",\n  \"isoCurrencyCode\": \"string\",\n  \"miscBankFee\": {\n    \"currency\": \"BOV\",\n    \"number\": 6556.697255120302\n  },\n  \"routingNumber\": \"string\",\n  \"shortIdentifierDomestic\": \"string\",\n  \"shortIdentifierInternational\": \"string\",\n  \"status\": \"Active\",\n  \"validationStatus\": {\n    \"key_0\": {}\n  },\n  \"verificationReason\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"verificationStatus\": \"Unverified\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "982807b4-3eef-4282-a8d6-86077a2fa251",
+          "name": "editBankAccount",
+          "request": {
+            "name": "editBankAccount",
+            "description": {},
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "account",
+                "bank-account",
+                ":bankAccountId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "bankAccountId",
+                  "description": "(Required) bankAccountId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountType\": \"<string>\",\n  \"bankAccountNumber\": \"<string>\",\n  \"bankAddress\": {\n    \"city\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"stateProvince\": \"<string>\",\n    \"province\": \"<string>\",\n    \"state\": \"<string>\"\n  },\n  \"bankCnaps\": \"<string>\",\n  \"bankCode\": \"<string>\",\n  \"bankIfscBranchCode\": \"<string>\",\n  \"bankInstitutionNumber\": \"<string>\",\n  \"bankName\": \"<string>\",\n  \"beneficiaryName\": \"<string>\",\n  \"branchCode\": \"<string>\",\n  \"bsbBankCode\": \"<string>\",\n  \"clabe\": \"<string>\",\n  \"currencyCode\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"isoCountryCode\": \"<string>\",\n  \"routingNumber\": \"<string>\",\n  \"sortCode\": \"<string>\",\n  \"swiftBic\": \"<string>\",\n  \"transitCode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ae6aa134-0363-44d3-9ba4-67dfb55063e4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "account",
+                    "bank-account",
+                    ":bankAccountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "bankAccountId",
+                      "description": "(Required) bankAccountId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountHash\": \"string\",\n  \"accountId\": 4332,\n  \"accountNickname\": \"string\",\n  \"accountNumber\": \"string\",\n  \"accountType\": \"Savings\",\n  \"address\": {\n    \"bankAccountId\": 5539,\n    \"city\": \"string\",\n    \"id\": 9568,\n    \"line1\": \"string\",\n    \"line2\": \"string\",\n    \"postalCode\": \"string\",\n    \"province\": \"string\",\n    \"state\": \"string\"\n  },\n  \"bankName\": \"string\",\n  \"beneficiaryName\": \"string\",\n  \"bic\": \"string\",\n  \"canRemove\": false,\n  \"description\": \"string\",\n  \"externalAccountLinked\": false,\n  \"externalAccountStatus\": \"ModifiedBankInfo\",\n  \"extraInfo\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"iban\": \"string\",\n  \"id\": 3402,\n  \"isoCountryCode\": \"BB\",\n  \"isoCurrencyCode\": \"string\",\n  \"miscBankFee\": {\n    \"currency\": \"BOV\",\n    \"number\": 6556.697255120302\n  },\n  \"routingNumber\": \"string\",\n  \"shortIdentifierDomestic\": \"string\",\n  \"shortIdentifierInternational\": \"string\",\n  \"status\": \"Active\",\n  \"validationStatus\": {\n    \"key_0\": {}\n  },\n  \"verificationReason\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"verificationStatus\": \"Unverified\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "//sandbox-api.veem.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0f869063-5d12-4c57-a115-1a32b154a27d",
+    "name": "Veem API v1.2 attachment-controller bank-account-controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Veem REST API",
+      "type": "text/plain"
+    }
+  }
+}

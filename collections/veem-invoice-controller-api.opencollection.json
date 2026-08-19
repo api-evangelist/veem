@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Veem API v1.2 attachment-controller invoice-controller API",
+    "version": "v1.2.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "invoice-controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "approveInvoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//sandbox-api.veem.com/veem/v1.2/invoices/:invoiceId/approve",
+            "params": [
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path",
+                "description": "invoiceId"
+              }
+            ]
+          },
+          "docs": "approve an invoice"
+        },
+        {
+          "info": {
+            "name": "cancelInvoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//sandbox-api.veem.com/veem/v1.2/invoices/:invoiceId/cancel",
+            "params": [
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path",
+                "description": "invoiceId"
+              }
+            ]
+          },
+          "docs": "cancel an invoice"
+        },
+        {
+          "info": {
+            "name": "createInvoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//sandbox-api.veem.com/veem/v1.2/invoices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "posts an invoice and sends to receiver"
+        },
+        {
+          "info": {
+            "name": "getInvoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//sandbox-api.veem.com/veem/v1.2/invoices/:invoiceId",
+            "params": [
+              {
+                "name": "invoiceId",
+                "value": "",
+                "type": "path",
+                "description": "invoiceId"
+              }
+            ]
+          },
+          "docs": "get invoice details"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

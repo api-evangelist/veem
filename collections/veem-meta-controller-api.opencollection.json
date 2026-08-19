@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Veem API v1.2 attachment-controller meta-controller API",
+    "version": "v1.2.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "meta-controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Country Currency Map",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//sandbox-api.veem.com/veem/public/v1.2/country-currency-map",
+            "params": [
+              {
+                "name": "bankFields",
+                "value": "",
+                "type": "query",
+                "description": "bankFields"
+              }
+            ]
+          },
+          "docs": "Returns a list of countries supported and currencies for each"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

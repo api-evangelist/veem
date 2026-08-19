@@ -1,0 +1,161 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Veem API v1.2 attachment-controller contact-controller API",
+    "version": "v1.2.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "contact-controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "createContacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//sandbox-api.veem.com/veem/v1.2/contacts/batch",
+            "params": [
+              {
+                "name": "includeItems",
+                "value": "",
+                "type": "query",
+                "description": "includeItems"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create multiple contacts in a batch"
+        },
+        {
+          "info": {
+            "name": "getContacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//sandbox-api.veem.com/veem/v1.2/contacts",
+            "params": [
+              {
+                "name": "batchId",
+                "value": "",
+                "type": "query",
+                "description": "batchId"
+              },
+              {
+                "name": "batchItemIds",
+                "value": "",
+                "type": "query",
+                "description": "batchItemIds"
+              },
+              {
+                "name": "businessName",
+                "value": "",
+                "type": "query",
+                "description": "businessName"
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "email"
+              },
+              {
+                "name": "firstName",
+                "value": "",
+                "type": "query",
+                "description": "firstName"
+              },
+              {
+                "name": "lastName",
+                "value": "",
+                "type": "query",
+                "description": "lastName"
+              },
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query",
+                "description": "pageNumber"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "pageSize"
+              }
+            ]
+          },
+          "docs": "Get a page of account contacts by email address, first,last name, batchId, and business name"
+        },
+        {
+          "info": {
+            "name": "createContact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//sandbox-api.veem.com/veem/v1.2/contacts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a contact in a batch"
+        },
+        {
+          "info": {
+            "name": "getContactBatch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//sandbox-api.veem.com/veem/v1.2/contacts/batch/:batchId",
+            "params": [
+              {
+                "name": "batchId",
+                "value": "",
+                "type": "path",
+                "description": "batchId"
+              },
+              {
+                "name": "includeItems",
+                "value": "",
+                "type": "query",
+                "description": "includeItems"
+              }
+            ]
+          },
+          "docs": "Get the current state of a contact creation batch"
+        },
+        {
+          "info": {
+            "name": "Get Contact by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//sandbox-api.veem.com/veem/v1.2/contacts/:contactId",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "path",
+                "description": "contactId"
+              }
+            ]
+          },
+          "docs": "Get an account contact by ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

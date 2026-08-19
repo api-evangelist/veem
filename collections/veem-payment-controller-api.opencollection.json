@@ -1,0 +1,147 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Veem API v1.2 attachment-controller payment-controller API",
+    "version": "v1.2.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "payment-controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "approvePayment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//sandbox-api.veem.com/veem/v1.2/payments/:paymentId/approve",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "paymentId"
+              }
+            ]
+          },
+          "docs": "approve a payment"
+        },
+        {
+          "info": {
+            "name": "Create a Crypto Wallet pay-in",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//sandbox-api.veem.com/veem/v1.0/payments/cryptowallet/payin",
+            "params": [
+              {
+                "name": "onBehalfAccountId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the account the pay-in is created on behalf of."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates deposit instructions for moving funds to a crypto wallet externally."
+        },
+        {
+          "info": {
+            "name": "Create a Crypto Wallet payout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//sandbox-api.veem.com/veem/v1.0/payments/cryptowallet/payout",
+            "params": [
+              {
+                "name": "onBehalfAccountId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the account the payout is created on behalf of."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Withdraw Crypto Wallet funds to an external address, creating a payment."
+        },
+        {
+          "info": {
+            "name": "createPayment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//sandbox-api.veem.com/veem/v1.2/payments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "post a payment and sends to receiver"
+        },
+        {
+          "info": {
+            "name": "getPayment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//sandbox-api.veem.com/veem/v1.2/payments/:paymentId",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "",
+                "type": "path",
+                "description": "paymentId"
+              }
+            ]
+          },
+          "docs": "get payment details"
+        },
+        {
+          "info": {
+            "name": "walletAddFunds",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//sandbox-api.veem.com/veem/v1.0/payments/wallet/addFunds",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet Add Funds"
+        },
+        {
+          "info": {
+            "name": "walletWithdraw",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//sandbox-api.veem.com/veem/v1.0/payments/wallet/withdraw",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wallet Withdraw"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Veem API v1.2 attachment-controller claimless-payment-controller API",
+    "version": "v1.2.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "claimless-payment-controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "createClaimlessPayment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//sandbox-api.veem.com/veem/v1.2/claimless-payments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a pay direct payment to the payee's (receiver's) bank account"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

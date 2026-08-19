@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Veem API v1.2 attachment-controller exchange-rate-controller API",
+    "version": "v1.2.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "exchange-rate-controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Copy of getQuoteEnhanced",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//sandbox-api.veem.com/veem/v1.2/exchangerates/quote/enhanced-1",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a request to generate an enhanced (fixedFee is included) quote"
+        },
+        {
+          "info": {
+            "name": "getQuoteEnhanced",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "//sandbox-api.veem.com/veem/v1.2/exchangerates/quote/enhanced",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a request to generate an enhanced (fixedFee is included) quote"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

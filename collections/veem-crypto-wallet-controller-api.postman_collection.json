@@ -1,0 +1,3588 @@
+{
+  "item": [
+    {
+      "id": "806a1284-637c-40f3-b362-0b5f2507e902",
+      "name": "crypto-wallet-controller",
+      "description": {
+        "content": "For managing crypto wallets, including balances, details, transactions and pay-ins",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3e91148b-27ed-4d43-8871-8ac757b4ffb0",
+          "name": "Add a currency to a crypto wallet application",
+          "request": {
+            "name": "Add a currency to a crypto wallet application",
+            "description": {
+              "content": "Provisions an additional currency or route for an existing crypto wallet application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "crypto-wallet",
+                "applications",
+                ":applicationId",
+                "add-currency"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "applicationId",
+                  "description": "(Required) Unique identifier of the crypto wallet application."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"destinationCurrency\": \"<string>\",\n  \"destinationPaymentRail\": \"<string>\",\n  \"sourceChain\": \"<string>\",\n  \"sourceCurrency\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cba73848-84c6-4865-ac75-bb29746acef9",
+              "name": "Currency added to crypto wallet application successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId",
+                    "add-currency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationCurrency\": \"<string>\",\n  \"destinationPaymentRail\": \"<string>\",\n  \"sourceChain\": \"<string>\",\n  \"sourceCurrency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"applicationId\": 8169,\n  \"applicationStatus\": \"string\",\n  \"bridgeCustomerId\": \"string\",\n  \"bridgeCustomerStatus\": \"string\",\n  \"bridgeWalletAddress\": \"string\",\n  \"bridgeWalletId\": \"string\",\n  \"destinationCurrency\": \"string\",\n  \"destinationPaymentRail\": \"string\",\n  \"fundingMethodId\": 3259,\n  \"fundingMethodStatus\": \"string\",\n  \"fundingMethodType\": \"string\",\n  \"liquidationAddress\": {\n    \"address\": \"string\",\n    \"bridgeWalletId\": \"string\",\n    \"createdAt\": \"string\",\n    \"destinationCurrency\": \"string\",\n    \"destinationPaymentRail\": \"string\",\n    \"liquidationAddressId\": \"string\",\n    \"sourceChain\": \"string\",\n    \"sourceCurrency\": \"string\",\n    \"state\": \"string\",\n    \"updatedAt\": \"string\"\n  },\n  \"provider\": \"string\",\n  \"routeId\": 6277,\n  \"routeStatus\": \"string\",\n  \"sourceChain\": \"string\",\n  \"sourceCurrency\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "204363ba-ff27-4660-9453-ba06c3ce09c9",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId",
+                    "add-currency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationCurrency\": \"<string>\",\n  \"destinationPaymentRail\": \"<string>\",\n  \"sourceChain\": \"<string>\",\n  \"sourceCurrency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab556898-1f8c-4503-bda6-622dae461543",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId",
+                    "add-currency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationCurrency\": \"<string>\",\n  \"destinationPaymentRail\": \"<string>\",\n  \"sourceChain\": \"<string>\",\n  \"sourceCurrency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a7a831e-f68e-4a66-a145-3e7e8734b6ef",
+              "name": "Forbidden, the token owner doesn't have permission to operate this API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId",
+                    "add-currency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationCurrency\": \"<string>\",\n  \"destinationPaymentRail\": \"<string>\",\n  \"sourceChain\": \"<string>\",\n  \"sourceCurrency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1cc88b57-ded6-4bbe-a961-5beeb6ca6bb3",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId",
+                    "add-currency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationCurrency\": \"<string>\",\n  \"destinationPaymentRail\": \"<string>\",\n  \"sourceChain\": \"<string>\",\n  \"sourceCurrency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "99f52e56-759e-4c1d-bbb3-e832b1889854",
+          "name": "Create a crypto wallet application",
+          "request": {
+            "name": "Create a crypto wallet application",
+            "description": {
+              "content": "Creates a new crypto wallet application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "crypto-wallet",
+                "applications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"destinationCurrency\": \"<string>\",\n  \"destinationPaymentRail\": \"<string>\",\n  \"externalRegulatoryBusinessInfo\": {\n    \"annualRevenue\": \"<decimal>\",\n    \"businessIncorporationDate\": \"<date>\",\n    \"businessRegistrationAddressLine1\": \"<string>\",\n    \"businessRegistrationAddressLine2\": \"<string>\",\n    \"businessRegistrationCity\": \"<string>\",\n    \"businessRegistrationCountry\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\",\n    \"businessRegistrationPostalCode\": \"<string>\",\n    \"businessRegistrationStateProv\": \"<string>\",\n    \"businessWebsite\": \"<string>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\"\n  },\n  \"externalRegulatoryIndividualInfo\": {\n    \"annualIncome\": \"<decimal>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"occupation\": \"<string>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\",\n    \"websiteSocialMediaLink\": \"<string>\"\n  },\n  \"sourceChain\": \"<string>\",\n  \"sourceCurrency\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5e36bbc6-188b-4b9a-80a6-61f287cb757c",
+              "name": "Crypto wallet application created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationCurrency\": \"<string>\",\n  \"destinationPaymentRail\": \"<string>\",\n  \"externalRegulatoryBusinessInfo\": {\n    \"annualRevenue\": \"<decimal>\",\n    \"businessIncorporationDate\": \"<date>\",\n    \"businessRegistrationAddressLine1\": \"<string>\",\n    \"businessRegistrationAddressLine2\": \"<string>\",\n    \"businessRegistrationCity\": \"<string>\",\n    \"businessRegistrationCountry\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\",\n    \"businessRegistrationPostalCode\": \"<string>\",\n    \"businessRegistrationStateProv\": \"<string>\",\n    \"businessWebsite\": \"<string>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\"\n  },\n  \"externalRegulatoryIndividualInfo\": {\n    \"annualIncome\": \"<decimal>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"occupation\": \"<string>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\",\n    \"websiteSocialMediaLink\": \"<string>\"\n  },\n  \"sourceChain\": \"<string>\",\n  \"sourceCurrency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"applicationId\": 5708,\n  \"applicationStatus\": \"string\",\n  \"externalRegulatoryBusinessInfo\": {\n    \"annualRevenue\": \"<decimal>\",\n    \"businessIncorporationDate\": \"<date>\",\n    \"businessRegistrationAddressLine1\": \"<string>\",\n    \"businessRegistrationAddressLine2\": \"<string>\",\n    \"businessRegistrationCity\": \"<string>\",\n    \"businessRegistrationCountry\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\",\n    \"businessRegistrationPostalCode\": \"<string>\",\n    \"businessRegistrationStateProv\": \"<string>\",\n    \"businessWebsite\": \"<string>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\"\n  },\n  \"externalRegulatoryIndividualInfo\": {\n    \"annualIncome\": \"<decimal>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"occupation\": \"<string>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\",\n    \"websiteSocialMediaLink\": \"<string>\"\n  },\n  \"initialRouteId\": 3837,\n  \"provider\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a890aab9-2fae-4435-8d57-eecd136ae189",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationCurrency\": \"<string>\",\n  \"destinationPaymentRail\": \"<string>\",\n  \"externalRegulatoryBusinessInfo\": {\n    \"annualRevenue\": \"<decimal>\",\n    \"businessIncorporationDate\": \"<date>\",\n    \"businessRegistrationAddressLine1\": \"<string>\",\n    \"businessRegistrationAddressLine2\": \"<string>\",\n    \"businessRegistrationCity\": \"<string>\",\n    \"businessRegistrationCountry\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\",\n    \"businessRegistrationPostalCode\": \"<string>\",\n    \"businessRegistrationStateProv\": \"<string>\",\n    \"businessWebsite\": \"<string>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\"\n  },\n  \"externalRegulatoryIndividualInfo\": {\n    \"annualIncome\": \"<decimal>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"occupation\": \"<string>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\",\n    \"websiteSocialMediaLink\": \"<string>\"\n  },\n  \"sourceChain\": \"<string>\",\n  \"sourceCurrency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b56911f2-8358-41af-91a6-292f7d0c6932",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationCurrency\": \"<string>\",\n  \"destinationPaymentRail\": \"<string>\",\n  \"externalRegulatoryBusinessInfo\": {\n    \"annualRevenue\": \"<decimal>\",\n    \"businessIncorporationDate\": \"<date>\",\n    \"businessRegistrationAddressLine1\": \"<string>\",\n    \"businessRegistrationAddressLine2\": \"<string>\",\n    \"businessRegistrationCity\": \"<string>\",\n    \"businessRegistrationCountry\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\",\n    \"businessRegistrationPostalCode\": \"<string>\",\n    \"businessRegistrationStateProv\": \"<string>\",\n    \"businessWebsite\": \"<string>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\"\n  },\n  \"externalRegulatoryIndividualInfo\": {\n    \"annualIncome\": \"<decimal>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"occupation\": \"<string>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\",\n    \"websiteSocialMediaLink\": \"<string>\"\n  },\n  \"sourceChain\": \"<string>\",\n  \"sourceCurrency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8da1960-6d53-48bb-ac03-8a5a55ce4d7d",
+              "name": "Forbidden, the token owner doesn't have permission to operate this API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationCurrency\": \"<string>\",\n  \"destinationPaymentRail\": \"<string>\",\n  \"externalRegulatoryBusinessInfo\": {\n    \"annualRevenue\": \"<decimal>\",\n    \"businessIncorporationDate\": \"<date>\",\n    \"businessRegistrationAddressLine1\": \"<string>\",\n    \"businessRegistrationAddressLine2\": \"<string>\",\n    \"businessRegistrationCity\": \"<string>\",\n    \"businessRegistrationCountry\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\",\n    \"businessRegistrationPostalCode\": \"<string>\",\n    \"businessRegistrationStateProv\": \"<string>\",\n    \"businessWebsite\": \"<string>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\"\n  },\n  \"externalRegulatoryIndividualInfo\": {\n    \"annualIncome\": \"<decimal>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"occupation\": \"<string>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\",\n    \"websiteSocialMediaLink\": \"<string>\"\n  },\n  \"sourceChain\": \"<string>\",\n  \"sourceCurrency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90354372-dd8d-4c2d-86ad-d668fa72f5f2",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationCurrency\": \"<string>\",\n  \"destinationPaymentRail\": \"<string>\",\n  \"externalRegulatoryBusinessInfo\": {\n    \"annualRevenue\": \"<decimal>\",\n    \"businessIncorporationDate\": \"<date>\",\n    \"businessRegistrationAddressLine1\": \"<string>\",\n    \"businessRegistrationAddressLine2\": \"<string>\",\n    \"businessRegistrationCity\": \"<string>\",\n    \"businessRegistrationCountry\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\",\n    \"businessRegistrationPostalCode\": \"<string>\",\n    \"businessRegistrationStateProv\": \"<string>\",\n    \"businessWebsite\": \"<string>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\"\n  },\n  \"externalRegulatoryIndividualInfo\": {\n    \"annualIncome\": \"<decimal>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"occupation\": \"<string>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\",\n    \"websiteSocialMediaLink\": \"<string>\"\n  },\n  \"sourceChain\": \"<string>\",\n  \"sourceCurrency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5dc0f9ec-7f4b-427b-87c9-015a8b7229fd",
+          "name": "Retrieve a crypto wallet application by ID",
+          "request": {
+            "name": "Retrieve a crypto wallet application by ID",
+            "description": {
+              "content": "Returns a specific crypto wallet application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "crypto-wallet",
+                "applications",
+                ":applicationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "onBehalfAccountId",
+                  "value": "<long>",
+                  "description": "Identifier of the account the request is made on behalf of."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "applicationId",
+                  "description": "(Required) Unique identifier of the crypto wallet application."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6365610e-c6a8-4bce-9c75-6a9c32b60c95",
+              "name": "Crypto wallet application retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "onBehalfAccountId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"applicationId\": 5708,\n  \"applicationStatus\": \"string\",\n  \"externalRegulatoryBusinessInfo\": {\n    \"annualRevenue\": \"<decimal>\",\n    \"businessIncorporationDate\": \"<date>\",\n    \"businessRegistrationAddressLine1\": \"<string>\",\n    \"businessRegistrationAddressLine2\": \"<string>\",\n    \"businessRegistrationCity\": \"<string>\",\n    \"businessRegistrationCountry\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\",\n    \"businessRegistrationPostalCode\": \"<string>\",\n    \"businessRegistrationStateProv\": \"<string>\",\n    \"businessWebsite\": \"<string>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\"\n  },\n  \"externalRegulatoryIndividualInfo\": {\n    \"annualIncome\": \"<decimal>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"occupation\": \"<string>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\",\n    \"websiteSocialMediaLink\": \"<string>\"\n  },\n  \"initialRouteId\": 3837,\n  \"provider\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "316e093c-dc23-4af1-ac78-0799222fb1fb",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "onBehalfAccountId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e896bc58-c210-4c24-a721-239041cd9718",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "onBehalfAccountId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47136ec2-1c8b-4a9c-8926-8e817105e60a",
+              "name": "Forbidden, the token owner doesn't have permission to operate this API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "onBehalfAccountId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4634f160-c72e-4504-b79f-993ac503235c",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "onBehalfAccountId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80af6a4d-297d-4fbf-9584-4a468d9c740d",
+          "name": "Update a crypto wallet application",
+          "request": {
+            "name": "Update a crypto wallet application",
+            "description": {
+              "content": "Updates an existing crypto wallet application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "crypto-wallet",
+                "applications",
+                ":applicationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "applicationId",
+                  "description": "(Required) Unique identifier of the crypto wallet application."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"destinationCurrency\": \"<string>\",\n  \"destinationPaymentRail\": \"<string>\",\n  \"externalRegulatoryBusinessInfo\": {\n    \"annualRevenue\": \"<decimal>\",\n    \"businessIncorporationDate\": \"<date>\",\n    \"businessRegistrationAddressLine1\": \"<string>\",\n    \"businessRegistrationAddressLine2\": \"<string>\",\n    \"businessRegistrationCity\": \"<string>\",\n    \"businessRegistrationCountry\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\",\n    \"businessRegistrationPostalCode\": \"<string>\",\n    \"businessRegistrationStateProv\": \"<string>\",\n    \"businessWebsite\": \"<string>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\"\n  },\n  \"externalRegulatoryIndividualInfo\": {\n    \"annualIncome\": \"<decimal>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"occupation\": \"<string>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\",\n    \"websiteSocialMediaLink\": \"<string>\"\n  },\n  \"sourceChain\": \"<string>\",\n  \"sourceCurrency\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f867f9d6-f7fc-49f0-9bd0-71e13d13a7e3",
+              "name": "Crypto wallet application updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationCurrency\": \"<string>\",\n  \"destinationPaymentRail\": \"<string>\",\n  \"externalRegulatoryBusinessInfo\": {\n    \"annualRevenue\": \"<decimal>\",\n    \"businessIncorporationDate\": \"<date>\",\n    \"businessRegistrationAddressLine1\": \"<string>\",\n    \"businessRegistrationAddressLine2\": \"<string>\",\n    \"businessRegistrationCity\": \"<string>\",\n    \"businessRegistrationCountry\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\",\n    \"businessRegistrationPostalCode\": \"<string>\",\n    \"businessRegistrationStateProv\": \"<string>\",\n    \"businessWebsite\": \"<string>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\"\n  },\n  \"externalRegulatoryIndividualInfo\": {\n    \"annualIncome\": \"<decimal>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"occupation\": \"<string>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\",\n    \"websiteSocialMediaLink\": \"<string>\"\n  },\n  \"sourceChain\": \"<string>\",\n  \"sourceCurrency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"applicationId\": 5708,\n  \"applicationStatus\": \"string\",\n  \"externalRegulatoryBusinessInfo\": {\n    \"annualRevenue\": \"<decimal>\",\n    \"businessIncorporationDate\": \"<date>\",\n    \"businessRegistrationAddressLine1\": \"<string>\",\n    \"businessRegistrationAddressLine2\": \"<string>\",\n    \"businessRegistrationCity\": \"<string>\",\n    \"businessRegistrationCountry\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\",\n    \"businessRegistrationPostalCode\": \"<string>\",\n    \"businessRegistrationStateProv\": \"<string>\",\n    \"businessWebsite\": \"<string>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\"\n  },\n  \"externalRegulatoryIndividualInfo\": {\n    \"annualIncome\": \"<decimal>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"occupation\": \"<string>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\",\n    \"websiteSocialMediaLink\": \"<string>\"\n  },\n  \"initialRouteId\": 3837,\n  \"provider\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92f21a48-ff6e-466d-9af3-68422dd1bfdb",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationCurrency\": \"<string>\",\n  \"destinationPaymentRail\": \"<string>\",\n  \"externalRegulatoryBusinessInfo\": {\n    \"annualRevenue\": \"<decimal>\",\n    \"businessIncorporationDate\": \"<date>\",\n    \"businessRegistrationAddressLine1\": \"<string>\",\n    \"businessRegistrationAddressLine2\": \"<string>\",\n    \"businessRegistrationCity\": \"<string>\",\n    \"businessRegistrationCountry\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\",\n    \"businessRegistrationPostalCode\": \"<string>\",\n    \"businessRegistrationStateProv\": \"<string>\",\n    \"businessWebsite\": \"<string>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\"\n  },\n  \"externalRegulatoryIndividualInfo\": {\n    \"annualIncome\": \"<decimal>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"occupation\": \"<string>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\",\n    \"websiteSocialMediaLink\": \"<string>\"\n  },\n  \"sourceChain\": \"<string>\",\n  \"sourceCurrency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a27f3f5-ebf4-4b89-9574-5aef3f2e0178",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationCurrency\": \"<string>\",\n  \"destinationPaymentRail\": \"<string>\",\n  \"externalRegulatoryBusinessInfo\": {\n    \"annualRevenue\": \"<decimal>\",\n    \"businessIncorporationDate\": \"<date>\",\n    \"businessRegistrationAddressLine1\": \"<string>\",\n    \"businessRegistrationAddressLine2\": \"<string>\",\n    \"businessRegistrationCity\": \"<string>\",\n    \"businessRegistrationCountry\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\",\n    \"businessRegistrationPostalCode\": \"<string>\",\n    \"businessRegistrationStateProv\": \"<string>\",\n    \"businessWebsite\": \"<string>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\"\n  },\n  \"externalRegulatoryIndividualInfo\": {\n    \"annualIncome\": \"<decimal>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"occupation\": \"<string>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\",\n    \"websiteSocialMediaLink\": \"<string>\"\n  },\n  \"sourceChain\": \"<string>\",\n  \"sourceCurrency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3b76929-20ee-4bdd-b69a-cf05dd374c22",
+              "name": "Forbidden, the token owner doesn't have permission to operate this API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationCurrency\": \"<string>\",\n  \"destinationPaymentRail\": \"<string>\",\n  \"externalRegulatoryBusinessInfo\": {\n    \"annualRevenue\": \"<decimal>\",\n    \"businessIncorporationDate\": \"<date>\",\n    \"businessRegistrationAddressLine1\": \"<string>\",\n    \"businessRegistrationAddressLine2\": \"<string>\",\n    \"businessRegistrationCity\": \"<string>\",\n    \"businessRegistrationCountry\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\",\n    \"businessRegistrationPostalCode\": \"<string>\",\n    \"businessRegistrationStateProv\": \"<string>\",\n    \"businessWebsite\": \"<string>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\"\n  },\n  \"externalRegulatoryIndividualInfo\": {\n    \"annualIncome\": \"<decimal>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"occupation\": \"<string>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\",\n    \"websiteSocialMediaLink\": \"<string>\"\n  },\n  \"sourceChain\": \"<string>\",\n  \"sourceCurrency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b580cc99-e574-4417-a6f8-eee02981988f",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationCurrency\": \"<string>\",\n  \"destinationPaymentRail\": \"<string>\",\n  \"externalRegulatoryBusinessInfo\": {\n    \"annualRevenue\": \"<decimal>\",\n    \"businessIncorporationDate\": \"<date>\",\n    \"businessRegistrationAddressLine1\": \"<string>\",\n    \"businessRegistrationAddressLine2\": \"<string>\",\n    \"businessRegistrationCity\": \"<string>\",\n    \"businessRegistrationCountry\": \"<string>\",\n    \"businessRegistrationNumber\": \"<string>\",\n    \"businessRegistrationPostalCode\": \"<string>\",\n    \"businessRegistrationStateProv\": \"<string>\",\n    \"businessWebsite\": \"<string>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\"\n  },\n  \"externalRegulatoryIndividualInfo\": {\n    \"annualIncome\": \"<decimal>\",\n    \"geographyReceivingCountries\": \"<string>\",\n    \"geographySendingCountries\": \"<string>\",\n    \"monthlyExpectedActivity\": \"<decimal>\",\n    \"occupation\": \"<string>\",\n    \"purposeOfAccount\": \"<string>\",\n    \"sourceOfFunds\": \"<string>\",\n    \"websiteSocialMediaLink\": \"<string>\"\n  },\n  \"sourceChain\": \"<string>\",\n  \"sourceCurrency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "11d437f0-933f-44d5-a7f4-6841f7762ee7",
+          "name": "Retrieve a crypto wallet application route by ID",
+          "request": {
+            "name": "Retrieve a crypto wallet application route by ID",
+            "description": {
+              "content": "Returns a specific route for a crypto wallet application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "crypto-wallet",
+                "applications",
+                ":applicationId",
+                "routes",
+                ":routeId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "onBehalfAccountId",
+                  "value": "<long>",
+                  "description": "Identifier of the account the request is made on behalf of."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "applicationId",
+                  "description": "(Required) Unique identifier of the crypto wallet application."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "routeId",
+                  "description": "(Required) Unique identifier of the crypto wallet application route."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "28171018-f1a8-4f08-b339-6416a50d0c11",
+              "name": "Crypto wallet application route retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId",
+                    "routes",
+                    ":routeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "onBehalfAccountId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "routeId",
+                      "description": "(Required) Unique identifier of the crypto wallet application route."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"destinationCurrency\": \"string\",\n  \"destinationPaymentRail\": \"string\",\n  \"fundingMethodId\": 3876,\n  \"fundingMethodStatus\": \"Inactive\",\n  \"routeId\": 2494,\n  \"routeStatus\": \"string\",\n  \"sourceChain\": \"string\",\n  \"sourceCurrency\": \"string\",\n  \"timeCreated\": \"1955-03-23T01:56:41.618Z\",\n  \"timeUpdated\": \"1957-08-29T23:27:33.765Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "febced15-ecdd-4101-86f5-575abc1876e6",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId",
+                    "routes",
+                    ":routeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "onBehalfAccountId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "routeId",
+                      "description": "(Required) Unique identifier of the crypto wallet application route."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "585a3dd5-19eb-4287-9ec3-8a65379cecd6",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId",
+                    "routes",
+                    ":routeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "onBehalfAccountId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "routeId",
+                      "description": "(Required) Unique identifier of the crypto wallet application route."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "342ef734-939c-41af-a07e-3b87cb774443",
+              "name": "Forbidden, the token owner doesn't have permission to operate this API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId",
+                    "routes",
+                    ":routeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "onBehalfAccountId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "routeId",
+                      "description": "(Required) Unique identifier of the crypto wallet application route."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be9193ee-3c50-422f-96cb-97e6cfafc916",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId",
+                    "routes",
+                    ":routeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "onBehalfAccountId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "routeId",
+                      "description": "(Required) Unique identifier of the crypto wallet application route."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b6db27d-06ce-4975-81d7-e59a1e4bfa5d",
+          "name": "Retrieve crypto wallet application routes",
+          "request": {
+            "name": "Retrieve crypto wallet application routes",
+            "description": {
+              "content": "Returns the routes for a specific crypto wallet application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "crypto-wallet",
+                "applications",
+                ":applicationId",
+                "routes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "onBehalfAccountId",
+                  "value": "<long>",
+                  "description": "Identifier of the account the request is made on behalf of."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "applicationId",
+                  "description": "(Required) Unique identifier of the crypto wallet application."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5cbd3b4b-c53a-4f6e-8743-c3fad459d9f5",
+              "name": "List of crypto wallet application routes retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "onBehalfAccountId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"destinationCurrency\": \"string\",\n    \"destinationPaymentRail\": \"string\",\n    \"fundingMethodId\": 5406,\n    \"fundingMethodStatus\": \"Closed\",\n    \"routeId\": 4724,\n    \"routeStatus\": \"string\",\n    \"sourceChain\": \"string\",\n    \"sourceCurrency\": \"string\",\n    \"timeCreated\": \"2013-12-07T04:27:28.987Z\",\n    \"timeUpdated\": \"2024-04-08T11:50:12.301Z\"\n  },\n  {\n    \"destinationCurrency\": \"string\",\n    \"destinationPaymentRail\": \"string\",\n    \"fundingMethodId\": 5631,\n    \"fundingMethodStatus\": \"Inactiving\",\n    \"routeId\": 8925,\n    \"routeStatus\": \"string\",\n    \"sourceChain\": \"string\",\n    \"sourceCurrency\": \"string\",\n    \"timeCreated\": \"1968-12-29T09:28:13.134Z\",\n    \"timeUpdated\": \"1967-08-25T05:40:35.123Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9fa76bc8-4771-403c-a37e-ca218fa9f623",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "onBehalfAccountId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7a78b46-f1a2-4ea9-96a7-a8b875d7aade",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "onBehalfAccountId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6877e8e-1e67-43ca-914d-9d6f78da0e2e",
+              "name": "Forbidden, the token owner doesn't have permission to operate this API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "onBehalfAccountId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aca00831-30ea-4d64-982d-ea514a6bf575",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "applications",
+                    ":applicationId",
+                    "routes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "onBehalfAccountId",
+                      "value": "<long>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "applicationId",
+                      "description": "(Required) Unique identifier of the crypto wallet application."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f310d99-2ae9-431b-bfcf-5b239e085ee5",
+          "name": "Retrieve crypto wallet balance by funding method ID",
+          "request": {
+            "name": "Retrieve crypto wallet balance by funding method ID",
+            "description": {
+              "content": "Returns the balance details of a specific crypto wallet.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "crypto-wallet",
+                "balance",
+                ":fundingMethodId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "fundingMethodId",
+                  "description": "(Required) Unique identifier of the crypto wallet funding method."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2da36419-5b03-45a8-9bbf-91ac22bfe9dc",
+              "name": "Crypto wallet balance retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "balance",
+                    ":fundingMethodId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fundingMethodId",
+                      "description": "(Required) Unique identifier of the crypto wallet funding method."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountId\": 406,\n  \"balanceAmount\": {\n    \"currency\": \"BGN\",\n    \"number\": 914.2389051574662\n  },\n  \"destinationCurrency\": \"string\",\n  \"destinationPaymentRail\": \"string\",\n  \"fundingMethodId\": 7625,\n  \"sourceChain\": \"string\",\n  \"sourceCurrency\": \"string\",\n  \"timeUpdated\": \"1952-02-15T07:04:58.795Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4c1f710-bd02-45e6-84cf-801fe4d4f826",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "balance",
+                    ":fundingMethodId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fundingMethodId",
+                      "description": "(Required) Unique identifier of the crypto wallet funding method."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "46a2deac-3ebc-4f0e-8340-b38a7568254e",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "balance",
+                    ":fundingMethodId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fundingMethodId",
+                      "description": "(Required) Unique identifier of the crypto wallet funding method."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "879d390d-17c2-408b-ba0e-227477abcfcf",
+              "name": "Forbidden, the token owner doesn't have permission to operate this API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "balance",
+                    ":fundingMethodId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fundingMethodId",
+                      "description": "(Required) Unique identifier of the crypto wallet funding method."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce03ac01-683c-416b-ac23-2e7c0670c412",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "balance",
+                    ":fundingMethodId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fundingMethodId",
+                      "description": "(Required) Unique identifier of the crypto wallet funding method."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7ab444f-6f50-43db-9ad1-f8bd85222051",
+          "name": "Retrieve all crypto wallet balances",
+          "request": {
+            "name": "Retrieve all crypto wallet balances",
+            "description": {
+              "content": "Returns a list of balance details for all crypto wallets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "crypto-wallet",
+                "balance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af749872-bf52-433e-b4b6-65ec4401d29b",
+              "name": "List of crypto wallet balances retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"accountId\": 7099,\n    \"balanceAmount\": {\n      \"currency\": \"CHE\",\n      \"number\": 3382.7062396824394\n    },\n    \"destinationCurrency\": \"string\",\n    \"destinationPaymentRail\": \"string\",\n    \"fundingMethodId\": 6591,\n    \"sourceChain\": \"string\",\n    \"sourceCurrency\": \"string\",\n    \"timeUpdated\": \"1947-01-18T21:55:28.781Z\"\n  },\n  {\n    \"accountId\": 7635,\n    \"balanceAmount\": {\n      \"currency\": \"GYD\",\n      \"number\": 1835.8643980576671\n    },\n    \"destinationCurrency\": \"string\",\n    \"destinationPaymentRail\": \"string\",\n    \"fundingMethodId\": 293,\n    \"sourceChain\": \"string\",\n    \"sourceCurrency\": \"string\",\n    \"timeUpdated\": \"1958-07-02T11:25:36.937Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90dfb31e-3e9f-47fc-8ada-c9c3bbdf08d3",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b20d358-20ca-4059-bb84-27705aed4739",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5082739d-9ceb-4f1d-bc74-b6968c2b640c",
+              "name": "Forbidden, the token owner doesn't have permission to operate this API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf9a149f-b9dc-42ac-9df0-74bb03f7ffd7",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb2177c1-5388-4806-9a4d-b8a10e149f52",
+          "name": "Retrieve all crypto wallet details",
+          "request": {
+            "name": "Retrieve all crypto wallet details",
+            "description": {
+              "content": "Returns a list of details for all crypto wallets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "crypto-wallet",
+                "details"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "438d0586-05f8-43ce-876c-d460287b3e19",
+              "name": "List of crypto wallet details retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"destinationCurrency\": \"string\",\n    \"destinationPaymentRail\": \"string\",\n    \"externalAccountId\": \"string\",\n    \"fundingMethodId\": 9743,\n    \"info\": {\n      \"key_0\": {}\n    },\n    \"isoCountryCode\": \"string\",\n    \"isoCurrencyCode\": \"string\",\n    \"provider\": \"string\",\n    \"sourceChain\": \"string\",\n    \"sourceCurrency\": \"string\",\n    \"status\": \"string\"\n  },\n  {\n    \"destinationCurrency\": \"string\",\n    \"destinationPaymentRail\": \"string\",\n    \"externalAccountId\": \"string\",\n    \"fundingMethodId\": 6296,\n    \"info\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"isoCountryCode\": \"string\",\n    \"isoCurrencyCode\": \"string\",\n    \"provider\": \"string\",\n    \"sourceChain\": \"string\",\n    \"sourceCurrency\": \"string\",\n    \"status\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce95c327-8c15-4948-b7b0-9a5741774cbf",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "758d92f9-d126-4795-8031-7332750351bb",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75be056f-c61e-49f2-bf86-8ccdbe7f7089",
+              "name": "Forbidden, the token owner doesn't have permission to operate this API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "670919f0-3194-42cc-a769-d54077e7a00b",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "86173c16-a3ce-4d40-9e5a-0edd0ca77707",
+          "name": "Retrieve crypto wallet details by funding method ID",
+          "request": {
+            "name": "Retrieve crypto wallet details by funding method ID",
+            "description": {
+              "content": "Returns detailed information for a specific crypto wallet.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "crypto-wallet",
+                "details",
+                ":fundingMethodId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "fundingMethodId",
+                  "description": "(Required) Unique identifier of the crypto wallet funding method."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "97c1cc6c-fbc0-4967-9b3b-b0b1cb86721f",
+              "name": "Crypto wallet details retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "details",
+                    ":fundingMethodId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fundingMethodId",
+                      "description": "(Required) Unique identifier of the crypto wallet funding method."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"destinationCurrency\": \"string\",\n  \"destinationPaymentRail\": \"string\",\n  \"externalAccountId\": \"string\",\n  \"fundingMethodId\": 314,\n  \"info\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"isoCountryCode\": \"string\",\n  \"isoCurrencyCode\": \"string\",\n  \"provider\": \"string\",\n  \"sourceChain\": \"string\",\n  \"sourceCurrency\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb657925-ce05-4a7e-9c59-5923aca9d370",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "details",
+                    ":fundingMethodId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fundingMethodId",
+                      "description": "(Required) Unique identifier of the crypto wallet funding method."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9adf359d-a4e6-422b-a17a-e9bca02d9bfb",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "details",
+                    ":fundingMethodId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fundingMethodId",
+                      "description": "(Required) Unique identifier of the crypto wallet funding method."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "160fde38-3e7a-4da7-8a84-2fc3e30ad2cd",
+              "name": "Forbidden, the token owner doesn't have permission to operate this API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "details",
+                    ":fundingMethodId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fundingMethodId",
+                      "description": "(Required) Unique identifier of the crypto wallet funding method."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81768d63-76a2-4c31-94ed-7adacaba59dc",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "details",
+                    ":fundingMethodId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fundingMethodId",
+                      "description": "(Required) Unique identifier of the crypto wallet funding method."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "791a4e09-8db0-4dd0-8b0f-46375fbbb1b0",
+          "name": "Get payer's Crypto Wallets",
+          "request": {
+            "name": "Get payer's Crypto Wallets",
+            "description": {
+              "content": "Gets the Crypto Wallet information for the payer, including status, currency and chain details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "crypto-wallet"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac903fe0-1b5a-4e2d-b4a8-7564a89122b5",
+              "name": "Success, all active Crypto Wallets retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cryptoWallets\": [\n    {\n      \"accountId\": 8504,\n      \"destinationCurrency\": \"string\",\n      \"destinationPaymentRail\": \"string\",\n      \"fundingMethodId\": 4051,\n      \"provider\": \"string\",\n      \"sourceChain\": \"string\",\n      \"sourceCurrency\": \"string\",\n      \"status\": \"string\",\n      \"timeCreated\": \"1951-01-21T12:52:19.884Z\"\n    },\n    {\n      \"accountId\": 7550,\n      \"destinationCurrency\": \"string\",\n      \"destinationPaymentRail\": \"string\",\n      \"fundingMethodId\": 4327,\n      \"provider\": \"string\",\n      \"sourceChain\": \"string\",\n      \"sourceCurrency\": \"string\",\n      \"status\": \"string\",\n      \"timeCreated\": \"2000-06-22T18:57:45.208Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f2845bff-615c-4c9d-b27a-072425f61b01",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1c1df702-a68d-440c-88df-6f9c880816e1",
+              "name": "Forbidden, the token owner doesn't have permission to operate this API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7933014-e21d-4eb4-ab65-7333077dc25d",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6ec16ac-d110-493e-b7f0-7b4a4f56797d",
+          "name": "Retrieve crypto wallet transactions",
+          "request": {
+            "name": "Retrieve crypto wallet transactions",
+            "description": {
+              "content": "Returns paginated transactions for a crypto wallet within a specified date range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "crypto-wallet",
+                "transactions",
+                ":fundingMethodId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageNumber",
+                  "value": "0",
+                  "description": "The page number for paginated results (initial: 0)."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "25",
+                  "description": "The number of results per page (max: 25)."
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<dateTime>",
+                  "description": "(Required) The start date and time for transaction filtering."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<dateTime>",
+                  "description": "(Required) The end date and time for transaction filtering."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "fundingMethodId",
+                  "description": "(Required) Unique identifier of the crypto wallet funding method."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5fdd93df-352d-4e37-954f-1777583f2bca",
+              "name": "Paginated list of transactions retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "transactions",
+                    ":fundingMethodId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fundingMethodId",
+                      "description": "(Required) Unique identifier of the crypto wallet funding method."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"content\": [\n    {\n      \"accountId\": 5380,\n      \"accountRef\": \"string\",\n      \"additionalInformation\": \"string\",\n      \"amount\": 9494.897308079531,\n      \"balanceAmount\": 5542.806675804171,\n      \"balanceId\": \"string\",\n      \"completedAt\": \"1984-09-15T05:11:58.970Z\",\n      \"createdAt\": \"1959-11-09T08:36:31.080Z\",\n      \"currency\": \"string\",\n      \"date\": \"1955-01-22T02:39:26.083Z\",\n      \"fundingMethodId\": 831,\n      \"id\": 5525,\n      \"notes\": \"string\",\n      \"originatorName\": \"string\",\n      \"paymentAdditionalRef\": \"string\",\n      \"paymentId\": 6022,\n      \"paymentRef\": \"string\",\n      \"provider\": \"string\",\n      \"rail\": \"string\",\n      \"reason\": \"string\",\n      \"receivingAccountIban\": \"string\",\n      \"receivingAccountNumber\": \"string\",\n      \"receivingAccountRoutingCode\": \"string\",\n      \"relatedEntityId\": \"string\",\n      \"relatedEntityShortReference\": \"string\",\n      \"relatedEntityType\": \"string\",\n      \"reviewAmount\": 3570.9585488593166,\n      \"sanctionsPaymentId\": 6528,\n      \"sanctionsSenderAccountId\": 3522,\n      \"sender\": \"string\",\n      \"senderAccountId\": 16,\n      \"senderAccountNumber\": \"string\",\n      \"senderAddress\": \"string\",\n      \"senderAmount\": 4926.9068269091085,\n      \"senderCountry\": \"string\",\n      \"senderCreateAat\": \"1976-04-05T11:06:13.192Z\",\n      \"senderCurrency\": \"string\",\n      \"senderIban\": \"string\",\n      \"senderName\": \"string\",\n      \"senderRail\": \"string\",\n      \"senderUpdatedAt\": \"1995-03-10T13:42:00.730Z\",\n      \"settlesAt\": \"1999-11-01T13:45:21.439Z\",\n      \"status\": \"string\",\n      \"transactionId\": 4381,\n      \"type\": \"string\",\n      \"updatedAt\": \"2021-06-13T09:05:31.800Z\",\n      \"virtualBankAccountId\": \"string\",\n      \"virtualBankTransactionId\": \"string\",\n      \"virtualBankTransactionOtherId\": \"string\"\n    },\n    {\n      \"accountId\": 8750,\n      \"accountRef\": \"string\",\n      \"additionalInformation\": \"string\",\n      \"amount\": 7714.369015996476,\n      \"balanceAmount\": 9572.618500725444,\n      \"balanceId\": \"string\",\n      \"completedAt\": \"1977-09-12T12:45:53.571Z\",\n      \"createdAt\": \"1998-11-21T22:15:08.918Z\",\n      \"currency\": \"string\",\n      \"date\": \"1985-05-25T02:06:32.788Z\",\n      \"fundingMethodId\": 6616,\n      \"id\": 7105,\n      \"notes\": \"string\",\n      \"originatorName\": \"string\",\n      \"paymentAdditionalRef\": \"string\",\n      \"paymentId\": 3389,\n      \"paymentRef\": \"string\",\n      \"provider\": \"string\",\n      \"rail\": \"string\",\n      \"reason\": \"string\",\n      \"receivingAccountIban\": \"string\",\n      \"receivingAccountNumber\": \"string\",\n      \"receivingAccountRoutingCode\": \"string\",\n      \"relatedEntityId\": \"string\",\n      \"relatedEntityShortReference\": \"string\",\n      \"relatedEntityType\": \"string\",\n      \"reviewAmount\": 3031.209164684605,\n      \"sanctionsPaymentId\": 1904,\n      \"sanctionsSenderAccountId\": 8520,\n      \"sender\": \"string\",\n      \"senderAccountId\": 7605,\n      \"senderAccountNumber\": \"string\",\n      \"senderAddress\": \"string\",\n      \"senderAmount\": 1014.835564758666,\n      \"senderCountry\": \"string\",\n      \"senderCreateAat\": \"1997-07-27T13:45:26.188Z\",\n      \"senderCurrency\": \"string\",\n      \"senderIban\": \"string\",\n      \"senderName\": \"string\",\n      \"senderRail\": \"string\",\n      \"senderUpdatedAt\": \"1970-03-29T00:27:10.328Z\",\n      \"settlesAt\": \"1959-02-14T12:00:58.636Z\",\n      \"status\": \"string\",\n      \"transactionId\": 1940,\n      \"type\": \"string\",\n      \"updatedAt\": \"2005-04-01T08:27:51.143Z\",\n      \"virtualBankAccountId\": \"string\",\n      \"virtualBankTransactionId\": \"string\",\n      \"virtualBankTransactionOtherId\": \"string\"\n    }\n  ],\n  \"first\": false,\n  \"last\": true,\n  \"nextPage\": true,\n  \"number\": 4628,\n  \"numberOfElements\": 9048,\n  \"previousPage\": true,\n  \"size\": 4331,\n  \"totalElements\": 5395,\n  \"totalPages\": 9665\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b942414e-d0cb-4142-8c14-817be696cbab",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "transactions",
+                    ":fundingMethodId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fundingMethodId",
+                      "description": "(Required) Unique identifier of the crypto wallet funding method."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "701b6f71-e934-49c3-bcc3-064303039523",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "transactions",
+                    ":fundingMethodId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fundingMethodId",
+                      "description": "(Required) Unique identifier of the crypto wallet funding method."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f5033cb3-c8eb-4e62-8b39-0de38c5540c1",
+              "name": "Forbidden, the token owner doesn't have permission to operate this API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "transactions",
+                    ":fundingMethodId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fundingMethodId",
+                      "description": "(Required) Unique identifier of the crypto wallet funding method."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f9c1941f-1995-41a1-9d17-936b220becbf",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "crypto-wallet",
+                    "transactions",
+                    ":fundingMethodId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "25"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "fundingMethodId",
+                      "description": "(Required) Unique identifier of the crypto wallet funding method."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5512,\n  \"logTag\": \"string\",\n  \"message\": \"string\",\n  \"fileName\": \"string\",\n  \"lineNumber\": 516,\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "//sandbox-api.veem.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ecaf12d4-6ccd-4b88-a8e8-c1ef4b02517b",
+    "name": "Veem API v1.2 attachment-controller crypto-wallet-controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Veem REST API",
+      "type": "text/plain"
+    }
+  }
+}

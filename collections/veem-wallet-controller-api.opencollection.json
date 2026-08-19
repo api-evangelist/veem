@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Veem API v1.2 attachment-controller wallet-controller API",
+    "version": "v1.2.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "wallet-controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Wallet Balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//sandbox-api.veem.com/veem/v1.2/wallets"
+          },
+          "docs": "Return user's wallet balance"
+        },
+        {
+          "info": {
+            "name": "Get Wallet by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//sandbox-api.veem.com/veem/v1.2/wallets/:walletId",
+            "params": [
+              {
+                "name": "walletId",
+                "value": "",
+                "type": "path",
+                "description": "walletId"
+              }
+            ]
+          },
+          "docs": "Return user's wallet by id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

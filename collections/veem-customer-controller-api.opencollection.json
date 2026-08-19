@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Veem API v1.2 attachment-controller customer-controller API",
+    "version": "v1.2.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "customer-controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "searchCustomers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "//sandbox-api.veem.com/veem/v1.2/customers",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "email"
+              }
+            ]
+          },
+          "docs": "Search Veem Contacts"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

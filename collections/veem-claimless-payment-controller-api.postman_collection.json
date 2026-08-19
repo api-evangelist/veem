@@ -1,0 +1,317 @@
+{
+  "item": [
+    {
+      "id": "7a9b4a26-a9cd-4b20-9932-78b496af58fa",
+      "name": "claimless-payment-controller",
+      "description": {
+        "content": "Claimless Payment Controller",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "07b1eac4-971b-449a-be39-134f0bf13e5a",
+          "name": "createClaimlessPayment",
+          "request": {
+            "name": "createClaimlessPayment",
+            "description": {
+              "content": "Creates a pay direct payment to the payee's (receiver's) bank account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "veem",
+                "v1.2",
+                "claimless-payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": {\n    \"currency\": \"<string>\",\n    \"number\": \"<number>\"\n  },\n  \"fundingMethod\": {\n    \"id\": \"<long>\",\n    \"type\": \"<string>\"\n  },\n  \"payee\": {\n    \"bank\": \"<object>\",\n    \"business\": {\n      \"address\": {\n        \"city\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"province\": \"<string>\",\n        \"street\": \"<string>\",\n        \"streetSecondary\": \"<string>\"\n      },\n      \"entity\": \"<string>\",\n      \"taxIdNumber\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"purposeOfPayment\": \"<string>\",\n  \"purposeOfPaymentDescription\": \"<string>\",\n  \"notes\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "07d7f010-a2e7-47b6-8e77-af7ea1b9ff78",
+              "name": "Success, a payment is created in Veem",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "claimless-payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"amount\": {\n    \"currency\": \"<string>\",\n    \"number\": \"<number>\"\n  },\n  \"batchItemId\": 2176,\n  \"exchangeRate\": {\n    \"expiry\": \"1992-08-02T21:40:20.557Z\",\n    \"fromCurrency\": \"BTN\",\n    \"id\": \"string\",\n    \"rate\": 8950.665858525268,\n    \"timeCreated\": \"1961-11-20T14:20:38.466Z\",\n    \"toAmount\": 3053.6291145892515,\n    \"toCurrency\": \"MAD\",\n    \"fromAmount\": 1128.7201092412736\n  },\n  \"exchangeRateQuoteId\": \"string\",\n  \"id\": 2789,\n  \"invoiceId\": 7073,\n  \"payee\": {\n    \"bank\": \"<object>\",\n    \"business\": {\n      \"address\": {\n        \"city\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"province\": \"<string>\",\n        \"street\": \"<string>\",\n        \"streetSecondary\": \"<string>\"\n      },\n      \"entity\": \"<string>\",\n      \"taxIdNumber\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"status\": \"SchedulingInProgress\",\n  \"attachments\": [\n    {\n      \"name\": \"string\",\n      \"referenceId\": \"string\",\n      \"type\": \"ExternalInvoice\"\n    },\n    {\n      \"name\": \"string\",\n      \"referenceId\": \"string\",\n      \"type\": \"ExternalInvoice\"\n    }\n  ],\n  \"bruid\": \"string\",\n  \"ccEmails\": [\n    \"string\",\n    \"string\"\n  ],\n  \"claimLink\": \"string\",\n  \"clientId\": \"string\",\n  \"debitCreditTxn\": {\n    \"creditTxn\": {\n      \"completedAt\": \"1956-10-03T07:39:27.052Z\",\n      \"error\": {\n        \"errorCode\": \"string\",\n        \"errorMessage\": \"string\"\n      },\n      \"id\": 5150,\n      \"initiatedAt\": \"1980-07-02T16:37:55.180Z\",\n      \"lastInitiatedAt\": \"1952-01-14T16:55:21.297Z\",\n      \"status\": \"Pending\",\n      \"type\": \"Credit\"\n    },\n    \"debitTxn\": {\n      \"completedAt\": \"2007-03-03T01:22:25.218Z\",\n      \"error\": {\n        \"errorCode\": \"string\",\n        \"errorMessage\": \"string\"\n      },\n      \"id\": 7081,\n      \"lastInitiatedAt\": \"2014-02-05T05:15:15.288Z\",\n      \"status\": \"OnHold\",\n      \"type\": \"Refund\"\n    },\n    \"refundTxn\": {\n      \"error\": {\n        \"errorCode\": \"string\",\n        \"errorMessage\": \"string\"\n      },\n      \"id\": 690,\n      \"status\": \"Reversed\",\n      \"type\": \"Credit\"\n    }\n  },\n  \"dueDate\": \"2013-02-27T13:42:50.676Z\",\n  \"externalInvoiceRefId\": \"string\",\n  \"feeInformation\": {\n    \"payeeInfo\": {\n      \"currency\": \"RON\",\n      \"feeAmount\": 2771.057185615009,\n      \"originalAmount\": 3730.8641944133738,\n      \"totalAmount\": 8498.601352308197\n    },\n    \"payerInfo\": {\n      \"currency\": \"VUV\",\n      \"feeAmount\": 4356.588056124434,\n      \"originalAmount\": 9158.423110388749,\n      \"totalAmount\": 8756.024126791392\n    }\n  },\n  \"fundingMethod\": {\n    \"id\": \"<long>\",\n    \"type\": \"<string>\"\n  },\n  \"goodFundsPayment\": false,\n  \"notes\": \"string\",\n  \"payeeAmount\": {\n    \"currency\": \"<string>\",\n    \"number\": \"<number>\"\n  },\n  \"payeeFundingMethod\": {\n    \"id\": \"<long>\",\n    \"type\": \"<string>\"\n  },\n  \"paymentAction\": \"SubmitForApproval\",\n  \"paymentApproval\": {\n    \"approvalStatus\": \"Pending\",\n    \"approverNumber\": 8844,\n    \"approverNumberRequired\": 1925,\n    \"userApprovalList\": [\n      {\n        \"approvalStatus\": \"Ignored\",\n        \"email\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"middleName\": \"string\"\n      },\n      {\n        \"approvalStatus\": \"Pending\",\n        \"email\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"middleName\": \"string\"\n      }\n    ]\n  },\n  \"paymentApprovalRequest\": {\n    \"accountId\": 1870,\n    \"userId\": 3642\n  },\n  \"paymentAttributes\": {\n    \"type\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"paymentMethod\": \"Cheque\",\n  \"purposeOfPayment\": \"string\",\n  \"purposeOfPaymentDescription\": \"string\",\n  \"pushPaymentInfo\": {\n    \"accountBsb\": \"string\",\n    \"accountNumber\": \"string\",\n    \"amount\": {\n      \"currency\": \"<string>\",\n      \"number\": \"<number>\"\n    },\n    \"bankAccountNumber\": \"string\",\n    \"bankAddress\": \"string\",\n    \"bankName\": \"string\",\n    \"bankRoutingNumber\": \"string\",\n    \"beneficiaryAccountName\": \"string\",\n    \"beneficiaryCountry\": \"string\",\n    \"iban\": \"string\",\n    \"reference\": \"string\",\n    \"sortCode\": \"string\",\n    \"swiftOrBicCode\": \"string\"\n  },\n  \"timeCreated\": \"string\",\n  \"timeUpdated\": \"string\",\n  \"validationErrorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b8389b7-e8bf-439e-9bd9-b73fb8c3cd90",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "claimless-payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"amount\": {\n    \"currency\": \"<string>\",\n    \"number\": \"<number>\"\n  },\n  \"batchItemId\": 4903,\n  \"exchangeRate\": {\n    \"expiry\": \"1991-03-24T21:18:27.181Z\",\n    \"fromCurrency\": \"MUR\",\n    \"id\": \"string\",\n    \"rate\": 1200.2722372873463,\n    \"timeCreated\": \"1997-11-27T06:00:46.519Z\",\n    \"toAmount\": 7483.518188563422,\n    \"toCurrency\": \"MXN\",\n    \"fromAmount\": 5669.232222286412\n  },\n  \"exchangeRateQuoteId\": \"string\",\n  \"id\": 6796,\n  \"invoiceId\": 9077,\n  \"payee\": {\n    \"bank\": \"<object>\",\n    \"business\": {\n      \"address\": {\n        \"city\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"province\": \"<string>\",\n        \"street\": \"<string>\",\n        \"streetSecondary\": \"<string>\"\n      },\n      \"entity\": \"<string>\",\n      \"taxIdNumber\": \"<string>\"\n    },\n    \"businessName\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"email\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"type\": \"<string>\"\n  },\n  \"status\": \"Drafted\",\n  \"attachments\": [\n    {\n      \"name\": \"string\",\n      \"referenceId\": \"string\",\n      \"type\": \"ProofOfPayment\"\n    },\n    {\n      \"name\": \"string\",\n      \"referenceId\": \"string\",\n      \"type\": \"ExternalInvoice\"\n    }\n  ],\n  \"bruid\": \"string\",\n  \"ccEmails\": [\n    \"string\",\n    \"string\"\n  ],\n  \"claimLink\": \"string\",\n  \"clientId\": \"string\",\n  \"debitCreditTxn\": {\n    \"creditTxn\": {\n      \"completedAt\": \"1999-02-19T07:21:26.665Z\",\n      \"error\": {\n        \"errorCode\": \"string\",\n        \"errorMessage\": \"string\"\n      },\n      \"id\": 9030,\n      \"initiatedAt\": \"1985-09-12T06:46:25.685Z\",\n      \"lastInitiatedAt\": \"2025-05-14T04:23:50.102Z\",\n      \"status\": \"Reversed\",\n      \"type\": \"Debit\"\n    },\n    \"debitTxn\": {\n      \"completedAt\": \"2021-01-08T18:19:29.825Z\",\n      \"error\": {\n        \"errorCode\": \"string\",\n        \"errorMessage\": \"string\"\n      },\n      \"id\": 3966,\n      \"lastInitiatedAt\": \"1972-07-06T08:52:19.142Z\",\n      \"status\": \"Rejected\",\n      \"type\": \"Debit\"\n    },\n    \"refundTxn\": {\n      \"error\": {\n        \"errorCode\": \"string\",\n        \"errorMessage\": \"string\"\n      },\n      \"id\": 9128,\n      \"status\": \"Reversed\",\n      \"type\": \"Credit\"\n    }\n  },\n  \"dueDate\": \"1953-11-13T06:17:31.440Z\",\n  \"externalInvoiceRefId\": \"string\",\n  \"feeInformation\": {\n    \"payeeInfo\": {\n      \"currency\": \"GIP\",\n      \"feeAmount\": 1125.2901635022083,\n      \"originalAmount\": 4832.672141193116,\n      \"totalAmount\": 5599.740908694026\n    },\n    \"payerInfo\": {\n      \"currency\": \"UAH\",\n      \"feeAmount\": 6584.284847501238,\n      \"originalAmount\": 7511.2018502404235,\n      \"totalAmount\": 869.186875940211\n    }\n  },\n  \"fundingMethod\": {\n    \"id\": \"<long>\",\n    \"type\": \"<string>\"\n  },\n  \"goodFundsPayment\": true,\n  \"notes\": \"string\",\n  \"payeeAmount\": {\n    \"currency\": \"<string>\",\n    \"number\": \"<number>\"\n  },\n  \"payeeFundingMethod\": {\n    \"id\": \"<long>\",\n    \"type\": \"<string>\"\n  },\n  \"paymentAction\": \"Approve\",\n  \"paymentApproval\": {\n    \"approvalStatus\": \"Approved\",\n    \"approverNumber\": 8627,\n    \"approverNumberRequired\": 478,\n    \"userApprovalList\": [\n      {\n        \"approvalStatus\": \"Pending\",\n        \"email\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"middleName\": \"string\"\n      },\n      {\n        \"approvalStatus\": \"Pending\",\n        \"email\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"middleName\": \"string\"\n      }\n    ]\n  },\n  \"paymentApprovalRequest\": {\n    \"accountId\": 2036,\n    \"userId\": 5556\n  },\n  \"paymentAttributes\": {\n    \"type\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"paymentMethod\": \"Wallet\",\n  \"purposeOfPayment\": \"string\",\n  \"purposeOfPaymentDescription\": \"string\",\n  \"pushPaymentInfo\": {\n    \"accountBsb\": \"string\",\n    \"accountNumber\": \"string\",\n    \"amount\": {\n      \"currency\": \"<string>\",\n      \"number\": \"<number>\"\n    },\n    \"bankAccountNumber\": \"string\",\n    \"bankAddress\": \"string\",\n    \"bankName\": \"string\",\n    \"bankRoutingNumber\": \"string\",\n    \"beneficiaryAccountName\": \"string\",\n    \"beneficiaryCountry\": \"string\",\n    \"iban\": \"string\",\n    \"reference\": \"string\",\n    \"sortCode\": \"string\",\n    \"swiftOrBicCode\": \"string\"\n  },\n  \"timeCreated\": \"string\",\n  \"timeUpdated\": \"string\",\n  \"validationErrorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "947479ab-3b7e-4ad8-ad5b-0686bba54633",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "claimless-payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6878,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"timestamp\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa134f7d-7248-468a-8908-070be391c8d2",
+              "name": "Unauthorized, the token is invalid or expired",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "claimless-payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8c67ca34-095a-4d4e-8f72-2d7499b2748e",
+              "name": "Forbidden, the token owner doesn't have permission to operate current API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "claimless-payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a2baab02-3903-4120-9af2-3e71c0bd41ed",
+              "name": "Not Found, the resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "claimless-payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "db00536a-5fa8-4696-91a8-4ce6a2e003bc",
+              "name": "Internal Server Error, see the error code and API doc for reference",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "veem",
+                    "v1.2",
+                    "claimless-payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "//sandbox-api.veem.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1dac19b6-e7ff-4d14-8091-0c2635fa65a9",
+    "name": "Veem API v1.2 attachment-controller claimless-payment-controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Veem REST API",
+      "type": "text/plain"
+    }
+  }
+}
