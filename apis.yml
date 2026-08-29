@@ -8,6 +8,18 @@ description: >-
   virtual bank accounts, crypto wallets, exchange-rate quotes, and webhooks,
   with embeddable Web SDK plugins for collecting card, bank, and identity
   data inside partner apps.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
