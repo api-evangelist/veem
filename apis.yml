@@ -241,7 +241,7 @@ apis:
   humanURL: https://developer.veem.com
   baseURL: https://api.veem.com
   tags:
-  - webhook-controller
+  - WebhookController
   tags_raw:
   - webhook-controller
   properties:
