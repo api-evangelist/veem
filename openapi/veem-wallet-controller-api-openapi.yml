@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Veem REST API
-  title: Veem API v1.2 attachment-controller wallet-controller API
+  title: Veem API v1.2 Wallet Controller API
   version: v1.2.1
 servers:
 - url: //sandbox-api.veem.com
@@ -77,27 +77,6 @@ paths:
       - wallet-controller
 components:
   schemas:
-    ErrorResponse:
-      properties:
-        code:
-          description: The error code, different than HTTP status codes
-          format: int32
-          type: integer
-        error:
-          description: The short message
-          type: string
-        message:
-          description: The detailed, developer friendly message
-          type: string
-        timestamp:
-          description: The timestamp recorded when the error occurred
-          type: string
-      required:
-      - code
-      - error
-      - message
-      title: ErrorResponse
-      type: object
     FundingMethod:
       properties:
         id:
@@ -131,4 +110,25 @@ components:
             $ref: '#/components/schemas/FundingMethod'
           type: array
       title: CustomFundingMethodResponse
+      type: object
+    ErrorResponse:
+      properties:
+        code:
+          description: The error code, different than HTTP status codes
+          format: int32
+          type: integer
+        error:
+          description: The short message
+          type: string
+        message:
+          description: The detailed, developer friendly message
+          type: string
+        timestamp:
+          description: The timestamp recorded when the error occurred
+          type: string
+      required:
+      - code
+      - error
+      - message
+      title: ErrorResponse
       type: object

@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Veem REST API
-  title: Veem API v1.2 attachment-controller beneficial-owner-information-controller API
+  title: Veem API v1.2 Beneficial Owner Information Controller API
   version: v1.2.1
 servers:
 - url: //sandbox-api.veem.com
@@ -87,6 +87,32 @@ components:
           type: string
       title: IndividualOwnerShip
       type: object
+    BeneficialOwnerShipInformation:
+      properties:
+        businessOwnerShip:
+          items:
+            $ref: '#/components/schemas/BusinessOwnerShip'
+          type: array
+        hasAttestation:
+          type: boolean
+        individualOwnerShip:
+          items:
+            $ref: '#/components/schemas/IndividualOwnerShip'
+          type: array
+      title: BeneficialOwnerShipInformation
+      type: object
+    BOIRequest:
+      properties:
+        beneficialOwnerShip:
+          $ref: '#/components/schemas/BeneficialOwnerShipInformation'
+      title: BOIRequest
+      type: object
+    BeneficialOwnerResponse:
+      properties:
+        beneficialOwnerShip:
+          $ref: '#/components/schemas/BeneficialOwnerShipInformation'
+      title: BeneficialOwnerResponse
+      type: object
     BusinessOwnerShip:
       properties:
         addressCity:
@@ -112,30 +138,4 @@ components:
         taxId:
           type: string
       title: BusinessOwnerShip
-      type: object
-    BOIRequest:
-      properties:
-        beneficialOwnerShip:
-          $ref: '#/components/schemas/BeneficialOwnerShipInformation'
-      title: BOIRequest
-      type: object
-    BeneficialOwnerShipInformation:
-      properties:
-        businessOwnerShip:
-          items:
-            $ref: '#/components/schemas/BusinessOwnerShip'
-          type: array
-        hasAttestation:
-          type: boolean
-        individualOwnerShip:
-          items:
-            $ref: '#/components/schemas/IndividualOwnerShip'
-          type: array
-      title: BeneficialOwnerShipInformation
-      type: object
-    BeneficialOwnerResponse:
-      properties:
-        beneficialOwnerShip:
-          $ref: '#/components/schemas/BeneficialOwnerShipInformation'
-      title: BeneficialOwnerResponse
       type: object

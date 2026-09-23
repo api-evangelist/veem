@@ -1,13 +1,13 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Veem REST API
-  title: Veem API v1.2 attachment-controller webhook-controller API
+  title: Veem API v1.2 Webhook Controller API
   version: v1.2.1
 servers:
 - url: //sandbox-api.veem.com
 tags:
 - description: Webhook Controller
-  name: webhook-controller
+  name: webhook controller
 paths:
   /veem/v1.2/webhooks:
     post:
@@ -55,7 +55,7 @@ paths:
           description: Internal Server Error, see the error code and API doc for reference
       summary: Create webhook
       tags:
-      - webhook-controller
+      - webhook controller
     get:
       deprecated: false
       description: Gets all active webhook configurations for the account and platform associated with the provided authorization token.
@@ -89,7 +89,7 @@ paths:
           description: Internal Server Error, see the error code and API doc for reference
       summary: Get webhooks
       tags:
-      - webhook-controller
+      - webhook controller
   /veem/v1.2/webhooks/{webhookId}:
     delete:
       deprecated: false
@@ -136,7 +136,7 @@ paths:
           description: Internal Server Error, see the error code and API doc for reference
       summary: Delete webhook
       tags:
-      - webhook-controller
+      - webhook controller
     get:
       deprecated: false
       description: Gets the webhook configuration with the specified ID if it is owned by the account and platform associated with the provided authorization token.
@@ -182,7 +182,7 @@ paths:
           description: Internal Server Error, see the error code and API doc for reference
       summary: Get webhook
       tags:
-      - webhook-controller
+      - webhook controller
     patch:
       deprecated: false
       description: Updates the webhook configuration with the specified ID if it is owned by the account and platform associated with the provided authorization token
@@ -236,31 +236,9 @@ paths:
           description: Internal Server Error, see the error code and API doc for reference
       summary: Update webhook
       tags:
-      - webhook-controller
+      - webhook controller
 components:
   schemas:
-    WebhookResponse:
-      properties:
-        callbackUrl:
-          type: string
-        event:
-          enum:
-          - INBOUND_PAYMENT_STATUS_UPDATED
-          - OUTBOUND_PAYMENT_STATUS_UPDATED
-          type: string
-        id:
-          format: int64
-          type: integer
-        status:
-          enum:
-          - Active
-          - Deleted
-          - Inactive
-          - Inactiving
-          - Closed
-          type: string
-      title: WebhookResponse
-      type: object
     WebhookRequest:
       properties:
         callbackURL:
@@ -299,6 +277,28 @@ components:
       - logTag
       - message
       title: VeemErrorResponse
+      type: object
+    WebhookResponse:
+      properties:
+        callbackUrl:
+          type: string
+        event:
+          enum:
+          - INBOUND_PAYMENT_STATUS_UPDATED
+          - OUTBOUND_PAYMENT_STATUS_UPDATED
+          type: string
+        id:
+          format: int64
+          type: integer
+        status:
+          enum:
+          - Active
+          - Deleted
+          - Inactive
+          - Inactiving
+          - Closed
+          type: string
+      title: WebhookResponse
       type: object
   requestBodies:
     WebhookRequest:

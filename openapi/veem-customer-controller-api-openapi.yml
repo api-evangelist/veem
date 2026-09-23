@@ -1,13 +1,13 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Veem REST API
-  title: Veem API v1.2 attachment-controller customer-controller API
+  title: Veem API v1.2 Customer Controller API
   version: v1.2.1
 servers:
 - url: //sandbox-api.veem.com
 tags:
 - description: Customer Controller
-  name: customer-controller
+  name: Customer Controller
 paths:
   /veem/v1.2/customers:
     get:
@@ -44,7 +44,7 @@ paths:
           description: Internal Server Error, see the error code and API doc for reference
       summary: searchCustomers
       tags:
-      - customer-controller
+      - Customer Controller
 components:
   schemas:
     PublicAccountResponse:

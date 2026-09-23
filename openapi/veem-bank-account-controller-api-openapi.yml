@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Veem REST API
-  title: Veem API v1.2 attachment-controller bank-account-controller API
+  title: Veem API v1.2 Bank Account Controller API
   version: v1.2.1
 servers:
 - url: //sandbox-api.veem.com
@@ -51,35 +51,6 @@ paths:
       - bank-account-controller
 components:
   schemas:
-    AddressRequest:
-      properties:
-        city:
-          description: City
-          type: string
-        line1:
-          description: Address line 1
-          type: string
-        line2:
-          description: Address line 2
-          type: string
-        postalCode:
-          description: Postal code
-          type: string
-        province:
-          type: string
-        state:
-          type: string
-        stateProvince:
-          description: State or province
-          type: string
-      required:
-      - city
-      - line1
-      - line2
-      - postalCode
-      - stateProvince
-      title: AddressRequest
-      type: object
     BankAccountRequest:
       properties:
         accountType:
@@ -121,28 +92,6 @@ components:
         transitCode:
           type: string
       title: BankAccountRequest
-      type: object
-    BankAccountAddressDTO:
-      properties:
-        bankAccountId:
-          format: int64
-          type: integer
-        city:
-          type: string
-        id:
-          format: int64
-          type: integer
-        line1:
-          type: string
-        line2:
-          type: string
-        postalCode:
-          type: string
-        province:
-          type: string
-        state:
-          type: string
-      title: BankAccountAddressDTO
       type: object
     BankAccountResponse:
       properties:
@@ -509,6 +458,35 @@ components:
           type: string
       title: BankAccountResponse
       type: object
+    AddressRequest:
+      properties:
+        city:
+          description: City
+          type: string
+        line1:
+          description: Address line 1
+          type: string
+        line2:
+          description: Address line 2
+          type: string
+        postalCode:
+          description: Postal code
+          type: string
+        province:
+          type: string
+        state:
+          type: string
+        stateProvince:
+          description: State or province
+          type: string
+      required:
+      - city
+      - line1
+      - line2
+      - postalCode
+      - stateProvince
+      title: AddressRequest
+      type: object
     AlignMonetaryAmount:
       properties:
         currency:
@@ -701,6 +679,28 @@ components:
         number:
           type: number
       title: AlignMonetaryAmount
+      type: object
+    BankAccountAddressDTO:
+      properties:
+        bankAccountId:
+          format: int64
+          type: integer
+        city:
+          type: string
+        id:
+          format: int64
+          type: integer
+        line1:
+          type: string
+        line2:
+          type: string
+        postalCode:
+          type: string
+        province:
+          type: string
+        state:
+          type: string
+      title: BankAccountAddressDTO
       type: object
   requestBodies:
     BankAccountRequest:

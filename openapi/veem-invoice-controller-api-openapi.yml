@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Veem REST API
-  title: Veem API v1.2 attachment-controller invoice-controller API
+  title: Veem API v1.2 Invoice Controller API
   version: v1.2.1
 servers:
 - url: //sandbox-api.veem.com
@@ -164,138 +164,25 @@ paths:
       - invoice-controller
 components:
   schemas:
-    InvoiceRequest:
+    FileAttachment:
       properties:
-        amount:
-          $ref: '#/components/schemas/AlignMonetaryAmount'
-        attachments:
-          description: The list of external invoices to be attached with payment. The files can be uploaded usingfile upload apis
-          items:
-            $ref: '#/components/schemas/FileAttachment'
-          type: array
-        ccEmails:
-          description: The list of emails who will be notified about the payment
-          items:
-            type: string
-          type: array
-        clientId:
+        name:
+          description: The name of the file (including the extension)
           type: string
-        dueDate:
-          description: The due date of the payment or invoice request
-          format: date-time
+        referenceId:
+          description: The file reference id received from Veem after file upload is complete
           type: string
-        exchangeRate:
-          $ref: '#/components/schemas/ExchangeRateResponse'
-        exchangeRateQuoteId:
-          description: The quote id that was received earlier for the payment
-          type: string
-        externalInvoiceRefId:
-          description: The external invoice if for which payment is made, viewable by receiver
-          type: string
-        notes:
-          description: The memo/note associated with payment, viewable by receiver
-          type: string
-        payer:
-          $ref: '#/components/schemas/SimpleAccount'
-        purposeOfPayment:
-          description: The purpose of payment required by banks for certain countries, applicable for following countries.SG,AE,KR,BR,CN,HK,HR,IS,ID,IN,IL,KE,PK,SA,ZA,TW,UA,VN
-          type: string
-        purposeOfPaymentDescription:
-          description: The purpose of payment description
-          type: string
-      required:
-      - amount
-      - exchangeRateQuoteId
-      - payer
-      title: InvoiceRequest
-      type: object
-    ContactBusinessRequest:
-      properties:
-        address:
-          $ref: '#/components/schemas/BusinessAddressRequest'
-        entity:
-          description: Type of entity
-          type: string
-        taxIdNumber:
-          description: TaxId of the individual or business
-          type: string
-      required:
-      - address
-      - entity
-      - taxIdNumber
-      title: ContactBusinessRequest
-      type: object
-    InvoiceResponse:
-      properties:
-        amount:
-          $ref: '#/components/schemas/AlignMonetaryAmount'
-        attachments:
-          description: The list of external invoices to be attached with payment. The files can be uploaded usingfile upload apis
-          items:
-            $ref: '#/components/schemas/FileAttachment'
-          type: array
-        ccEmails:
-          description: The list of emails who will be notified about the payment
-          items:
-            type: string
-          type: array
-        claimLink:
-          description: The link that allows the recipient to perform the payment
-          type: string
-        clientId:
-          type: string
-        dueDate:
-          description: The due date of the payment or invoice request
-          format: date-time
-          type: string
-        exchangeRate:
-          $ref: '#/components/schemas/ExchangeRateResponse'
-        exchangeRateQuoteId:
-          description: The quote id that was received earlier for the payment
-          type: string
-        externalInvoiceRefId:
-          description: The external invoice if for which payment is made, viewable by receiver
-          type: string
-        id:
-          description: The invoice id
-          format: int64
-          type: integer
-        notes:
-          description: The memo/note associated with payment, viewable by receiver
-          type: string
-        payer:
-          $ref: '#/components/schemas/SimpleAccount'
-        purposeOfPayment:
-          description: The purpose of payment required by banks for certain countries, applicable for following countries.SG,AE,KR,BR,CN,HK,HR,IS,ID,IN,IL,KE,PK,SA,ZA,TW,UA,VN
-          type: string
-        purposeOfPaymentDescription:
-          description: The purpose of payment description
-          type: string
-        status:
-          description: The status of the invoice
+        type:
+          description: The type of the file
           enum:
-          - Drafted
-          - Sent
-          - Cancelled
-          - Closed
-          - Claimed
-          - MarkAsPaid
-          - Rejected
-          - Scheduled
-          type: string
-        timeCreated:
-          description: The creation time of the invoice. The format would be UTC, ISO-8601
-          format: date-time
+          - ExternalInvoice
+          - ProofOfPayment
           type: string
       required:
-      - amount
-      - exchangeRate
-      - exchangeRateQuoteId
-      - id
-      - payer
-      - status
-      - timeCreated
-      title: InvoiceResponse
+      - name
+      - referenceId
+      - type
+      title: FileAttachment
       type: object
     SimpleAccount:
       properties:
@@ -607,6 +494,27 @@ components:
       - type
       title: SimpleAccount
       type: object
+    ErrorResponse:
+      properties:
+        code:
+          description: The error code, different than HTTP status codes
+          format: int32
+          type: integer
+        error:
+          description: The short message
+          type: string
+        message:
+          description: The detailed, developer friendly message
+          type: string
+        timestamp:
+          description: The timestamp recorded when the error occurred
+          type: string
+      required:
+      - code
+      - error
+      - message
+      title: ErrorResponse
+      type: object
     BusinessAddressRequest:
       properties:
         city:
@@ -904,6 +812,67 @@ components:
       - province
       - street
       title: BusinessAddressRequest
+      type: object
+    ContactBusinessRequest:
+      properties:
+        address:
+          $ref: '#/components/schemas/BusinessAddressRequest'
+        entity:
+          description: Type of entity
+          type: string
+        taxIdNumber:
+          description: TaxId of the individual or business
+          type: string
+      required:
+      - address
+      - entity
+      - taxIdNumber
+      title: ContactBusinessRequest
+      type: object
+    InvoiceRequest:
+      properties:
+        amount:
+          $ref: '#/components/schemas/AlignMonetaryAmount'
+        attachments:
+          description: The list of external invoices to be attached with payment. The files can be uploaded usingfile upload apis
+          items:
+            $ref: '#/components/schemas/FileAttachment'
+          type: array
+        ccEmails:
+          description: The list of emails who will be notified about the payment
+          items:
+            type: string
+          type: array
+        clientId:
+          type: string
+        dueDate:
+          description: The due date of the payment or invoice request
+          format: date-time
+          type: string
+        exchangeRate:
+          $ref: '#/components/schemas/ExchangeRateResponse'
+        exchangeRateQuoteId:
+          description: The quote id that was received earlier for the payment
+          type: string
+        externalInvoiceRefId:
+          description: The external invoice if for which payment is made, viewable by receiver
+          type: string
+        notes:
+          description: The memo/note associated with payment, viewable by receiver
+          type: string
+        payer:
+          $ref: '#/components/schemas/SimpleAccount'
+        purposeOfPayment:
+          description: The purpose of payment required by banks for certain countries, applicable for following countries.SG,AE,KR,BR,CN,HK,HR,IS,ID,IN,IL,KE,PK,SA,ZA,TW,UA,VN
+          type: string
+        purposeOfPaymentDescription:
+          description: The purpose of payment description
+          type: string
+      required:
+      - amount
+      - exchangeRateQuoteId
+      - payer
+      title: InvoiceRequest
       type: object
     ExchangeRateResponse:
       properties:
@@ -1316,47 +1285,6 @@ components:
     JSONObject:
       title: JSONObject
       type: object
-    ErrorResponse:
-      properties:
-        code:
-          description: The error code, different than HTTP status codes
-          format: int32
-          type: integer
-        error:
-          description: The short message
-          type: string
-        message:
-          description: The detailed, developer friendly message
-          type: string
-        timestamp:
-          description: The timestamp recorded when the error occurred
-          type: string
-      required:
-      - code
-      - error
-      - message
-      title: ErrorResponse
-      type: object
-    FileAttachment:
-      properties:
-        name:
-          description: The name of the file (including the extension)
-          type: string
-        referenceId:
-          description: The file reference id received from Veem after file upload is complete
-          type: string
-        type:
-          description: The type of the file
-          enum:
-          - ExternalInvoice
-          - ProofOfPayment
-          type: string
-      required:
-      - name
-      - referenceId
-      - type
-      title: FileAttachment
-      type: object
     AlignMonetaryAmount:
       properties:
         currency:
@@ -1549,4 +1477,76 @@ components:
         number:
           type: number
       title: AlignMonetaryAmount
+      type: object
+    InvoiceResponse:
+      properties:
+        amount:
+          $ref: '#/components/schemas/AlignMonetaryAmount'
+        attachments:
+          description: The list of external invoices to be attached with payment. The files can be uploaded usingfile upload apis
+          items:
+            $ref: '#/components/schemas/FileAttachment'
+          type: array
+        ccEmails:
+          description: The list of emails who will be notified about the payment
+          items:
+            type: string
+          type: array
+        claimLink:
+          description: The link that allows the recipient to perform the payment
+          type: string
+        clientId:
+          type: string
+        dueDate:
+          description: The due date of the payment or invoice request
+          format: date-time
+          type: string
+        exchangeRate:
+          $ref: '#/components/schemas/ExchangeRateResponse'
+        exchangeRateQuoteId:
+          description: The quote id that was received earlier for the payment
+          type: string
+        externalInvoiceRefId:
+          description: The external invoice if for which payment is made, viewable by receiver
+          type: string
+        id:
+          description: The invoice id
+          format: int64
+          type: integer
+        notes:
+          description: The memo/note associated with payment, viewable by receiver
+          type: string
+        payer:
+          $ref: '#/components/schemas/SimpleAccount'
+        purposeOfPayment:
+          description: The purpose of payment required by banks for certain countries, applicable for following countries.SG,AE,KR,BR,CN,HK,HR,IS,ID,IN,IL,KE,PK,SA,ZA,TW,UA,VN
+          type: string
+        purposeOfPaymentDescription:
+          description: The purpose of payment description
+          type: string
+        status:
+          description: The status of the invoice
+          enum:
+          - Drafted
+          - Sent
+          - Cancelled
+          - Closed
+          - Claimed
+          - MarkAsPaid
+          - Rejected
+          - Scheduled
+          type: string
+        timeCreated:
+          description: The creation time of the invoice. The format would be UTC, ISO-8601
+          format: date-time
+          type: string
+      required:
+      - amount
+      - exchangeRate
+      - exchangeRateQuoteId
+      - id
+      - payer
+      - status
+      - timeCreated
+      title: InvoiceResponse
       type: object
