@@ -126,51 +126,6 @@ paths:
       - open-account-controller
 components:
   schemas:
-    SetUpAccountResponse:
-      properties:
-        accountSetUpStatus:
-          type: string
-        clientId:
-          type: string
-        clientSecret:
-          type: string
-        email:
-          type: string
-        expiresIn:
-          format: int32
-          type: integer
-        id:
-          format: int64
-          type: integer
-        missingInformation:
-          items:
-            type: string
-          type: array
-        token:
-          type: string
-        userId:
-          format: int64
-          type: integer
-        verificationStatus:
-          type: string
-      title: SetUpAccountResponse
-      type: object
-    Address:
-      properties:
-        city:
-          type: string
-        countryCode:
-          type: string
-        postalCode:
-          type: string
-        province:
-          type: string
-        street:
-          type: string
-        streetSecondary:
-          type: string
-      title: Address
-      type: object
     ErrorResponse:
       properties:
         code:
@@ -192,6 +147,22 @@ components:
       - message
       title: ErrorResponse
       type: object
+    Address:
+      properties:
+        city:
+          type: string
+        countryCode:
+          type: string
+        postalCode:
+          type: string
+        province:
+          type: string
+        street:
+          type: string
+        streetSecondary:
+          type: string
+      title: Address
+      type: object
     ExtraInfo:
       properties:
         purposeOfPayment:
@@ -199,6 +170,67 @@ components:
         purposeOfPaymentDescription:
           type: string
       title: ExtraInfo
+      type: object
+    PublicAccountSettingResponse:
+      properties:
+        accountId:
+          description: The account ID this setting belongs to
+          format: int64
+          type: integer
+        type:
+          description: The type of account setting
+          type: string
+        value:
+          description: The value for the account setting
+          type: string
+      title: PublicAccountSettingResponse
+      type: object
+    UpdateAccountRequest:
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        businessEntity:
+          type: string
+        businessName:
+          type: string
+        dialCode:
+          type: string
+        displayName:
+          type: string
+        firstName:
+          type: string
+        industry:
+          type: string
+        isoCountryCode:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+        subIndustry:
+          type: string
+        taxIdNumber:
+          type: string
+      title: UpdateAccountRequest
+      type: object
+    JSONObject:
+      title: JSONObject
+      type: object
+    PublicAccountSettingsRequest:
+      properties:
+        type:
+          description: The type of account setting
+          enum:
+          - PAYEE_COVERS_CARD_FEE
+          - CREDIT_CARD_SENDING_FEE_RATE
+          - DEBIT_CARD_SENDING_FEE_RATE
+          type: string
+        value:
+          description: The value for the account setting
+          type: string
+      required:
+      - type
+      title: PublicAccountSettingsRequest
       type: object
     OpenAccountRequest:
       properties:
@@ -242,64 +274,32 @@ components:
       - email
       title: OpenAccountRequest
       type: object
-    JSONObject:
-      title: JSONObject
-      type: object
-    UpdateAccountRequest:
+    SetUpAccountResponse:
       properties:
-        address:
-          $ref: '#/components/schemas/Address'
-        businessEntity:
+        accountSetUpStatus:
           type: string
-        businessName:
+        clientId:
           type: string
-        dialCode:
+        clientSecret:
           type: string
-        displayName:
+        email:
           type: string
-        firstName:
-          type: string
-        industry:
-          type: string
-        isoCountryCode:
-          type: string
-        lastName:
-          type: string
-        phoneNumber:
-          type: string
-        subIndustry:
-          type: string
-        taxIdNumber:
-          type: string
-      title: UpdateAccountRequest
-      type: object
-    PublicAccountSettingsRequest:
-      properties:
-        type:
-          description: The type of account setting
-          enum:
-          - PAYEE_COVERS_CARD_FEE
-          - CREDIT_CARD_SENDING_FEE_RATE
-          - DEBIT_CARD_SENDING_FEE_RATE
-          type: string
-        value:
-          description: The value for the account setting
-          type: string
-      required:
-      - type
-      title: PublicAccountSettingsRequest
-      type: object
-    PublicAccountSettingResponse:
-      properties:
-        accountId:
-          description: The account ID this setting belongs to
+        expiresIn:
+          format: int32
+          type: integer
+        id:
           format: int64
           type: integer
-        type:
-          description: The type of account setting
+        missingInformation:
+          items:
+            type: string
+          type: array
+        token:
           type: string
-        value:
-          description: The value for the account setting
+        userId:
+          format: int64
+          type: integer
+        verificationStatus:
           type: string
-      title: PublicAccountSettingResponse
+      title: SetUpAccountResponse
       type: object

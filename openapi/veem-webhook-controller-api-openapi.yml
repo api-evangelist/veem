@@ -239,17 +239,6 @@ paths:
       - webhook controller
 components:
   schemas:
-    WebhookRequest:
-      properties:
-        callbackURL:
-          type: string
-        event:
-          enum:
-          - INBOUND_PAYMENT_STATUS_UPDATED
-          - OUTBOUND_PAYMENT_STATUS_UPDATED
-          type: string
-      title: WebhookRequest
-      type: object
     VeemErrorResponse:
       properties:
         code:
@@ -299,6 +288,17 @@ components:
           - Closed
           type: string
       title: WebhookResponse
+      type: object
+    WebhookRequest:
+      properties:
+        callbackURL:
+          type: string
+        event:
+          enum:
+          - INBOUND_PAYMENT_STATUS_UPDATED
+          - OUTBOUND_PAYMENT_STATUS_UPDATED
+          type: string
+      title: WebhookRequest
       type: object
   requestBodies:
     WebhookRequest:

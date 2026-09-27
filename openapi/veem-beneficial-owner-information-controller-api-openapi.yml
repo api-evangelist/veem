@@ -45,6 +45,26 @@ paths:
       - beneficial-owner-information-controller
 components:
   schemas:
+    BeneficialOwnerShipInformation:
+      properties:
+        businessOwnerShip:
+          items:
+            $ref: '#/components/schemas/BusinessOwnerShip'
+          type: array
+        hasAttestation:
+          type: boolean
+        individualOwnerShip:
+          items:
+            $ref: '#/components/schemas/IndividualOwnerShip'
+          type: array
+      title: BeneficialOwnerShipInformation
+      type: object
+    BOIRequest:
+      properties:
+        beneficialOwnerShip:
+          $ref: '#/components/schemas/BeneficialOwnerShipInformation'
+      title: BOIRequest
+      type: object
     IndividualOwnerShip:
       properties:
         addressCity:
@@ -86,26 +106,6 @@ components:
         title:
           type: string
       title: IndividualOwnerShip
-      type: object
-    BeneficialOwnerShipInformation:
-      properties:
-        businessOwnerShip:
-          items:
-            $ref: '#/components/schemas/BusinessOwnerShip'
-          type: array
-        hasAttestation:
-          type: boolean
-        individualOwnerShip:
-          items:
-            $ref: '#/components/schemas/IndividualOwnerShip'
-          type: array
-      title: BeneficialOwnerShipInformation
-      type: object
-    BOIRequest:
-      properties:
-        beneficialOwnerShip:
-          $ref: '#/components/schemas/BeneficialOwnerShipInformation'
-      title: BOIRequest
       type: object
     BeneficialOwnerResponse:
       properties:

@@ -54,7 +54,7 @@ tags:
 - Global Payments
 apis:
 - aid: veem:veem-attachment-controller-api
-  name: Veem attachment-controller API
+  name: Veem Attachment Controller API
   description: Attachment Controller
   humanURL: https://developer.veem.com
   baseURL: https://api.veem.com
@@ -68,7 +68,7 @@ apis:
   - type: APIReference
     url: https://developer.veem.com/reference
 - aid: veem:veem-bank-account-controller-api
-  name: Veem bank-account-controller API
+  name: Veem Bank Account Controller API
   description: Bank Account Controller
   humanURL: https://developer.veem.com
   baseURL: https://api.veem.com
@@ -82,7 +82,7 @@ apis:
   - type: APIReference
     url: https://developer.veem.com/reference
 - aid: veem:veem-beneficial-owner-information-controller-api
-  name: Veem beneficial-owner-information-controller API
+  name: Veem Beneficial Owner Information Controller API
   description: Beneficial Owner Information Controller
   humanURL: https://developer.veem.com
   baseURL: https://api.veem.com
@@ -96,7 +96,7 @@ apis:
   - type: APIReference
     url: https://developer.veem.com/reference
 - aid: veem:veem-claimless-payment-controller-api
-  name: Veem claimless-payment-controller API
+  name: Veem Claimless Payment Controller API
   description: Claimless Payment Controller
   humanURL: https://developer.veem.com
   baseURL: https://api.veem.com
@@ -110,7 +110,7 @@ apis:
   - type: APIReference
     url: https://developer.veem.com/reference
 - aid: veem:veem-contact-controller-api
-  name: Veem contact-controller API
+  name: Veem Contact Controller API
   description: Contact Controller
   humanURL: https://developer.veem.com
   baseURL: https://api.veem.com
@@ -124,7 +124,7 @@ apis:
   - type: APIReference
     url: https://developer.veem.com/reference
 - aid: veem:veem-crypto-wallet-controller-api
-  name: Veem crypto-wallet-controller API
+  name: Veem Crypto Wallet Controller API
   description: For managing crypto wallets, including balances, details, transactions and pay-ins
   humanURL: https://developer.veem.com
   baseURL: https://api.veem.com
@@ -138,7 +138,7 @@ apis:
   - type: APIReference
     url: https://developer.veem.com/reference
 - aid: veem:veem-customer-controller-api
-  name: Veem customer-controller API
+  name: Veem Customer Controller API
   description: Customer Controller
   humanURL: https://developer.veem.com
   baseURL: https://api.veem.com
@@ -152,7 +152,7 @@ apis:
   - type: APIReference
     url: https://developer.veem.com/reference
 - aid: veem:veem-exchange-rate-controller-api
-  name: Veem exchange-rate-controller API
+  name: Veem Exchange Rate Controller API
   description: Exchange Rate Controller
   humanURL: https://developer.veem.com
   baseURL: https://api.veem.com
@@ -166,7 +166,7 @@ apis:
   - type: APIReference
     url: https://developer.veem.com/reference
 - aid: veem:veem-invoice-controller-api
-  name: Veem invoice-controller API
+  name: Veem Invoice Controller API
   description: Invoice Controller
   humanURL: https://developer.veem.com
   baseURL: https://api.veem.com
@@ -180,7 +180,7 @@ apis:
   - type: APIReference
     url: https://developer.veem.com/reference
 - aid: veem:veem-meta-controller-api
-  name: Veem meta-controller API
+  name: Veem Meta Controller API
   description: Meta Controller
   humanURL: https://developer.veem.com
   baseURL: https://api.veem.com
@@ -194,7 +194,7 @@ apis:
   - type: APIReference
     url: https://developer.veem.com/reference
 - aid: veem:veem-open-account-controller-api
-  name: Veem open-account-controller API
+  name: Veem Open Account Controller API
   description: Open Account Controller
   humanURL: https://developer.veem.com
   baseURL: https://api.veem.com
@@ -208,7 +208,7 @@ apis:
   - type: APIReference
     url: https://developer.veem.com/reference
 - aid: veem:veem-payment-controller-api
-  name: Veem payment-controller API
+  name: Veem Payment Controller API
   description: Payment Controller
   humanURL: https://developer.veem.com
   baseURL: https://api.veem.com
@@ -222,7 +222,7 @@ apis:
   - type: APIReference
     url: https://developer.veem.com/reference
 - aid: veem:veem-wallet-controller-api
-  name: Veem wallet-controller API
+  name: Veem Wallet Controller API
   description: Wallet Controller
   humanURL: https://developer.veem.com
   baseURL: https://api.veem.com
@@ -236,7 +236,7 @@ apis:
   - type: APIReference
     url: https://developer.veem.com/reference
 - aid: veem:veem-webhook-controller-api
-  name: Veem webhook-controller API
+  name: Veem Webhook Controller API
   description: Webhook Controller
   humanURL: https://developer.veem.com
   baseURL: https://api.veem.com
