@@ -164,26 +164,351 @@ paths:
       - invoice-controller
 components:
   schemas:
-    ErrorResponse:
+    BusinessAddressRequest:
       properties:
-        code:
-          description: The error code, different than HTTP status codes
-          format: int32
-          type: integer
-        error:
-          description: The short message
+        city:
+          description: City
           type: string
-        message:
-          description: The detailed, developer friendly message
+        countryCode:
+          description: Country Code
+          enum:
+          - AC
+          - AD
+          - AE
+          - AF
+          - AG
+          - AI
+          - AL
+          - AM
+          - AN
+          - AO
+          - AQ
+          - AR
+          - AS
+          - AT
+          - AU
+          - AW
+          - AX
+          - AZ
+          - BA
+          - BB
+          - BD
+          - BE
+          - BF
+          - BG
+          - BH
+          - BI
+          - BJ
+          - BL
+          - BM
+          - BN
+          - BO
+          - BQ
+          - BR
+          - BS
+          - BT
+          - BU
+          - BV
+          - BW
+          - BY
+          - BZ
+          - CA
+          - CC
+          - CD
+          - CF
+          - CG
+          - CH
+          - CI
+          - CK
+          - CL
+          - CM
+          - CN
+          - CO
+          - CP
+          - CR
+          - CS
+          - CU
+          - CV
+          - CW
+          - CX
+          - CY
+          - CZ
+          - DE
+          - DG
+          - DJ
+          - DK
+          - DM
+          - DO
+          - DZ
+          - EA
+          - EC
+          - EE
+          - EG
+          - EH
+          - ER
+          - ES
+          - ET
+          - EU
+          - EZ
+          - FI
+          - FJ
+          - FK
+          - FM
+          - FO
+          - FR
+          - FX
+          - GA
+          - GB
+          - GD
+          - GE
+          - GF
+          - GG
+          - GH
+          - GI
+          - GL
+          - GM
+          - GN
+          - GP
+          - GQ
+          - GR
+          - GS
+          - GT
+          - GU
+          - GW
+          - GY
+          - HK
+          - HM
+          - HN
+          - HR
+          - HT
+          - HU
+          - IC
+          - ID
+          - IE
+          - IL
+          - IM
+          - IN
+          - IO
+          - IQ
+          - IR
+          - IS
+          - IT
+          - JE
+          - JM
+          - JO
+          - JP
+          - KE
+          - KG
+          - KH
+          - KI
+          - KM
+          - KN
+          - KP
+          - KR
+          - KW
+          - KY
+          - KZ
+          - LA
+          - LB
+          - LC
+          - LI
+          - LK
+          - LR
+          - LS
+          - LT
+          - LU
+          - LV
+          - LY
+          - MA
+          - MC
+          - MD
+          - ME
+          - MF
+          - MG
+          - MH
+          - MK
+          - ML
+          - MM
+          - MN
+          - MO
+          - MP
+          - MQ
+          - MR
+          - MS
+          - MT
+          - MU
+          - MV
+          - MW
+          - MX
+          - MY
+          - MZ
+          - NA
+          - NC
+          - NE
+          - NF
+          - NG
+          - NI
+          - NL
+          - 'NO'
+          - NP
+          - NR
+          - NT
+          - NU
+          - NZ
+          - OM
+          - PA
+          - PE
+          - PF
+          - PG
+          - PH
+          - PK
+          - PL
+          - PM
+          - PN
+          - PR
+          - PS
+          - PT
+          - PW
+          - PY
+          - QA
+          - RE
+          - RO
+          - RS
+          - RU
+          - RW
+          - SA
+          - SB
+          - SC
+          - SD
+          - SE
+          - SF
+          - SG
+          - SH
+          - SI
+          - SJ
+          - SK
+          - SL
+          - SM
+          - SN
+          - SO
+          - SR
+          - SS
+          - ST
+          - SU
+          - SV
+          - SX
+          - SY
+          - SZ
+          - TA
+          - TC
+          - TD
+          - TF
+          - TG
+          - TH
+          - TJ
+          - TK
+          - TL
+          - TM
+          - TN
+          - TO
+          - TP
+          - TR
+          - TT
+          - TV
+          - TW
+          - TZ
+          - UA
+          - UG
+          - UK
+          - UM
+          - US
+          - UY
+          - UZ
+          - VA
+          - VC
+          - VE
+          - VG
+          - VI
+          - VN
+          - VU
+          - WF
+          - WS
+          - XK
+          - YE
+          - YT
+          - YU
+          - ZA
+          - ZM
+          - ZR
+          - ZW
           type: string
-        timestamp:
-          description: The timestamp recorded when the error occurred
+        postalCode:
+          description: Postal Code
+          type: string
+        province:
+          description: Province
+          type: string
+        street:
+          description: Type of entity
+          type: string
+        streetSecondary:
+          description: Address additional information
           type: string
       required:
-      - code
-      - error
-      - message
-      title: ErrorResponse
+      - city
+      - countryCode
+      - postalCode
+      - province
+      - street
+      title: BusinessAddressRequest
+      type: object
+    JSONObject:
+      title: JSONObject
+      type: object
+    InvoiceRequest:
+      properties:
+        amount:
+          $ref: '#/components/schemas/AlignMonetaryAmount'
+        attachments:
+          description: The list of external invoices to be attached with payment. The files can be uploaded usingfile upload apis
+          items:
+            $ref: '#/components/schemas/FileAttachment'
+          type: array
+        ccEmails:
+          description: The list of emails who will be notified about the payment
+          items:
+            type: string
+          type: array
+        clientId:
+          type: string
+        dueDate:
+          description: The due date of the payment or invoice request
+          format: date-time
+          type: string
+        exchangeRate:
+          $ref: '#/components/schemas/ExchangeRateResponse'
+        exchangeRateQuoteId:
+          description: The quote id that was received earlier for the payment
+          type: string
+        externalInvoiceRefId:
+          description: The external invoice if for which payment is made, viewable by receiver
+          type: string
+        notes:
+          description: The memo/note associated with payment, viewable by receiver
+          type: string
+        payer:
+          $ref: '#/components/schemas/SimpleAccount'
+        purposeOfPayment:
+          description: The purpose of payment required by banks for certain countries, applicable for following countries.SG,AE,KR,BR,CN,HK,HR,IS,ID,IN,IL,KE,PK,SA,ZA,TW,UA,VN
+          type: string
+        purposeOfPaymentDescription:
+          description: The purpose of payment description
+          type: string
+      required:
+      - amount
+      - exchangeRateQuoteId
+      - payer
+      title: InvoiceRequest
       type: object
     FileAttachment:
       properties:
@@ -398,7 +723,317 @@ components:
           type: number
       title: AlignMonetaryAmount
       type: object
-    InvoiceRequest:
+    SimpleAccount:
+      properties:
+        bank:
+          $ref: '#/components/schemas/JSONObject'
+          description: Get required bank fields by looking up the country from the meta-controller endpoint country-currency-map with bankFields=true
+        business:
+          $ref: '#/components/schemas/ContactBusinessRequest'
+        businessName:
+          description: The name of the receiver's business, required when account type is business
+          type: string
+        countryCode:
+          description: The 2 letter ISO country codes,ISO Alpha-2
+          enum:
+          - AC
+          - AD
+          - AE
+          - AF
+          - AG
+          - AI
+          - AL
+          - AM
+          - AN
+          - AO
+          - AQ
+          - AR
+          - AS
+          - AT
+          - AU
+          - AW
+          - AX
+          - AZ
+          - BA
+          - BB
+          - BD
+          - BE
+          - BF
+          - BG
+          - BH
+          - BI
+          - BJ
+          - BL
+          - BM
+          - BN
+          - BO
+          - BQ
+          - BR
+          - BS
+          - BT
+          - BU
+          - BV
+          - BW
+          - BY
+          - BZ
+          - CA
+          - CC
+          - CD
+          - CF
+          - CG
+          - CH
+          - CI
+          - CK
+          - CL
+          - CM
+          - CN
+          - CO
+          - CP
+          - CR
+          - CS
+          - CU
+          - CV
+          - CW
+          - CX
+          - CY
+          - CZ
+          - DE
+          - DG
+          - DJ
+          - DK
+          - DM
+          - DO
+          - DZ
+          - EA
+          - EC
+          - EE
+          - EG
+          - EH
+          - ER
+          - ES
+          - ET
+          - EU
+          - EZ
+          - FI
+          - FJ
+          - FK
+          - FM
+          - FO
+          - FR
+          - FX
+          - GA
+          - GB
+          - GD
+          - GE
+          - GF
+          - GG
+          - GH
+          - GI
+          - GL
+          - GM
+          - GN
+          - GP
+          - GQ
+          - GR
+          - GS
+          - GT
+          - GU
+          - GW
+          - GY
+          - HK
+          - HM
+          - HN
+          - HR
+          - HT
+          - HU
+          - IC
+          - ID
+          - IE
+          - IL
+          - IM
+          - IN
+          - IO
+          - IQ
+          - IR
+          - IS
+          - IT
+          - JE
+          - JM
+          - JO
+          - JP
+          - KE
+          - KG
+          - KH
+          - KI
+          - KM
+          - KN
+          - KP
+          - KR
+          - KW
+          - KY
+          - KZ
+          - LA
+          - LB
+          - LC
+          - LI
+          - LK
+          - LR
+          - LS
+          - LT
+          - LU
+          - LV
+          - LY
+          - MA
+          - MC
+          - MD
+          - ME
+          - MF
+          - MG
+          - MH
+          - MK
+          - ML
+          - MM
+          - MN
+          - MO
+          - MP
+          - MQ
+          - MR
+          - MS
+          - MT
+          - MU
+          - MV
+          - MW
+          - MX
+          - MY
+          - MZ
+          - NA
+          - NC
+          - NE
+          - NF
+          - NG
+          - NI
+          - NL
+          - 'NO'
+          - NP
+          - NR
+          - NT
+          - NU
+          - NZ
+          - OM
+          - PA
+          - PE
+          - PF
+          - PG
+          - PH
+          - PK
+          - PL
+          - PM
+          - PN
+          - PR
+          - PS
+          - PT
+          - PW
+          - PY
+          - QA
+          - RE
+          - RO
+          - RS
+          - RU
+          - RW
+          - SA
+          - SB
+          - SC
+          - SD
+          - SE
+          - SF
+          - SG
+          - SH
+          - SI
+          - SJ
+          - SK
+          - SL
+          - SM
+          - SN
+          - SO
+          - SR
+          - SS
+          - ST
+          - SU
+          - SV
+          - SX
+          - SY
+          - SZ
+          - TA
+          - TC
+          - TD
+          - TF
+          - TG
+          - TH
+          - TJ
+          - TK
+          - TL
+          - TM
+          - TN
+          - TO
+          - TP
+          - TR
+          - TT
+          - TV
+          - TW
+          - TZ
+          - UA
+          - UG
+          - UK
+          - UM
+          - US
+          - UY
+          - UZ
+          - VA
+          - VC
+          - VE
+          - VG
+          - VI
+          - VN
+          - VU
+          - WF
+          - WS
+          - XK
+          - YE
+          - YT
+          - YU
+          - ZA
+          - ZM
+          - ZR
+          - ZW
+          type: string
+        email:
+          description: The email of the receiver
+          type: string
+        firstName:
+          description: The first name of the receiver
+          type: string
+        lastName:
+          description: The last name of the receiver
+          type: string
+        type:
+          description: The type of the receiver
+          enum:
+          - Incomplete
+          - Business
+          - Personal
+          type: string
+      required:
+      - bank
+      - business
+      - businessName
+      - countryCode
+      - email
+      - firstName
+      - lastName
+      - type
+      title: SimpleAccount
+      type: object
+    InvoiceResponse:
       properties:
         amount:
           $ref: '#/components/schemas/AlignMonetaryAmount'
@@ -412,6 +1047,9 @@ components:
           items:
             type: string
           type: array
+        claimLink:
+          description: The link that allows the recipient to perform the payment
+          type: string
         clientId:
           type: string
         dueDate:
@@ -426,6 +1064,10 @@ components:
         externalInvoiceRefId:
           description: The external invoice if for which payment is made, viewable by receiver
           type: string
+        id:
+          description: The invoice id
+          format: int64
+          type: integer
         notes:
           description: The memo/note associated with payment, viewable by receiver
           type: string
@@ -437,11 +1079,52 @@ components:
         purposeOfPaymentDescription:
           description: The purpose of payment description
           type: string
+        status:
+          description: The status of the invoice
+          enum:
+          - Drafted
+          - Sent
+          - Cancelled
+          - Closed
+          - Claimed
+          - MarkAsPaid
+          - Rejected
+          - Scheduled
+          type: string
+        timeCreated:
+          description: The creation time of the invoice. The format would be UTC, ISO-8601
+          format: date-time
+          type: string
       required:
       - amount
+      - exchangeRate
       - exchangeRateQuoteId
+      - id
       - payer
-      title: InvoiceRequest
+      - status
+      - timeCreated
+      title: InvoiceResponse
+      type: object
+    ErrorResponse:
+      properties:
+        code:
+          description: The error code, different than HTTP status codes
+          format: int32
+          type: integer
+        error:
+          description: The short message
+          type: string
+        message:
+          description: The detailed, developer friendly message
+          type: string
+        timestamp:
+          description: The timestamp recorded when the error occurred
+          type: string
+      required:
+      - code
+      - error
+      - message
+      title: ErrorResponse
       type: object
     ExchangeRateResponse:
       properties:
@@ -866,687 +1549,4 @@ components:
       - entity
       - taxIdNumber
       title: ContactBusinessRequest
-      type: object
-    JSONObject:
-      title: JSONObject
-      type: object
-    BusinessAddressRequest:
-      properties:
-        city:
-          description: City
-          type: string
-        countryCode:
-          description: Country Code
-          enum:
-          - AC
-          - AD
-          - AE
-          - AF
-          - AG
-          - AI
-          - AL
-          - AM
-          - AN
-          - AO
-          - AQ
-          - AR
-          - AS
-          - AT
-          - AU
-          - AW
-          - AX
-          - AZ
-          - BA
-          - BB
-          - BD
-          - BE
-          - BF
-          - BG
-          - BH
-          - BI
-          - BJ
-          - BL
-          - BM
-          - BN
-          - BO
-          - BQ
-          - BR
-          - BS
-          - BT
-          - BU
-          - BV
-          - BW
-          - BY
-          - BZ
-          - CA
-          - CC
-          - CD
-          - CF
-          - CG
-          - CH
-          - CI
-          - CK
-          - CL
-          - CM
-          - CN
-          - CO
-          - CP
-          - CR
-          - CS
-          - CU
-          - CV
-          - CW
-          - CX
-          - CY
-          - CZ
-          - DE
-          - DG
-          - DJ
-          - DK
-          - DM
-          - DO
-          - DZ
-          - EA
-          - EC
-          - EE
-          - EG
-          - EH
-          - ER
-          - ES
-          - ET
-          - EU
-          - EZ
-          - FI
-          - FJ
-          - FK
-          - FM
-          - FO
-          - FR
-          - FX
-          - GA
-          - GB
-          - GD
-          - GE
-          - GF
-          - GG
-          - GH
-          - GI
-          - GL
-          - GM
-          - GN
-          - GP
-          - GQ
-          - GR
-          - GS
-          - GT
-          - GU
-          - GW
-          - GY
-          - HK
-          - HM
-          - HN
-          - HR
-          - HT
-          - HU
-          - IC
-          - ID
-          - IE
-          - IL
-          - IM
-          - IN
-          - IO
-          - IQ
-          - IR
-          - IS
-          - IT
-          - JE
-          - JM
-          - JO
-          - JP
-          - KE
-          - KG
-          - KH
-          - KI
-          - KM
-          - KN
-          - KP
-          - KR
-          - KW
-          - KY
-          - KZ
-          - LA
-          - LB
-          - LC
-          - LI
-          - LK
-          - LR
-          - LS
-          - LT
-          - LU
-          - LV
-          - LY
-          - MA
-          - MC
-          - MD
-          - ME
-          - MF
-          - MG
-          - MH
-          - MK
-          - ML
-          - MM
-          - MN
-          - MO
-          - MP
-          - MQ
-          - MR
-          - MS
-          - MT
-          - MU
-          - MV
-          - MW
-          - MX
-          - MY
-          - MZ
-          - NA
-          - NC
-          - NE
-          - NF
-          - NG
-          - NI
-          - NL
-          - 'NO'
-          - NP
-          - NR
-          - NT
-          - NU
-          - NZ
-          - OM
-          - PA
-          - PE
-          - PF
-          - PG
-          - PH
-          - PK
-          - PL
-          - PM
-          - PN
-          - PR
-          - PS
-          - PT
-          - PW
-          - PY
-          - QA
-          - RE
-          - RO
-          - RS
-          - RU
-          - RW
-          - SA
-          - SB
-          - SC
-          - SD
-          - SE
-          - SF
-          - SG
-          - SH
-          - SI
-          - SJ
-          - SK
-          - SL
-          - SM
-          - SN
-          - SO
-          - SR
-          - SS
-          - ST
-          - SU
-          - SV
-          - SX
-          - SY
-          - SZ
-          - TA
-          - TC
-          - TD
-          - TF
-          - TG
-          - TH
-          - TJ
-          - TK
-          - TL
-          - TM
-          - TN
-          - TO
-          - TP
-          - TR
-          - TT
-          - TV
-          - TW
-          - TZ
-          - UA
-          - UG
-          - UK
-          - UM
-          - US
-          - UY
-          - UZ
-          - VA
-          - VC
-          - VE
-          - VG
-          - VI
-          - VN
-          - VU
-          - WF
-          - WS
-          - XK
-          - YE
-          - YT
-          - YU
-          - ZA
-          - ZM
-          - ZR
-          - ZW
-          type: string
-        postalCode:
-          description: Postal Code
-          type: string
-        province:
-          description: Province
-          type: string
-        street:
-          description: Type of entity
-          type: string
-        streetSecondary:
-          description: Address additional information
-          type: string
-      required:
-      - city
-      - countryCode
-      - postalCode
-      - province
-      - street
-      title: BusinessAddressRequest
-      type: object
-    InvoiceResponse:
-      properties:
-        amount:
-          $ref: '#/components/schemas/AlignMonetaryAmount'
-        attachments:
-          description: The list of external invoices to be attached with payment. The files can be uploaded usingfile upload apis
-          items:
-            $ref: '#/components/schemas/FileAttachment'
-          type: array
-        ccEmails:
-          description: The list of emails who will be notified about the payment
-          items:
-            type: string
-          type: array
-        claimLink:
-          description: The link that allows the recipient to perform the payment
-          type: string
-        clientId:
-          type: string
-        dueDate:
-          description: The due date of the payment or invoice request
-          format: date-time
-          type: string
-        exchangeRate:
-          $ref: '#/components/schemas/ExchangeRateResponse'
-        exchangeRateQuoteId:
-          description: The quote id that was received earlier for the payment
-          type: string
-        externalInvoiceRefId:
-          description: The external invoice if for which payment is made, viewable by receiver
-          type: string
-        id:
-          description: The invoice id
-          format: int64
-          type: integer
-        notes:
-          description: The memo/note associated with payment, viewable by receiver
-          type: string
-        payer:
-          $ref: '#/components/schemas/SimpleAccount'
-        purposeOfPayment:
-          description: The purpose of payment required by banks for certain countries, applicable for following countries.SG,AE,KR,BR,CN,HK,HR,IS,ID,IN,IL,KE,PK,SA,ZA,TW,UA,VN
-          type: string
-        purposeOfPaymentDescription:
-          description: The purpose of payment description
-          type: string
-        status:
-          description: The status of the invoice
-          enum:
-          - Drafted
-          - Sent
-          - Cancelled
-          - Closed
-          - Claimed
-          - MarkAsPaid
-          - Rejected
-          - Scheduled
-          type: string
-        timeCreated:
-          description: The creation time of the invoice. The format would be UTC, ISO-8601
-          format: date-time
-          type: string
-      required:
-      - amount
-      - exchangeRate
-      - exchangeRateQuoteId
-      - id
-      - payer
-      - status
-      - timeCreated
-      title: InvoiceResponse
-      type: object
-    SimpleAccount:
-      properties:
-        bank:
-          $ref: '#/components/schemas/JSONObject'
-          description: Get required bank fields by looking up the country from the meta-controller endpoint country-currency-map with bankFields=true
-        business:
-          $ref: '#/components/schemas/ContactBusinessRequest'
-        businessName:
-          description: The name of the receiver's business, required when account type is business
-          type: string
-        countryCode:
-          description: The 2 letter ISO country codes,ISO Alpha-2
-          enum:
-          - AC
-          - AD
-          - AE
-          - AF
-          - AG
-          - AI
-          - AL
-          - AM
-          - AN
-          - AO
-          - AQ
-          - AR
-          - AS
-          - AT
-          - AU
-          - AW
-          - AX
-          - AZ
-          - BA
-          - BB
-          - BD
-          - BE
-          - BF
-          - BG
-          - BH
-          - BI
-          - BJ
-          - BL
-          - BM
-          - BN
-          - BO
-          - BQ
-          - BR
-          - BS
-          - BT
-          - BU
-          - BV
-          - BW
-          - BY
-          - BZ
-          - CA
-          - CC
-          - CD
-          - CF
-          - CG
-          - CH
-          - CI
-          - CK
-          - CL
-          - CM
-          - CN
-          - CO
-          - CP
-          - CR
-          - CS
-          - CU
-          - CV
-          - CW
-          - CX
-          - CY
-          - CZ
-          - DE
-          - DG
-          - DJ
-          - DK
-          - DM
-          - DO
-          - DZ
-          - EA
-          - EC
-          - EE
-          - EG
-          - EH
-          - ER
-          - ES
-          - ET
-          - EU
-          - EZ
-          - FI
-          - FJ
-          - FK
-          - FM
-          - FO
-          - FR
-          - FX
-          - GA
-          - GB
-          - GD
-          - GE
-          - GF
-          - GG
-          - GH
-          - GI
-          - GL
-          - GM
-          - GN
-          - GP
-          - GQ
-          - GR
-          - GS
-          - GT
-          - GU
-          - GW
-          - GY
-          - HK
-          - HM
-          - HN
-          - HR
-          - HT
-          - HU
-          - IC
-          - ID
-          - IE
-          - IL
-          - IM
-          - IN
-          - IO
-          - IQ
-          - IR
-          - IS
-          - IT
-          - JE
-          - JM
-          - JO
-          - JP
-          - KE
-          - KG
-          - KH
-          - KI
-          - KM
-          - KN
-          - KP
-          - KR
-          - KW
-          - KY
-          - KZ
-          - LA
-          - LB
-          - LC
-          - LI
-          - LK
-          - LR
-          - LS
-          - LT
-          - LU
-          - LV
-          - LY
-          - MA
-          - MC
-          - MD
-          - ME
-          - MF
-          - MG
-          - MH
-          - MK
-          - ML
-          - MM
-          - MN
-          - MO
-          - MP
-          - MQ
-          - MR
-          - MS
-          - MT
-          - MU
-          - MV
-          - MW
-          - MX
-          - MY
-          - MZ
-          - NA
-          - NC
-          - NE
-          - NF
-          - NG
-          - NI
-          - NL
-          - 'NO'
-          - NP
-          - NR
-          - NT
-          - NU
-          - NZ
-          - OM
-          - PA
-          - PE
-          - PF
-          - PG
-          - PH
-          - PK
-          - PL
-          - PM
-          - PN
-          - PR
-          - PS
-          - PT
-          - PW
-          - PY
-          - QA
-          - RE
-          - RO
-          - RS
-          - RU
-          - RW
-          - SA
-          - SB
-          - SC
-          - SD
-          - SE
-          - SF
-          - SG
-          - SH
-          - SI
-          - SJ
-          - SK
-          - SL
-          - SM
-          - SN
-          - SO
-          - SR
-          - SS
-          - ST
-          - SU
-          - SV
-          - SX
-          - SY
-          - SZ
-          - TA
-          - TC
-          - TD
-          - TF
-          - TG
-          - TH
-          - TJ
-          - TK
-          - TL
-          - TM
-          - TN
-          - TO
-          - TP
-          - TR
-          - TT
-          - TV
-          - TW
-          - TZ
-          - UA
-          - UG
-          - UK
-          - UM
-          - US
-          - UY
-          - UZ
-          - VA
-          - VC
-          - VE
-          - VG
-          - VI
-          - VN
-          - VU
-          - WF
-          - WS
-          - XK
-          - YE
-          - YT
-          - YU
-          - ZA
-          - ZM
-          - ZR
-          - ZW
-          type: string
-        email:
-          description: The email of the receiver
-          type: string
-        firstName:
-          description: The first name of the receiver
-          type: string
-        lastName:
-          description: The last name of the receiver
-          type: string
-        type:
-          description: The type of the receiver
-          enum:
-          - Incomplete
-          - Business
-          - Personal
-          type: string
-      required:
-      - bank
-      - business
-      - businessName
-      - countryCode
-      - email
-      - firstName
-      - lastName
-      - type
-      title: SimpleAccount
       type: object

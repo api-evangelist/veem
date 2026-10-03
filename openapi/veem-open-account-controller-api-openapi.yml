@@ -126,26 +126,67 @@ paths:
       - open-account-controller
 components:
   schemas:
-    ErrorResponse:
+    JSONObject:
+      title: JSONObject
+      type: object
+    PublicAccountSettingsRequest:
       properties:
-        code:
-          description: The error code, different than HTTP status codes
-          format: int32
-          type: integer
-        error:
-          description: The short message
+        type:
+          description: The type of account setting
+          enum:
+          - PAYEE_COVERS_CARD_FEE
+          - CREDIT_CARD_SENDING_FEE_RATE
+          - DEBIT_CARD_SENDING_FEE_RATE
           type: string
-        message:
-          description: The detailed, developer friendly message
-          type: string
-        timestamp:
-          description: The timestamp recorded when the error occurred
+        value:
+          description: The value for the account setting
           type: string
       required:
-      - code
-      - error
-      - message
-      title: ErrorResponse
+      - type
+      title: PublicAccountSettingsRequest
+      type: object
+    PublicAccountSettingResponse:
+      properties:
+        accountId:
+          description: The account ID this setting belongs to
+          format: int64
+          type: integer
+        type:
+          description: The type of account setting
+          type: string
+        value:
+          description: The value for the account setting
+          type: string
+      title: PublicAccountSettingResponse
+      type: object
+    SetUpAccountResponse:
+      properties:
+        accountSetUpStatus:
+          type: string
+        clientId:
+          type: string
+        clientSecret:
+          type: string
+        email:
+          type: string
+        expiresIn:
+          format: int32
+          type: integer
+        id:
+          format: int64
+          type: integer
+        missingInformation:
+          items:
+            type: string
+          type: array
+        token:
+          type: string
+        userId:
+          format: int64
+          type: integer
+        verificationStatus:
+          type: string
+      title: SetUpAccountResponse
       type: object
     Address:
       properties:
@@ -170,20 +211,6 @@ components:
         purposeOfPaymentDescription:
           type: string
       title: ExtraInfo
-      type: object
-    PublicAccountSettingResponse:
-      properties:
-        accountId:
-          description: The account ID this setting belongs to
-          format: int64
-          type: integer
-        type:
-          description: The type of account setting
-          type: string
-        value:
-          description: The value for the account setting
-          type: string
-      title: PublicAccountSettingResponse
       type: object
     UpdateAccountRequest:
       properties:
@@ -213,24 +240,26 @@ components:
           type: string
       title: UpdateAccountRequest
       type: object
-    JSONObject:
-      title: JSONObject
-      type: object
-    PublicAccountSettingsRequest:
+    ErrorResponse:
       properties:
-        type:
-          description: The type of account setting
-          enum:
-          - PAYEE_COVERS_CARD_FEE
-          - CREDIT_CARD_SENDING_FEE_RATE
-          - DEBIT_CARD_SENDING_FEE_RATE
+        code:
+          description: The error code, different than HTTP status codes
+          format: int32
+          type: integer
+        error:
+          description: The short message
           type: string
-        value:
-          description: The value for the account setting
+        message:
+          description: The detailed, developer friendly message
+          type: string
+        timestamp:
+          description: The timestamp recorded when the error occurred
           type: string
       required:
-      - type
-      title: PublicAccountSettingsRequest
+      - code
+      - error
+      - message
+      title: ErrorResponse
       type: object
     OpenAccountRequest:
       properties:
@@ -273,33 +302,4 @@ components:
       required:
       - email
       title: OpenAccountRequest
-      type: object
-    SetUpAccountResponse:
-      properties:
-        accountSetUpStatus:
-          type: string
-        clientId:
-          type: string
-        clientSecret:
-          type: string
-        email:
-          type: string
-        expiresIn:
-          format: int32
-          type: integer
-        id:
-          format: int64
-          type: integer
-        missingInformation:
-          items:
-            type: string
-          type: array
-        token:
-          type: string
-        userId:
-          format: int64
-          type: integer
-        verificationStatus:
-          type: string
-      title: SetUpAccountResponse
       type: object

@@ -77,6 +77,19 @@ paths:
       - wallet-controller
 components:
   schemas:
+    CustomFundingMethodResponse:
+      properties:
+        accountId:
+          format: int64
+          type: integer
+        errorMessage:
+          type: string
+        fundingMethods:
+          items:
+            $ref: '#/components/schemas/FundingMethod'
+          type: array
+      title: CustomFundingMethodResponse
+      type: object
     ErrorResponse:
       properties:
         code:
@@ -118,17 +131,4 @@ components:
       - id
       - type
       title: FundingMethod
-      type: object
-    CustomFundingMethodResponse:
-      properties:
-        accountId:
-          format: int64
-          type: integer
-        errorMessage:
-          type: string
-        fundingMethods:
-          items:
-            $ref: '#/components/schemas/FundingMethod'
-          type: array
-      title: CustomFundingMethodResponse
       type: object

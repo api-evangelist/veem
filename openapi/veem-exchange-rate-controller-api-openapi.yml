@@ -83,26 +83,49 @@ paths:
       - exchange-rate-controller
 components:
   schemas:
-    ErrorResponse:
+    QuoteResponse:
       properties:
-        code:
-          description: The error code, different than HTTP status codes
-          format: int32
+        bruid:
+          description: The BRUID - FX rate locking UID
+          type: string
+        from:
+          $ref: '#/components/schemas/QuotePartyResponse'
+          description: The payer (from) party response details
+        to:
+          $ref: '#/components/schemas/QuotePartyResponse'
+          description: The payee (to) party response details
+      title: QuoteResponse
+      type: object
+    QuotePartyRequest:
+      properties:
+        accountId:
+          description: The account ID of this party
+          format: int64
           type: integer
-        error:
-          description: The short message
+        amount:
+          description: The amount for this party (either from or to amount should be provided, not both)
+          type: number
+        currency:
+          description: The currency code (e.g., USD, EUR, GBP)
           type: string
-        message:
-          description: The detailed, developer friendly message
-          type: string
-        timestamp:
-          description: The timestamp recorded when the error occurred
+        fundingMethodId:
+          description: The funding method ID for this party
+          format: int64
+          type: integer
+        fundingMethodType:
+          description: The funding method type (BANK, CARD, WALLET, VIRTUALCARD, VIRTUALBANK)
+          enum:
+          - BANK
+          - CARD
+          - WALLET
+          - VIRTUALCARD
+          - VIRTUALBANK
           type: string
       required:
-      - code
-      - error
-      - message
-      title: ErrorResponse
+      - accountId
+      - fundingMethodId
+      - fundingMethodType
+      title: QuotePartyRequest
       type: object
     QuotePartyResponse:
       properties:
@@ -146,47 +169,24 @@ components:
           type: string
       title: FixedFeeResponse
       type: object
-    QuotePartyRequest:
+    ErrorResponse:
       properties:
-        accountId:
-          description: The account ID of this party
-          format: int64
+        code:
+          description: The error code, different than HTTP status codes
+          format: int32
           type: integer
-        amount:
-          description: The amount for this party (either from or to amount should be provided, not both)
-          type: number
-        currency:
-          description: The currency code (e.g., USD, EUR, GBP)
+        error:
+          description: The short message
           type: string
-        fundingMethodId:
-          description: The funding method ID for this party
-          format: int64
-          type: integer
-        fundingMethodType:
-          description: The funding method type (BANK, CARD, WALLET, VIRTUALCARD, VIRTUALBANK)
-          enum:
-          - BANK
-          - CARD
-          - WALLET
-          - VIRTUALCARD
-          - VIRTUALBANK
+        message:
+          description: The detailed, developer friendly message
+          type: string
+        timestamp:
+          description: The timestamp recorded when the error occurred
           type: string
       required:
-      - accountId
-      - fundingMethodId
-      - fundingMethodType
-      title: QuotePartyRequest
-      type: object
-    QuoteResponse:
-      properties:
-        bruid:
-          description: The BRUID - FX rate locking UID
-          type: string
-        from:
-          $ref: '#/components/schemas/QuotePartyResponse'
-          description: The payer (from) party response details
-        to:
-          $ref: '#/components/schemas/QuotePartyResponse'
-          description: The payee (to) party response details
-      title: QuoteResponse
+      - code
+      - error
+      - message
+      title: ErrorResponse
       type: object

@@ -260,14 +260,68 @@ paths:
       - contact-controller
 components:
   schemas:
-    ErrorResponse:
+    ContactRequest:
+      properties:
+        bankAccount:
+          $ref: '#/components/schemas/BankAccountRequest'
+        businessAddress:
+          $ref: '#/components/schemas/AddressRequest'
+        businessName:
+          description: The name of the contact's business (required when account type is business)
+          type: string
+        email:
+          description: The contact's email address
+          type: string
+        externalBusinessId:
+          description: A custom identifier for this contact
+          format: int64
+          type: integer
+        firstName:
+          description: The contact's first name
+          type: string
+        isoCountryCode:
+          description: The contact's 2-letter ISO country code (ISO Alpha-2)
+          type: string
+        lastName:
+          description: The contact's last name
+          type: string
+        phoneDialCode:
+          description: The contact's phone dial code (e.g. +1)
+          type: string
+        phoneNumber:
+          description: The contact's phone number
+          type: string
+        type:
+          description: The contact type
+          enum:
+          - Incomplete
+          - Business
+          - Personal
+          type: string
+      required:
+      - email
+      - firstName
+      - isoCountryCode
+      - lastName
+      - phoneNumber
+      - type
+      title: ContactRequest
+      type: object
+    VeemErrorResponse:
       properties:
         code:
           description: The error code, different than HTTP status codes
           format: int32
           type: integer
-        error:
-          description: The short message
+        fileName:
+          description: The filename where the exception was thrown
+          type: string
+        lineNumber:
+          description: The line number where the exception was thrown
+          format: int32
+          type: integer
+        logTag:
+          description: Request log tag
           type: string
         message:
           description: The detailed, developer friendly message
@@ -277,9 +331,75 @@ components:
           type: string
       required:
       - code
-      - error
+      - logTag
       - message
-      title: ErrorResponse
+      title: VeemErrorResponse
+      type: object
+    AsyncBatchItemPaymentResponse:
+      properties:
+        batchItemId:
+          format: int64
+          type: integer
+        errorInfo:
+          $ref: '#/components/schemas/ErrorResponse'
+        paymentId:
+          format: int64
+          type: integer
+        status:
+          type: string
+      title: AsyncBatchItemPaymentResponse
+      type: object
+    ContactBatchItemRequest:
+      properties:
+        bankAccount:
+          $ref: '#/components/schemas/BankAccountRequest'
+        batchItemId:
+          description: A unique identifier for this request within the batch
+          format: int64
+          type: integer
+        businessAddress:
+          $ref: '#/components/schemas/AddressRequest'
+        businessName:
+          description: The name of the contact's business (required when account type is business)
+          type: string
+        email:
+          description: The contact's email address
+          type: string
+        externalBusinessId:
+          description: A custom identifier for this contact
+          format: int64
+          type: integer
+        firstName:
+          description: The contact's first name
+          type: string
+        isoCountryCode:
+          description: The contact's 2-letter ISO country code (ISO Alpha-2)
+          type: string
+        lastName:
+          description: The contact's last name
+          type: string
+        phoneDialCode:
+          description: The contact's phone dial code (e.g. +1)
+          type: string
+        phoneNumber:
+          description: The contact's phone number
+          type: string
+        type:
+          description: The contact type
+          enum:
+          - Incomplete
+          - Business
+          - Personal
+          type: string
+      required:
+      - batchItemId
+      - email
+      - firstName
+      - isoCountryCode
+      - lastName
+      - phoneNumber
+      - type
+      title: ContactBatchItemRequest
       type: object
     BatchResponse:
       properties:
@@ -344,87 +464,14 @@ components:
           type: string
       title: BankAccountRequest
       type: object
-    ContactBatchItemRequest:
-      properties:
-        bankAccount:
-          $ref: '#/components/schemas/BankAccountRequest'
-        batchItemId:
-          description: A unique identifier for this request within the batch
-          format: int64
-          type: integer
-        businessAddress:
-          $ref: '#/components/schemas/AddressRequest'
-        businessName:
-          description: The name of the contact's business (required when account type is business)
-          type: string
-        email:
-          description: The contact's email address
-          type: string
-        externalBusinessId:
-          description: A custom identifier for this contact
-          format: int64
-          type: integer
-        firstName:
-          description: The contact's first name
-          type: string
-        isoCountryCode:
-          description: The contact's 2-letter ISO country code (ISO Alpha-2)
-          type: string
-        lastName:
-          description: The contact's last name
-          type: string
-        phoneDialCode:
-          description: The contact's phone dial code (e.g. +1)
-          type: string
-        phoneNumber:
-          description: The contact's phone number
-          type: string
-        type:
-          description: The contact type
-          enum:
-          - Incomplete
-          - Business
-          - Personal
-          type: string
-      required:
-      - batchItemId
-      - email
-      - firstName
-      - isoCountryCode
-      - lastName
-      - phoneNumber
-      - type
-      title: ContactBatchItemRequest
-      type: object
-    AsyncBatchItemPaymentResponse:
-      properties:
-        batchItemId:
-          format: int64
-          type: integer
-        errorInfo:
-          $ref: '#/components/schemas/ErrorResponse'
-        paymentId:
-          format: int64
-          type: integer
-        status:
-          type: string
-      title: AsyncBatchItemPaymentResponse
-      type: object
-    VeemErrorResponse:
+    ErrorResponse:
       properties:
         code:
           description: The error code, different than HTTP status codes
           format: int32
           type: integer
-        fileName:
-          description: The filename where the exception was thrown
-          type: string
-        lineNumber:
-          description: The line number where the exception was thrown
-          format: int32
-          type: integer
-        logTag:
-          description: Request log tag
+        error:
+          description: The short message
           type: string
         message:
           description: The detailed, developer friendly message
@@ -434,38 +481,9 @@ components:
           type: string
       required:
       - code
-      - logTag
+      - error
       - message
-      title: VeemErrorResponse
-      type: object
-    AddressRequest:
-      properties:
-        city:
-          description: City
-          type: string
-        line1:
-          description: Address line 1
-          type: string
-        line2:
-          description: Address line 2
-          type: string
-        postalCode:
-          description: Postal code
-          type: string
-        province:
-          type: string
-        state:
-          type: string
-        stateProvince:
-          description: State or province
-          type: string
-      required:
-      - city
-      - line1
-      - line2
-      - postalCode
-      - stateProvince
-      title: AddressRequest
+      title: ErrorResponse
       type: object
     ContactResponse:
       properties:
@@ -792,50 +810,32 @@ components:
       - phoneNumber
       title: ContactResponse
       type: object
-    ContactRequest:
+    AddressRequest:
       properties:
-        bankAccount:
-          $ref: '#/components/schemas/BankAccountRequest'
-        businessAddress:
-          $ref: '#/components/schemas/AddressRequest'
-        businessName:
-          description: The name of the contact's business (required when account type is business)
+        city:
+          description: City
           type: string
-        email:
-          description: The contact's email address
+        line1:
+          description: Address line 1
           type: string
-        externalBusinessId:
-          description: A custom identifier for this contact
-          format: int64
-          type: integer
-        firstName:
-          description: The contact's first name
+        line2:
+          description: Address line 2
           type: string
-        isoCountryCode:
-          description: The contact's 2-letter ISO country code (ISO Alpha-2)
+        postalCode:
+          description: Postal code
           type: string
-        lastName:
-          description: The contact's last name
+        province:
           type: string
-        phoneDialCode:
-          description: The contact's phone dial code (e.g. +1)
+        state:
           type: string
-        phoneNumber:
-          description: The contact's phone number
-          type: string
-        type:
-          description: The contact type
-          enum:
-          - Incomplete
-          - Business
-          - Personal
+        stateProvince:
+          description: State or province
           type: string
       required:
-      - email
-      - firstName
-      - isoCountryCode
-      - lastName
-      - phoneNumber
-      - type
-      title: ContactRequest
+      - city
+      - line1
+      - line2
+      - postalCode
+      - stateProvince
+      title: AddressRequest
       type: object
