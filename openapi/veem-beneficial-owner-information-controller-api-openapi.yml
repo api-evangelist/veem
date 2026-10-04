@@ -45,6 +45,52 @@ paths:
       - beneficial-owner-information-controller
 components:
   schemas:
+    BeneficialOwnerResponse:
+      properties:
+        beneficialOwnerShip:
+          $ref: '#/components/schemas/BeneficialOwnerShipInformation'
+      title: BeneficialOwnerResponse
+      type: object
+    BusinessOwnerShip:
+      properties:
+        addressCity:
+          type: string
+        addressIsoCountryCode:
+          type: string
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        addressPostalCode:
+          type: string
+        addressState:
+          type: string
+        businessName:
+          type: string
+        id:
+          format: int64
+          type: integer
+        ownershipPercentage:
+          format: double
+          type: number
+        taxId:
+          type: string
+      title: BusinessOwnerShip
+      type: object
+    BeneficialOwnerShipInformation:
+      properties:
+        businessOwnerShip:
+          items:
+            $ref: '#/components/schemas/BusinessOwnerShip'
+          type: array
+        hasAttestation:
+          type: boolean
+        individualOwnerShip:
+          items:
+            $ref: '#/components/schemas/IndividualOwnerShip'
+          type: array
+      title: BeneficialOwnerShipInformation
+      type: object
     IndividualOwnerShip:
       properties:
         addressCity:
@@ -87,55 +133,9 @@ components:
           type: string
       title: IndividualOwnerShip
       type: object
-    BusinessOwnerShip:
-      properties:
-        addressCity:
-          type: string
-        addressIsoCountryCode:
-          type: string
-        addressLine1:
-          type: string
-        addressLine2:
-          type: string
-        addressPostalCode:
-          type: string
-        addressState:
-          type: string
-        businessName:
-          type: string
-        id:
-          format: int64
-          type: integer
-        ownershipPercentage:
-          format: double
-          type: number
-        taxId:
-          type: string
-      title: BusinessOwnerShip
-      type: object
     BOIRequest:
       properties:
         beneficialOwnerShip:
           $ref: '#/components/schemas/BeneficialOwnerShipInformation'
       title: BOIRequest
-      type: object
-    BeneficialOwnerShipInformation:
-      properties:
-        businessOwnerShip:
-          items:
-            $ref: '#/components/schemas/BusinessOwnerShip'
-          type: array
-        hasAttestation:
-          type: boolean
-        individualOwnerShip:
-          items:
-            $ref: '#/components/schemas/IndividualOwnerShip'
-          type: array
-      title: BeneficialOwnerShipInformation
-      type: object
-    BeneficialOwnerResponse:
-      properties:
-        beneficialOwnerShip:
-          $ref: '#/components/schemas/BeneficialOwnerShipInformation'
-      title: BeneficialOwnerResponse
       type: object

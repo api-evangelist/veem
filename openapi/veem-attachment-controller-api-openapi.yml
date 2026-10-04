@@ -79,6 +79,26 @@ paths:
       - attachment-controller
 components:
   schemas:
+    FileAttachment:
+      properties:
+        name:
+          description: The name of the file (including the extension)
+          type: string
+        referenceId:
+          description: The file reference id received from Veem after file upload is complete
+          type: string
+        type:
+          description: The type of the file
+          enum:
+          - ExternalInvoice
+          - ProofOfPayment
+          type: string
+      required:
+      - name
+      - referenceId
+      - type
+      title: FileAttachment
+      type: object
     ErrorResponse:
       properties:
         code:
@@ -99,24 +119,4 @@ components:
       - error
       - message
       title: ErrorResponse
-      type: object
-    FileAttachment:
-      properties:
-        name:
-          description: The name of the file (including the extension)
-          type: string
-        referenceId:
-          description: The file reference id received from Veem after file upload is complete
-          type: string
-        type:
-          description: The type of the file
-          enum:
-          - ExternalInvoice
-          - ProofOfPayment
-          type: string
-      required:
-      - name
-      - referenceId
-      - type
-      title: FileAttachment
       type: object

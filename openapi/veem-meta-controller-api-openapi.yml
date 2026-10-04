@@ -48,27 +48,6 @@ paths:
       - meta-controller
 components:
   schemas:
-    ErrorResponse:
-      properties:
-        code:
-          description: The error code, different than HTTP status codes
-          format: int32
-          type: integer
-        error:
-          description: The short message
-          type: string
-        message:
-          description: The detailed, developer friendly message
-          type: string
-        timestamp:
-          description: The timestamp recorded when the error occurred
-          type: string
-      required:
-      - code
-      - error
-      - message
-      title: ErrorResponse
-      type: object
     PurposeOfPaymentInfoResponse:
       properties:
         countryCode:
@@ -352,9 +331,6 @@ components:
         subindustry:
           type: string
       title: PurposeOfPaymentInfoResponse
-      type: object
-    JSONArray:
-      title: JSONArray
       type: object
     CountryCurrencyResponse:
       properties:
@@ -1023,4 +999,28 @@ components:
             type: string
           type: array
       title: CountryCurrencyResponse
+      type: object
+    JSONArray:
+      title: JSONArray
+      type: object
+    ErrorResponse:
+      properties:
+        code:
+          description: The error code, different than HTTP status codes
+          format: int32
+          type: integer
+        error:
+          description: The short message
+          type: string
+        message:
+          description: The detailed, developer friendly message
+          type: string
+        timestamp:
+          description: The timestamp recorded when the error occurred
+          type: string
+      required:
+      - code
+      - error
+      - message
+      title: ErrorResponse
       type: object

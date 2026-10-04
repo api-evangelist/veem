@@ -47,27 +47,6 @@ paths:
       - Customer Controller
 components:
   schemas:
-    ErrorResponse:
-      properties:
-        code:
-          description: The error code, different than HTTP status codes
-          format: int32
-          type: integer
-        error:
-          description: The short message
-          type: string
-        message:
-          description: The detailed, developer friendly message
-          type: string
-        timestamp:
-          description: The timestamp recorded when the error occurred
-          type: string
-      required:
-      - code
-      - error
-      - message
-      title: ErrorResponse
-      type: object
     PublicAccountResponse:
       properties:
         email:
@@ -356,4 +335,25 @@ components:
         name:
           type: string
       title: PublicAccountResponse
+      type: object
+    ErrorResponse:
+      properties:
+        code:
+          description: The error code, different than HTTP status codes
+          format: int32
+          type: integer
+        error:
+          description: The short message
+          type: string
+        message:
+          description: The detailed, developer friendly message
+          type: string
+        timestamp:
+          description: The timestamp recorded when the error occurred
+          type: string
+      required:
+      - code
+      - error
+      - message
+      title: ErrorResponse
       type: object

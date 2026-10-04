@@ -83,6 +83,48 @@ paths:
       - exchange-rate-controller
 components:
   schemas:
+    QuotePartyResponse:
+      properties:
+        amount:
+          description: The amount for this party
+          type: number
+        currency:
+          description: The currency code
+          type: string
+        fixedFee:
+          $ref: '#/components/schemas/FixedFeeResponse'
+          description: The fixed fee details for this party
+        fxRate:
+          description: The FX rate for this party
+          type: number
+      title: QuotePartyResponse
+      type: object
+    FixedFeeResponse:
+      properties:
+        amount:
+          description: The fixed fee amount
+          type: number
+        currency:
+          description: The currency of the fixed fee
+          type: string
+      title: FixedFeeResponse
+      type: object
+    QuoteRequest:
+      properties:
+        bruid:
+          description: The BRUID - FX rate locking UID
+          type: string
+        from:
+          $ref: '#/components/schemas/QuotePartyRequest'
+          description: The payer (from) party details
+        to:
+          $ref: '#/components/schemas/QuotePartyRequest'
+          description: The payee (to) party details
+      required:
+      - from
+      - to
+      title: QuoteRequest
+      type: object
     QuoteResponse:
       properties:
         bruid:
@@ -126,48 +168,6 @@ components:
       - fundingMethodId
       - fundingMethodType
       title: QuotePartyRequest
-      type: object
-    QuotePartyResponse:
-      properties:
-        amount:
-          description: The amount for this party
-          type: number
-        currency:
-          description: The currency code
-          type: string
-        fixedFee:
-          $ref: '#/components/schemas/FixedFeeResponse'
-          description: The fixed fee details for this party
-        fxRate:
-          description: The FX rate for this party
-          type: number
-      title: QuotePartyResponse
-      type: object
-    QuoteRequest:
-      properties:
-        bruid:
-          description: The BRUID - FX rate locking UID
-          type: string
-        from:
-          $ref: '#/components/schemas/QuotePartyRequest'
-          description: The payer (from) party details
-        to:
-          $ref: '#/components/schemas/QuotePartyRequest'
-          description: The payee (to) party details
-      required:
-      - from
-      - to
-      title: QuoteRequest
-      type: object
-    FixedFeeResponse:
-      properties:
-        amount:
-          description: The fixed fee amount
-          type: number
-        currency:
-          description: The currency of the fixed fee
-          type: string
-      title: FixedFeeResponse
       type: object
     ErrorResponse:
       properties:

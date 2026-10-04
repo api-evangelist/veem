@@ -612,15 +612,6 @@ paths:
       - crypto-wallet-controller
 components:
   schemas:
-    CryptoWalletPublicAPIResponse:
-      description: Response containing the payer's crypto wallets.
-      properties:
-        cryptoWallets:
-          items:
-            $ref: '#/components/schemas/CryptoWalletHighLevelInformationResponse'
-          type: array
-      title: CryptoWalletPublicAPIResponse
-      type: object
     CryptoWalletBalanceResponse:
       description: Balance details for a crypto wallet.
       properties:
@@ -645,76 +636,14 @@ components:
           type: string
       title: CryptoWalletBalanceResponse
       type: object
-    CryptoWalletLiquidationAddressResponse:
-      description: Liquidation address details for a crypto wallet.
+    CryptoWalletApplicationRequest:
+      description: Request payload for creating or updating a crypto wallet application.
       properties:
-        address:
-          description: The liquidation wallet address.
-          type: string
-        bridgeWalletId:
-          description: Identifier of the wallet at the Bridge provider.
-          type: string
-        createdAt:
-          description: Timestamp when the liquidation address was created.
-          type: string
         destinationCurrency:
-          description: The destination currency.
+          description: The destination currency for settlement.
           type: string
         destinationPaymentRail:
-          description: The destination payment rail.
-          type: string
-        liquidationAddressId:
-          description: Unique identifier of the liquidation address.
-          type: string
-        sourceChain:
-          description: The source blockchain.
-          type: string
-        sourceCurrency:
-          description: The source currency.
-          type: string
-        state:
-          description: Current state of the liquidation address.
-          type: string
-        updatedAt:
-          description: Timestamp when the liquidation address was last updated.
-          type: string
-      title: CryptoWalletLiquidationAddressResponse
-      type: object
-    CryptoWalletHighLevelInformationResponse:
-      description: High level information for a crypto wallet.
-      properties:
-        accountId:
-          format: int64
-          type: integer
-        destinationCurrency:
-          type: string
-        destinationPaymentRail:
-          type: string
-        fundingMethodId:
-          format: int64
-          type: integer
-        provider:
-          type: string
-        sourceChain:
-          type: string
-        sourceCurrency:
-          type: string
-        status:
-          type: string
-        timeCreated:
-          format: date-time
-          type: string
-      title: CryptoWalletHighLevelInformationResponse
-      type: object
-    CryptoWalletApplicationResponse:
-      description: Details of a crypto wallet application.
-      properties:
-        applicationId:
-          description: Unique identifier of the crypto wallet application.
-          format: int64
-          type: integer
-        applicationStatus:
-          description: Current status of the application.
+          description: The destination payment rail for settlement.
           type: string
         externalRegulatoryBusinessInfo:
           $ref: '#/components/schemas/VirtualBankAccountBusinessExtraInfo'
@@ -722,14 +651,43 @@ components:
         externalRegulatoryIndividualInfo:
           $ref: '#/components/schemas/VirtualBankAccountIndividualExtraInfo'
           description: Regulatory information for an individual applicant.
-        initialRouteId:
-          description: Identifier of the initial route created for the application.
-          format: int64
-          type: integer
-        provider:
-          description: The provider backing the crypto wallet.
+        sourceChain:
+          description: The source blockchain for the crypto wallet.
           type: string
-      title: CryptoWalletApplicationResponse
+        sourceCurrency:
+          description: The source currency for the crypto wallet.
+          type: string
+      title: CryptoWalletApplicationRequest
+      type: object
+    VirtualBankAccountIndividualExtraInfo:
+      description: Additional individual-related details for a virtual bank account.
+      properties:
+        annualIncome:
+          description: Annual income of the individual.
+          format: decimal
+          type: number
+        geographyReceivingCountries:
+          description: List of countries to which funds can be received.
+          type: string
+        geographySendingCountries:
+          description: List of countries from which funds can be sent.
+          type: string
+        monthlyExpectedActivity:
+          description: Expected monthly financial activity for the account.
+          format: decimal
+          type: number
+        occupation:
+          description: Occupation of the individual associated with the account.
+          type: string
+        purposeOfAccount:
+          description: Purpose for which the virtual bank account is used.
+          type: string
+        sourceOfFunds:
+          description: Source of funds for the individual account.
+          type: string
+        websiteSocialMediaLink:
+          description: Social media or website link associated with the individual.
+          type: string
       type: object
     CryptoWalletApplicationRouteResponse:
       description: Details of a route associated with a crypto wallet application.
@@ -776,8 +734,126 @@ components:
           type: string
       title: CryptoWalletApplicationRouteResponse
       type: object
-    CryptoWalletApplicationRequest:
-      description: Request payload for creating or updating a crypto wallet application.
+    TransactionReportItem:
+      description: A single transaction entry in a crypto wallet transaction report.
+      properties:
+        accountId:
+          format: int64
+          type: integer
+        accountRef:
+          type: string
+        additionalInformation:
+          type: string
+        amount:
+          type: number
+        balanceAmount:
+          type: number
+        balanceId:
+          type: string
+        completedAt:
+          format: date-time
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        currency:
+          type: string
+        date:
+          format: date-time
+          type: string
+        fundingMethodId:
+          format: int64
+          type: integer
+        id:
+          format: int64
+          type: integer
+        notes:
+          type: string
+        originatorName:
+          type: string
+        paymentAdditionalRef:
+          type: string
+        paymentId:
+          format: int64
+          type: integer
+        paymentRef:
+          type: string
+        provider:
+          type: string
+        rail:
+          type: string
+        reason:
+          type: string
+        receivingAccountIban:
+          type: string
+        receivingAccountNumber:
+          type: string
+        receivingAccountRoutingCode:
+          type: string
+        relatedEntityId:
+          type: string
+        relatedEntityShortReference:
+          type: string
+        relatedEntityType:
+          type: string
+        reviewAmount:
+          type: number
+        sanctionsPaymentId:
+          format: int64
+          type: integer
+        sanctionsSenderAccountId:
+          format: int64
+          type: integer
+        sender:
+          type: string
+        senderAccountId:
+          format: int64
+          type: integer
+        senderAccountNumber:
+          type: string
+        senderAddress:
+          type: string
+        senderAmount:
+          type: number
+        senderCountry:
+          type: string
+        senderCreateAat:
+          format: date-time
+          type: string
+        senderCurrency:
+          type: string
+        senderIban:
+          type: string
+        senderName:
+          type: string
+        senderRail:
+          type: string
+        senderUpdatedAt:
+          format: date-time
+          type: string
+        settlesAt:
+          format: date-time
+          type: string
+        status:
+          type: string
+        transactionId:
+          format: int64
+          type: integer
+        type:
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        virtualBankAccountId:
+          type: string
+        virtualBankTransactionId:
+          type: string
+        virtualBankTransactionOtherId:
+          type: string
+      title: TransactionReportItem
+      type: object
+    CryptoWalletAddCurrencyRequest:
+      description: Request payload for adding a currency or route to a crypto wallet application.
       properties:
         destinationCurrency:
           description: The destination currency for settlement.
@@ -785,99 +861,116 @@ components:
         destinationPaymentRail:
           description: The destination payment rail for settlement.
           type: string
-        externalRegulatoryBusinessInfo:
-          $ref: '#/components/schemas/VirtualBankAccountBusinessExtraInfo'
-          description: Regulatory information for a business applicant.
-        externalRegulatoryIndividualInfo:
-          $ref: '#/components/schemas/VirtualBankAccountIndividualExtraInfo'
-          description: Regulatory information for an individual applicant.
         sourceChain:
           description: The source blockchain for the crypto wallet.
           type: string
         sourceCurrency:
           description: The source currency for the crypto wallet.
           type: string
-      title: CryptoWalletApplicationRequest
+      title: CryptoWalletAddCurrencyRequest
       type: object
-    CryptoWalletProvisionResponse:
-      description: Provisioning result for a crypto wallet application currency or route.
+    VeemErrorResponse:
       properties:
-        applicationId:
-          description: Unique identifier of the crypto wallet application.
+        code:
+          description: The error code, different than HTTP status codes
+          format: int32
+          type: integer
+        fileName:
+          description: The filename where the exception was thrown
+          type: string
+        lineNumber:
+          description: The line number where the exception was thrown
+          format: int32
+          type: integer
+        logTag:
+          description: Request log tag
+          type: string
+        message:
+          description: The detailed, developer friendly message
+          type: string
+        timestamp:
+          description: The timestamp recorded when the error occurred
+          type: string
+      required:
+      - code
+      - logTag
+      - message
+      title: VeemErrorResponse
+      type: object
+    VirtualBankAccountBusinessExtraInfo:
+      description: Additional business-related details for a virtual bank account.
+      properties:
+        annualRevenue:
+          description: Annual revenue for the business associated with the account.
+          format: decimal
+          type: number
+        businessIncorporationDate:
+          description: Incorporation date of the business.
+          format: date
+          type: string
+        businessRegistrationAddressLine1:
+          description: Primary address line for business registration.
+          type: string
+        businessRegistrationAddressLine2:
+          description: Secondary address line for business registration.
+          type: string
+        businessRegistrationCity:
+          description: City where business is registered.
+          type: string
+        businessRegistrationCountry:
+          description: Country where the business is registered.
+          type: string
+        businessRegistrationNumber:
+          description: Registration number for the business.
+          type: string
+        businessRegistrationPostalCode:
+          description: Postal code of the business registration.
+          type: string
+        businessRegistrationStateProv:
+          description: State or province where business is registered.
+          type: string
+        businessWebsite:
+          description: Website or online presence for the business.
+          type: string
+        geographyReceivingCountries:
+          description: List of countries to which funds can be received.
+          type: string
+        geographySendingCountries:
+          description: List of countries from which funds can be sent.
+          type: string
+        monthlyExpectedActivity:
+          description: Expected monthly financial activity for the account.
+          format: decimal
+          type: number
+        purposeOfAccount:
+          description: Purpose for which the virtual bank account is used.
+          type: string
+        sourceOfFunds:
+          description: Source of funds for the business account.
+          type: string
+      type: object
+    CryptoWalletPublicAPIResponse:
+      description: Response containing the payer's crypto wallets.
+      properties:
+        cryptoWallets:
+          items:
+            $ref: '#/components/schemas/CryptoWalletHighLevelInformationResponse'
+          type: array
+      title: CryptoWalletPublicAPIResponse
+      type: object
+    CryptoWalletHighLevelInformationResponse:
+      description: High level information for a crypto wallet.
+      properties:
+        accountId:
           format: int64
           type: integer
-        applicationStatus:
-          description: Current status of the application.
-          type: string
-        bridgeCustomerId:
-          description: Identifier of the customer at the Bridge provider.
-          type: string
-        bridgeCustomerStatus:
-          description: Status of the customer at the Bridge provider.
-          type: string
-        bridgeWalletAddress:
-          description: Wallet address at the Bridge provider.
-          type: string
-        bridgeWalletId:
-          description: Identifier of the wallet at the Bridge provider.
-          type: string
         destinationCurrency:
-          description: The destination currency.
           type: string
         destinationPaymentRail:
-          description: The destination payment rail.
-          type: string
-        fundingMethodId:
-          description: Identifier of the funding method.
-          format: int64
-          type: integer
-        fundingMethodStatus:
-          description: Status of the funding method.
-          type: string
-        fundingMethodType:
-          description: Type of the funding method.
-          type: string
-        liquidationAddress:
-          $ref: '#/components/schemas/CryptoWalletLiquidationAddressResponse'
-          description: Liquidation address details for the provisioned wallet.
-        provider:
-          description: The provider backing the crypto wallet.
-          type: string
-        routeId:
-          description: Unique identifier of the provisioned route.
-          format: int64
-          type: integer
-        routeStatus:
-          description: Status of the provisioned route.
-          type: string
-        sourceChain:
-          description: The source blockchain.
-          type: string
-        sourceCurrency:
-          description: The source currency.
-          type: string
-      title: CryptoWalletProvisionResponse
-      type: object
-    CryptoWalletDetailsResponse:
-      description: Detailed information for a crypto wallet.
-      properties:
-        destinationCurrency:
-          type: string
-        destinationPaymentRail:
-          type: string
-        externalAccountId:
           type: string
         fundingMethodId:
           format: int64
           type: integer
-        info:
-          additionalProperties:
-            type: object
-          type: object
-        isoCountryCode:
-          type: string
-        isoCurrencyCode:
-          type: string
         provider:
           type: string
         sourceChain:
@@ -886,7 +979,10 @@ components:
           type: string
         status:
           type: string
-      title: CryptoWalletDetailsResponse
+        timeCreated:
+          format: date-time
+          type: string
+      title: CryptoWalletHighLevelInformationResponse
       type: object
     AlignMonetaryAmountCryptoWallet:
       description: Monetary amount including crypto currency codes, used by crypto wallet endpoints.
@@ -1088,250 +1184,95 @@ components:
           type: number
       title: AlignMonetaryAmountCryptoWallet
       type: object
-    CryptoWalletAddCurrencyRequest:
-      description: Request payload for adding a currency or route to a crypto wallet application.
+    CryptoWalletDetailsResponse:
+      description: Detailed information for a crypto wallet.
       properties:
         destinationCurrency:
-          description: The destination currency for settlement.
           type: string
         destinationPaymentRail:
-          description: The destination payment rail for settlement.
           type: string
-        sourceChain:
-          description: The source blockchain for the crypto wallet.
-          type: string
-        sourceCurrency:
-          description: The source currency for the crypto wallet.
-          type: string
-      title: CryptoWalletAddCurrencyRequest
-      type: object
-    TransactionReportItem:
-      description: A single transaction entry in a crypto wallet transaction report.
-      properties:
-        accountId:
-          format: int64
-          type: integer
-        accountRef:
-          type: string
-        additionalInformation:
-          type: string
-        amount:
-          type: number
-        balanceAmount:
-          type: number
-        balanceId:
-          type: string
-        completedAt:
-          format: date-time
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        currency:
-          type: string
-        date:
-          format: date-time
+        externalAccountId:
           type: string
         fundingMethodId:
           format: int64
           type: integer
-        id:
-          format: int64
-          type: integer
-        notes:
+        info:
+          additionalProperties:
+            type: object
+          type: object
+        isoCountryCode:
           type: string
-        originatorName:
-          type: string
-        paymentAdditionalRef:
-          type: string
-        paymentId:
-          format: int64
-          type: integer
-        paymentRef:
+        isoCurrencyCode:
           type: string
         provider:
           type: string
-        rail:
+        sourceChain:
           type: string
-        reason:
-          type: string
-        receivingAccountIban:
-          type: string
-        receivingAccountNumber:
-          type: string
-        receivingAccountRoutingCode:
-          type: string
-        relatedEntityId:
-          type: string
-        relatedEntityShortReference:
-          type: string
-        relatedEntityType:
-          type: string
-        reviewAmount:
-          type: number
-        sanctionsPaymentId:
-          format: int64
-          type: integer
-        sanctionsSenderAccountId:
-          format: int64
-          type: integer
-        sender:
-          type: string
-        senderAccountId:
-          format: int64
-          type: integer
-        senderAccountNumber:
-          type: string
-        senderAddress:
-          type: string
-        senderAmount:
-          type: number
-        senderCountry:
-          type: string
-        senderCreateAat:
-          format: date-time
-          type: string
-        senderCurrency:
-          type: string
-        senderIban:
-          type: string
-        senderName:
-          type: string
-        senderRail:
-          type: string
-        senderUpdatedAt:
-          format: date-time
-          type: string
-        settlesAt:
-          format: date-time
+        sourceCurrency:
           type: string
         status:
           type: string
-        transactionId:
-          format: int64
-          type: integer
-        type:
+      title: CryptoWalletDetailsResponse
+      type: object
+    CryptoWalletLiquidationAddressResponse:
+      description: Liquidation address details for a crypto wallet.
+      properties:
+        address:
+          description: The liquidation wallet address.
+          type: string
+        bridgeWalletId:
+          description: Identifier of the wallet at the Bridge provider.
+          type: string
+        createdAt:
+          description: Timestamp when the liquidation address was created.
+          type: string
+        destinationCurrency:
+          description: The destination currency.
+          type: string
+        destinationPaymentRail:
+          description: The destination payment rail.
+          type: string
+        liquidationAddressId:
+          description: Unique identifier of the liquidation address.
+          type: string
+        sourceChain:
+          description: The source blockchain.
+          type: string
+        sourceCurrency:
+          description: The source currency.
+          type: string
+        state:
+          description: Current state of the liquidation address.
           type: string
         updatedAt:
-          format: date-time
+          description: Timestamp when the liquidation address was last updated.
           type: string
-        virtualBankAccountId:
-          type: string
-        virtualBankTransactionId:
-          type: string
-        virtualBankTransactionOtherId:
-          type: string
-      title: TransactionReportItem
+      title: CryptoWalletLiquidationAddressResponse
       type: object
-    VirtualBankAccountBusinessExtraInfo:
-      description: Additional business-related details for a virtual bank account.
+    CryptoWalletApplicationResponse:
+      description: Details of a crypto wallet application.
       properties:
-        annualRevenue:
-          description: Annual revenue for the business associated with the account.
-          format: decimal
-          type: number
-        businessIncorporationDate:
-          description: Incorporation date of the business.
-          format: date
-          type: string
-        businessRegistrationAddressLine1:
-          description: Primary address line for business registration.
-          type: string
-        businessRegistrationAddressLine2:
-          description: Secondary address line for business registration.
-          type: string
-        businessRegistrationCity:
-          description: City where business is registered.
-          type: string
-        businessRegistrationCountry:
-          description: Country where the business is registered.
-          type: string
-        businessRegistrationNumber:
-          description: Registration number for the business.
-          type: string
-        businessRegistrationPostalCode:
-          description: Postal code of the business registration.
-          type: string
-        businessRegistrationStateProv:
-          description: State or province where business is registered.
-          type: string
-        businessWebsite:
-          description: Website or online presence for the business.
-          type: string
-        geographyReceivingCountries:
-          description: List of countries to which funds can be received.
-          type: string
-        geographySendingCountries:
-          description: List of countries from which funds can be sent.
-          type: string
-        monthlyExpectedActivity:
-          description: Expected monthly financial activity for the account.
-          format: decimal
-          type: number
-        purposeOfAccount:
-          description: Purpose for which the virtual bank account is used.
-          type: string
-        sourceOfFunds:
-          description: Source of funds for the business account.
-          type: string
-      type: object
-    VeemErrorResponse:
-      properties:
-        code:
-          description: The error code, different than HTTP status codes
-          format: int32
+        applicationId:
+          description: Unique identifier of the crypto wallet application.
+          format: int64
           type: integer
-        fileName:
-          description: The filename where the exception was thrown
+        applicationStatus:
+          description: Current status of the application.
           type: string
-        lineNumber:
-          description: The line number where the exception was thrown
-          format: int32
+        externalRegulatoryBusinessInfo:
+          $ref: '#/components/schemas/VirtualBankAccountBusinessExtraInfo'
+          description: Regulatory information for a business applicant.
+        externalRegulatoryIndividualInfo:
+          $ref: '#/components/schemas/VirtualBankAccountIndividualExtraInfo'
+          description: Regulatory information for an individual applicant.
+        initialRouteId:
+          description: Identifier of the initial route created for the application.
+          format: int64
           type: integer
-        logTag:
-          description: Request log tag
+        provider:
+          description: The provider backing the crypto wallet.
           type: string
-        message:
-          description: The detailed, developer friendly message
-          type: string
-        timestamp:
-          description: The timestamp recorded when the error occurred
-          type: string
-      required:
-      - code
-      - logTag
-      - message
-      title: VeemErrorResponse
-      type: object
-    VirtualBankAccountIndividualExtraInfo:
-      description: Additional individual-related details for a virtual bank account.
-      properties:
-        annualIncome:
-          description: Annual income of the individual.
-          format: decimal
-          type: number
-        geographyReceivingCountries:
-          description: List of countries to which funds can be received.
-          type: string
-        geographySendingCountries:
-          description: List of countries from which funds can be sent.
-          type: string
-        monthlyExpectedActivity:
-          description: Expected monthly financial activity for the account.
-          format: decimal
-          type: number
-        occupation:
-          description: Occupation of the individual associated with the account.
-          type: string
-        purposeOfAccount:
-          description: Purpose for which the virtual bank account is used.
-          type: string
-        sourceOfFunds:
-          description: Source of funds for the individual account.
-          type: string
-        websiteSocialMediaLink:
-          description: Social media or website link associated with the individual.
-          type: string
+      title: CryptoWalletApplicationResponse
       type: object
     PageResponseTransactionReportItem:
       description: Response model for paginated crypto wallet transaction results.
@@ -1374,4 +1315,63 @@ components:
           format: int32
           type: integer
       title: PageResponseTransactionReportItem
+      type: object
+    CryptoWalletProvisionResponse:
+      description: Provisioning result for a crypto wallet application currency or route.
+      properties:
+        applicationId:
+          description: Unique identifier of the crypto wallet application.
+          format: int64
+          type: integer
+        applicationStatus:
+          description: Current status of the application.
+          type: string
+        bridgeCustomerId:
+          description: Identifier of the customer at the Bridge provider.
+          type: string
+        bridgeCustomerStatus:
+          description: Status of the customer at the Bridge provider.
+          type: string
+        bridgeWalletAddress:
+          description: Wallet address at the Bridge provider.
+          type: string
+        bridgeWalletId:
+          description: Identifier of the wallet at the Bridge provider.
+          type: string
+        destinationCurrency:
+          description: The destination currency.
+          type: string
+        destinationPaymentRail:
+          description: The destination payment rail.
+          type: string
+        fundingMethodId:
+          description: Identifier of the funding method.
+          format: int64
+          type: integer
+        fundingMethodStatus:
+          description: Status of the funding method.
+          type: string
+        fundingMethodType:
+          description: Type of the funding method.
+          type: string
+        liquidationAddress:
+          $ref: '#/components/schemas/CryptoWalletLiquidationAddressResponse'
+          description: Liquidation address details for the provisioned wallet.
+        provider:
+          description: The provider backing the crypto wallet.
+          type: string
+        routeId:
+          description: Unique identifier of the provisioned route.
+          format: int64
+          type: integer
+        routeStatus:
+          description: Status of the provisioned route.
+          type: string
+        sourceChain:
+          description: The source blockchain.
+          type: string
+        sourceCurrency:
+          description: The source currency.
+          type: string
+      title: CryptoWalletProvisionResponse
       type: object

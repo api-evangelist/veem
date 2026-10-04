@@ -126,38 +126,13 @@ paths:
       - open-account-controller
 components:
   schemas:
-    JSONObject:
-      title: JSONObject
-      type: object
-    PublicAccountSettingsRequest:
+    ExtraInfo:
       properties:
-        type:
-          description: The type of account setting
-          enum:
-          - PAYEE_COVERS_CARD_FEE
-          - CREDIT_CARD_SENDING_FEE_RATE
-          - DEBIT_CARD_SENDING_FEE_RATE
+        purposeOfPayment:
           type: string
-        value:
-          description: The value for the account setting
+        purposeOfPaymentDescription:
           type: string
-      required:
-      - type
-      title: PublicAccountSettingsRequest
-      type: object
-    PublicAccountSettingResponse:
-      properties:
-        accountId:
-          description: The account ID this setting belongs to
-          format: int64
-          type: integer
-        type:
-          description: The type of account setting
-          type: string
-        value:
-          description: The value for the account setting
-          type: string
-      title: PublicAccountSettingResponse
+      title: ExtraInfo
       type: object
     SetUpAccountResponse:
       properties:
@@ -188,78 +163,8 @@ components:
           type: string
       title: SetUpAccountResponse
       type: object
-    Address:
-      properties:
-        city:
-          type: string
-        countryCode:
-          type: string
-        postalCode:
-          type: string
-        province:
-          type: string
-        street:
-          type: string
-        streetSecondary:
-          type: string
-      title: Address
-      type: object
-    ExtraInfo:
-      properties:
-        purposeOfPayment:
-          type: string
-        purposeOfPaymentDescription:
-          type: string
-      title: ExtraInfo
-      type: object
-    UpdateAccountRequest:
-      properties:
-        address:
-          $ref: '#/components/schemas/Address'
-        businessEntity:
-          type: string
-        businessName:
-          type: string
-        dialCode:
-          type: string
-        displayName:
-          type: string
-        firstName:
-          type: string
-        industry:
-          type: string
-        isoCountryCode:
-          type: string
-        lastName:
-          type: string
-        phoneNumber:
-          type: string
-        subIndustry:
-          type: string
-        taxIdNumber:
-          type: string
-      title: UpdateAccountRequest
-      type: object
-    ErrorResponse:
-      properties:
-        code:
-          description: The error code, different than HTTP status codes
-          format: int32
-          type: integer
-        error:
-          description: The short message
-          type: string
-        message:
-          description: The detailed, developer friendly message
-          type: string
-        timestamp:
-          description: The timestamp recorded when the error occurred
-          type: string
-      required:
-      - code
-      - error
-      - message
-      title: ErrorResponse
+    JSONObject:
+      title: JSONObject
       type: object
     OpenAccountRequest:
       properties:
@@ -302,4 +207,99 @@ components:
       required:
       - email
       title: OpenAccountRequest
+      type: object
+    PublicAccountSettingsRequest:
+      properties:
+        type:
+          description: The type of account setting
+          enum:
+          - PAYEE_COVERS_CARD_FEE
+          - CREDIT_CARD_SENDING_FEE_RATE
+          - DEBIT_CARD_SENDING_FEE_RATE
+          type: string
+        value:
+          description: The value for the account setting
+          type: string
+      required:
+      - type
+      title: PublicAccountSettingsRequest
+      type: object
+    UpdateAccountRequest:
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        businessEntity:
+          type: string
+        businessName:
+          type: string
+        dialCode:
+          type: string
+        displayName:
+          type: string
+        firstName:
+          type: string
+        industry:
+          type: string
+        isoCountryCode:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+        subIndustry:
+          type: string
+        taxIdNumber:
+          type: string
+      title: UpdateAccountRequest
+      type: object
+    PublicAccountSettingResponse:
+      properties:
+        accountId:
+          description: The account ID this setting belongs to
+          format: int64
+          type: integer
+        type:
+          description: The type of account setting
+          type: string
+        value:
+          description: The value for the account setting
+          type: string
+      title: PublicAccountSettingResponse
+      type: object
+    Address:
+      properties:
+        city:
+          type: string
+        countryCode:
+          type: string
+        postalCode:
+          type: string
+        province:
+          type: string
+        street:
+          type: string
+        streetSecondary:
+          type: string
+      title: Address
+      type: object
+    ErrorResponse:
+      properties:
+        code:
+          description: The error code, different than HTTP status codes
+          format: int32
+          type: integer
+        error:
+          description: The short message
+          type: string
+        message:
+          description: The detailed, developer friendly message
+          type: string
+        timestamp:
+          description: The timestamp recorded when the error occurred
+          type: string
+      required:
+      - code
+      - error
+      - message
+      title: ErrorResponse
       type: object
