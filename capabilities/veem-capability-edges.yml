@@ -1,0 +1,37 @@
+slug: veem
+provider: Veem
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: exchange-rate-controller
+  spec_file: veem-exchange-rate-controller-api-openapi.yml
+  capability_id: BC-210.40
+  capability_id_l1: BC-210
+  capability_name: Foreign Exchange Management
+  confidence: 0.75
+  evidence: POST /veem/v1.2/exchangerates/quote/enhanced getQuoteEnhanced; schemas QuoteRequest, QuoteResponse,
+    FixedFeeResponse
+  reason: The surface returns FX quotes for cross-currency payments, which is foreign-exchange rate/exposure
+    handling at settlement. Mapped to Foreign Exchange Management; it is a quoting service rather than
+    a hedging programme, so not full confidence.
+- tag: invoice-controller
+  spec_file: veem-invoice-controller-api-openapi.yml
+  capability_id: BC-200
+  capability_id_l1: BC-200
+  capability_name: Financial Management
+  confidence: 0.7
+  evidence: POST /veem/v1.2/invoices createInvoice; POST /veem/v1.2/invoices/{invoiceId}/approve approveInvoice;
+    POST .../cancel cancelInvoice
+  reason: Clearly invoice lifecycle within Financial Management. Whether the invoice is a receivable (request
+    for payment from a customer) or a payable being approved for payment is genuinely ambiguous from these
+    operations, so only the L1 is asserted.
