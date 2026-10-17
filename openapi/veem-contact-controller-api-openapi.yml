@@ -260,6 +260,70 @@ paths:
       - contact-controller
 components:
   schemas:
+    BatchResponse:
+      properties:
+        batchId:
+          format: int64
+          type: integer
+        batchItems:
+          items:
+            $ref: '#/components/schemas/AsyncBatchItemPaymentResponse'
+          type: array
+        hasErrors:
+          type: boolean
+        processedItems:
+          format: int64
+          type: integer
+        status:
+          type: string
+        totalItems:
+          format: int64
+          type: integer
+      title: BatchResponse«AsyncBatchItemPaymentResponse»
+      type: object
+    AsyncBatchItemPaymentResponse:
+      properties:
+        batchItemId:
+          format: int64
+          type: integer
+        errorInfo:
+          $ref: '#/components/schemas/ErrorResponse'
+        paymentId:
+          format: int64
+          type: integer
+        status:
+          type: string
+      title: AsyncBatchItemPaymentResponse
+      type: object
+    AddressRequest:
+      properties:
+        city:
+          description: City
+          type: string
+        line1:
+          description: Address line 1
+          type: string
+        line2:
+          description: Address line 2
+          type: string
+        postalCode:
+          description: Postal code
+          type: string
+        province:
+          type: string
+        state:
+          type: string
+        stateProvince:
+          description: State or province
+          type: string
+      required:
+      - city
+      - line1
+      - line2
+      - postalCode
+      - stateProvince
+      title: AddressRequest
+      type: object
     ContactRequest:
       properties:
         bankAccount:
@@ -632,48 +696,6 @@ components:
       - phoneNumber
       title: ContactResponse
       type: object
-    VeemErrorResponse:
-      properties:
-        code:
-          description: The error code, different than HTTP status codes
-          format: int32
-          type: integer
-        fileName:
-          description: The filename where the exception was thrown
-          type: string
-        lineNumber:
-          description: The line number where the exception was thrown
-          format: int32
-          type: integer
-        logTag:
-          description: Request log tag
-          type: string
-        message:
-          description: The detailed, developer friendly message
-          type: string
-        timestamp:
-          description: The timestamp recorded when the error occurred
-          type: string
-      required:
-      - code
-      - logTag
-      - message
-      title: VeemErrorResponse
-      type: object
-    AsyncBatchItemPaymentResponse:
-      properties:
-        batchItemId:
-          format: int64
-          type: integer
-        errorInfo:
-          $ref: '#/components/schemas/ErrorResponse'
-        paymentId:
-          format: int64
-          type: integer
-        status:
-          type: string
-      title: AsyncBatchItemPaymentResponse
-      type: object
     ContactBatchItemRequest:
       properties:
         bankAccount:
@@ -726,26 +748,54 @@ components:
       - type
       title: ContactBatchItemRequest
       type: object
-    BatchResponse:
+    VeemErrorResponse:
       properties:
-        batchId:
-          format: int64
+        code:
+          description: The error code, different than HTTP status codes
+          format: int32
           type: integer
-        batchItems:
-          items:
-            $ref: '#/components/schemas/AsyncBatchItemPaymentResponse'
-          type: array
-        hasErrors:
-          type: boolean
-        processedItems:
-          format: int64
-          type: integer
-        status:
+        fileName:
+          description: The filename where the exception was thrown
           type: string
-        totalItems:
-          format: int64
+        lineNumber:
+          description: The line number where the exception was thrown
+          format: int32
           type: integer
-      title: BatchResponse«AsyncBatchItemPaymentResponse»
+        logTag:
+          description: Request log tag
+          type: string
+        message:
+          description: The detailed, developer friendly message
+          type: string
+        timestamp:
+          description: The timestamp recorded when the error occurred
+          type: string
+      required:
+      - code
+      - logTag
+      - message
+      title: VeemErrorResponse
+      type: object
+    ErrorResponse:
+      properties:
+        code:
+          description: The error code, different than HTTP status codes
+          format: int32
+          type: integer
+        error:
+          description: The short message
+          type: string
+        message:
+          description: The detailed, developer friendly message
+          type: string
+        timestamp:
+          description: The timestamp recorded when the error occurred
+          type: string
+      required:
+      - code
+      - error
+      - message
+      title: ErrorResponse
       type: object
     BankAccountRequest:
       properties:
@@ -788,54 +838,4 @@ components:
         transitCode:
           type: string
       title: BankAccountRequest
-      type: object
-    AddressRequest:
-      properties:
-        city:
-          description: City
-          type: string
-        line1:
-          description: Address line 1
-          type: string
-        line2:
-          description: Address line 2
-          type: string
-        postalCode:
-          description: Postal code
-          type: string
-        province:
-          type: string
-        state:
-          type: string
-        stateProvince:
-          description: State or province
-          type: string
-      required:
-      - city
-      - line1
-      - line2
-      - postalCode
-      - stateProvince
-      title: AddressRequest
-      type: object
-    ErrorResponse:
-      properties:
-        code:
-          description: The error code, different than HTTP status codes
-          format: int32
-          type: integer
-        error:
-          description: The short message
-          type: string
-        message:
-          description: The detailed, developer friendly message
-          type: string
-        timestamp:
-          description: The timestamp recorded when the error occurred
-          type: string
-      required:
-      - code
-      - error
-      - message
-      title: ErrorResponse
       type: object

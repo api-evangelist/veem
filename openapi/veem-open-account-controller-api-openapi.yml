@@ -126,45 +126,52 @@ paths:
       - open-account-controller
 components:
   schemas:
-    ExtraInfo:
-      properties:
-        purposeOfPayment:
-          type: string
-        purposeOfPaymentDescription:
-          type: string
-      title: ExtraInfo
-      type: object
-    SetUpAccountResponse:
-      properties:
-        accountSetUpStatus:
-          type: string
-        clientId:
-          type: string
-        clientSecret:
-          type: string
-        email:
-          type: string
-        expiresIn:
-          format: int32
-          type: integer
-        id:
-          format: int64
-          type: integer
-        missingInformation:
-          items:
-            type: string
-          type: array
-        token:
-          type: string
-        userId:
-          format: int64
-          type: integer
-        verificationStatus:
-          type: string
-      title: SetUpAccountResponse
-      type: object
     JSONObject:
       title: JSONObject
+      type: object
+    UpdateAccountRequest:
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        businessEntity:
+          type: string
+        businessName:
+          type: string
+        dialCode:
+          type: string
+        displayName:
+          type: string
+        firstName:
+          type: string
+        industry:
+          type: string
+        isoCountryCode:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+        subIndustry:
+          type: string
+        taxIdNumber:
+          type: string
+      title: UpdateAccountRequest
+      type: object
+    PublicAccountSettingsRequest:
+      properties:
+        type:
+          description: The type of account setting
+          enum:
+          - PAYEE_COVERS_CARD_FEE
+          - CREDIT_CARD_SENDING_FEE_RATE
+          - DEBIT_CARD_SENDING_FEE_RATE
+          type: string
+        value:
+          description: The value for the account setting
+          type: string
+      required:
+      - type
+      title: PublicAccountSettingsRequest
       type: object
     OpenAccountRequest:
       properties:
@@ -208,50 +215,6 @@ components:
       - email
       title: OpenAccountRequest
       type: object
-    PublicAccountSettingsRequest:
-      properties:
-        type:
-          description: The type of account setting
-          enum:
-          - PAYEE_COVERS_CARD_FEE
-          - CREDIT_CARD_SENDING_FEE_RATE
-          - DEBIT_CARD_SENDING_FEE_RATE
-          type: string
-        value:
-          description: The value for the account setting
-          type: string
-      required:
-      - type
-      title: PublicAccountSettingsRequest
-      type: object
-    UpdateAccountRequest:
-      properties:
-        address:
-          $ref: '#/components/schemas/Address'
-        businessEntity:
-          type: string
-        businessName:
-          type: string
-        dialCode:
-          type: string
-        displayName:
-          type: string
-        firstName:
-          type: string
-        industry:
-          type: string
-        isoCountryCode:
-          type: string
-        lastName:
-          type: string
-        phoneNumber:
-          type: string
-        subIndustry:
-          type: string
-        taxIdNumber:
-          type: string
-      title: UpdateAccountRequest
-      type: object
     PublicAccountSettingResponse:
       properties:
         accountId:
@@ -265,6 +228,43 @@ components:
           description: The value for the account setting
           type: string
       title: PublicAccountSettingResponse
+      type: object
+    SetUpAccountResponse:
+      properties:
+        accountSetUpStatus:
+          type: string
+        clientId:
+          type: string
+        clientSecret:
+          type: string
+        email:
+          type: string
+        expiresIn:
+          format: int32
+          type: integer
+        id:
+          format: int64
+          type: integer
+        missingInformation:
+          items:
+            type: string
+          type: array
+        token:
+          type: string
+        userId:
+          format: int64
+          type: integer
+        verificationStatus:
+          type: string
+      title: SetUpAccountResponse
+      type: object
+    ExtraInfo:
+      properties:
+        purposeOfPayment:
+          type: string
+        purposeOfPaymentDescription:
+          type: string
+      title: ExtraInfo
       type: object
     Address:
       properties:

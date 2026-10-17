@@ -77,18 +77,26 @@ paths:
       - wallet-controller
 components:
   schemas:
-    CustomFundingMethodResponse:
+    ErrorResponse:
       properties:
-        accountId:
-          format: int64
+        code:
+          description: The error code, different than HTTP status codes
+          format: int32
           type: integer
-        errorMessage:
+        error:
+          description: The short message
           type: string
-        fundingMethods:
-          items:
-            $ref: '#/components/schemas/FundingMethod'
-          type: array
-      title: CustomFundingMethodResponse
+        message:
+          description: The detailed, developer friendly message
+          type: string
+        timestamp:
+          description: The timestamp recorded when the error occurred
+          type: string
+      required:
+      - code
+      - error
+      - message
+      title: ErrorResponse
       type: object
     FundingMethod:
       properties:
@@ -111,24 +119,16 @@ components:
       - type
       title: FundingMethod
       type: object
-    ErrorResponse:
+    CustomFundingMethodResponse:
       properties:
-        code:
-          description: The error code, different than HTTP status codes
-          format: int32
+        accountId:
+          format: int64
           type: integer
-        error:
-          description: The short message
+        errorMessage:
           type: string
-        message:
-          description: The detailed, developer friendly message
-          type: string
-        timestamp:
-          description: The timestamp recorded when the error occurred
-          type: string
-      required:
-      - code
-      - error
-      - message
-      title: ErrorResponse
+        fundingMethods:
+          items:
+            $ref: '#/components/schemas/FundingMethod'
+          type: array
+      title: CustomFundingMethodResponse
       type: object

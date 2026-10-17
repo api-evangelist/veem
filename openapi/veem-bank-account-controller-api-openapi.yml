@@ -51,6 +51,35 @@ paths:
       - bank-account-controller
 components:
   schemas:
+    AddressRequest:
+      properties:
+        city:
+          description: City
+          type: string
+        line1:
+          description: Address line 1
+          type: string
+        line2:
+          description: Address line 2
+          type: string
+        postalCode:
+          description: Postal code
+          type: string
+        province:
+          type: string
+        state:
+          type: string
+        stateProvince:
+          description: State or province
+          type: string
+      required:
+      - city
+      - line1
+      - line2
+      - postalCode
+      - stateProvince
+      title: AddressRequest
+      type: object
     AlignMonetaryAmount:
       properties:
         currency:
@@ -243,28 +272,6 @@ components:
         number:
           type: number
       title: AlignMonetaryAmount
-      type: object
-    BankAccountAddressDTO:
-      properties:
-        bankAccountId:
-          format: int64
-          type: integer
-        city:
-          type: string
-        id:
-          format: int64
-          type: integer
-        line1:
-          type: string
-        line2:
-          type: string
-        postalCode:
-          type: string
-        province:
-          type: string
-        state:
-          type: string
-      title: BankAccountAddressDTO
       type: object
     BankAccountResponse:
       properties:
@@ -631,6 +638,28 @@ components:
           type: string
       title: BankAccountResponse
       type: object
+    BankAccountAddressDTO:
+      properties:
+        bankAccountId:
+          format: int64
+          type: integer
+        city:
+          type: string
+        id:
+          format: int64
+          type: integer
+        line1:
+          type: string
+        line2:
+          type: string
+        postalCode:
+          type: string
+        province:
+          type: string
+        state:
+          type: string
+      title: BankAccountAddressDTO
+      type: object
     BankAccountRequest:
       properties:
         accountType:
@@ -672,35 +701,6 @@ components:
         transitCode:
           type: string
       title: BankAccountRequest
-      type: object
-    AddressRequest:
-      properties:
-        city:
-          description: City
-          type: string
-        line1:
-          description: Address line 1
-          type: string
-        line2:
-          description: Address line 2
-          type: string
-        postalCode:
-          description: Postal code
-          type: string
-        province:
-          type: string
-        state:
-          type: string
-        stateProvince:
-          description: State or province
-          type: string
-      required:
-      - city
-      - line1
-      - line2
-      - postalCode
-      - stateProvince
-      title: AddressRequest
       type: object
   requestBodies:
     BankAccountRequest:
