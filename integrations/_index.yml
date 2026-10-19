@@ -28,3 +28,65 @@
     builder: unknown (not in the directory record)
   status: not-a-workflow
   arazzo: null
+- slug: veem-npm-registry
+  label: npm registry
+  partner: npm
+  partner_name: npm registry
+  category: official SDK (JavaScript/TypeScript)
+  type: register
+  channel: package-registry
+  evidence: https://www.npmjs.com/package/veem-node-sdk
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: npm registry (public registry JSON)
+    spec_file: null
+    language: JavaScript/TypeScript
+    packages:
+    - name: veem-node-sdk
+      version: 1.1.1
+      released: '2022-05-23'
+      released_field: modified
+      lapsed: true
+      page: https://www.npmjs.com/package/veem-node-sdk
+      repo_leg: github-org:veeminc
+      publisher_leg: email:veem.com
+      matched_by: domain
+    current: false
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  status: not-a-workflow
+  arazzo: null
+- slug: veem-pypi
+  label: PyPI
+  partner: pypi
+  partner_name: PyPI
+  category: official SDK (Python)
+  type: register
+  channel: package-registry
+  evidence: https://pypi.org/project/veem/
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: PyPI (public registry JSON)
+    spec_file: null
+    language: Python
+    packages:
+    - name: veem
+      version: 3.0.0
+      released: '2019-09-13'
+      released_field: upload_time
+      lapsed: true
+      page: https://pypi.org/project/veem/
+      repo_leg: github-org:veeminc
+      publisher_leg: email:veem.com
+      matched_by: domain
+    current: false
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  status: not-a-workflow
+  arazzo: null
