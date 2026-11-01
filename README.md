@@ -64,6 +64,152 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Veem is a company surfaced as a portfolio company of gv, pantera-capital and added to the API Evangelist network as a stub for enrichment. Sector: enterprise. This profile is a lead awaiting the enrichment pipeline.
+Veem is a global payments network that lets businesses send, receive, and request payments domestically and across borders. Its Public API covers account creation and KYC (including beneficial ownership), bank accounts and funding methods, claimless payments, invoices, multi-currency wallets, virtual bank accounts, crypto wallets, exchange-rate quotes, and webhooks, with embeddable Web SDK plugins for collecting card, bank, and identity data inside partner apps.
 
-Backed by: gv, pantera-capital — http://veem.com
+**Areas:** Payments · B2B Payments · Cross-Border Payments · Invoicing · Wallets · Fintech · Global Payments
+
+## Veem on APIs.io
+
+Everything profiled for Veem is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/veem/](https://apis.io/providers/veem/)** — or go straight to one of the APIs or properties below.
+
+### APIs (14)
+
+- [Veem Attachment Controller API](https://apis.io/apis/veem/veem-attachment-controller-api/) — Attachment Controller
+- [Veem Bank Account Controller API](https://apis.io/apis/veem/veem-bank-account-controller-api/) — Bank Account Controller
+- [Veem Beneficial Owner Information Controller API](https://apis.io/apis/veem/veem-beneficial-owner-information-controller-api/) — Beneficial Owner Information Controller
+- [Veem Claimless Payment Controller API](https://apis.io/apis/veem/veem-claimless-payment-controller-api/) — Claimless Payment Controller
+- [Veem Contact Controller API](https://apis.io/apis/veem/veem-contact-controller-api/) — Contact Controller
+- [Veem Crypto Wallet Controller API](https://apis.io/apis/veem/veem-crypto-wallet-controller-api/) — For managing crypto wallets, including balances, details, transactions and pay-ins
+- [Veem Customer Controller API](https://apis.io/apis/veem/veem-customer-controller-api/) — Customer Controller
+- [Veem Exchange Rate Controller API](https://apis.io/apis/veem/veem-exchange-rate-controller-api/) — Exchange Rate Controller
+- [Veem Invoice Controller API](https://apis.io/apis/veem/veem-invoice-controller-api/) — Invoice Controller
+- [Veem Meta Controller API](https://apis.io/apis/veem/veem-meta-controller-api/) — Meta Controller
+- [Veem Open Account Controller API](https://apis.io/apis/veem/veem-open-account-controller-api/) — Open Account Controller
+- [Veem Payment Controller API](https://apis.io/apis/veem/veem-payment-controller-api/) — Payment Controller
+- [Veem Wallet Controller API](https://apis.io/apis/veem/veem-wallet-controller-api/) — Wallet Controller
+- [Veem Webhook Controller API](https://apis.io/apis/veem/veem-webhook-controller-api/) — Webhook Controller
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Veem Webhooks](https://apis.io/asyncapis/veem/veem-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [veem](https://apis.io/servers/veem/veem/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Veem Agentic Access](https://apis.io/agentic-access/veem/veem-agentic-access/)
+
+#### Collections (14)
+
+Postman and Open Collection request collections.
+
+- [Veem API v1.2 attachment-controller API](https://apis.io/collections/veem/open-veem-attachment-controller-api/)
+- [Veem API v1.2 attachment-controller bank-account-controller API](https://apis.io/collections/veem/open-veem-bank-account-controller-api/)
+- [Veem API v1.2 attachment-controller beneficial-owner-information-controller API](https://apis.io/collections/veem/open-veem-beneficial-owner-information-controller-api/)
+- [Veem API v1.2 attachment-controller claimless-payment-controller API](https://apis.io/collections/veem/open-veem-claimless-payment-controller-api/)
+- [Veem API v1.2 attachment-controller contact-controller API](https://apis.io/collections/veem/open-veem-contact-controller-api/)
+- [Veem API v1.2 attachment-controller crypto-wallet-controller API](https://apis.io/collections/veem/open-veem-crypto-wallet-controller-api/)
+- [Veem API v1.2 attachment-controller customer-controller API](https://apis.io/collections/veem/open-veem-customer-controller-api/)
+- [Veem API v1.2 attachment-controller exchange-rate-controller API](https://apis.io/collections/veem/open-veem-exchange-rate-controller-api/)
+- [Veem API v1.2 attachment-controller invoice-controller API](https://apis.io/collections/veem/open-veem-invoice-controller-api/)
+- [Veem API v1.2 attachment-controller meta-controller API](https://apis.io/collections/veem/open-veem-meta-controller-api/)
+- [Veem API v1.2 attachment-controller open-account-controller API](https://apis.io/collections/veem/open-veem-open-account-controller-api/)
+- [Veem API v1.2 attachment-controller payment-controller API](https://apis.io/collections/veem/open-veem-payment-controller-api/)
+- [Veem API v1.2 attachment-controller wallet-controller API](https://apis.io/collections/veem/open-veem-wallet-controller-api/)
+- [Veem API v1.2 attachment-controller webhook-controller API](https://apis.io/collections/veem/open-veem-webhook-controller-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Veem Api Overlay](https://apis.io/overlays/veem/veem-api-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Veem Authentication](https://apis.io/security/veem/veem-authentication/)
+- [Veem Domain Security](https://apis.io/security/veem/veem-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Veem Scopes](https://apis.io/scopes/veem/veem-scopes/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.veem.com)
+- [Documentation](https://developer.veem.com/docs)
+- [Getting started](https://developer.veem.com/docs/intro-to-veem-api)
+- [API reference](https://developer.veem.com/reference)
+- [Blog](https://www.veem.com/library/)
+- [GitHub](https://github.com/veeminc)
+- [Status](https://status.veem.com)
+
+## API Evangelist rating
+
+**Kin Score 37.9** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 51.1 |
+| Contract governance | 4.5 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 51.8 |
+| Access clarity | 6.6 |
+
+**Agent readiness 33.2** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 24.1** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/veem/](https://apis.io/providers/veem/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Veem: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/veem/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
